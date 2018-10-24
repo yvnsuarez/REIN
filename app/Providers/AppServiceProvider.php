@@ -17,9 +17,9 @@ class AppServiceProvider extends ServiceProvider
 
         \URL::forceRootUrl(\Config::get('app.url'));
 
-        if (str_contains(\Config::get('app.url'), 'https://'))
+        if (str_contains(\Config::get('app.url'), 'http://'))
         {
-            \URL::forceScheme('https');
+            \URL::forceScheme('http');
         }
         
        Schema::defaultStringLength(191);
