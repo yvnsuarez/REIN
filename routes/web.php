@@ -17,7 +17,7 @@ Route::get('/admin/register', function(){
 });
 Route::post('/welcome', 'Web\Admin\AdminRegisterController@register');
 
-/* This is the landing page - guest*/
+// GUEST
 Route::get('/', function(){
     return view('landingPage');
 });
@@ -55,7 +55,7 @@ Route::prefix('admin')->group(function() {
 
 Route::prefix('partner')->group(function() {
     Route::get('/login','Web\PartnerAuth\PartnerLoginController@showLoginForm')->name('partner.login');
-    Route::post('/login','dWeb\PartnerAuth\PartnerLoginController@login')->name('partner.login.submit');
+    Route::post('/login','Web\PartnerAuth\PartnerLoginController@login')->name('partner.login.submit');
     Route::post('/logout', 'Web\PartnerAuth\PartnerLoginController@adminLogout')->name('partner.logout');
 
     Route::post('/password/email','Web\PartnerAuth\ForgotPasswordController@sendResetLinkEmail')->name('partner.password.email');
