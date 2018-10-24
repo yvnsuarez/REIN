@@ -27,6 +27,7 @@ class AdminLoginController extends Controller
         $this->validate($request, [
             'Email' => 'required',
             'password' => 'required',
+            'g-recaptcha-response' => 'required|captcha'
         ]);
 
         if (Auth::guard('admin')->attempt(['Email' => $request->Email,

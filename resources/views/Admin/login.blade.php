@@ -444,26 +444,6 @@ textarea:hover {
                     </span>
                 @endif
 
-                <div id="captcha" class="rc-anchor rc-anchor-normal rc-anchor-light">
-                        <div class="rc-anchor-content">
-                            <div class="rc-inline-block">
-                                <div class="rc-anchor-center-container">
-                                    <div class="rc-anchor-center-item rc-anchor-checkbox-holder"><span class="recaptcha-checkbox goog-inline-block recaptcha-checkbox-unchecked rc-anchor-checkbox recaptcha-checkbox-clearOutline" role="checkbox" aria-checked="false" id="recaptcha-anchor" tabindex="0" dir="ltr" aria-labelledby="recaptcha-anchor-label"><div class="recaptcha-checkbox-border" role="presentation"></div><div class="recaptcha-checkbox-borderAnimation" role="presentation"></div><div class="recaptcha-checkbox-spinner" role="presentation"></div><div class="recaptcha-checkbox-spinnerAnimation" role="presentation"></div><div class="recaptcha-checkbox-checkmark" role="presentation"></div></span></div>
-                                </div>
-                            </div>
-                            <div class="rc-inline-block">
-                                <div class="rc-anchor-center-container"><label class="rc-anchor-center-item rc-anchor-checkbox-label" id="recaptcha-anchor-label">I'm not a robot</label></div>
-                            </div>
-                        </div>
-                        <div class="rc-anchor-normal-footer">
-                            <div class="rc-anchor-logo-portrait" role="presentation">
-                                <div class="rc-anchor-logo-img rc-anchor-logo-img-portrait"></div>
-                                <div class="rc-anchor-logo-text">reCAPTCHA</div>
-                            </div>
-                            <div class="rc-anchor-pt"><a href="https://www.google.com/intl/en/policies/privacy/" target="_blank">Privacy</a> - <a href="https://www.google.com/intl/en/policies/terms/" target="_blank">Terms</a></div>
-                        </div>
-                </div>
-
                 <button type="submit" class="btn btn-primary">
 									{{ __('Login') }}
 								</button>

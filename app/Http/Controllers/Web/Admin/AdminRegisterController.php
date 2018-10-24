@@ -38,7 +38,7 @@ class AdminRegisterController extends Controller
         $admin->UserTypeID = 1;
         $admin->Status = 'Activated';
 
-        if($admin->save()){
+        if($admin->save()){ 
             return view('admin.dashboard'); 
         } else {
             return "{Error: failed insert}";
