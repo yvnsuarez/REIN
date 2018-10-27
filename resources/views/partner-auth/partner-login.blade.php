@@ -37,7 +37,7 @@
                 <div class="login-logo">
                     <br />
                     <a href="index.html">
-                        <img class="align-content" src="/images/REIN01.png" width="200px" height="100px">
+                        <img class="align-content" src="{{ asset('/images/justREIN.png') }}" width="200px" height="100px">
                     </a>
                 </div>
                 <div class="login-form">
