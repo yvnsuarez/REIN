@@ -84,21 +84,21 @@
                         <hr/>    
                     </li>
                     <li class="menu-item">
-                        <a href="/admin/partners" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="{{ url('/admin/partners') }}" aria-haspopup="true" aria-expanded="false"> 
                             <i class="menu-icon fa fa-cogs"></i>Partners</a>
                     </li>
                     <li class="menu-title">
                         <hr/>    
                     </li>
                     <li class="menu-item">
-                        <a href="/admin/motorists" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="{{ url('/admin/motorists') }}" aria-haspopup="true" aria-expanded="false"> 
                             <i class="menu-icon fa fa-table"></i>Motorists</a>
                     </li>
                     <li class="menu-title">
                         <hr/>    
                     </li>
                     <li class="menu-item">
-                        <a href="/admin/transactionlogs" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="{{ url('/admin/transactionlogs') }}" aria-haspopup="true" aria-expanded="false"> 
                             <i class="menu-icon fa fa-th"></i>Transaction Logs</a>
                     </li>
                     <li class="menu-title">
@@ -126,8 +126,8 @@
         <header id="header" class="header">  
             <div class="top-left">
                 <div class="navbar-header"> 
-                    <a class="navbar-brand" href="{{ route('admin.home') }}"><img src="/images/REIN01.png" alt="Logo" width="100px" height="45px"></a>
-                    <a class="navbar-brand hidden" href="{{ route('admin.home') }}"><img src="/images/REIN01.png" alt="Logo" width="100px" height="45px"></a> 
+                    <a class="navbar-brand" href="{{ route('admin.home') }}"><img src="{{asset('/images/REIN01.png') }}" alt="Logo" width="100px" height="45px"></a>
+                    <a class="navbar-brand hidden" href="{{ route('admin.home') }}"><img src="{{asset('/images/REIN01.png') }}" alt="Logo" width="100px" height="45px"></a> 
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a> 
                 </div> 
             </div>
@@ -137,12 +137,12 @@
 
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="/images/user.png" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="{{ asset('/images/user.png') }}" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link">{{Auth::user()->FirstName}} {{Auth::user()->LastName}}</a>
-                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i>Logout</a>
+                            <a class="nav-link" href="{{route ('admin.logout') }}"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div> 
                 </div>  

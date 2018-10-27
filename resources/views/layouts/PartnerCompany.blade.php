@@ -78,28 +78,28 @@
                         <hr/>    
                     </li>
                     <li class="menu-item">
-                        <a href="/partner/requests" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="{{ route('partner.requests') }}" aria-haspopup="true" aria-expanded="false"> 
                             <i class="menu-icon fa fa-cogs"></i>Requests</a>
                     </li>
                     <li class="menu-title">
                         <hr/>
                     </li>
                     <li class="menu-item">
-                        <a href="/partner/assistants" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="{{ url('/partner/assistants') }}" aria-haspopup="true" aria-expanded="false"> 
                             <i class="menu-icon fa fa-table"></i>Assistants</a>
                     </li>
                     <li class="menu-title">
                         <hr/>    
                     </li>
                     <li class="menu-item">
-                        <a href="/partner/transactionlogs" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="{{ url('/partner/transactionlogs') }}" aria-haspopup="true" aria-expanded="false"> 
                             <i class="menu-icon fa fa-th"></i>Transaction Logs</a>
                     </li>
                     <li class="menu-title">
                         <hr/>    
                     </li>
                     <li class="menu-item">
-                        <a href="/partner/flags" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="{{ ('/partner/flags') }}" aria-haspopup="true" aria-expanded="false"> 
                             <i class="menu-icon fa fa-th"></i>Reports/Flags</a>
                     </li>
                     <li class="menu-title">
