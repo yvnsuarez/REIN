@@ -141,7 +141,7 @@
       <!--Initial Covering Layer-->
       <div class="front page layer">
         <h1>
-          <img src="/images/REIN01.png" width="400px" length="150px"/>
+          <img src="{{asset('/images/REIN01.png')}}" width="400px" length="150px"/>
         </h1>
       </div>
 
