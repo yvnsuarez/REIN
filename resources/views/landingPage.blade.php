@@ -172,7 +172,8 @@
           <a href="javascript:void(0)" class="closebtn" onclick="closeBePartner()">&times;</a>
           <div class="overlay-content">
             <p>
-              <a href="/partner/login">Login as a Partner</a>
+              <a href="{{url('/partner/login')}}">Login as a Partner</a>
+              
             </p>
           </div>
         </div>
