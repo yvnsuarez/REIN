@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Reports;
 use App\User;
+use Auth;
+use App\Partner;
+use DB;
+use REIN\Http\Controllers\PartnerCompanyController;
 
 class RequestsController extends Controller
 {
@@ -23,7 +27,8 @@ class RequestsController extends Controller
 
     public function index()
     {
-        $reports = Reports::all();
+        // $reports = Reports::where('status', 'Accepted')->get();
+        $reports = Reports::where('status', 'Pending')->get();
         return view ('Partner.Requests', compact('reports'));
     }
 
@@ -60,39 +65,53 @@ class RequestsController extends Controller
         return view('Partner.AcceptRequest', compact('reports'));
     }
 
-    public function accept(Request $requests, $ID)
+    public function accept($ID)
     {
-        Reports::find($ID)->update($requests->all());
-        // $user->update($request->all());
-        return redirect()->intended(route('partner.requests'));
-        // return redirect()->route('Partner.Requests')->with('message','item has been updated successfully');
+        $getpartner = Auth::user();
+
+        DB::table('reports')
+          ->where('id', $ID)
+          ->update(['status' => "Accepted", 'partner' => $getpartner->id]);
+
+        return redirect('partner/requests');
+       // return redirect()->intended(route('partner.requests'));//->with('message', 'Request has been accepted successfully'));
     }
 
     public function showassign($ID)
     {
+        
         $reports = Reports::find($ID);
-        return view('Partner.AssignRequest', compact('reports'));
+        $users = User::where('UserTypeID', '2')->get();
+        return view('Partner.AssignRequest', compact('reports', 'users'));
+        // /)->with(['users' => $users]);
+        //, compact('reports')
     }
 
-    public function assign(Request $requests, $ID)
+    public function assign(Request $request, $id)
     {
-
-        Reports::find($ID)->update($requests->all());
-        // $user->update($request->all());
-        return redirect()->intended(route('partner.requests'));//->with('message','item has been updated successfully');
+        $getassistant = $request->input('assistant');
+        DB::table('reports')
+          ->where('id', $id)
+          ->update(['status' => "Assigned", 'assistant' => $getassistant]);
+          
+        return redirect('partner/requests');
+        //return redirect()->intended(route('partner.requests'))->with('message','item has been updated successfully');
     }
     
     public function showdecline($ID)
     {
         $reports = Reports::find($ID);
         return view('Partner.DeclineRequest', compact('reports'));
+
     }
 
-    public function decline(Request $requests, $ID)
+    public function decline($ID)
     {
-        Reports::find($ID)->update($requests->all());
-        // $user->update($request->all());
-        return redirect()->route('Partner.Requests')->with('message','item has been updated successfully');
+        // DB::table('reports')
+        //   ->where('id', $ID)
+        //   ->update(['status' => "Declined"]);
+
+        return redirect('partner/requests');  
     }
 
     public function destroy($id)

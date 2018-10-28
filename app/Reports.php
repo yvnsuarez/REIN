@@ -5,11 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Reports extends Model
+
 {
-    //
+    protected $table = 'reports';
+    protected $primaryKey = 'id';
     protected $fillable =[
-        'id','Partner','Motorist','Assistant','Instruction','ServiceType','Image', 'Lat','Long',
-        'ServiceStatus', 'ServiceComment', 'AdditionalCharge', 'TotalServicePrice', 'DateRequested',
-        'DateUpdated',
+        'ID','partner','motorist','assistant','instruction','servicetype','image', 'Lat','Long',
+        'comment', 'addcharge', 'totalservice', 'totalservice', 'created_at',
+        'updated_at',
      ];
+     public $timestamps = true;
 }

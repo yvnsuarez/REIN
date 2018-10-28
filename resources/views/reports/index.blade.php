@@ -78,7 +78,7 @@
                                             <td>{{$report->ServiceComment}}</td>
                                             <td>{{$report->AdditionalCharge}}</td>
                                             <td>{{$report->TotalServicePrice}}</td>
-                                            <td>{{$report->DateRequested}}</td>
+                                            <td>{{$report->DateSubmitted}}</td>
                                             <td>{{$report->DateUpdated}}</td>
                                             <td>
                                                 {{-- MODAL FOR VIEWING OF REPORT --}}

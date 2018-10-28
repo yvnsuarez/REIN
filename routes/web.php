@@ -66,14 +66,15 @@ Route::prefix('partner')->group(function() {
     Route::get('/home', 'Web\PartnerController@index')->name('partner.dashboard');
     Route::get('/requests', 'Web\PartnerCompany\RequestsController@index')->name('partner.requests');
 
+    // Route::resource('/requests', 'Web\PartnerCompany\RequestsController@index');
     Route::get('/requests/{id}/accept', 'Web\PartnerCompany\RequestsController@showaccept');
     Route::post('/requests/{id}/accepted', 'Web\PartnerCompany\RequestsController@accept');
 
     Route::get('/requests/{id}/assign', 'Web\PartnerCompany\RequestsController@showassign');
-    Route::post('/requests/{id}/assined', 'Web\PartnerCompany\RequestsController@assign');
+    Route::post('/requests/{id}/assigned', 'Web\PartnerCompany\RequestsController@assign');
 
     Route::get('/requests/{id}/decline', 'Web\PartnerCompany\RequestsController@showdecline');
-    Route::post('/requests/{id}/declined', 'Web\PartnerCompany\RequestsController@declne');
+    Route::post('/requests/{id}/declined', 'Web\PartnerCompany\RequestsController@decline');
 
     Route::resource('/assistants', 'Web\PartnerCompany\AssistantsController');
     Route::resource('/transactionlogs', 'Web\PartnerCompany\LogsController');

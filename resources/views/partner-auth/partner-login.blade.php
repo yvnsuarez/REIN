@@ -74,11 +74,20 @@
                             </span>
                             @endif
                         </div>
+                        <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                            <div class="col-md-6 pull-center">
+                            {!! app('captcha')->display() !!}
+                            @if ($errors->has('g-recaptcha-response'))
+                            <span class="help-block">
+                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                            </span>
+                            @endif
+                          </div>
+                        </div>
                         <div class="checkbox">
                             <label class="pull-right">
                                 <a href="#">Forgotten Password?</a>
                             </label>
-
                         </div>
                         <button type="submit" class="btn btn-secondary btn-block m-b-30 m-t-30">
                                 {{ __('Login') }}
@@ -94,6 +103,7 @@
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
 </body>
 </html>

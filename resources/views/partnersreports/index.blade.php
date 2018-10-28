@@ -43,7 +43,7 @@
                         <div class="card-header">
                             <strong class="card-title">Reports</strong>
                         </div>
-                        @if(count($reports) == 0)
+                        @if(count($reports) > 0)
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
                                 <thead>
@@ -55,11 +55,11 @@
                                             <th>Service Type</th>
                                             <th>Image</th>
                                             <th>Location</th>
-                                            <th>Service Status</th>
                                             <th>Service Comment</th>
                                             <th>Additional Charge</th>
                                             <th>Total Service Price</th>
-                                            <th>Date Requested</th>
+                                            <th>Service Status</th>
+                                            <th>Date Submitted</th>
                                             <th>Date Updated</th>
                                             <th>Action</th>
                                     </tr>
@@ -67,25 +67,24 @@
                                 <tbody> 
                                 @foreach($reports as $report)
                                     <tr class="text-center">
-                                            <td>{{$report->Partner}}</td>
-                                            <td>{{$report->Motorist}}</td>
-                                            <td>{{$report->Assistant}}</td>
-                                            <td>{{$report->Instruction}}</td>
-                                            <td>{{$report->ServiceType}}</td>
-                                            <td>{{$report->Image}}</td>
-                                            <td>{{$report->Location}}</td>
-                                            <td>{{$report->ServiceStatus}}</td>
-                                            <td>{{$report->ServiceComment}}</td>
-                                            <td>{{$report->AdditionalCharge}}</td>
-                                            <td>{{$report->TotalServicePrice}}</td>
-                                            <td>{{$report->DateRequested}}</td>
+                                            <td>{{$report->partner}}</td>
+                                            <td>{{$report->motorist}}</td>
+                                            <td>{{$report->assistant}}</td>
+                                            <td>{{$report->instruction}}</td>
+                                            <td>{{$report->servicetype}}</td>
+                                            <td>{{$report->image}}</td>
+                                            <td>{{$report->Lat}}, {{$report->Long}} </td>
+                                            <td>{{$report->comment}}</td>
+                                            <td>{{$report->addcharge}}</td>
+                                            <td>{{$report->totalservice}}</td>
+                                            <td>{{$report->status}}</td>
+                                            <td>{{$report->DateSubmitted}}</td>
                                             <td>{{$report->DateUpdated}}</td>
                                             <td>
                                                 {{-- MODAL FOR VIEWING OF REPORT --}}
                                                 <div class="links">
-                                                    <a href="/admin/reports/{{$report->id}}">
-                                                            <button class="btn btn-warning">View</button>
-                                                        </a>
+                                                    <a href="/admin/transactionlogs/{{$report->ID}}" class="btn btn-outline-secondary btn-sm fa fa-info">
+                                                       </a>
                                                     </div>
                                                 </td>
                                             </td>

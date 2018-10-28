@@ -43,7 +43,7 @@
                         <div class="card-header">
                             <strong class="card-title">Requests</strong>
                         </div>
-                        @if(count($reports) >= 0)
+                        @if(count($reports) > 0)
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
                                 <thead>
@@ -82,7 +82,7 @@
                                         @else
                                         @endif
                                     </tr>
-                                @endforeach
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div> <!-- /.table-stats -->

@@ -27,6 +27,7 @@ class ReportsController extends Controller
     public function index()
     {
         $reports = Reports::all();
+        // dd ($reports);
         return view ('partnersreports.index', compact('reports'));
     }
 

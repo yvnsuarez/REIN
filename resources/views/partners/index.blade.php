@@ -43,7 +43,7 @@
                         <div class="card-header">
                             <strong class="card-title">Partners</strong>
 
-                            {{ link_to_route('partners.create', 'Register Partner', null, ['class'=>'fa fa-user-plus btn btn-primary pull-right'])}}
+                            {{ link_to_route('partners.create', 'Register Partner', null, ['class'=>'fa fa-user-plus btn btn-outline-secondary btn-sm pull-right'])}}
                         </div>
                         @if(count($users) > 0)
                         <div class="table-stats order-table ov-h">
@@ -78,22 +78,20 @@
                                         <td>{{$user->Status}}</td>
                                         <td>
                                                 <div class="links">
-                                                        <a href="/admin/partners/{{$user->id}}">
-                                                                View
+                                                        <a href="/admin/partners/{{$user->id}}" class="btn btn-outline-secondary btn-sm fa fa-info">
                                                         </a>
-                                                </div>
-                                                <div class="links">
-                                                        <a href="/admin/partners/{{$user->id}}/edit">
-                                                                Update
+                                                        <a href="/admin/partners/{{$user->id}}/edit" class="btn btn-outline-secondary btn-sm fa fa-edit">
                                                         </a>
                                                 </div>
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
+                                
                             </table>
                         </div> <!-- /.table-stats -->
                         @endif
                     </div>
+
                 </div>
 @endsection

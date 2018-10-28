@@ -21,47 +21,48 @@
         <div class="card">
             <div class="card-header">Assign Assistant</div>
             <div class="card-body card-block">
-                    <form method="POST" action="/requests/{{$reports->ID}}/assign/">
+                    <form method="POST" action="/partner/requests/{{$reports->ID}}/assigned">
                         {{ csrf_field() }}
-                        @if(count($users) > 0)
                         <div class="form-group">
-                                {!! Form::Label('FirstName', 'FirstName:') !!}
-                                @foreach($users as $user)
-                                {!! Form::Select('id', $user, null, array('FirstName' => 'd','class' => 'form-control')) !!}
-                                @endforeach
-                              </div>
-                        @endif
-                        <div class="form-group">
-                            <label>Motorist</label>
-                            <input type="text" class="form-control" name="first_name" value="{{$reports->motorist}}" readonly="true">
-                        </div>
-                        <div class="form-group">
-                            <label>Instruction</label>
-                            <input type="text" class="form-control" name="middle_name" value="{{$reports->instruction}}" readonly="true">
-                        </div>
-                        <div class="form-group">
-                              <label>Service Type</label>
-                              <input type="text" class="form-control" name="last_name" value="{{$reports->servicetype}}" readonly="true">
-                          </div>
-                          <div class="form-group">
-                              <label>Comment</label>
-                              <input type="text" class="form-control" name="last_name" value="{{$reports->comment}}" readonly="true">
-                          </div>
-                          <div class="form-group">
-                              <label>Image Breakdown</label>
-                              <input type="text" class="form-control" name="last_name" value="{{$reports->image}}" readonly="true">
-                          </div>
-                          <div class="form-group">
-                                  <label>Latitude</label>
-                                  <input type="text" class="form-control" name="last_name" value="{{$reports->Lat}}" readonly="true">
+                                <label>Motorist</label>
+                                <input type="text" class="form-control" name="motorist" value="{{$reports->motorist}}" readonly="true">
+                            </div>
+                            <div class="form-group">
+                                <label>Instruction</label>
+                                <input type="text" class="form-control" name="instruction" value="{{$reports->instruction}}" readonly="true">
+                            </div>
+                            <div class="form-group">
+                                  <label>Service Type</label>
+                                  <input type="text" class="form-control" name="servicetype" value="{{$reports->servicetype}}" readonly="true">
                               </div>
                               <div class="form-group">
-                                      <label>Longhitude</label>
-                                      <input type="text" class="form-control" name="last_name" value="{{$reports->Long}}" readonly="true">
-                                  </div>
+                                  <label>Comment</label>
+                                  <input type="text" class="form-control" name="comment" value="{{$reports->comment}}" readonly="true">
+                              </div>
+                              <div class="form-group">
+                                  <label>Image Breakdown</label>
+                                  <input type="text" class="form-control" name="image" value="{{$reports->image}}" readonly="true">
+                              </div>
+                              <div class="form-group">
+                                      <label>Latitude</label>
+                                      <input type="text" class="form-control" name="Lat" value="{{$reports->Lat}}" readonly="true">
+                                  </div>    
+                                  <div class="form-group">
+                                          <label>Longhitude</label>
+                                          <input type="text" class="form-control" name="Long" value="{{$reports->Long}}" readonly="true">
+                                      </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <input type="text" class="form-control" name="status" value="{{$reports->status}}" readonly="true">
+                            </div>
                         <div class="form-group">
-                            <label>Status</label>
-                            <input type="text" class="form-control" name="last_name" value="{{$reports->status}}" readonly="true">
+                                <label>Assistant</label>
+                            <select class="form-control" name="assistant">
+                                <option value="" disabled selected>Choose Assistant</option>
+                                @foreach($users as $user)
+                                    <option value="{{$user->id}}"> {{$user->FirstName}}  {{$user->LastName}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="pull-left">
                                 <a href="/partner/requests" class="btn btn-rounded float-right animated pulse btn-warning">Back</a>
@@ -70,9 +71,8 @@
                                     <button type="submit" class="btn btn-rounded float-right animated pulse btn-success">Assign</button>
                             </div>
                     </form>
-
             </div>
         </div>
     </div>
-            </div>
+</div>
 @endsection

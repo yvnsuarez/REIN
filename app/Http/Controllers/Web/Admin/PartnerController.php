@@ -25,7 +25,9 @@ class PartnerController extends Controller
      
     public function index()
     {
-        $users = User::where('UserTypeID', '=', 4)->get(); //where statement=UserId
+        $users = User::where('UserTypeID', '=', 4)
+                ->get();//where statement=UserId
+                //->paginate(10); 
         return view ('partners.index', compact('users'));
     }
 
@@ -81,6 +83,7 @@ class PartnerController extends Controller
         //$user = users::create($input); 
         $partnercompany->UserTypeID = 4;
         $partnercompany->Status = 'Activated';
+
 
         if($partnercompany->save()){
             return redirect()->route('partners.index')->with('message','partner has been added successfully'); 

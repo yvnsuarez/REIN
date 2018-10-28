@@ -21,12 +21,8 @@
         <div class="card">
             <div class="card-header">Request Details</div>
             <div class="card-body card-block">
-                    <form method="POST" action="/requests/{{$reports->ID}}/decline/">
+                    <form method="POST" action="/partner/requests/{{$reports->ID}}/declined">
                         {{ csrf_field() }}
-                        <div class="form-group">
-                            <label>Partner</label>
-                            <input type="disabled" class="form-control" name="first_name" value="{{$reports->partner}}" readonly="true">
-                        </div>
                         <div class="form-group">
                             <label>Motorist</label>
                             <input type="text" class="form-control" name="first_name" value="{{$reports->motorist}}" readonly="true">

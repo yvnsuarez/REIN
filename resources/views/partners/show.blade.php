@@ -21,7 +21,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Insert Business Name</strong>
+                            <strong class="card-title">{{$user->BusinessName}}</strong>
                         </div>
                       
                         <ul class="list-group list-group-flush">
@@ -33,6 +33,7 @@
                                 <li class="list-group-item"><b>Contact Number: </b>{{$user->ContactNo}}</li>
                                 <li class="list-group-item"><b>Email: </b>{{$user->Email}}</li>
                                 <li class="list-group-item"><b>Status: </b>{{$user->Status}}</li>
+                                
                             </ul>
                     </div>
                 </div>

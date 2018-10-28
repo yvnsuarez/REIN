@@ -22,9 +22,10 @@ class PartnerLoginController extends Controller
 
     public function login(Request $request)
     {
-        $this->validate($request, [
+        $this->validate($request, [ 
             'Email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
 
         if (Auth::guard('partner')->attempt(['Email' => $request->Email,

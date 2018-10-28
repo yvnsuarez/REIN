@@ -50,7 +50,7 @@
                           <div class="form-group">
                                   <label>Latitude</label>
                                   <input type="text" class="form-control" name="Lat" value="{{$reports->Lat}}" readonly="true">
-                              </div>
+                              </div>    
                               <div class="form-group">
                                       <label>Longhitude</label>
                                       <input type="text" class="form-control" name="Long" value="{{$reports->Long}}" readonly="true">
