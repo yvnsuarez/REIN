@@ -99,7 +99,7 @@
                         <hr/>    
                     </li>
                     <li class="menu-item">
-                        <a href="{{ ('/partner/flags') }}" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="{{ url('/partner/flags') }}" aria-haspopup="true" aria-expanded="false"> 
                             <i class="menu-icon fa fa-th"></i>Reports/Flags</a>
                     </li>
                     <li class="menu-title">
@@ -120,8 +120,8 @@
         <header id="header" class="header">  
             <div class="top-left">
                 <div class="navbar-header"> 
-                    <a class="navbar-brand" href="{{ route('admin.home') }}"><img src="/images/REIN01.png" alt="Logo" width="100px" height="45px"></a>
-                    <a class="navbar-brand hidden" href="{{ route('admin.home') }}"><img src="/images/REIN01.png" alt="Logo" width="100px" height="45px"></a> 
+                    <a class="navbar-brand" href="{{ route('admin.home') }}"><img src="{{asset('/images/REIN01.png')}}" alt="Logo" width="100px" height="45px"></a>
+                    <a class="navbar-brand hidden" href="{{ route('admin.home') }}"><img src="{{asset('/images/REIN01.png')}}" alt="Logo" width="100px" height="45px"></a> 
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a> 
                 </div> 
             </div>
