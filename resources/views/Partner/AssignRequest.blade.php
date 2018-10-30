@@ -60,15 +60,15 @@
                             <select class="form-control" name="assistant">
                                 <option value="" disabled selected>Choose Assistant</option>
                                 @foreach($users as $user)
-                                    <option value="{{$user->id}}"> {{$user->FirstName}}  {{$user->LastName}}</option>
+                                        <option value="{{$user->id}}"> {{$user->FirstName}}  {{$user->LastName}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="pull-left">
-                                <a href="/partner/requests" class="btn btn-rounded float-right animated pulse btn-warning">Back</a>
+                                <a href="/partner/requests" class="btn btn-warning btn-sm">Back</a>
                             </div>
                             <div class="pull-right">
-                                    <button type="submit" class="btn btn-rounded float-right animated pulse btn-success">Assign</button>
+                                    <button type="submit" class="btn btn-secondary btn-sm">Assign</button>
                             </div>
                     </form>
             </div>

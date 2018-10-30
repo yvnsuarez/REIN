@@ -27,8 +27,18 @@ class RequestsController extends Controller
 
     public function index()
     {
-        // $reports = Reports::where('status', 'Accepted')->get();
-        $reports = Reports::where('status', 'Pending')->get();
+        $getpartner = Auth::user();
+        $partner = $getpartner->id;
+
+        $pending = ['status' => 'Pending'];
+        $accepted = ['status' => 'Pending', 'partner' => $partner];
+        $assigned = ['Assigned'];
+
+        $reports = Reports::where($pending)
+                            ->orWhere($accepted)
+                            ->WhereNotIn('status', $assigned)
+                            ->get();
+
         return view ('Partner.Requests', compact('reports'));
     }
 
@@ -79,20 +89,28 @@ class RequestsController extends Controller
 
     public function showassign($ID)
     {
-        
+        $getpartner = Auth::user();
+        $partner = $getpartner->id;
+
+        $getassistant = ['PartnerCompany' => $partner, 'UserTypeID' => '2', 'AssignStatus' => 'Available', 'Status' => 'Activated'];
+
         $reports = Reports::find($ID);
-        $users = User::where('UserTypeID', '2')->get();
+        $users = User::where($getassistant)->get();
+
         return view('Partner.AssignRequest', compact('reports', 'users'));
-        // /)->with(['users' => $users]);
-        //, compact('reports')
     }
 
     public function assign(Request $request, $id)
     {
-        $getassistant = $request->input('assistant');
+
+        $assistant = $request->input('assistant');
         DB::table('reports')
           ->where('id', $id)
-          ->update(['status' => "Assigned", 'assistant' => $getassistant]);
+          ->update(['status' => "Assigned", 'assistant' => $assistant]);
+        
+        DB::table('users')
+          ->where('id', $assistant)
+          ->update(['AssignStatus' => "Not Available"]);
           
         return redirect('partner/requests');
         //return redirect()->intended(route('partner.requests'))->with('message','item has been updated successfully');

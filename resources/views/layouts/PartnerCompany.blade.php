@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>REIN - ADMIN</title>
+    <title>REIN Partner</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -120,8 +120,8 @@
         <header id="header" class="header">  
             <div class="top-left">
                 <div class="navbar-header"> 
-                    <a class="navbar-brand" href="{{ route('admin.home') }}"><img src="{{asset('/images/REIN01.png')}}" alt="Logo" width="100px" height="45px"></a>
-                    <a class="navbar-brand hidden" href="{{ route('admin.home') }}"><img src="{{asset('/images/REIN01.png')}}" alt="Logo" width="100px" height="45px"></a> 
+                    <a class="navbar-brand" href="{{ route('partner.dashboard') }}"><img src="{{asset('/images/REIN01.png')}}" alt="Logo" width="100px" height="45px"></a>
+                    <a class="navbar-brand hidden" href="{{ route('partner.dashboard') }}"><img src="{{asset('/images/REIN01.png')}}" alt="Logo" width="100px" height="45px"></a> 
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a> 
                 </div> 
             </div>
@@ -136,7 +136,7 @@
 
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link">{{Auth::user()->BusinessName}}</a>
-                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i>Logout</a>
+                            <a class="nav-link" href="{{route('partner.logout') }}"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div> 
                 </div>  
@@ -166,10 +166,7 @@
             <div class="footer-inner bg-white">
                 <div class="row">
                     <div class="col-sm-6">
-                        Copyright &copy; 2018 Ela Admin
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        Designed by <a href="https://colorlib.com">Colorlib</a>
+                        Copyright &copy; 2018 REIN - Roadside Emergency Assistance Application
                     </div>
                 </div>
             </div>
@@ -204,14 +201,19 @@
     <script src="{{ asset('assets/calendar/fullcalendar.min.js') }}"></script>
     <script src="{{ asset('assets/calendar/fullcalendar-init.js') }}"></script>
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
 
 
 
 
 
     <script>
+        //Tooltip
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip(); 
+        });
 
-        
         jQuery(document).ready(function($) {
             "use strict"; 
 

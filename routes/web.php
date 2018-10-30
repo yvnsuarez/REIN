@@ -49,6 +49,7 @@ Route::prefix('admin')->group(function() {
     Route::resource('/partners', 'Web\Admin\PartnerController');
     Route::resource('/motorists', 'Web\Admin\MotoristsController');
     Route::resource('/transactionlogs', 'Web\Admin\ReportsController');
+    Route::get('/auditlogs', 'Web\Admin\AuditLogsController@index')->name('admin.auditlogs');
     Route::get('/useractivity', 'Web\Admin\UserActivityController@index')->name('admin.useractivity');
 });
 
@@ -56,7 +57,7 @@ Route::prefix('admin')->group(function() {
 Route::prefix('partner')->group(function() {
     Route::get('/login','Web\PartnerAuth\PartnerLoginController@showLoginForm')->name('partner.login');
     Route::post('/login','Web\PartnerAuth\PartnerLoginController@login')->name('partner.login.submit');
-    Route::post('/logout', 'Web\PartnerAuth\PartnerLoginController@adminLogout')->name('partner.logout');
+    Route::get('/logout', 'Web\PartnerAuth\PartnerLoginController@partnerLogout')->name('partner.logout');
 
     Route::post('/password/email','Web\PartnerAuth\ForgotPasswordController@sendResetLinkEmail')->name('partner.password.email');
     Route::get('/password/reset','Web\PartnerAuth\ForgotPasswordController@showLinkRequestForm')->name('password.request');

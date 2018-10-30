@@ -56,10 +56,10 @@
                             <input type="text" class="form-control" name="last_name" value="{{$reports->status}}" readonly="true">
                         </div>
                         <div class="pull-left">
-                                <a href="{{ route('partner.requests') }}" class="btn btn-rounded float-right animated pulse btn-warning">Back</a>
+                                <a href="{{ route('partner.requests') }}" class="btn btn-warning btn-sm">Back</a>
                             </div>
                             <div class="pull-right">
-                                    <button type="submit" class="btn btn-rounded float-right animated pulse btn-success">Decline</button>
+                                    <button type="submit" class="btn btn-secondary btn-sm">Decline</button>
                             </div>
                     </form>
 

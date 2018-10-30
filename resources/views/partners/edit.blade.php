@@ -58,8 +58,22 @@
                                                 {!! Form::label('Status', 'Status')!!}
                                                 {!! Form::select('Status', ['Activated' => 'Activate', 'Deactivated' => 'Deactivate']) !!}
                                             </div>
+                                            <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                                                    <div class="col-md-6 pull-center">
+                                                    {!! app('captcha')->display() !!}
+                                                    @if ($errors->has('g-recaptcha-response'))
+                                                    <span class="help-block">
+                                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                                    </span>
+                                                    @endif
+                                                  </div>
+                                                </div>
                                         <div class="form-group">
-                                            {!! Form::button('Update Partner', ['type'=>'submit','class'=>'btn btn-primary']) !!}
+                                                <div class="pull-left">
+                                                        <a href="{{ route('partners.index') }}" class="btn btn-warning btn-sm">Cancel</a>
+                                                    </div>
+                                                    &nbsp;
+                                            {!! Form::button('Update Partner', ['type'=>'submit','class'=>'btn btn-secondary btn-sm']) !!}
                                         </div>
                                     {!! Form::close() !!}
 

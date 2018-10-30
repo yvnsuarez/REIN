@@ -32,9 +32,13 @@
                                 <li class="list-group-item"><b>LTFRB Accreditation Number: </b>{{$user->LTFRBAccreditationNo}}</li>
                                 <li class="list-group-item"><b>Contact Number: </b>{{$user->ContactNo}}</li>
                                 <li class="list-group-item"><b>Email: </b>{{$user->Email}}</li>
-                                <li class="list-group-item"><b>Status: </b>{{$user->Status}}</li>
-                                
+                                <li class="list-group-item"><b>Status: </b>{{$user->Status}}</li>  
                             </ul>
+                            <div class="card-footer">
+                                    <div class="pull-left">
+                                        <a href="{{ route('partners.index') }}" class="btn btn-warning btn-sm">Back</a>
+                                    </div>
+                                </div>
                     </div>
                 </div>
             </div>

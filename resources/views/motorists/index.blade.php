@@ -76,8 +76,7 @@
                                             <td>{{$user->Status}}</td>
                                         <td>
                                                 <div class="links">
-                                                        <a href="/admin/motorists/{{$user->id}}">
-                                                                View
+                                                        <a href="/admin/motorists/{{$user->id}}" class="btn btn-outline-secondary btn-sm fa fa-info" data-toggle="tooltip" title="View">
                                                         </a>
                                                 </div>
                                                 {{-- {{ link_to_route('motorists.show', 'View', [$user->id], ['class'=>'btn btn-primary'])}} --}}

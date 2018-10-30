@@ -41,7 +41,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Reports</strong>
+                            <strong class="card-title">Transaction Logs</strong>
                         </div>
                         @if(count($reports) > 0)
                         <div class="table-stats order-table ov-h">
@@ -83,7 +83,7 @@
                                             <td>
                                                 {{-- MODAL FOR VIEWING OF REPORT --}}
                                                 <div class="links">
-                                                    <a href="/admin/transactionlogs/{{$report->ID}}" class="btn btn-outline-secondary btn-sm fa fa-info">
+                                                    <a href="/admin/transactionlogs/{{$report->ID}}" class="btn btn-outline-secondary btn-sm fa fa-info" data-toggle="tooltip" title="View">
                                                        </a>
                                                     </div>
                                                 </td>

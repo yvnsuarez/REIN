@@ -43,7 +43,7 @@
                         <div class="card-header">
                             <strong class="card-title">Requests</strong>
                         </div>
-                        @if(count($reports) > 0)
+                        @if(count($reports) >= 0)
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
                                 <thead>
@@ -75,10 +75,14 @@
                                         <td>{{$report->DateSubmitted}}</td>
                                         <td>{{$report->DateUpdated}}</td>
                                         @if($report->status == "Pending")
-                                        <td><a href="requests/{{$report->ID}}/accept">Accept</a>
-                                        <a href="requests/{{$report->ID}}/decline">Decline</a></td>
-                                        @elseif($report->status == "Accepted")
-                                        <td><a href="requests/{{$report->ID}}/assign">Assign</a></td>
+                                        <td>
+                                            <a href="requests/{{$report->ID}}/accept" class="btn btn-outline-success btn-sm fas fa fa-check-circle" data-toggle="tooltip" title="Accept Request"> Accept</a>
+                                                <br/>
+                                                <br/>
+                                            <a href="requests/{{$report->ID}}/decline" class="btn btn-outline-danger btn-sm fa fa-times-circle" data-toggle="tooltip" title="Decline Request"> Decline</a>
+                                        </td>
+                                        @elseif($report->status == "Accepted") 
+                                        <td><a href="requests/{{$report->ID}}/assign" class="btn btn-outline-success btn-sm fa fa-user-circle" data-toggle="tooltip" title="Assign Request"> Assign</a></td>
                                         @else
                                         @endif
                                     </tr>

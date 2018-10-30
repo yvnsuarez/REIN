@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">Request Details</div>
             <div class="card-body card-block">
-            <form method="POST" action="{{ route('/partner/requests/{{$reports->ID}}/accepted')}}">
+            <form method="POST" action="/partner/requests/{{$reports->ID}}/accepted">
                         {{ csrf_field() }}
                         {{-- <div class="form-group">
                             <label>Partner</label>
@@ -60,10 +60,10 @@
                             <input type="text" class="form-control" name="status" value="{{$reports->status}}" readonly="true">
                         </div>
                         <div class="pull-left">
-                                <a href="{{ route('partner.requests') }}" class="btn btn-rounded float-right animated pulse btn-warning">Back</a>
+                                <a href="{{ route('partner.requests') }}" class="btn btn-warning btn-sm">Back</a>
                             </div>
                             <div class="pull-right">
-                                    <button type="submit" class="btn btn-rounded float-right animated pulse btn-success">Accept</button>
+                                    <button type="submit" class="btn btn-secondary btn-sm">Accept</button>
                             </div>
                     </form>
 

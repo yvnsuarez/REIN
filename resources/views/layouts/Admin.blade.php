@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>REIN - ADMIN</title>
+    <title>REIN Admin</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -111,6 +111,13 @@
                     <li class="menu-title">
                         <hr/>    
                     </li>
+                    <li class="menu-item">
+                            <a href="{{ route('admin.auditlogs') }}" aria-haspopup="true" aria-expanded="false"> 
+                                <i class="menu-icon fa fa-th"></i>Audit Logs</a>
+                        </li>
+                        <li class="menu-title">
+                            <hr/>    
+                        </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -172,10 +179,7 @@
             <div class="footer-inner bg-white">
                 <div class="row">
                     <div class="col-sm-6">
-                        Copyright &copy; 2018 Ela Admin
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        Designed by <a href="https://colorlib.com">Colorlib</a>
+                        Copyright &copy; 2018 REIN - Roadside Emergency Assistance Application
                     </div>
                 </div>
             </div>
@@ -210,12 +214,20 @@
     <script src="{{ asset('assets/calendar/fullcalendar.min.js') }}"></script>
     <script src="{{ asset('assets/calendar/fullcalendar-init.js') }}"></script>
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
 
 
 
 
 
     <script>
+
+        //Tooltip
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip(); 
+        });
+        
         jQuery(document).ready(function($) {
             "use strict"; 
 

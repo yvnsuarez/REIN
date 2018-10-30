@@ -78,9 +78,9 @@
                                         <td>{{$user->Status}}</td>
                                         <td>
                                                 <div class="links">
-                                                        <a href="/admin/partners/{{$user->id}}" class="btn btn-outline-secondary btn-sm fa fa-info">
+                                                        <a href="/admin/partners/{{$user->id}}" class="btn btn-outline-secondary btn-sm fa fa-info" data-toggle="tooltip" title="View">
                                                         </a>
-                                                        <a href="/admin/partners/{{$user->id}}/edit" class="btn btn-outline-secondary btn-sm fa fa-edit">
+                                                        <a href="/admin/partners/{{$user->id}}/edit" class="btn btn-outline-secondary btn-sm fa fa-edit" data-toggle="tooltip" title="Edit">
                                                         </a>
                                                 </div>
                                         </td>

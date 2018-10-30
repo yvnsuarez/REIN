@@ -40,6 +40,11 @@
                                         <li class="list-group-item"><b>Date Updated: </b>{{$reports->DateUpdated}}</li>
                                     
                                 </ul>
+                                <div class="card-footer">
+                                        <div class="pull-left">
+                                            <a href="{{ url('/admin/transactionlogs') }}" class="btn btn-warning btn-sm">Back</a>
+                                        </div>
+                                    </div>
                         </div>
                     </div>
                 </div>

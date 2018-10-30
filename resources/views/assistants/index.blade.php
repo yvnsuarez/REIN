@@ -43,7 +43,7 @@
                         <div class="card-header">
                             <strong class="card-title">Assistants</strong>
 
-                            {{ link_to_route('assistants.create', 'Register Assistant', null, ['class'=>'fa fa-user-plus btn btn-primary pull-right'])}}
+                            {{ link_to_route('assistants.create', 'Register Assistant', null, ['class'=>'fa fa-user-plus btn btn-outline-secondary btn-sm pull-right'])}}
                         </div>
                         @if(count($users) > 0)
                         <div class="table-stats order-table ov-h">
@@ -60,6 +60,7 @@
                                         <th>ZipCode</th>
                                         <th>Email</th>
                                         <th>Status</th>
+                                        <th>Assign Status</th>
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
@@ -76,15 +77,12 @@
                                         <td>{{$user->ZipCode}}</td>
                                         <td>{{$user->Email}}</td>
                                         <td>{{$user->Status}}</td>
+                                        <td>{{$user->AssignStatus}}</td>
                                         <td>
                                                 <div class="links">
-                                                        <a href="/partner/assistants/{{$user->id}}">
-                                                                View
+                                                        <a href="/partner/assistants/{{$user->id}}"class="btn btn-outline-secondary btn-sm fa fa-info" data-toggle="tooltip" title="View Assistant">
                                                         </a>
-                                                </div>
-                                                <div class="links">
-                                                        <a href="/partner/assistants/{{$user->id}}/edit">
-                                                                Update
+                                                        <a href="/partner/assistants/{{$user->id}}/edit" class="btn btn-outline-secondary btn-sm fa fa-edit" data-toggle="tooltip" title="Edit Assistant">
                                                         </a>
                                                 </div>
                                         </td>

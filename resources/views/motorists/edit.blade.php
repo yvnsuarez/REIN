@@ -26,8 +26,12 @@
                         {!! Form::label('Status', 'Status')!!}
                         {!! Form::select('Status', ['Activated' => 'Activate', 'Suspended' => 'Suspended']) !!}
                     </div>
-                    <div class="form-group">
-                        {!! Form::button('Submit', ['type'=>'submit','class'=>'btn btn-primary']) !!}
+                    <div class="form-group"> 
+                        <div class="pull-left">
+                            <a href="{{ route('motorists.index') }}" class="btn btn-warning btn-sm">Cancel</a>
+                        </div>
+                        &nbsp;
+                        {!! Form::button('Save changes', ['type'=>'submit','class'=>'btn btn-secondary btn-sm']) !!}
                     </div>
                 {!! Form::close() !!}
 

@@ -26,7 +26,13 @@ class AssistantsController extends Controller
  
     public function index()
     {
-        $users = User::where('UserTypeID', '=', 2)->get(); //where statement=UserId
+        
+        $getpartner = Auth::user();
+        $partner = $getpartner->id;
+
+        $getuser = ['UserTypeID' => '2', 'PartnerCompany' => $partner];
+
+        $users = User::where($getuser)->get();
         return view ('assistants.index', compact('users'));
     }
 
@@ -60,6 +66,7 @@ class AssistantsController extends Controller
             'Email' => 'required',
             'password' => 'required|min:6',
             'CPassword' => 'same:password',
+            'g-recaptcha-response' => 'required|captcha',
             'remember_token',
             // 'Status',
             // 'DateCreated'
@@ -70,14 +77,20 @@ class AssistantsController extends Controller
         // if ($validator->fails()) { 
         //             return response()->to(['error'=>$validator->errors()], 401);            
         // }
+        $getpartner = Auth::user();
+        $partner = $getpartner->id;
 
-        $input = $request->all();   
+        $input = $request->all(); 
+
         $assistant = new User($input);
         $assistant->Password = bcrypt($input['Password']);
         //$user = users::create($input); 
         $assistant->UserTypeID = 2;
         $assistant->Status = 'Not Verified';
+        $assistant->PartnerCompany = $partner;
+        $assistant->AssignStatus = 'Available'; //To be changed if only the status has been verified but for now Available muna.
         // $assistant->BusinessName = '';
+        
 
         if($assistant->save()){
             return redirect()->route('assistants.index')->with('message','assistant has been added successfully'); 
@@ -117,6 +130,26 @@ class AssistantsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $validator = Validator::make($request->all(), [ 
+            
+            'FirstName' => 'required' ,
+            'LastName' => 'required' ,
+            'MobileNo' => 'required',
+            'BirthDay' => 'required',
+            'Address' => 'required', 
+            'City' => 'required',
+            'ZipCode' => 'required',
+            'Email' => 'required',
+            'password' => 'required|min:6',
+            'CPassword' => 'same:password',
+            'g-recaptcha-response' => 'required|captcha',
+            'remember_token',
+            // 'Status',
+            // 'DateCreated'
+                
+        ]);
+        
         User::find($id)->update($request->all());
         // $user->update($request->all());
         return redirect()->route('assistants.index')->with('message','item has been updated successfully');

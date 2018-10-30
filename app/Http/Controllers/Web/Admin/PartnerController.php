@@ -65,6 +65,7 @@ class PartnerController extends Controller
             'Email' => 'required',
             'password' => 'required|min:6',
             'CPassword' => 'same:password',
+            'g-recaptcha-response' => 'required|captcha',
             'remember_token',
             'Status',
             // 'DateCreated'
@@ -130,6 +131,25 @@ class PartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [ 
+            
+            'BusinessName' => 'required' ,
+            'Address' => 'required', 
+            'City' => 'required',
+            'ZipCode' => 'required',
+            'BusinessRegistrationNo' => 'required' ,
+            'LTFRBRegistrationNo' => 'required',
+            'MobileNo' => 'required',
+            'Email' => 'required',
+            'password' => 'required|min:6',
+            'CPassword' => 'same:password',
+            'g-recaptcha-response' => 'required|captcha',
+            'remember_token',
+            'Status',
+            // 'DateCreated'
+        
+        ]);
+
         User::find($id)->update($request->all());
         // $user->update($request->all());
         return redirect()->route('partners.index')->with('message','item has been updated successfully');

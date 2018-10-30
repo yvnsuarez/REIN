@@ -29,7 +29,7 @@ class PartnerLoginController extends Controller
         ]);
 
         if (Auth::guard('partner')->attempt(['Email' => $request->Email,
-        'password' => $request->password], $request->remember))
+        'password' => $request->password, ], $request->remember))
         {
             return redirect()->intended(route('partner.dashboard'));
         }
@@ -40,7 +40,7 @@ class PartnerLoginController extends Controller
     public function partnerLogout()
     {
         Auth::guard('partner')->logout();
-        return redirect('/');
+        return redirect('/partner/login')->with(Auth::logout());
     }
 
 }

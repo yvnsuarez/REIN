@@ -22,7 +22,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">Insert Motorist Name</strong>
-                                {{ link_to_route('motorists.edit', 'Suspend Motorist', [$user->id], ['class'=>'fa fa-user-plus btn btn-primary pull-right'])}} 
+                                {{ link_to_route('motorists.edit', 'Suspend Motorist', [$user->id], ['class'=>'fa fa-user-plus btn btn-outline-secondary btn-sm pull-right'])}} 
                             </div>
                           
                             <ul class="list-group list-group-flush">
@@ -32,7 +32,12 @@
                                         <li class="list-group-item"><b>City: </b>{{$user->City}}</li>
                                         <li class="list-group-item"><b>Zip Code: </b>{{$user->zipCode}}</li>
                                         <li class="list-group-item"><b>Contact Number: </b>{{$user->Email}}</li> 
-                                </ul>
+                            </ul>
+                            <div class="card-footer">
+                                <div class="pull-left">
+                                    <a href="{{ route('motorists.index') }}" class="btn btn-warning btn-sm">Back</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
