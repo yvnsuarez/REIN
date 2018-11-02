@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">Assign Assistant</div>
             <div class="card-body card-block">
-                    <form method="POST" action="{{route('/partner/requests/{{$reports->ID}}/assigned')}}">
+                    <form method="POST" action="{{route('Web\PartnerCompany\RequestsController@assign')}}">
                         {{ csrf_field() }}
                         <div class="form-group">
                                 <label>Motorist</label>
