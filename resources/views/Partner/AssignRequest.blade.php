@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">Assign Assistant</div>
             <div class="card-body card-block">
-                    <form method="POST" action="{{route('Web\PartnerCompany\RequestsController@assign')}}">
+                    {!! Form::open(['action' => ['Web\PartnerCompany\RequestsController@assign', $reports['ID']], 'method' =>'POST']) !!}
                         {{ csrf_field() }}
                         <div class="form-group">
                                 <label>Motorist</label>

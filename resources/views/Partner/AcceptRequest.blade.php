@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header">Request Details</div>
             <div class="card-body card-block">
-            <form method="POST" action="/partner/requests/{{$reports->ID}}/accepted">
+            {!! Form::open(['action' => ['Web\PartnerCompany\RequestsController@accept', $reports['ID']], 'method' =>'POST']) !!}
                         {{ csrf_field() }}
                         {{-- <div class="form-group">
                             <label>Partner</label>
