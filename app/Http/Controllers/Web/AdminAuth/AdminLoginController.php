@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use App\UserLogs;
 
 
 class AdminLoginController extends Controller
@@ -14,7 +15,7 @@ class AdminLoginController extends Controller
 
     public function __construct()
     {
-     $this->middleware('guest:admin', ['except' => ['adminLogout']]);   
+     $this->middleware('guest:admin', ['except' => ['adminLogout']], 'auth:admin');   
     }
 
     public function showLoginform()
@@ -33,6 +34,12 @@ class AdminLoginController extends Controller
         if (Auth::guard('admin')->attempt(['Email' => $request->Email,
         'password' => $request->password]))
         {
+
+            $getid = Auth::user();
+
+            DB::table('user_logs')
+            ->insert(['UserID' => $getid->id, 'Type' => "Login", 'Description' => "Logged in successfully"]);
+
             return redirect()->intended(route('admin.home'));
         }
         

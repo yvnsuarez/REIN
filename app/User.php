@@ -18,7 +18,7 @@ class User extends Authenticatable
     protected $fillable = [
         'id', 'UserTypeId','FirstName','LastName','MobileNo','BirthDay','Address','City','ZipCode',
         'BusinessName', 'BusinessRegistrationNo','LTFRBAccreditationNo',
-        'Email','password','Status','DateCreated',
+        'Email','password','Status', 'PartnerCompany', 'AssignStatus', 'DateCreated',
     ];
 
     public $timestamps = false;

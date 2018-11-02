@@ -32,11 +32,15 @@ class RequestsController extends Controller
 
         $pending = ['status' => 'Pending'];
         $accepted = ['status' => 'Pending', 'partner' => $partner];
-        $assigned = ['Assigned'];
+        $assigned = ['status' => 'Assigned'];
+        $ongoing = [ 'status' => 'Ongoing'];
+        $done = ['status' => 'Done'];
+
+        $notstatus =[$assigned, $ongoing, $done];
 
         $reports = Reports::where($pending)
                             ->orWhere($accepted)
-                            ->WhereNotIn('status', $assigned)
+                            ->WhereNotIn('status', $notstatus)
                             ->get();
 
         return view ('Partner.Requests', compact('reports'));
@@ -78,12 +82,17 @@ class RequestsController extends Controller
     public function accept($ID)
     {
         $getpartner = Auth::user();
+        
 
         DB::table('reports')
           ->where('id', $ID)
           ->update(['status' => "Accepted", 'partner' => $getpartner->id]);
 
-        return redirect('partner/requests');
+        $report = Reports::find($ID);
+        DB::table('user_logs')
+          ->insert(['UserID' => $getpartner->id, 'Type' => "Accepted",'ReportsID' => $ID, 'TargetUser' => $report->motorist,'Description' => "Request Accepted"]);
+        
+          return redirect('partner/requests');
        // return redirect()->intended(route('partner.requests'));//->with('message', 'Request has been accepted successfully'));
     }
 
@@ -91,7 +100,6 @@ class RequestsController extends Controller
     {
         $getpartner = Auth::user();
         $partner = $getpartner->id;
-
         $getassistant = ['PartnerCompany' => $partner, 'UserTypeID' => '2', 'AssignStatus' => 'Available', 'Status' => 'Activated'];
 
         $reports = Reports::find($ID);
@@ -103,6 +111,8 @@ class RequestsController extends Controller
     public function assign(Request $request, $id)
     {
 
+        $getpartner = Auth::user();
+        $partner = $getpartner->id;
         $assistant = $request->input('assistant');
         DB::table('reports')
           ->where('id', $id)
@@ -111,14 +121,28 @@ class RequestsController extends Controller
         DB::table('users')
           ->where('id', $assistant)
           ->update(['AssignStatus' => "Not Available"]);
+
+        // DB::table('user_logs')
+        //   ->save([])
           
+        DB::table('user_logs')
+        ->insert(['UserID' => $partner, 'Type' => "Assigned", 'TargetUser' => $assistant,'ReportsID' => $id,'Description' => "Request Assigned"]);
         return redirect('partner/requests');
         //return redirect()->intended(route('partner.requests'))->with('message','item has been updated successfully');
     }
     
     public function showdecline($ID)
     {
+        $getpartner = Auth::user();
+        $partner = $getpartner->id;
+
         $reports = Reports::find($ID);
+
+        DB::table('user_logs')
+        ->insert(['UserID' => $partner, 
+                  'Type' => "Declined", 
+                  'ReportsID' => $ID,
+                  'Description' => "Request Declined"]);
         return view('Partner.DeclineRequest', compact('reports'));
 
     }

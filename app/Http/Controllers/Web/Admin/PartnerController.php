@@ -87,6 +87,14 @@ class PartnerController extends Controller
 
 
         if($partnercompany->save()){
+            
+            //user logs insert
+            $getadminid = Auth::user();
+            $getid = $getadminid->id;
+
+            DB::table('user_logs')
+            ->insert(['UserID' => $getid, 'Type' => "Partner Registration", 'Description' => "Registered Partner Company's Account Successfully"]);
+
             return redirect()->route('partners.index')->with('message','partner has been added successfully'); 
         } 
 
@@ -151,6 +159,12 @@ class PartnerController extends Controller
         ]);
 
         User::find($id)->update($request->all());
+        
+        $getadminid = Auth::user();
+        $getid = $getadminid->id;
+
+        DB::table('user_logs')
+            ->insert(['UserID' => $getid, 'Type' => "Update Partner", 'TargetUser' => $id, 'Description' => "Updated Partner Company's Account Successfully"]);
         // $user->update($request->all());
         return redirect()->route('partners.index')->with('message','item has been updated successfully');
     }

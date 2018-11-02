@@ -26,8 +26,13 @@ class LogsController extends Controller
     
     public function index()
     {
-        $reports = Reports::all();
-        return view ('reports.index', compact('reports'));
+        $getpartner = Auth::user();
+        $partner = $getpartner->id;
+
+        $getreports =['partner' => $partner, 'status' => 'Done'];
+
+        $reports = Reports::where($getreports)->get();
+        return view ('Partner.TransactionLogs', compact('reports'));
     }
 
     /**
@@ -57,11 +62,11 @@ class LogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $reports = Reports::find($id);
-        return view('reports.show', compact('reports'));
-    }
+    // public function show($id)
+    // {
+    //     $reports = Reports::find($id);
+    //     return view('reports.show', compact('reports'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -97,11 +102,19 @@ class LogsController extends Controller
         //
     }
 
-    public function downloadpdf($id){
-        $reports = Reports::find($id);
-  
-        $pdf = PDF::loadView('pdf', compact('reports'));
-        return $pdf->download('report.pdf');
+    public function fullTransactionPDF(){
+
+        $getpartner = Auth::user();
+        $partner = $getpartner->id;
+
+        $getreports =['partner' => $partner, 'status' => 'Done'];
+
+        $reports = Reports::where($getreports)
+                   ->get();
+
+        $pdf = PDF::loadView('FullTransactionPDF', compact('reports'));
+        return view ('Partner.FullTransactionPDF');
+        //return $pdf->download('TransactionLog.pdf'); //Add date sa loob ng pagdownlaod
   
       }
 }

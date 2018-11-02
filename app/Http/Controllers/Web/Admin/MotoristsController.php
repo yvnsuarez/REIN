@@ -84,6 +84,12 @@ class MotoristsController extends Controller
     {
         User::find($id)->update($request->all());
         // $user->update($request->all());
+
+        $getadminid = Auth::user();
+        $getid = $getadminid->id;
+
+        DB::table('user_logs')
+        ->insert(['UserID' => $getid, 'Type' => "Suspended", 'TargetUser' => $id, 'Description' => "Suspended Motorist's Account Successfully"]);
         return redirect()->route('motorists.index')->with('message','Motorist has been suspended');
         
     }

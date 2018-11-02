@@ -1,4 +1,4 @@
-@extends('layouts.Admin')
+@extends('layouts.PartnerCompany')
 
 @section('content-header')
 <div class="breadcrumbs-inner">
@@ -22,10 +22,13 @@
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">Report No. {{$reports->ID}}</strong>
+                                <a href="{{action('Web\PartnerCompany\TransactionLogsController@singleTransactionPDF', $reports->ID)}}">
+                                        <button class="btn btn-outline-secondary btn-sm pull-right"><i class="fa fa-print"></i> Print</button>
+                                    </a>
                             </div>
                           
                             <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><b>Partner: </b> {{$reports->partner}}</li>
+                                        <li class="list-group-item"><b>Partner: </b> {{$reports->partner}}</li>
                                         <li class="list-group-item"><b>Motorist: </b>{{$reports->motorist}}</li>
                                         <li class="list-group-item"><b>Assitant: </b>{{$reports->assistant}}</li>
                                         <li class="list-group-item"><b>Special Instruction: </b>{{$reports->instruction}}</li>
@@ -42,7 +45,7 @@
                                 </ul>
                                 <div class="card-footer">
                                         <div class="pull-left">
-                                            <a href="{{ url('/admin/transactionlogs') }}" class="btn btn-warning btn-sm">Back</a>
+                                            <a href="{{ url('/partner/transactionlogs') }}" class="btn btn-warning btn-sm">Back</a>
                                         </div>
                                     </div>
                         </div>

@@ -26,7 +26,10 @@ class ReportsController extends Controller
 
     public function index()
     {
-        $reports = Reports::all();
+
+        $getservicestatus = ['status' => 'Done'];
+
+        $reports = Reports::where($getservicestatus)->get();
         // dd ($reports);
         return view ('partnersreports.index', compact('reports'));
     }
@@ -104,5 +107,5 @@ class ReportsController extends Controller
         $pdf = PDF::loadView('pdf', compact('reports'));
         return $pdf->download('report.pdf');
   
-      }
+        }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use App\UserLogs;
 
 class UserActivityController extends Controller
 {
@@ -12,15 +14,27 @@ class UserActivityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('Admin.UserLogs');
-    }
 
-    public function __construct()
+     public function __construct()
      {
          $this->middleware('auth:admin');
      }
+
+    public function index()
+    {
+        $userlogs = DB::table('user_logs')->get();
+        return view('Admin.UserActivity',compact('userlogs'));
+    }
+
+    function showUserActivity($ID) {
+        $userlogs = DB::table('user_logs')
+                    ->where('ID',$ID)
+                    ->get()
+                    ->first();
+        return view('Admin.ShowUserActivity', compact('userlogs'));
+      }
+
+
 
     /**
      * Show the form for creating a new resource.

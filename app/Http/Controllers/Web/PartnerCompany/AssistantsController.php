@@ -93,6 +93,12 @@ class AssistantsController extends Controller
         
 
         if($assistant->save()){
+
+            $getpartnerid = Auth::user();
+        $getid = $getpartnerid->id;
+
+        DB::table('user_logs')
+            ->insert(['UserID' => $getid, 'Type' => "Assistant Registration", 'TargetUser' => $id, 'Description' => "Registered Assistant's Account Successfully"]);
             return redirect()->route('assistants.index')->with('message','assistant has been added successfully'); 
         } 
     }
@@ -151,6 +157,12 @@ class AssistantsController extends Controller
         ]);
         
         User::find($id)->update($request->all());
+
+        $getpartnerid = Auth::user();
+        $getid = $getpartnerid->id;
+
+        DB::table('user_logs')
+            ->insert(['UserID' => $getid, 'Type' => "Update Assistant", 'Description' => "Updated Assistant's Account Successfully"]);
         // $user->update($request->all());
         return redirect()->route('assistants.index')->with('message','item has been updated successfully');
     }

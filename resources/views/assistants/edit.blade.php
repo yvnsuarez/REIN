@@ -74,7 +74,7 @@
                                             <a href="{{ route('assistants.index') }}" class="btn btn-warning btn-sm">Cancel</a>
                                         </div>
                                         &nbsp;
-                                {!! Form::button('Update Partner', ['type'=>'submit','class'=>'btn btn-secondary btn-sm']) !!}
+                                {!! Form::button('Update Assistant', ['type'=>'submit','class'=>'btn btn-secondary btn-sm']) !!}
                             </div>
                         {!! Form::close() !!}
                                 </div>

@@ -8,6 +8,6 @@ class UserLogs extends Model
 {
     //
     protected $fillable =[
-        'UserLogId','Type','UserId', 'Description','Date'
+        'UserLogId','UserID', 'Type', 'ReportsID', 'Description','Date'
      ];
 }
