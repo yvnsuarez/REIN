@@ -62,7 +62,7 @@ class PartnerController extends Controller
             'BusinessRegistrationNo' => 'required' ,
             'LTFRBRegistrationNo' => 'required',
             'MobileNo' => 'required',
-            'Email' => 'required',
+            'Email' => 'required|unique',
             'password' => 'required|min:6',
             'CPassword' => 'same:password',
             'g-recaptcha-response' => 'required|captcha',
@@ -152,7 +152,7 @@ class PartnerController extends Controller
             'password' => 'required|min:6',
             'CPassword' => 'same:password',
             'g-recaptcha-response' => 'required|captcha',
-            'remember_token',
+            'remember_token' ,
             'Status',
             // 'DateCreated'
         

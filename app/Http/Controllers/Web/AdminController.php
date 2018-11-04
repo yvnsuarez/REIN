@@ -17,22 +17,49 @@ class AdminController extends Controller
 
     public function index() 
     {
-    // $services = DB::table('reports')
-    //         ->select(
-    //             DB::raw("year(created_at) as year"),
-    //             DB::raw("count(servicetype = jumpstart) as jumpstart"),
-    //             DB::raw("count(servicetype = tow) as tow")
-    //         ->orderBy("created_at")
-    //         ->groupBy(DB::raw("year(created_at)"))
-    //         ->get();
 
+        //Widgets
+        $partners = DB::table('users')
+                    ->where('UserTypeID', '4')
+                    ->count();
+        $assistants = DB::table('users')
+                    ->where('UserTypeID', '2')
+                    ->count();
+        $motorists = DB::table('users')
+                    ->where('UserTypeID', '3')
+                    ->count(); 
 
-    // $result[] = ['Year','Jumpstart', 'Tow'];
-    // foreach ($services as $key => $value) {
-    // $result[++$key] = [$value->year, (int)$value->jumpstart, (int)$value->tow, ];
-    // }
-
-    return view('Admin.dashboard');
-       // ->with('services',json_encode($result));
+        $totalusers = $partners + $assistants + $motorists;
+       
+       
+        $cancelled = DB::table('reports')
+                    ->where('Status',  'Cancelled')
+                    ->count();
+        $done = DB::table('reports')
+                    ->where('Status', 'Done')
+                    ->count();
+        $ongoing = DB::table('reports')
+                    ->where('Status', 'Ongoing')
+                    ->count();
+        
+        //Pie Chart
+        $data = DB::table('reports')
+                    ->select(
+                        DB::raw('servicetype as servicetype'),
+                        DB::raw('count(*) as number'))
+                    ->groupBy('servicetype')
+                    ->get();
+                $array[] = ['ServiceType', 'Number'];
+                foreach($data as $key => $value)
+                {
+                $array[++$key] = [$value->servicetype, $value->number];
+                }
+    
+            //dd($weekdata);
+            return view('Admin.dashboard', 
+                        compact('partners', 'assistants', 'motorists', 
+                                'cancelled', 'done', 'ongoing', 'totalusers'))
+                        ->with('data', json_encode($array));
+     
     }
 }

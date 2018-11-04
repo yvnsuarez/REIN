@@ -31,7 +31,7 @@ Route::post('/partner/welcome', 'Web\PartnerCompany\PartnerRegisterController@re
 
 
 
-Auth::Routes();
+Auth::Routes(['verify' => true]);
 
 Route::prefix('admin')->group(function() {
     Route::get('/login','Web\AdminAuth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -45,17 +45,14 @@ Route::prefix('admin')->group(function() {
     
     Route::get('/home', 'Web\AdminController@index')->name('admin.home');
     Route::get('/dashboard', 'Web\AdminController@index')->name('admin.dashboard');
+    
     Route::resource('/partners', 'Web\Admin\PartnerController');
     Route::resource('/motorists', 'Web\Admin\MotoristsController');
     
     Route::get('/transactionlogs', 'Web\Admin\TransactionLogsController@index');
     Route::get('/transactionlogs/{id}', 'Web\Admin\TransactionLogsController@showTransaction');
-    
-    //download transaction
-    //Route::get('/transactionlogs/downloadFullTransaction', 'Web\Admin\TransactionLogsController@fullTransactionPDF');
     Route::get('/transactionlogs/downloadSingleTransaction/{id}', 'Web\Admin\TransactionLogsController@singleTransactionPDF');
-
-    Route::get('/auditlogs', 'Web\Admin\AuditLogsController@index')->name('admin.auditlogs');
+    
     Route::get('/useractivity', 'Web\Admin\UserActivityController@index')->name('admin.useractivity');
     Route::get('/useractivity/{ID}', 'Web\Admin\UserActivityController@showUserActivity');
 });
@@ -71,10 +68,11 @@ Route::prefix('partner')->group(function() {
     Route::post('/password/reset','Web\PartnerAuth\ResetPasswordController@reset');
     Route::get('/password/reset/{token}','Web\PartnerAuth\ResetPasswordController@showResetForm')->name('partner.password.reset');
     
-    Route::get('/home', 'Web\PartnerController@index')->name('partner.dashboard');
-    Route::get('/requests', 'Web\PartnerCompany\RequestsController@index')->name('partner.requests');
+    Route::get('/home', 'Web\PartnerController@index')->name('partner.home');
+    Route::get('/dashboard', 'Web\PartnerController@index')->name('partner.dashboard');
 
     // Route::resource('/requests', 'Web\PartnerCompany\RequestsController@index');
+    Route::get('/requests', 'Web\PartnerCompany\RequestsController@index')->name('partner.requests');
     Route::get('/requests/{id}/accept', 'Web\PartnerCompany\RequestsController@showaccept');
     Route::post('/requests/{id}/accepted', 'Web\PartnerCompany\RequestsController@accept');
 
@@ -88,11 +86,9 @@ Route::prefix('partner')->group(function() {
 
     Route::get('/transactionlogs', 'Web\PartnerCompany\TransactionLogsController@index');
     Route::get('/transactionlogs/{id}', 'Web\PartnerCompany\TransactionLogsController@showTransaction');
-    
-    //download transaction
-    //Route::get('/transactionlogs/downloadFullTransaction', 'Web\PartnerCompany\TransactionLogsController@fullTransactionPDF');
     Route::get('/transactionlogs/downloadSingleTransaction/{id}', 'Web\PartnerCompany\TransactionLogsController@singleTransactionPDF');
 
-    Route::resource('/flags', 'Web\PartnerCompany\FeedbacksController');
+    Route::get('/feedbacks', 'Web\PartnerCompany\FeedbacksController@index');
+    Route::get('/feedbacks/{ID}', 'Web\PartnerCompany\FeedbacksController@showFeedback');
 });
 

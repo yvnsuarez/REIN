@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Feedbacks;
+use App\User;
+use App\Reports;
+use Auth;
 
 class FeedbacksController extends Controller
 {
@@ -22,18 +25,55 @@ class FeedbacksController extends Controller
      }
     public function index()
     {
+        $getpartner = Auth::user();
+        $partner = $getpartner->id;
+
+        $getreportpartner =['partner' => $partner];
         
+        $reports = Reports::where($getreportpartner)
+                   ->get()->first();
+
+        $feedbackreport = ['reportID' => $reports->ID];
+
+        //Display feedbacks based on transactions made by the logged in partner company
         $feedbacks = DB::table('feedbacks')
+                    ->where($feedbackreport)
                     ->get();
+
         return view ('Partner.Feedbacks', compact('feedbacks'));
     }
 
     function showFeedback($ID) {
+
+        $getpartner = Auth::user();
+        $partner = $getpartner->id;
+
+        $getreportpartner =['partner' => $partner];
+
+        $reports = Reports::where($getreportpartner)
+                   ->get()
+                   ->first();
+        // $report = Reports::find($ID);
+        $feedbackreport = ['reportID' => $reports->ID];
+
+
+        $getmotorist = ['id' => $reports->userID];
+        $motorist = User::where($getmotorist)->get()->first();
+
+        $getassistant = ['id' => $reports->assistant];
+        $assistant = User::where($getassistant)->get()->first();
+
+        $getreport = ['ID' => $feedbackreport];
+        $report = DB::table('reports')
+                    ->where($getreport)
+                    ->get()
+                    ->first();
+
         $feedbacks = DB::table('feedbacks')
                     ->where('ID',$ID)
                     ->get()
                     ->first();
-        return view('Partner.ShowFeedback', compact('feedbacks'));
+        return view('Partner.ShowFeedback', compact('feedbacks', 'motorist', 'report', 'assistant'));
       }
 
     /**

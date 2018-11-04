@@ -50,7 +50,7 @@
                                 <thead>
                                     <tr class="text-center">
                                             <th>#</th>
-                                            <th>Report</th>
+                                            <th>Report No.</th>
                                             <th>Review</th>
                                             <th>Date Submitted</th>
                                             <th>ACTION</th>

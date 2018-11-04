@@ -69,8 +69,7 @@ class TransactionLogsController extends Controller
 
         $getadminid = Auth::user();
         $getid = $getadminid->id;
-
-
+        
         $report = Reports::find($ID);
 
         $getpartner = Auth::user();

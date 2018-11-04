@@ -18,16 +18,39 @@
     <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-8">
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">Feedback  No. {{$feedbacks->ID}}</strong>
                             </div>
                           
                             <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><b>Report: </b> {{$feedbacks->reportID}}</li>
-                                        <li class="list-group-item"><b>Review: </b>{{$feedbacks->review}}</li>
-                                        <li class="list-group-item"><b>Date Submitted: </b>{{$feedbacks->DateSubmitted}}</li>
+                                <b class="text-center">Report Details</b>
+                                        <li class="list-group-item">
+                                            <b>Motorist: </b> {{$motorist->FirstName}} {{$motorist->LastName}}
+                                                <br/>
+                                                <br/>
+                                            <b>Service Type: </b>{{$report->servicetype}}
+                                                <br/>
+                                            <b>Service Instruction: </b>{{$report->instruction}}
+                                                <br/>
+                                            <b>Service Place: </b>{{$report->Lat}}, {{$report->Lon}}
+                                                <br/>
+                                            <b>Total Service Charge: </b>{{$report->totalservice}}
+                                                <br/>
+                                                <br/>
+                                            <b>Assistant: </b> {{$assistant->FirstName}} {{$assistant->LastName}}
+                                                <br/>
+                                            
+                                        </li>
+                                <b class="text-center">Feedback Details</b>
+                                        <li class="list-group-item">
+                                            <b>Review: </b>{{$feedbacks->review}}
+                                                <br/>
+                                            <b>Date Submitted: </b>{{$feedbacks->DateSubmitted}}
+                                        </li>
                                     
                                 </ul>
                                 <div class="card-footer">
@@ -35,6 +58,9 @@
                                             <a href="{{ url('/partner/feedbacks') }}" class="btn btn-warning btn-sm">Back</a>
                                         </div>
                                     </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
                         </div>
                     </div>
                 </div>
