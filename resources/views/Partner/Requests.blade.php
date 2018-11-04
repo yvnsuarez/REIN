@@ -43,11 +43,13 @@
                         <div class="card-header">
                             <strong class="card-title">Requests</strong>
                         </div>
-                        @if(count($reports) >= 0)
+                        <?php $i = 1; ?>
+                        @if(count($reports) > 0)
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
                                 <thead>
                                     <tr>
+                                            <th class="serial">#</th>
                                             <th>Motorist</th>
                                             <th>Instruction</th>
                                             <th>Service Type</th>
@@ -58,13 +60,14 @@
                                             <th>Total Service Price</th>
                                             <th>Date Requested</th>
                                             <th>Date Updated</th>
-                                            <th>Action</th>
+                                            <th>ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody> 
                                     @foreach($reports as $report)
                                     <tr class="text-center">
-                                        <td>{{$report->motorist}}</td>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{$report->userID}}</td>
                                         <td>{{$report->instruction}}</td>
                                         <td>{{$report->servicetype}}</td>
                                         <td>{{$report->image}}</td>
@@ -90,6 +93,30 @@
                                 </tbody>
                             </table>
                         </div> <!-- /.table-stats -->
+                        @else
+                        <div class="table-stats order-table ov-h">
+                            <table class="table ">
+                                <thead>
+                                    <tr>
+                                            <th class="serial">#</th>
+                                            <th>Motorist</th>
+                                            <th>Instruction</th>
+                                            <th>Service Type</th>
+                                            <th>Image</th>
+                                            <th>Service Status</th>
+                                            <th>Service Comment</th>
+                                            <th>Additional Charge</th>
+                                            <th>Total Service Price</th>
+                                            <th>Date Requested</th>
+                                            <th>Date Updated</th>
+                                            <th>ACTION</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <div class="text-center">
+                                <p>No records found.</p>
+                            </div>
+                    </div> <!-- /.table-stats -->
                         @endif
                     </div>
                 </div>

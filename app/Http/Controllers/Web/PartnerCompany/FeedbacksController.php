@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\PartnerCompany;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Feedbacks;
 
 class FeedbacksController extends Controller
@@ -21,9 +22,19 @@ class FeedbacksController extends Controller
      }
     public function index()
     {
-        $feedbacks = Feedbacks::all();
-        return view ('feedbacks.index', compact('feedbacks'));
+        
+        $feedbacks = DB::table('feedbacks')
+                    ->get();
+        return view ('Partner.Feedbacks', compact('feedbacks'));
     }
+
+    function showFeedback($ID) {
+        $feedbacks = DB::table('feedbacks')
+                    ->where('ID',$ID)
+                    ->get()
+                    ->first();
+        return view('Partner.ShowFeedback', compact('feedbacks'));
+      }
 
     /**
      * Show the form for creating a new resource.

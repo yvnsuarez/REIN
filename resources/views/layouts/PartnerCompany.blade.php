@@ -74,6 +74,13 @@
         <nav class="navbar navbar-expand-sm navbar-default"> 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
+                        <li class="menu-title">
+                                <hr/>    
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('partner.dashboard') }}" aria-haspopup="true" aria-expanded="false"> 
+                                    <i class="menu-icon fa fa-cogs"></i>Dashboard</a>
+                            </li>
                     <li class="menu-title">
                         <hr/>    
                     </li>
@@ -99,8 +106,8 @@
                         <hr/>    
                     </li>
                     <li class="menu-item">
-                        <a href="{{ url('/partner/flags') }}" aria-haspopup="true" aria-expanded="false"> 
-                            <i class="menu-icon fa fa-th"></i>Reports/Flags</a>
+                        <a href="{{ url('/partner/feedbacks') }}" aria-haspopup="true" aria-expanded="false"> 
+                            <i class="menu-icon fa fa-th"></i>Feedbacks</a>
                     </li>
                     <li class="menu-title">
                         <hr/>    
@@ -120,8 +127,8 @@
         <header id="header" class="header">  
             <div class="top-left">
                 <div class="navbar-header"> 
-                    <a class="navbar-brand" href="{{ route('partner.dashboard') }}"><img src="{{asset('/images/REIN01.png')}}" alt="Logo" width="100px" height="45px"></a>
-                    <a class="navbar-brand hidden" href="{{ route('partner.dashboard') }}"><img src="{{asset('/images/REIN01.png')}}" alt="Logo" width="100px" height="45px"></a> 
+                    <a class="navbar-brand" href="{{ route('partner.home') }}"><img src="{{asset('/images/REIN01.png')}}" alt="Logo" width="100px" height="45px"></a>
+                    <a class="navbar-brand hidden" href="{{ route('partner.home') }}"><img src="{{asset('/images/REIN01.png')}}" alt="Logo" width="100px" height="45px"></a> 
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a> 
                 </div> 
             </div>

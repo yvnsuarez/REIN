@@ -11,6 +11,7 @@ use Validator;
 use App\Report;
 use App\User;
 use App\Feedbacks;
+use App\Charts\ReportChart;
 
 class HomeController extends Controller
 {
@@ -80,5 +81,26 @@ class HomeController extends Controller
     public function feedbacks() {
         $feedbacks = Feedbacks::all();
         return view ('PartnerCompany.Feedbacks', compact('feedbacks'));
+    }
+
+    public function googleLineChart() {
+            $visitor = DB::table('visitor')
+            ->select(
+                DB::raw("year(created_at) as year"),
+                DB::raw("SUM(click) as total_click"),
+                DB::raw("SUM(viewer) as total_viewer")) 
+            ->orderBy("created_at")
+            ->groupBy(DB::raw("year(created_at)"))
+            ->get();
+
+
+    $result[] = ['Year','Click','Viewer'];
+    foreach ($visitor as $key => $value) {
+    $result[++$key] = [$value->year, (int)$value->total_click, (int)$value->total_viewer];
+    }
+
+
+    return view('google-line-chart')
+        ->with('visitor',json_encode($result));
     }
 }

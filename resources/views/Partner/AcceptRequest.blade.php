@@ -29,7 +29,7 @@
                         </div> --}}
                         <div class="form-group">
                             <label>Motorist</label>
-                            <input type="text" class="form-control" name="motorist" value="{{$reports->motorist}}" readonly="true">
+                            <input type="text" class="form-control" name="motorist" value="{{$reports->userID}}" readonly="true">
                         </div>
                         <div class="form-group">
                             <label>Instruction</label>

@@ -8,6 +8,6 @@ class Feedbacks extends Model
 {
     //
     protected $fillable =[
-        'id','ReportId','Feedback','DateSubmitted'
+        'ID','reportID','review','DateSubmitted'
      ];
 }

@@ -45,7 +45,49 @@
 
                             {{ link_to_route('partners.create', 'Register Partner', null, ['class'=>'fa fa-user-plus btn btn-outline-secondary btn-sm pull-right'])}}
                         </div>
+                        <?php $i = 1; ?>
                         @if(count($users) > 0)
+                        <div class="table-stats order-table ov-h">
+                            <table class="table ">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th class="serial">#</th>
+                                        <th>Business Name</th>
+                                        <th>Address</th>
+                                        <th>Business Registration No</th>
+                                        <th>LTFRB Accreditation No</th>
+                                        <th>Contact No</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                        <th>ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody> 
+                                @foreach($users as $user)
+                                    <tr class="text-center">
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{$user->BusinessName}}</td>
+                                        <td>{{$user->Address}}</td>
+                                        <td>{{$user->BusinessRegistrationNo}}</td>
+                                        <td>{{$user->LTFRBRegistrationNo}}</td>
+                                        <td>{{$user->MobileNo}}</td>
+                                        <td>{{$user->Email}}</td>
+                                        <td>{{$user->Status}}</td>
+                                        <td>
+                                                <div class="links">
+                                                        <a href="/admin/partners/{{$user->id}}" class="btn btn-outline-secondary btn-sm fa fa-info" data-toggle="tooltip" title="View Partner">
+                                                        </a>
+                                                        <a href="/admin/partners/{{$user->id}}/edit" class="btn btn-outline-secondary btn-sm fa fa-edit" data-toggle="tooltip" title="Edit Partner">
+                                                        </a>
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                
+                            </table>
+                        </div> <!-- /.table-stats -->
+                        @else
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
                                 <thead>
@@ -63,33 +105,11 @@
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
-                                <tbody> 
-                                @foreach($users as $user)
-                                    <tr class="text-center">
-                                        <td></td>
-                                        <td>{{$user->BusinessName}}</td>
-                                        <td>{{$user->Address}}</td>
-                                        <td>{{$user->City}}</td>
-                                        <td>{{$user->ZipCode}}</td>
-                                        <td>{{$user->BusinessRegistrationNo}}</td>
-                                        <td>{{$user->LTFRBRegistrationNo}}</td>
-                                        <td>{{$user->MobileNo}}</td>
-                                        <td>{{$user->Email}}</td>
-                                        <td>{{$user->Status}}</td>
-                                        <td>
-                                                <div class="links">
-                                                        <a href="/admin/partners/{{$user->id}}" class="btn btn-outline-secondary btn-sm fa fa-info" data-toggle="tooltip" title="View">
-                                                        </a>
-                                                        <a href="/admin/partners/{{$user->id}}/edit" class="btn btn-outline-secondary btn-sm fa fa-edit" data-toggle="tooltip" title="Edit">
-                                                        </a>
-                                                </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                                
                             </table>
-                        </div> <!-- /.table-stats -->
+                            <div class="text-center">
+                                <p>No records found.</p>
+                            </div>
+                    </div> <!-- /.table-stats -->
                         @endif
                     </div>
 

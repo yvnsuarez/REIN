@@ -90,7 +90,7 @@ class RequestsController extends Controller
 
         $report = Reports::find($ID);
         DB::table('user_logs')
-          ->insert(['UserID' => $getpartner->id, 'Type' => "Accepted",'ReportsID' => $ID, 'TargetUser' => $report->motorist,'Description' => "Request Accepted"]);
+          ->insert(['UserID' => $getpartner->id, 'Type' => "Accepted",'ReportsID' => $ID, 'TargetUser' => $report->userID,'Description' => "Request Accepted"]);
         
           return redirect('partner/requests');
        // return redirect()->intended(route('partner.requests'));//->with('message', 'Request has been accepted successfully'));

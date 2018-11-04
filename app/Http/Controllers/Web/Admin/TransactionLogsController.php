@@ -57,7 +57,7 @@ class TransactionLogsController extends Controller
 
        $partner = ['id' => $report->partner ];
        $getpartnerdetails = User::where($partner)->get()->first();
-       $motorist = ['id' => $report->motorist];
+       $motorist = ['id' => $report->userID];
        $getmotoristdetails = User::where($motorist)->get()->first();
        $assistant = ['id' => $report->assistant];
        $getassistantdetails = User::where($assistant)->get()->first();

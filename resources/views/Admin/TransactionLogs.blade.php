@@ -26,11 +26,13 @@
                                 <button class="btn btn-outline-secondary btn-sm pull-right""><i class="fa fa-print"></i> Print</button>
                             </a> --}}
                         </div>
+                        <?php $i = 1; ?>
                         @if(count($reports) > 0)
                         <div class="table-stats order-table ov-h">
                             <table class="table">
                                 <thead>
                                     <tr>
+                                            <th class="serial">#</th>
                                             <th>Partner</th>
                                             <th>Motorist</th>
                                             <th>Assistant</th>
@@ -44,12 +46,13 @@
                                             <th>Total Service Price</th>
                                             <th>Date Requested</th>
                                             <th>Date Updated</th>
-                                            <th>Action</th>
+                                            <th>ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody> 
                                 @foreach($reports as $report)
                                     <tr class="text-center">
+                                            <td>{{ $i++ }}</td>
                                             <td>{{$report->partner}}</td>
                                             <td>{{$report->motorist}}</td>
                                             <td>{{$report->assistant}}</td>
@@ -67,7 +70,7 @@
                                                 {{-- MODAL FOR VIEWING OF REPORT --}}
                                                 <div class="links">
                                                     <a href="/admin/transactionlogs/{{$report->ID}}">
-                                                            <button class="fa fa-info btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="View"></button>
+                                                            <button class="fa fa-info btn btn-outline-secondary btn-sm" data-toggle="tooltip" title="View Transaction"></button>
                                                         </a>
                                                     </div>
                                                 </td>
@@ -76,11 +79,12 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{-- @else
+                            @else
                             <div class="table-stats order-table ov-h">
                                 <table class="table ">
                                     <thead>
                                         <tr>
+                                                <th class="serial">#</th>
                                                 <th>Partner</th>
                                                 <th>Motorist</th>
                                                 <th>Assistant</th>
@@ -101,7 +105,7 @@
                                 </table>
                                 <div class="text-center">
                                     <p>No records found.</p>
-                                </div> --}}
+                                </div>
                         </div> <!-- /.table-stats -->
                         @endif
                     </div>

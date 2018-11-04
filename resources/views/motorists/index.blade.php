@@ -43,6 +43,7 @@
                         <div class="card-header">
                             <strong class="card-title">Motorists</strong>
                         </div>
+                        <?php $i = 1; ?>
                         @if(count($users) > 0)
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
@@ -64,7 +65,7 @@
                                 <tbody> 
                                 @foreach($users as $user)
                                     <tr class="text-center">
-                                            <td></td>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{$user->FirstName}}</td>
                                             <td>{{$user->LastName}}</td>
                                             <td>{{$user->MobileNo}}</td>
@@ -76,7 +77,7 @@
                                             <td>{{$user->Status}}</td>
                                         <td>
                                                 <div class="links">
-                                                        <a href="/admin/motorists/{{$user->id}}" class="btn btn-outline-secondary btn-sm fa fa-info" data-toggle="tooltip" title="View">
+                                                        <a href="/admin/motorists/{{$user->id}}" class="btn btn-outline-secondary btn-sm fa fa-info" data-toggle="tooltip" title="View Motorist">
                                                         </a>
                                                 </div>
                                                 {{-- {{ link_to_route('motorists.show', 'View', [$user->id], ['class'=>'btn btn-primary'])}} --}}
@@ -86,6 +87,29 @@
                                 </tbody>
                             </table>
                         </div> <!-- /.table-stats -->
+                        @else
+                        <div class="table-stats order-table ov-h">
+                            <table class="table ">
+                                <thead>
+                                    <tr>
+                                            <th class="serial">#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Mobile No</th>
+                                            <th>Birthday</th>
+                                            <th>Address</th>
+                                            <th>City</th>
+                                            <th>ZipCode</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                            <th>ACTION</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <div class="text-center">
+                                <p>No records found.</p>
+                            </div>
+                    </div> <!-- /.table-stats -->
                         @endif
                     </div>
                 </div>

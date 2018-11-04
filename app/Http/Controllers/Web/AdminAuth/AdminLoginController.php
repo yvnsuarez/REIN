@@ -35,10 +35,10 @@ class AdminLoginController extends Controller
         'password' => $request->password]))
         {
 
-            $getid = Auth::user();
+            // $getid = Auth::user();
 
-            DB::table('user_logs')
-            ->insert(['UserID' => $getid->id, 'Type' => "Login", 'Description' => "Logged in successfully"]);
+            // DB::table('user_logs')
+            // ->insert(['UserID' => $getid->id, 'Type' => "Login", 'Description' => "Logged in successfully"]);
 
             return redirect()->intended(route('admin.home'));
         }
