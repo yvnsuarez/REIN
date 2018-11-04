@@ -31,41 +31,27 @@
                         <div class="table-stats order-table ov-h">
                             <table class="table">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                             <th class="serial">#</th>
-                                            <th>Partner</th>
                                             <th>Motorist</th>
                                             <th>Assistant</th>
-                                            <th>Instruction</th>
                                             <th>Service Type</th>
-                                            <th>Image</th>
-                                            <th>Location</th>
-                                            <th>Service Status</th>
                                             <th>Service Comment</th>
-                                            <th>Additional Charge</th>
                                             <th>Total Service Price</th>
-                                            <th>Date Requested</th>
-                                            <th>Date Updated</th>
-                                            <th>Action</th>
+                                            <th>Service Status</th>
+                                            <th>ACTION</th>
                                     </tr>
                                 </thead>
                                 <tbody> 
                                 @foreach($reports as $report)
                                     <tr class="text-center">
                                             <td>{{ $i++ }}</td>
-                                            <td>{{$report->partner}}</td>
                                             <td>{{$report->motorist}}</td>
                                             <td>{{$report->assistant}}</td>
-                                            <td>{{$report->instruction}}</td>
                                             <td>{{$report->servicetype}}</td>
-                                            <td>{{$report->image}}</td>
-                                            <td>{{$report->Lat}}, {{$report->Long}}</td>
-                                            <td>{{$report->status}}</td>
                                             <td>{{$report->comment}}</td>
-                                            <td>{{$report->addcharge}}</td>
                                             <td>{{$report->totalservice}}</td>
-                                            <td>{{$report->created_at}}</td>
-                                            <td>{{$report->updated_at}}</td>
+                                            <td>{{$report->status}}</td>
                                             <td>
                                                 {{-- MODAL FOR VIEWING OF REPORT --}}
                                                 <div class="links">

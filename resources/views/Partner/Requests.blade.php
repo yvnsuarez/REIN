@@ -48,18 +48,12 @@
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                             <th class="serial">#</th>
                                             <th>Motorist</th>
                                             <th>Instruction</th>
                                             <th>Service Type</th>
-                                            <th>Image</th>
                                             <th>Service Status</th>
-                                            <th>Service Comment</th>
-                                            <th>Additional Charge</th>
-                                            <th>Total Service Price</th>
-                                            <th>Date Requested</th>
-                                            <th>Date Updated</th>
                                             <th>ACTION</th>
                                     </tr>
                                 </thead>
@@ -67,16 +61,13 @@
                                     @foreach($reports as $report)
                                     <tr class="text-center">
                                         <td>{{ $i++ }}</td>
+                                        {{-- @foreach($motorist as $motorist)
+                                        <td>{{$motorist->FirstName}} {{$motorist->FirstName}}</td>
+                                        @endforeach --}}
                                         <td>{{$report->userID}}</td>
                                         <td>{{$report->instruction}}</td>
                                         <td>{{$report->servicetype}}</td>
-                                        <td>{{$report->image}}</td>
                                         <td>{{$report->status}}</td>
-                                        <td>{{$report->comment}}</td>
-                                        <td>{{$report->addcharge}}</td>
-                                        <td>{{$report->totalservice}}</td>
-                                        <td>{{$report->DateSubmitted}}</td>
-                                        <td>{{$report->DateUpdated}}</td>
                                         @if($report->status == "Pending")
                                         <td>
                                             <a href="requests/{{$report->ID}}/accept" class="btn btn-outline-success btn-sm fas fa fa-check-circle" data-toggle="tooltip" title="Accept Request"> Accept</a>

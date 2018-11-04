@@ -22,9 +22,8 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Feedback  No. {{$feedbacks->ID}}</strong>
-                            </div>
+                                <div class="card-header">
+                                        <strong class="card-title">Assign Assistant</strong>
                           
                             <ul class="list-group list-group-flush">
                                 <b class="text-center">Report Details</b>
@@ -53,11 +52,11 @@
                                         </li>
                                     
                                 </ul>
-                                <div class="card-footer">
+                            </br>
                                         <div class="pull-left">
                                             <a href="{{ url('/partner/feedbacks') }}" class="btn btn-warning btn-sm">Back</a>
                                         </div>
-                                    </div>
+
                         </div>
                     </div>
                     <div class="col-lg-2">

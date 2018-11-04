@@ -38,12 +38,19 @@ class RequestsController extends Controller
 
         $notstatus =[$assigned, $ongoing, $done];
 
-        $reports = Reports::where($pending)
-                            ->orWhere($accepted)
-                            ->WhereNotIn('status', $notstatus)
-                            ->get();
+        $reports = DB::table('reports')
+                        ->where($pending)
+                        ->orWhere($accepted)
+                        ->WhereNotIn('status', $notstatus)
+                        ->get();    
 
-        return view ('Partner.Requests', compact('reports'));
+        
+        // $getmotorist = ['id' => $reports->userID];
+        // // $motorists = DB::table('users')
+        // //                 ->where($getmotorist)
+        // //                 ->get();
+        // dd($getmotorist);
+        return view ('Partner.Requests', compact('reports')); //, 'motorists'
     }
 
     /**s
@@ -76,7 +83,17 @@ class RequestsController extends Controller
     public function showaccept($ID)
     {
         $reports = Reports::find($ID);
-        return view('Partner.AcceptRequest', compact('reports'));
+
+        $getmotoristdetails = ['id' => $reports->userID];
+        $motorist = User::where($getmotoristdetails)->get()->first();
+
+        $getcar = ['userID' => $reports->userID];
+        $car = DB::table('cars')
+                ->where($getcar)
+                ->get()
+                ->first();
+
+        return view('Partner.AcceptRequest', compact('reports', 'motorist', 'car'));
     }
 
     public function accept($ID)
@@ -98,14 +115,27 @@ class RequestsController extends Controller
 
     public function showassign($ID)
     {
+
+
+        
         $getpartner = Auth::user();
         $partner = $getpartner->id;
         $getassistant = ['PartnerCompany' => $partner, 'UserTypeID' => '2', 'AssignStatus' => 'Available', 'Status' => 'Activated'];
 
         $reports = Reports::find($ID);
         $users = User::where($getassistant)->get();
+        
 
-        return view('Partner.AssignRequest', compact('reports', 'users'));
+        $getmotoristdetails = ['id' => $reports->userID];
+        $motorist = User::where($getmotoristdetails)->get()->first();
+
+        $getcar = ['userID' => $reports->userID];
+        $car = DB::table('cars')
+                ->where($getcar)
+                ->get()
+                ->first();
+        // dd($car);
+        return view('Partner.AssignRequest', compact('reports', 'users', 'motorist', 'car'));
     }
 
     public function assign(Request $request, $id)
