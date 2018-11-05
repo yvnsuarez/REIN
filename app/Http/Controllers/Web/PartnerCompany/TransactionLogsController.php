@@ -65,6 +65,8 @@ class TransactionLogsController extends Controller
         return view('Partner.ShowTransaction', compact('reports'));
       }
 
+
+      
       function singleTransactionPDF($ID){
 
         $getadminid = Auth::user();
