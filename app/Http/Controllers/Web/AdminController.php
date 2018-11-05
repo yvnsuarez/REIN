@@ -55,8 +55,8 @@ class AdminController extends Controller
                 $array[++$key] = [$value->servicetype, $value->number];
                 }
     
-            //dd($weekdata);
-            return view('Admin.dashboard', 
+        //dd($data);
+        return view('Admin.dashboard', 
                         compact('partners', 'assistants', 'motorists', 
                                 'cancelled', 'done', 'ongoing', 'totalusers'))
                         ->with('data', json_encode($array));

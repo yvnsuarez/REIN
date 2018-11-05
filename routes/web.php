@@ -39,9 +39,6 @@ Route::prefix('admin')->group(function() {
     Route::get('/logout', 'Web\AdminAuth\AdminLoginController@adminLogout')->name('admin.logout');
 
     Route::post('/password/email','Web\AdminAuth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-    Route::get('/password/reset','Web\AdminAuth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-    Route::post('/password/reset','Web\AdminAuth\ResetPasswordController@reset');
-    Route::get('/password/reset/{token}','Web\AdminAuth\ResetPasswordController@showResetForm')->name('admin.password.reset');
     
     Route::get('/home', 'Web\AdminController@index')->name('admin.home');
     Route::get('/dashboard', 'Web\AdminController@index')->name('admin.dashboard');
@@ -64,7 +61,7 @@ Route::prefix('partner')->group(function() {
     Route::get('/logout', 'Web\PartnerAuth\PartnerLoginController@partnerLogout')->name('partner.logout');
 
     Route::post('/password/email','Web\PartnerAuth\ForgotPasswordController@sendResetLinkEmail')->name('partner.password.email');
-    Route::get('/password/reset','Web\PartnerAuth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::get('/password/reset','Web\PartnerAuth\ForgotPasswordController@showLinkRequestForm')->name('partner.password.request');
     Route::post('/password/reset','Web\PartnerAuth\ResetPasswordController@reset');
     Route::get('/password/reset/{token}','Web\PartnerAuth\ResetPasswordController@showResetForm')->name('partner.password.reset');
     

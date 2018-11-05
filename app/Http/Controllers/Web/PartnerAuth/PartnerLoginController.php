@@ -29,7 +29,7 @@ class PartnerLoginController extends Controller
         ]);
 
         if (Auth::guard('partner')->attempt(['Email' => $request->Email,
-        'password' => $request->password, 'UserTypeID' => '4'], $request->remember))
+        'password' => $request->password], $request->remember))//, 'UserTypeID' => '4'
         {
             return redirect()->intended(route('partner.dashboard'));
         }
