@@ -1,15 +1,17 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
 
-        <title>REIN</title>
+<style>
 
+<<<<<<< HEAD
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
         <!-- Styles -->
         <style>
+=======
+>>>>>>> 3369393121009c14574435163d924e6d9581decb
 
             /* Design for Hover Navigation */
             body {
@@ -72,6 +74,7 @@
 
 
 
+<<<<<<< HEAD
             /* Design for Modal */
             body {
                 font-family: 'Roboto', sans-serif;
@@ -158,6 +161,79 @@
     <body>
           <!--Nav-->
         <nav class="layer">
+=======
+             /* Design for Modal */
+             body {
+        font-family: 'Lato', sans-serif;
+    }
+
+    .overlay {
+        height: 0%;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #DABC20;
+        background-color: #DABC20;
+        overflow-y: hidden;
+        transition: 0.5s;
+    }
+
+    .overlay-content {
+        position: relative;
+        top: 25%;
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .overlay a {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 36px;
+        color: #000000;
+        display: block;
+        transition: 0.3s;
+    }
+    
+    .overlay p {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 36px;
+        color: #000000;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .overlay a:hover, .overlay a:focus {
+        color: #eae3bf;
+    }
+
+    .overlay .closebtn {
+        position: absolute;
+        top: 20px;
+        right: 45px;
+        font-size: 60px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .overlay {overflow-y: auto;}
+      .overlay a {font-size: 20px}
+      .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+      }
+    }
+
+
+</style>
+
+</head>
+<body>
+<nav class="layer">
+>>>>>>> 3369393121009c14574435163d924e6d9581decb
           <ul>
             <li><a href="javascript:void(0)" onclick="openAbout()">ABOUT US</a></li>
             <li><a href="javascript:void(0)" onclick="openServices()">OUR SERVICES</a></li>
@@ -166,6 +242,7 @@
 
           </ul>
         </nav>
+<<<<<<< HEAD
 
       <!--Initial Covering Layer-->
       <div class="front page layer">
@@ -177,6 +254,16 @@
        <!-- Modal for About Us page -->
         <div id="myAbout" class="overlay">
           <a href="javascript:void(0)" class="closebtn" onclick="closeAbout()">&times;</a>
+=======
+    <div class="front page layer">
+            <h1>
+              <img src="{{asset('/images/REIN01.png')}}" width="400px" length="150px">
+            </h1>
+          </div>
+      
+      <div id="myAbout" class="overlay">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeAbout()">×</a>
+>>>>>>> 3369393121009c14574435163d924e6d9581decb
           <div class="overlay-content">
             <h1>WELCOME</h1>
             <div>
@@ -190,10 +277,16 @@
             </div>
           </div>
         </div>
+<<<<<<< HEAD
 
         <!-- Modal for Our Services page -->
         <div id="myServices" class="overlay">
           <a href="javascript:void(0)" class="closebtn" onclick="closeServices()">&times;</a>
+=======
+        <div id="myServices" class="overlay">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeServices()">×</a>
+          
+>>>>>>> 3369393121009c14574435163d924e6d9581decb
           <div class="overlay-content">
               <h1>OUR SERVICES</h1>
                 <p style="text-align:center">Our <b>REIN</b> booking application allow motorists to book emergency roadside services such as: </p>
@@ -226,10 +319,13 @@
                 </p>
           </div>
         </div>
+<<<<<<< HEAD
 
         <!-- Modal for Contact Us page -->
+=======
+>>>>>>> 3369393121009c14574435163d924e6d9581decb
         <div id="myContact" class="overlay">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeContact()">&times;</a>
+          <a href="javascript:void(0)" class="closebtn" onclick="closeContact()">×</a>
           <div class="overlay-content">
             <p>This is the contact page</p>
           </div>
@@ -237,7 +333,7 @@
 
         <!-- Modal for About Us page -->
         <div id="myBePartner" class="overlay">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeBePartner()">&times;</a>
+          <a href="javascript:void(0)" class="closebtn" onclick="closeBePartner()">×</a>
           <div class="overlay-content">
             <p>
               <a href="{{url('/partner/login')}}">Login as a Partner</a>
@@ -245,40 +341,44 @@
             </p>
           </div>
         </div>
+<<<<<<< HEAD
 
 
+=======
+        
+>>>>>>> 3369393121009c14574435163d924e6d9581decb
         <script>
               function openAbout() {
-                document.getElementById("myAbout").style.display = "block";
+                document.getElementById("myAbout").style.height = "100%";
               }
 
               function closeAbout() {
-                document.getElementById("myAbout").style.display = "none";
+                document.getElementById("myAbout").style.height = "0%";
               }
 
               function openServices() {
-                document.getElementById("myServices").style.display = "block";
+                document.getElementById("myServices").style.height = "100%";
               }
 
               function closeServices() {
-                document.getElementById("myServices").style.display = "none";
+                document.getElementById("myServices").style.height = "0%";
               }
 
               function openContact() {
-                document.getElementById("myContact").style.display = "block";
+                document.getElementById("myContact").style.height = "100%";
               }
 
               function closeContact() {
-                document.getElementById("myContact").style.display = "none";
+                document.getElementById("myContact").style.height = "0%";
               }
 
               function openBePartner() {
-                document.getElementById("myBePartner").style.display = "block";
+                document.getElementById("myBePartner").style.height = "100%";
               }
 
               function closeBePartner() {
-                document.getElementById("myBePartner").style.display = "none";
+                document.getElementById("myBePartner").style.height = "0%";
               }
         </script>
-    </body>
+</body>
 </html>

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\PartnerResetPasswordNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -42,5 +43,8 @@ class Partner extends Authenticatable
      *  'password', 'remember_token',
      * ];
      */
-    
+    public function sendPasswordResetNotification($token)
+    {
+      $this->notify(new PartnerResetPasswordNotification($token));
+    }
 }

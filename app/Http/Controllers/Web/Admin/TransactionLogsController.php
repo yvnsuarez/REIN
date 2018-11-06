@@ -56,20 +56,80 @@ class TransactionLogsController extends Controller
        $report = Reports::find($ID);
 
        $partner = ['id' => $report->partner ];
-       $getpartnerdetails = User::where($partner)->get()->first();
+       $getpartnerdetails = User::where($partner)
+                            ->get()
+                            ->first();
        $motorist = ['id' => $report->userID];
-       $getmotoristdetails = User::where($motorist)->get()->first();
-       $assistant = ['id' => $report->assistant];
-       $getassistantdetails = User::where($assistant)->get()->first();
+       $getmotoristdetails = User::where($motorist)
+                            ->get()
+                            ->first();
+        $assistant = ['id' => $report->assistant];
+       $getassistantdetails = User::where($assistant)
+                                ->get()
+                                ->first();
 
-       $getdetails = [$getpartnerdetails, $getmotoristdetails, $getassistantdetails];
+        $getcar = ['UserID' => $report->userID];
+        $getcardetails = DB::table ('cars')
+                        ->where($getcar)
+                        ->get()
+                        ->first();
 
-       // dd($getpartnerdetails);
-       $pdf = PDF::loadView('Admin.SingleTransactionPDF', compact('report', 'getpartnerdetails', 'getmotoristdetails', 'getassistantdetails'));
+        $getpayment = ['ReportID' => $ID];
+        $getpaymentdetails = DB::table ('payments')
+                            ->where($getpayment)
+                            ->get()
+                            ->first();
+
+       //dd($getpaymentdetails);
+       $pdf = PDF::loadView('Admin.SingleTransactionPDF', 
+                compact('report', 'getpartnerdetails', 
+                'getmotoristdetails', 'getassistantdetails',
+                'getcardetails', 'getpaymentdetails'));
        
        DB::table('user_logs')
-            ->insert(['UserID' => $getid, 'Type' => "DownloadPD", 'ReportsID' => $ID, 'Description' => "Downloaded Transaction Log Successfully"]);
+            ->insert(['UserID' => $getid, 
+                      'Type' => "Download Transaction", 
+                      'ReportsID' => $ID, 
+                      'Description' => "Downloaded Transaction Log Successfully"]);
        
        return $pdf->download('SingleTransactionLog.pdf');
      }
+
+     function ExamplePDF($ID){
+
+        $getadminid = Auth::user();
+        $getid = $getadminid->id;
+        
+        $report = Reports::find($ID);
+
+        $partner = ['id' => $report->partner ];
+        $getpartnerdetails = User::where($partner)
+                            ->get()
+                            ->first();
+        $motorist = ['id' => $report->userID];
+        $getmotoristdetails = User::where($motorist)
+                            ->get()
+                            ->first();
+        $assistant = ['id' => $report->assistant];
+        $getassistantdetails = User::where($assistant)
+                            ->get()
+                            ->first();
+        $getcar = ['UserID' => $report->userID];
+        $getcardetails = DB::table ('cars')
+                        ->where($getcar)
+                        ->get()
+                        ->first();
+
+        $getpayment = ['ReportID' =>$ID];
+        $getpaymentdetails = DB::table ('payments')
+                            ->where($getpayment)
+                            ->get()
+                            ->first();
+
+        //($getpaymentdetails);
+        return view ('Admin.SingleTransactionPDF', 
+                    compact('report', 'getpartnerdetails', 
+                    'getmotoristdetails', 'getassistantdetails', 
+                    'getcardetails', 'getpaymentdetails'));
+    }
 }

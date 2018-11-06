@@ -54,7 +54,6 @@ class PartnerController extends Controller
                         ->where($getongoing)
                         ->count();
 
-
         //Pie Chart
         $data = DB::table('reports')
                 ->select(
@@ -68,7 +67,7 @@ class PartnerController extends Controller
             $array[++$key] = [$value->servicetype, $value->number];
             }
 
-        //dd($weekdata);
+        //dd($data);
         return view('Partner.home', 
                     compact('assistant', 'availableassistant', 'notavailableassistant', 
                             'totalsales', 'totalservice', 'totalongoing'))

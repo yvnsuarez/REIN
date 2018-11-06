@@ -46,7 +46,7 @@
                                 @foreach($reports as $report)
                                     <tr class="text-center">
                                             <td>{{ $i++ }}</td>
-                                            <td>{{$report->motorist}}</td>
+                                            <td>{{$report->userID}}</td>
                                             <td>{{$report->assistant}}</td>
                                             <td>{{$report->servicetype}}</td>
                                             <td>{{$report->comment}}</td>
