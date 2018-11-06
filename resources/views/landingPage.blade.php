@@ -1,15 +1,10 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
 
-        <title>REIN</title>
+<style>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
-        <!-- Styles -->
-        <style>
 
             /* Design for Hover Navigation */
             body {
@@ -69,66 +64,77 @@
 
 
 
-            /* Design for Modal */
-            body {
-                font-family: 'Lato', sans-serif;
-            }
+             /* Design for Modal */
+             body {
+        font-family: 'Lato', sans-serif;
+    }
 
-            .overlay {
-                height: 100%;
-                width: 100%;
-                display: none;
-                position: fixed;
-                z-index: 1;
-                top: 0;
-                left: 0;
-                background-color: rgb(0,0,0);
-                background-color: rgba(0,0,0, 0.9);
-            }
+    .overlay {
+        height: 0%;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #DABC20;
+        background-color: #DABC20;
+        overflow-y: hidden;
+        transition: 0.5s;
+    }
 
-            .overlay-content {
-                position: relative;
-                top: 25%;
-                width: 100%;
-                text-align: center;
-                margin-top: 30px;
-            }
+    .overlay-content {
+        position: relative;
+        top: 25%;
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+    }
 
-            .overlay p {
-                padding: 8px;
-                text-decoration: none;
-                font-size: 36px;
-                color: #818181;
-                display: block;
-                transition: 0.3s;
-            }
+    .overlay a {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 36px;
+        color: #000000;
+        display: block;
+        transition: 0.3s;
+    }
+    
+    .overlay p {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 36px;
+        color: #000000;
+        display: block;
+        transition: 0.3s;
+    }
 
-            .overlay p:hover, .overlay p:focus {
-                color: #f1f1f1;
-            }
+    .overlay a:hover, .overlay a:focus {
+        color: #eae3bf;
+    }
 
-            .overlay .closebtn {
-                position: absolute;
-                top: 20px;
-                right: 45px;
-                font-size: 60px;
-            }
+    .overlay .closebtn {
+        position: absolute;
+        top: 20px;
+        right: 45px;
+        font-size: 60px;
+    }
 
-            @media screen and (max-height: 450px) {
-              .overlay p {font-size: 20px}
-              .overlay .closebtn {
-                font-size: 40px;
-                top: 15px;
-                right: 35px;
-              }
-            }
+    @media screen and (max-height: 450px) {
+      .overlay {overflow-y: auto;}
+      .overlay a {font-size: 20px}
+      .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+      }
+    }
 
-  
-        </style>
-    </head>
-    <body>
-          <!--Nav-->
-        <nav class="layer">
+
+</style>
+
+</head>
+<body>
+<nav class="layer">
           <ul>
             <li><a onclick="openAbout()">About</a></li>
             <li><a onclick="openServices()">Services</a></li>
@@ -137,39 +143,34 @@
 
           </ul>
         </nav>
-
-      <!--Initial Covering Layer-->
-      <div class="front page layer">
-        <h1>
-          <img src="{{asset('/images/REIN01.png')}}" width="400px" length="150px"/>
-        </h1>
-      </div>
-
-       <!-- Modal -->
-        <div id="myAbout" class="overlay">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeAbout()">&times;</a>
+    <div class="front page layer">
+            <h1>
+              <img src="{{asset('/images/REIN01.png')}}" width="400px" length="150px">
+            </h1>
+          </div>
+      
+      <div id="myAbout" class="overlay">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeAbout()">×</a>
           <div class="overlay-content">
             <p>This is the about page</p>
           </div>
         </div>
-        
         <div id="myServices" class="overlay">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeServices()">&times;</a>
+          <a href="javascript:void(0)" class="closebtn" onclick="closeServices()">×</a>
           
           <div class="overlay-content">
             <p>This is the services page</p>
           </div>
         </div>
-        
         <div id="myContact" class="overlay">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeContact()">&times;</a>
+          <a href="javascript:void(0)" class="closebtn" onclick="closeContact()">×</a>
           <div class="overlay-content">
             <p>This is the contact page</p>
           </div>
         </div>
         
         <div id="myBePartner" class="overlay">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeBePartner()">&times;</a>
+          <a href="javascript:void(0)" class="closebtn" onclick="closeBePartner()">×</a>
           <div class="overlay-content">
             <p>
               <a href="{{url('/partner/login')}}">Login as a Partner</a>
@@ -177,40 +178,39 @@
             </p>
           </div>
         </div>
-     
-
+        
         <script>
               function openAbout() {
-                document.getElementById("myAbout").style.display = "block";
+                document.getElementById("myAbout").style.height = "100%";
               }
               
               function closeAbout() {
-                document.getElementById("myAbout").style.display = "none";
+                document.getElementById("myAbout").style.height = "0%";
               }
               
               function openServices() {
-                document.getElementById("myServices").style.display = "block";
+                document.getElementById("myServices").style.height = "100%";
               }
               
               function closeServices() {
-                document.getElementById("myServices").style.display = "none";
+                document.getElementById("myServices").style.height = "0%";
               }
               
               function openContact() {
-                document.getElementById("myContact").style.display = "block";
+                document.getElementById("myContact").style.height = "100%";
               }
               
               function closeContact() {
-                document.getElementById("myContact").style.display = "none";
+                document.getElementById("myContact").style.height = "0%";
               }
               
               function openBePartner() {
-                document.getElementById("myBePartner").style.display = "block";
+                document.getElementById("myBePartner").style.height = "100%";
               }
               
               function closeBePartner() {
-                document.getElementById("myBePartner").style.display = "none";
+                document.getElementById("myBePartner").style.height = "0%";
               }
         </script>
-    </body>
+</body>
 </html>
