@@ -20,32 +20,39 @@ class TransactionLogsController extends Controller
 
    public function index()
    {
-
-       $getreports =['status' => 'Done'];
-
-       $reports = Reports::where($getreports)->get();
+       $reports = Reports::all();
        return view ('Admin.TransactionLogs', compact('reports'));
    }
 
-   public function fullTransactionPDF(){
+    function showTransaction($ID) {
+        $reports = Reports::find($ID);
 
+        $getpartner = ['id' => $reports->partner];
+        $partner = User::where($getpartner)
+                        ->get()
+                        ->first();
+        $getmotorist = ['id' => $reports->userID];
+        $motorist = User::where($getmotorist)
+                        ->get()
+                        ->first();
 
-       $getreports =['status' => 'Done'];
+        $getassistant = ['id' => $reports->assistant];
+        $assistant = User::where($getmotorist)
+                        ->get()
+                        ->first();
 
-       $reports = Reports::where($getreports)
-                  ->get();
-       
-       
-       //$pdf = PDF::loadView('Admin.FullTransactionPDF', compact('reports'));
+        $getcar = ['UserID' => $reports->userID];
+        $car = DB::table ('cars')
+                        ->where($getcar)
+                        ->get()
+                        ->first();
 
-       dd($report);
-       //return $pdf->download('TransactionLog.pdf'); //Add date sa loob ng pagdownlaod
- 
-     }
-
-     function showTransaction($ID) {
-       $reports = Reports::find($ID);
-       return view('Admin.ShowTransaction', compact('reports'));
+        $getpayment = ['ReportID' => $ID];
+        $payment = DB::table ('payments')
+                            ->where($getpayment)
+                            ->get()
+                            ->first();
+       return view('Admin.ShowTransaction', compact('reports', 'partner', 'motorist', 'assistant', 'car', 'payment'));
      }
 
      function singleTransactionPDF($ID){

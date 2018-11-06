@@ -33,9 +33,7 @@
                                 <thead>
                                     <tr class="text-center">
                                             <th class="serial">#</th>
-                                            <th>Partner</th>
                                             <th>Motorist</th>
-                                            <th>Assistant</th>
                                             <th>Service Type</th>
                                             <th>Total Service Price</th>
                                             <th>Service Status</th>
@@ -46,9 +44,7 @@
                                 @foreach($reports as $report)
                                     <tr class="text-center">
                                             <td>{{ $i++ }}</td>
-                                            <td>{{$report->partner}}</td>
-                                            <td>{{$report->motorist}}</td>
-                                            <td>{{$report->assistant}}</td>
+                                            <td>{{$report->userID}}</td>
                                             <td>{{$report->servicetype}}</td>
                                             <td>{{$report->totalservice}}</td>
                                             <td>{{$report->status}}</td>
@@ -71,21 +67,11 @@
                                     <thead>
                                         <tr>
                                                 <th class="serial">#</th>
-                                                <th>Partner</th>
                                                 <th>Motorist</th>
-                                                <th>Assistant</th>
-                                                <th>Instruction</th>
                                                 <th>Service Type</th>
-                                                <th>Image</th>
-                                                <th>Location</th>
-                                                <th>Service Comment</th>
-                                                <th>Additional Charge</th>
                                                 <th>Total Service Price</th>
                                                 <th>Service Status</th>
-                                                <th>Payment Status</th>
-                                                <th>Date Submitted</th>
-                                                <th>Date Updated</th>
-                                                <th>Action</th>
+                                                <th>ACTION</th>
                                         </tr>
                                     </thead>
                                 </table>

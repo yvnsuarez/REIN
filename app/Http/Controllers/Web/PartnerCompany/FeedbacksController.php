@@ -53,12 +53,13 @@ class FeedbacksController extends Controller
         $reports = Reports::where($getreportpartner)
                    ->get()
                    ->first();
-        // $report = Reports::find($ID);
+
         $feedbackreport = ['reportID' => $reports->ID];
 
-
         $getmotorist = ['id' => $reports->userID];
-        $motorist = User::where($getmotorist)->get()->first();
+        $motorist = User::where($getmotorist)
+                        ->get()
+                        ->first();
 
         $getassistant = ['id' => $reports->assistant];
         $assistant = User::where($getassistant)->get()->first();

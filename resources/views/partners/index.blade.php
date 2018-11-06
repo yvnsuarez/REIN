@@ -15,27 +15,7 @@
 @endsection
 
 @section('content')
-<div class="row">
-    <div class="col-lg-2">
-            
-    </div>
-    <div class="col-lg-8">
-            {!! Form::open(['method'=>'GET','url'=>'admin','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
-                            
-            <div class="input-group custom-search-form">
-                <input type="text" class="form-control" name="search" placeholder="Search...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default-sm" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </span>
-            </div>
-            {!! Form::close() !!}
-    </div>
-    <div class="col-lg-2">
-    </div>
-</div>
-<br/>
+<div class="content">
         <div class="animated fadeIn">
             <div class="row">
                 <div class="col-lg-12">
@@ -54,8 +34,6 @@
                                         <th class="serial">#</th>
                                         <th>Business Name</th>
                                         <th>Address</th>
-                                        <th>Business Registration No</th>
-                                        <th>LTFRB Accreditation No</th>
                                         <th>Contact No</th>
                                         <th>Email</th>
                                         <th>Status</th>
@@ -65,13 +43,11 @@
                                 <tbody> 
                                 @foreach($users as $user)
                                     <tr class="text-center">
-                                        <td>{{ $i++ }}</td>
+                                    <td>{{ $i++ }}</td>
                                         <td>{{$user->BusinessName}}</td>
-                                        <td>{{$user->Address}}</td>
-                                        <td>{{$user->BusinessRegistrationNo}}</td>
-                                        <td>{{$user->LTFRBRegistrationNo}}</td>
+                                        <td>{{$user->Address}} {{$user->City}} {{$user->ZipCode}}</td>
                                         <td>{{$user->MobileNo}}</td>
-                                        <td>{{$user->Email}}</td>
+                                        <td>{{$user->email}}</td>
                                         <td>{{$user->Status}}</td>
                                         <td>
                                                 <div class="links">
@@ -84,21 +60,16 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
-                                
                             </table>
                         </div> <!-- /.table-stats -->
                         @else
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                         <th class="serial">#</th>
                                         <th>Business Name</th>
                                         <th>Address</th>
-                                        <th>City</th>
-                                        <th>ZipCode</th>
-                                        <th>Business Registration No</th>
-                                        <th>LTFRB Accreditation No</th>
                                         <th>Contact No</th>
                                         <th>Email</th>
                                         <th>Status</th>
@@ -112,6 +83,5 @@
                     </div> <!-- /.table-stats -->
                         @endif
                     </div>
-
                 </div>
 @endsection

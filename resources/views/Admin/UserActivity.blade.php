@@ -22,10 +22,8 @@
                     <div class="card">
                         <div class="card-header">
                             <strong class="card-title">User Activities</strong>
-                            {{-- <a href="{{action('Web\Admin\TransactionLogsController@fullTransactionPDF')}}">
-                                <button class="btn btn-outline-secondary btn-sm pull-right""><i class="fa fa-print"></i> Print</button>
-                            </a> --}}
                         </div>
+                        <?php $i = 1; ?>
                         @if(count($userlogs) > 0)
                         <div class="table-stats order-table ov-h">
                             <table class="table">
@@ -34,9 +32,6 @@
                                             <th>No.</th>
                                             <th>Causer</th>
                                             <th>Type</th>
-                                            <th>Target User</th>
-                                            <th>Report</th>
-                                            <th>Payment</th>
                                             <th>Description</th>
                                             <th>Date</th>
                                             <th>ACTION</th>
@@ -45,12 +40,9 @@
                                 <tbody> 
                                 @foreach($userlogs as $userlog)
                                     <tr class="text-center">
-                                            <td></td>
+                                            <td>{{$i++}}</td>
                                             <td>{{$userlog->UserID}}</td>
                                             <td>{{$userlog->Type}}</td>
-                                            <td>{{$userlog->TargetUser}}</td>
-                                            <td>{{$userlog->ReportsID}}</td>
-                                            <td>{{$userlog->PaymentsID}}</td>
                                             <td>{{$userlog->Description}}</td>
                                             <td>{{$userlog->Date}}</td>
                                             <td>
@@ -74,8 +66,6 @@
                                             <th>No.</th>
                                             <th>Causer</th>
                                             <th>Type</th>
-                                            <th>Target User</th>
-                                            <th>Report</th>
                                             <th>Payment</th>
                                             <th>Description</th>
                                             <th>Date</th>

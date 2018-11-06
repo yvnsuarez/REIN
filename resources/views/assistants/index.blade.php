@@ -19,19 +19,6 @@
     <div class="col-lg-2">
             
     </div>
-    <div class="col-lg-8">
-            {!! Form::open(['method'=>'GET','url'=>'admin','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
-                            
-            <div class="input-group custom-search-form">
-                <input type="text" class="form-control" name="search" placeholder="Search...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default-sm" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </span>
-            </div>
-            {!! Form::close() !!}
-    </div>
     <div class="col-lg-2">
     </div>
 </div>
@@ -50,15 +37,10 @@
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                         <th class="serial">#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
+                                        <th>Name</th>
                                         <th>Mobile No</th>
-                                        <th>BirthDay</th>
-                                        <th>Address</th>
-                                        <th>City</th>
-                                        <th>ZipCode</th>
                                         <th>Email</th>
                                         <th>Status</th>
                                         <th>Assign Status</th>
@@ -68,15 +50,10 @@
                                 <tbody> 
                                 @foreach($users as $user)
                                     <tr class="text-center">
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{$user->FirstName}}</td>
-                                        <td>{{$user->LastName}}</td>
+                                        <td>{{$i++ }}</td>
+                                        <td>{{$user->FirstName}} {{$user->LastName}}</td>
                                         <td>{{$user->MobileNo}}</td>
-                                        <td>{{$user->BirthDay}}</td>
-                                        <td>{{$user->Address}}</td>
-                                        <td>{{$user->City}}</td>
-                                        <td>{{$user->ZipCode}}</td>
-                                        <td>{{$user->Email}}</td>
+                                        <td>{{$user->email}}</td>
                                         <td>{{$user->Status}}</td>
                                         <td>{{$user->AssignStatus}}</td>
                                         <td>
@@ -98,13 +75,8 @@
                                 <thead>
                                     <tr>
                                             <th class="serial">#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
+                                            <th>Name</th>
                                             <th>Mobile No</th>
-                                            <th>BirthDay</th>
-                                            <th>Address</th>
-                                            <th>City</th>
-                                            <th>ZipCode</th>
                                             <th>Email</th>
                                             <th>Status</th>
                                             <th>Assign Status</th>

@@ -44,42 +44,145 @@
         }
       </script> --}}
       
+    <script type="text/javascript">
+        $('.form-part input[type="checkbox"]').wrap('<div class="ns-check-box"><i></i></div>');
+        $.fn.toggleCheckbox = function() {
+        this.attr('checked', !this.attr('checked'));
+        }
+        $('.ns-check-box').on('click', function() {
+        $(this).find(':checkbox').toggleCheckbox();
+        $(this).toggleClass('checkedBox');
+        });
+    </script>
+    
+      
     <style>
-    #weatherWidget .currentDesc {
-        color: #ffffff!important;
-    }
-        .traffic-chart { 
-            min-height: 335px; 
-        }
-        #flotPie1  {
-            height: 150px;
-        } 
-        #flotPie1 td {
-            padding:3px;
-        }
-        #flotPie1 table {
-            top: 20px!important;
-            right: -10px!important;
-        }
-        .chart-container {
-            display: table;
-            min-width: 270px ;
-            text-align: left;
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-        #flotLine5  {
-             height: 105px;
-        } 
 
-        #flotBarChart {
-            height: 150px;
-        }
-        #cellPaiChart{
-            height: 160px;
-        }
+    * {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
 
-    </style>
+
+.clearfix {
+  clear: both;
+}
+
+.form-part {
+  margin: 5px 0;
+}
+
+.form-part h2 {
+  font-size: 25px;
+  font-weight: 400;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-bottom: 7px;
+}
+
+.text-input,
+.radio-button,
+.check-boxes {
+  margin-bottom: 8px;
+}
+
+.text-input label,
+.radio-button label,
+.check-boxes label {
+  display: block;
+  margin-bottom: 3px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.radio-button label,
+.check-boxes label {
+  margin-bottom: 7px;
+  font-weight: 900;
+}
+
+.text-input input,
+.text-input textarea,
+.text-input select {
+  padding: 10px;
+  display: block;
+  width: 83%;
+  border: solid 3px #ccc;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.text-input select {
+  width: 80%;
+}
+
+.text-input textarea {
+  height: 50px;
+}
+
+.sqr-input .text-input,
+.sqr-radio-input .radio-button,
+.sqr-check-input .check-boxes {
+  float: left;
+  width: 40%;
+}
+
+.sqr-input .text-input:nth-child(1),
+.sqr-radio-input .radio-button:nth-child(1),
+.sqr-check-input .check-boxes:nth-child(1) {
+  margin-right: 40%;
+}
+
+.cub-input .text-input {
+  float: left;
+  width: 40%;
+}
+
+.cub-input .text-input:nth-child(1),
+.cub-input .text-input:nth-child(2) {
+  margin-right: 10%;
+}
+
+
+.checkedBox i {
+  bottom: 2px;
+  -webkit-transform: rotateZ(0deg);
+  -moz-transform: rotateZ(0deg);
+  -o-transform: rotateZ(0deg);
+  transform: rotateZ(0deg);
+}
+
+.check-boxes ul li {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 30px;
+  margin-bottom: 7px;
+}
+
+.sqr-radio-input .radio-button ul li,
+.sqr-check-input .check-boxes ul li {
+  margin-right: 15px;
+}
+
+.check-boxes ul li span {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.sqr-input .text-input .sqr-input .text-input:nth-child(1) {
+  margin-right: 15%;
+  width: 40%;
+}
+
+.margin-bottom-zero {
+  margin-bottom: 0px;
+}
+
+</style>
 
 </head>
 <body>

@@ -56,7 +56,7 @@
                                     <li class="list-group-item">
                                         <b>Service Type: </b>{{$reports->servicetype}}
                                             <br/>
-                                        <b>Service Instruction: </b>{{$reports->instruction}}}
+                                        <b>Service Instruction: </b>{{$reports->instruction}}
                                             <br/>
                                         <b>Service Image: </b>{{$reports->image}}}
                                             <br/>

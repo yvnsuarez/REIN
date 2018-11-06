@@ -52,8 +52,8 @@
                                 {!! Form::text('ZipCode', null, ['class'=>'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('Email', 'E-mail')!!}
-                                {!! Form::email('Email', null, ['class'=>'form-control']) !!}
+                                {!! Form::label('email', 'E-mail')!!}
+                                {!! Form::email('email', null, ['class'=>'form-control']) !!}
                             </div>
                             <div class="form-group">
                                     {!! Form::label('Status', 'Status')!!}

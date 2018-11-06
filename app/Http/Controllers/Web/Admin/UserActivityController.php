@@ -27,11 +27,41 @@ class UserActivityController extends Controller
     }
 
     function showUserActivity($ID) {
+
         $userlogs = DB::table('user_logs')
                     ->where('ID',$ID)
                     ->get()
                     ->first();
-        return view('Admin.ShowUserActivity', compact('userlogs'));
+
+        $getuserid = ['id' => $userlogs->UserID];
+        $causer = DB::table('users')
+                        ->where($getuserid)
+                        ->get()
+                        ->first();
+        $gettargetuser = ['id' => $userlogs->TargetUser];
+        $targetuser = DB::table('users')
+                            ->where($gettargetuser)
+                            ->get()
+                            ->first();
+        $getreport = ['ID' => $userlogs->ReportsID];
+        $report = DB::table('reports')
+                        ->where($getreport)
+                        ->get()
+                        ->first();
+        // $getfeedback = ['reportID' => $report->ID];
+        // $feedback = DB::table('feedbacks')
+        //                 ->where($getfeedback)
+        //                 ->get()
+        //                 ->first();
+        $getpayment = ['ID' => $userlogs->PaymentsID];
+        $payment = DB::table('payments')
+                        ->where($getpayment)
+                        ->get()
+                        ->first();
+
+        return view('Admin.ShowUserActivity', 
+                compact('userlogs', 'causer', 'targetuser',
+                        'report',  'payment')); //'feedback',
       }
 
 

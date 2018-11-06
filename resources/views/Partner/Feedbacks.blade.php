@@ -15,28 +15,7 @@
 @endsection
 
 @section('content')
-{{-- <div class="row">
-    <div class="col-lg-2">
-            
-    </div>
-    <div class="col-lg-8">
-            {!! Form::open(['method'=>'GET','url'=>'admin','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
-                            
-            <div class="input-group custom-search-form">
-                <input type="text" class="form-control" name="search" placeholder="Search...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default-sm" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </span>
-            </div>
-            {!! Form::close() !!}
-    </div>
-    <div class="col-lg-2">
-    </div>
-</div> --}}
-<br/>
-        <div class="animated fadeIn">
+<div class="animated fadeIn">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -52,7 +31,6 @@
                                             <th>#</th>
                                             <th>Report No.</th>
                                             <th>Review</th>
-                                            <th>Date Submitted</th>
                                             <th>ACTION</th>
                                     </tr>
                                 </thead>
@@ -62,7 +40,6 @@
                                             <td>{{ $i++ }}</td>
                                             <td>{{$feedback->reportID}}</td>
                                             <td>{{$feedback->review}}</td>
-                                            <td>{{$feedback->DateSubmitted}}</td>
                                             <td>
                                                 {{-- MODAL FOR VIEWING OF REPORT --}}
                                                 <div class="links">
@@ -85,7 +62,6 @@
                                             <th>#</th>
                                             <th>Report</th>
                                             <th>Review</th>
-                                            <th>Date Submitted</th>
                                             <th>ACTION</th>
                                     </tr>
                                 </thead>

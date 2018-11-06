@@ -15,26 +15,6 @@
 @endsection
 
 @section('content')
-<div class="row">
-        <div class="col-lg-2">
-                
-        </div>
-        <div class="col-lg-8">
-                {!! Form::open(['method'=>'GET','url'=>'admin','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
-                                
-                <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" name="search" placeholder="Search...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default-sm" type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
-                {!! Form::close() !!}
-        </div>
-        <div class="col-lg-2">
-        </div>
-    </div>
 <div class="content">
         <div class="animated fadeIn">
             <div class="row">
@@ -48,15 +28,11 @@
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                         <th class="serial">#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Mobile No</th>
-                                        <th>Birthday</th>
+                                        <th>Name</th>
                                         <th>Address</th>
-                                        <th>City</th>
-                                        <th>ZipCode</th>
+                                        <th>Mobile No</th>
                                         <th>Email</th>
                                         <th>Status</th>
                                         <th>ACTION</th>
@@ -66,14 +42,10 @@
                                 @foreach($users as $user)
                                     <tr class="text-center">
                                             <td>{{ $i++ }}</td>
-                                            <td>{{$user->FirstName}}</td>
-                                            <td>{{$user->LastName}}</td>
+                                            <td>{{$user->FirstName}} {{$user->LastName}}</td>
+                                            <td>{{$user->Address}} {{$user->City}} {{$user->ZipCode}}</td>
                                             <td>{{$user->MobileNo}}</td>
-                                            <td>{{$user->Birthday}}</td>
-                                            <td>{{$user->Address}}</td>
-                                            <td>{{$user->City}}</td>
-                                            <td>{{$user->ZipCode}}</td>
-                                            <td>{{$user->Email}}</td>
+                                            <td>{{$user->email}}</td>
                                             <td>{{$user->Status}}</td>
                                         <td>
                                                 <div class="links">
@@ -91,16 +63,12 @@
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                             <th class="serial">#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Mobile No</th>
-                                            <th>Birthday</th>
+                                            <th>Name</th>
                                             <th>Address</th>
-                                            <th>City</th>
-                                            <th>ZipCode</th>
-                                            <th>Email</th>
+                                            <th>Mobile No</th>
+                                            <th>email</th>
                                             <th>Status</th>
                                             <th>ACTION</th>
                                     </tr>

@@ -15,43 +15,78 @@
 @endsection
 
 @section('content')
-    <div class="content">
+<div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-8">
                         <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Report No. {{$reports->ID}}</strong>
-                                <a href="{{action('Web\PartnerCompany\TransactionLogsController@singleTransactionPDF', $reports->ID)}}">
+                                <div class="card-header">
+                                        <strong class="card-title">Transaction No. {{$reports->ID}}</strong>
+                                    @if ($reports->status === 'Done')
+                                    <a href="{{action('Web\PartnerCompany\TransactionLogsController@singleTransactionPDF', $reports->ID)}}">
                                         <button class="btn btn-outline-secondary btn-sm pull-right"><i class="fa fa-print"></i> Print</button>
                                     </a>
-                                    &nbsp;&nbsp;
+                                    &nbsp; &nbsp;
                                     <a href="{{action('Web\PartnerCompany\TransactionLogsController@ExamplePDF', $reports->ID)}}">
                                         <button class="btn btn-outline-secondary btn-sm pull-right"><i class="fa fa-print"></i> PDF Design</button>
                                     </a>
-                            </div>
-                          
+                                    @endif
+                                </div>
                             <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><b>Partner: </b> {{$reports->partner}}</li>
-                                        <li class="list-group-item"><b>Motorist: </b>{{$reports->motorist}}</li>
-                                        <li class="list-group-item"><b>Assitant: </b>{{$reports->assistant}}</li>
-                                        <li class="list-group-item"><b>Special Instruction: </b>{{$reports->instruction}}</li>
-                                        <li class="list-group-item"><b>Service Type: </b>{{$reports->servicetype}}</li>
-                                        <li class="list-group-item"><b>Image: </b>{{$reports->image}}</li>
-                                        <li class="list-group-item"><b>Location: </b>{{$reports->Lat}}, {{$reports->Long}}</li>
-                                        <li class="list-group-item"><b>Service Comment: </b>{{$reports->comment}}</li>
-                                        <li class="list-group-item"><b>Additional Charge: </b>{{$reports->addcharge}}</li>
-                                        <li class="list-group-item"><b>Total Service Price: </b>{{$reports->totalservice}}</li>
-                                        <li class="list-group-item"><b>Service Status: </b>{{$reports->status}}</li>
-                                        <li class="list-group-item"><b>Date Submitted: </b>{{$reports->DateSubmitted    }}</li>
-                                        <li class="list-group-item"><b>Date Updated: </b>{{$reports->DateUpdated}}</li>
-                                    
+                                <b class="text-center">Transaction Details</b>
+                                        <li class="list-group-item">
+                                            <b>Motorist: </b> {{$motorist->FirstName}} {{$motorist->LastName}}<br/>
+                                            <b>Address: </b> {{$motorist->Address}} {{$motorist->City}} {{$motorist->ZipCode}}
+                                            <b>Contact No: </b> {{$motorist->MobileNo}}
+                                            <b>Email: </b> {{$motorist->email}}
+                                                <br/>
+                                                <br/>
+                                            <b>Car Details: </b><br/>
+                                            <b>Plate No: </b>{{$car->PlateNo}}<br/>
+                                            <b>Type: </b>{{$car->CarType}}<br/>
+                                            <b>Brand: </b>{{$car->Brand}}<br/>
+                                            <b>Model: </b>{{$car->YearModel}} {{$car->Model}}<br/>
+                                            <b>Color: </b>{{$car->Color}}
+                                                <br/>
+                                                <br/>
+                                            <b>Service Type: </b>{{$reports->servicetype}}<br/>
+                                            <b>Service Instruction: </b>{{$reports->instruction}}<br/>
+                                            <b>Service Place: </b>{{$reports->Lat}}, {{$reports->Lon}}<br/>
+                                            <b>Total Service Charge: </b>{{$reports->totalservice}}
+                                                <br/>
+                                                <br/>
+                                            @if ($reports->status === 'Done' OR $reports->status === 'Assigned' OR $reports->status === 'Ongoing')
+                                            <b>Assistant Details: </b> {{$assistant->FirstName}} {{$assistant->LastName}}<br/>
+                                            <b>Address: </b> {{$assistant->Address}} {{$assistant->City}} {{$assistant->ZipCode}}
+                                            <b>Contact No: </b> {{$assistant->MobileNo}}
+                                            <b>Email: </b> {{$assistant->email}}
+                                            @endif
+                                        </li>
+                            
+                                @if ($reports->status === 'Done')
+                                <b class="text-center">Payment Details</b>
+                                        <li class="list-group-item">
+                                            <b>Type: </b>{{$payment->PaymentType}}
+                                                <br/>
+                                            <b>Status: </b>{{$payment->Status}}
+                                                <br/>
+                                            <b>Date: </b>{{$payment->DatePaid}}
+                                        </li>
+                                    <br/>
+                                @endif
+
                                 </ul>
-                                <div class="card-footer">
+                                    <div class="card-footer">
                                         <div class="pull-left">
                                             <a href="{{ url('/partner/transactionlogs') }}" class="btn btn-warning btn-sm">Back</a>
                                         </div>
-                                    </div>
+                                        </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
                         </div>
                     </div>
                 </div>

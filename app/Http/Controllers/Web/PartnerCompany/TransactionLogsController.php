@@ -39,7 +39,30 @@ class TransactionLogsController extends Controller
 
     function showTransaction($ID) {
         $reports = Reports::find($ID);
-        return view('Partner.ShowTransaction', compact('reports'));
+
+        $getmotorist = ['id' => $reports->userID];
+        $motorist = User::where($getmotorist)
+                        ->get()
+                        ->first();
+
+        $getassistant = ['id' => $reports->assistant];
+        $assistant = User::where($getmotorist)
+                        ->get()
+                        ->first();
+
+        $getcar = ['UserID' => $reports->userID];
+        $car = DB::table ('cars')
+                        ->where($getcar)
+                        ->get()
+                        ->first();
+
+        $getpayment = ['ReportID' => $ID];
+        $payment = DB::table ('payments')
+                            ->where($getpayment)
+                            ->get()
+                            ->first();
+                            
+        return view('Partner.ShowTransaction', compact('reports', 'motorist', 'assistant', 'car', 'payment'));
     }
 
 
@@ -65,10 +88,11 @@ class TransactionLogsController extends Controller
                         ->where($getcar)
                         ->get()
                         ->first();
-        $getpayment = ['ReportID' =>$ID];
+        $getpayment = ['ReportID' => $ID];
         $getpaymentdetails = DB::table ('payments')
                             ->where($getpayment)
-                            ->get();
+                            ->get()
+                            ->first();
 
         // dd($getpartnerdetails);
         $pdf = PDF::loadView('Partner.SingleTransactionPDF', 
@@ -106,11 +130,11 @@ class TransactionLogsController extends Controller
                         ->where($getcar)
                         ->get()
                         ->first();
-
-        $getpayment = ['ReportID' =>$ID];
+        $getpayment = ['ReportID' => $ID];
         $getpaymentdetails = DB::table ('payments')
                             ->where($getpayment)
-                            ->get();
+                            ->get()
+                            ->first();
 
         // dd($getpartnerdetails);
         return view ('Partner.SingleTransactionPDF', 

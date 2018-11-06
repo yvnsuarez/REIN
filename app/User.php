@@ -18,7 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'id', 'UserTypeId','FirstName','LastName','MobileNo','BirthDay','Address','City','ZipCode',
         'BusinessName', 'BusinessRegistrationNo','LTFRBAccreditationNo',
-        'Email','password','Status', 'email_verified_at', 'PartnerCompany', 'AssignStatus', 'DateCreated',
+        'email','password','Status', 'email_verified_at', 'PartnerCompany', 'AssignStatus', 'DateCreated',
     ];
 
     public $timestamps = false;

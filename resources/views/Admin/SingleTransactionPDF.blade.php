@@ -288,7 +288,7 @@
                             </tr>
                             <tr>
                               <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-                                {{$report->comment}}
+                                {{$report->comment}}<br/>
                               </td>
                             </tr>
                             <tr>

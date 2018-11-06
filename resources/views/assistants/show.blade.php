@@ -15,32 +15,45 @@
 @endsection
 
 @section('content')
-<div class="content">
-        <div class="animated fadeIn">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Insert Business Name</strong>
-                        </div>
-                      
-                        <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><b>Address: </b> {{$user->Address}}</li>
-                                <li class="list-group-item"><b>City: </b>{{$user->City}}</li>
-                                <li class="list-group-item"><b>Zip Code: </b>{{$user->ZipCode}}</li>
-                                <li class="list-group-item"><b>Business Registration Number: </b>{{$user->BusinessRegistrationNo}}</li>
-                                <li class="list-group-item"><b>LTFRB Accreditation Number: </b>{{$user->LTFRBAccreditationNo}}</li>
-                                <li class="list-group-item"><b>Contact Number: </b>{{$user->ContactNo}}</li>
-                                <li class="list-group-item"><b>Email: </b>{{$user->Email}}</li>
-                                <li class="list-group-item"><b>Status: </b>{{$user->Status}}</li>
-                            </ul>
-
-                            <div class="card-footer">
-                                    <div class="pull-left">
-                                        <a href="{{ route('assistants.index') }}" class="btn btn-warning btn-sm">Back</a>
-                                    </div>
+            <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                                <div class="card-header">
+                                        <strong class="card-title">Assistant Details</strong>
                                 </div>
+                            <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <b>Name: </b> {{$user->FirstName}} {{$user->LastName}}
+                                                <br/>
+                                            <b>Address: </b>{{$user->Address}} {{$user->City}} {{$user->ZipCode}}
+                                                <br/>
+                                            <b>Contact No: </b>{{$user->MobileNo}}
+                                                <br/>
+                                            <b>Email: </b>{{$user->email}}
+                                                <br/>
+                                            <b>Birthday: </b>{{$user->BirthDay}}                                         
+                                        </li>
+                                <b class="text-center">Statuses</b>
+                                        <li class="list-group-item">
+                                            <b>Status: </b> {{$user->Status}}
+                                                <br/>
+                                            <b>Assign Status: </b> {{$user->AssignStatus}}
+                                        </li>
+                                    
+                                </ul>
+                            <br/>
+                                        <div class="pull-left">
+                                            <a href="{{ route('assistants.index') }}" class="btn btn-warning btn-sm">Back</a>
+                                        </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        </div>
                     </div>
                 </div>
-            </div>
 @endsection

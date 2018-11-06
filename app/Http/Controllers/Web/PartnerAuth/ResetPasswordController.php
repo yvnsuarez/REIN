@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Notifications\PartnerResetPasswordNotification;
 use Password;
 use Auth;
 

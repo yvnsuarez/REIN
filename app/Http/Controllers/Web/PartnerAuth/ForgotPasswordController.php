@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\PartnerAuth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use App\Notifications\PartnerResetPasswordNotification;
 use Password;
 
 class ForgotPasswordController extends Controller

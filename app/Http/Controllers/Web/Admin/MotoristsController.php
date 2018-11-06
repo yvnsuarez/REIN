@@ -57,7 +57,19 @@ class MotoristsController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('motorists.show', compact('user'));
+
+        $getcar = ['userID' => $id];
+        $car = DB::table('cars')
+                    ->where($getcar)
+                    ->get()
+                    ->first();
+
+        $getcancelledrequests = ['userID' => $id, 'status' => 'Cancelled'];
+        $cancellation = DB::table('reports')
+                    ->where($getcancelledrequests)
+                    ->count();
+                    
+        return view('motorists.show', compact('user', 'car', 'cancellation'));
     }
 
     /**

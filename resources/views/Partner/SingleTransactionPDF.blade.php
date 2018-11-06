@@ -1,4 +1,4 @@
-           <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title> Transaction Report Information </title>
 <meta name="robots" content="noindex,nofollow" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0;" />
@@ -38,16 +38,16 @@
 <!-- Header -->
 <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
   <tr>
-    <td height="0"></td>
+    <td height="10"></td>
   </tr>
   <tr>
     <td>
       <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#ffffff">
         <tr class="hiddenMobile">
-          <td height="40"></td>
+          <td height="20"></td>
         </tr>
         <tr class="visibleMobile">
-          <td height="30"></td>
+          <td height="10"></td>
         </tr>
 
         <tr>
@@ -71,11 +71,9 @@
                         <tr>
                           <td style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: left;">
                             {{$getpartnerdetails->BusinessName}}<br />
-                            {{$getpartnerdetails->Address}}<br/>
+                            {{$getpartnerdetails->Address}} {{$getpartnerdetails->City}} {{$getpartnerdetails->ZipCode}}<br/>
                             {{$getpartnerdetails->MobileNo}} <br/>
                             {{$getpartnerdetails->Email}} <br/>
-                            {{$getpartnerdetails->BusinessRegistrationNo}} <br/>
-                            {{$getpartnerdetails->LTFRBRegistrationNo}}
                           </td>
                         </tr>
                       </tbody>
@@ -104,8 +102,8 @@
                         <tr>
                           <td style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: right;">
                            {{$getmotoristdetails->FirstName}} {{$getmotoristdetails->LastName}}<br/>
+                           {{$getmotoristdetails->Address}} {{$getmotoristdetails->City}} {{$getmotoristdetails->ZipCode}}<br/>
                            {{$getmotoristdetails->MobileNo}}<br/>
-                           {{$getmotoristdetails->Adress}}<br/>
                            {{$getmotoristdetails->Email}}
                           </td>
                         </tr>
@@ -172,10 +170,7 @@
                     <tr>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" class="article">
                         Car Information: <br/>
-                        {{$getcardetails->PlateNo}}/{{$getcardetails->CarType}}/{{$getcardetails->Brand}}/ {{$getcardetails->Model}}/{{$getcardetails->Color}}
-                        <br/>
-                        Service Comment: <br/>
-                        {{$report->comment}}
+                        {{$getcardetails->PlateNo}}/{{$getcardetails->CarType}}/{{$getcardetails->Brand}}/{{$getcardetails->YearModel}} {{$getcardetails->Model}}/{{$getcardetails->Color}}
                       </td>
 					</tr>
                    
@@ -249,7 +244,7 @@
           <tbody>
             <tr>
             <tr class="hiddenMobile">
-              <td height="40"></td>
+              <td height="20"></td>
             </tr>
             <tr class="visibleMobile">
               <td height="20"></td>
@@ -260,7 +255,7 @@
                   <tbody>
                     <tr>
                       <td>
-                        <table width="220" border="0" cellpadding="0" cellspacing="0" align="left" class="col">
+                        <table width="240" border="0" cellpadding="0" cellspacing="0" align="left" class="col">
 
                           <tbody>
                             <tr>
@@ -269,14 +264,11 @@
                               </td>
                             </tr>
                             <tr>
-                              <td width="100%" height="10"></td>
-                            </tr>
-                            <tr>
                               <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-                              	Assistant: {{$getassistantdetails->FirstName}} {{$getassistantdetails->LastName}}<br/>
-                                Address: {{$getassistantdetails->Address}}<br/>
-                                Contact No: {{$getassistantdetails->MobileNo}}<br/>
-                                Email: {{$getassistantdetails->Email}}
+                              	{{$getassistantdetails->FirstName}} {{$getassistantdetails->LastName}}<br/>
+                                {{$getassistantdetails->Address}} {{$getassistantdetails->City}} {{$getassistantdetails->ZipCode}}<br/>
+                                {{$getassistantdetails->MobileNo}}<br/>
+                                {{$getassistantdetails->Email}}
                                 <br/>
                               </td>
                             </tr>
@@ -284,10 +276,23 @@
                         </table>
 
 
-                        <table width="220" border="0" cellpadding="0" cellspacing="0" align="right" class="col">
+                        <table width="240" border="0" cellpadding="0" cellspacing="0" align="right" class="col">
                           <tbody>
                             <tr class="visibleMobile">
-                              <td height="20"></td>
+                              <td height="5"></td>
+                            </tr>
+                            <tr>
+                              <td style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
+                                <strong>SERVICE COMMENT</strong>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
+                                {{$report->comment}}<br/>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="100%" height="5"></td>
                             </tr>
                             <tr>
                               <td style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
@@ -295,29 +300,12 @@
                               </td>
                             </tr>
                             <tr>
-                              <td width="100%" height="10"></td>
-                            </tr>
-                            <tr>
                               <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-                                {{-- Type: {{$getpaymentdetails->PaymentType}} <br/>
-                                Status: {{$getpaymentdetails->Status}} <br/> --}}
+                                Type: {{$getpaymentdetails->PaymentType}} <br/>
+                                Status: {{$getpaymentdetails->Status}} <br/>
                               </td>
                             </tr>
                           </tbody>
-                        </table>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table width="480" border="0" cellpadding="0" cellspacing="0" align="center" class="fullPadding">
-                  <tbody>
-                    <tr>
-                      <td>
-                        <table width="220" border="0" cellpadding="0" cellspacing="0" align="left" class="col">
                         </table>
                       </td>
                     </tr>
@@ -326,10 +314,10 @@
               </td>
             </tr>
             <tr class="hiddenMobile">
-              <td height="60"></td>
+              <td height="20"></td>
             </tr>
             <tr class="visibleMobile">
-              <td height="30"></td>
+              <td height="10"></td>
             </tr>
           </tbody>
         </table>
@@ -339,9 +327,5 @@
 </table>
 <!-- /Information -->
 <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
-
-        <tr class="spacer">
-          <td height="0"></td>
-        </tr>
 
 </table>
