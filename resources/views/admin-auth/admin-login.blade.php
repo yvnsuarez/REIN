@@ -53,10 +53,10 @@
                             @csrf
                         <div class="form-group">
                             <label>Email address</label>
-                            <input id="Email" type="Email" placeholder="Email" 
-                            class="form-control{{ $errors->has('Email') ? ' is-invalid' : '' }}" 
+                            <input id="Email" type="Email" placeholder="Email"
+                            class="form-control{{ $errors->has('Email') ? ' is-invalid' : '' }}"
                             name="Email" value="{{ old('Email') }}" required autofocus>
-                    
+
                             @if ($errors->has('Email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('Email') }}</strong>
@@ -98,7 +98,6 @@
             </div>
         </div>
     </div>
-
 
     <script src="{{ asset('assets/js/vendor/jquery-2.1.4.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>

@@ -7,15 +7,14 @@
         <title>REIN</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
         <!-- Styles -->
         <style>
 
             /* Design for Hover Navigation */
             body {
-              font-family: 'Roboto Condensed';
-              text-transform: uppercase;
-              background: #222;
+              font-family: 'Roboto', sans-serif;
+              background: #000000;
               height: 100%;
               overflow: hidden;
             }
@@ -59,6 +58,10 @@
               color: #fff;
             }
 
+            nav ul li a:hover {
+                color:#DABC20;
+            }
+
             .front{
               background: #DABC20;
             }
@@ -71,7 +74,7 @@
 
             /* Design for Modal */
             body {
-                font-family: 'Lato', sans-serif;
+                font-family: 'Roboto', sans-serif;
             }
 
             .overlay {
@@ -94,13 +97,34 @@
                 margin-top: 30px;
             }
 
+            .overlay figure {
+                float: left;
+                margin: 0;
+                text-align: center;
+                padding: 0;
+            }
+
+            .overlay figure figcaption {
+                font-family: 'Roboto', sans-serif;
+                color: #fff;
+                padding-top: 5px;
+            }
+
+            .overlay h1 {
+                color: #fff;
+            }
+
             .overlay p {
+                text-align: justify;
                 padding: 8px;
                 text-decoration: none;
-                font-size: 36px;
-                color: #818181;
+                font-size: 18px;
+                color: #fff;
                 display: block;
                 transition: 0.3s;
+                margin-left: 20em;
+                margin-right: 20em;
+                line-height: 2;
             }
 
             .overlay p:hover, .overlay p:focus {
@@ -112,6 +136,11 @@
                 top: 20px;
                 right: 45px;
                 font-size: 60px;
+                color: #fff;
+            }
+
+            .overlay .closebtn:hover {
+                color: #818181;
             }
 
             @media screen and (max-height: 450px) {
@@ -123,17 +152,17 @@
               }
             }
 
-  
+
         </style>
     </head>
     <body>
           <!--Nav-->
         <nav class="layer">
           <ul>
-            <li><a onclick="openAbout()">About</a></li>
-            <li><a onclick="openServices()">Services</a></li>
-            <li><a onclick="openContact()">Contact</a></li>
-            <li><a onclick="openBePartner()">Be A Partner</a></li>
+            <li><a href="javascript:void(0)" onclick="openAbout()">ABOUT US</a></li>
+            <li><a href="javascript:void(0)" onclick="openServices()">OUR SERVICES</a></li>
+            <li><a href="javascript:void(0)" onclick="openContact()">CONTACT US</a></li>
+            <li><a href="javascript:void(0)" onclick="openBePartner()">BE A PARTNER</a></li>
 
           </ul>
         </nav>
@@ -145,69 +174,108 @@
         </h1>
       </div>
 
-       <!-- Modal -->
+       <!-- Modal for About Us page -->
         <div id="myAbout" class="overlay">
           <a href="javascript:void(0)" class="closebtn" onclick="closeAbout()">&times;</a>
           <div class="overlay-content">
-            <p>This is the about page</p>
+            <h1>WELCOME</h1>
+            <div>
+            <p>
+                <img src="{{asset('/images/Mobile.png')}}" width="90px" length="90px" style="float:left; display:inline; padding-right: 50px; padding-top: 10px;"/>
+                What is REIN?<br>
+                    <b>REIN</b> is a <u>roadside emergency booking application</u> in Android mobile. It caters to private vehicle motorists around Metro Manila.
+                    REIN gives 24/7 access to convenient and immediate assistance which lessens the hassle of searching for the right service
+                    at the right location.
+            </p>
+            </div>
           </div>
         </div>
-        
+
+        <!-- Modal for Our Services page -->
         <div id="myServices" class="overlay">
           <a href="javascript:void(0)" class="closebtn" onclick="closeServices()">&times;</a>
-          
           <div class="overlay-content">
-            <p>This is the services page</p>
+              <h1>OUR SERVICES</h1>
+                <p style="text-align:center">Our <b>REIN</b> booking application allow motorists to book emergency roadside services such as: </p>
+                <br>
+                <p>
+                <figure style="width:20%">
+                    <img src=""/>
+                    <figcaption></figcaption>
+                </figure>
+                <figure style="width:15%">
+                    <img src="{{asset('/images/Towing.png')}}" width="80px" length="80px"/>
+                    <figcaption>Towing</figcaption>
+                </figure>
+                <figure style="width:15%">
+                    <img src="{{asset('/images/Tire.png')}}" width="80px" length="80px"/>
+                    <figcaption>Flat Tire Replacement</figcaption>
+                </figure>
+                <figure style="width:15%">
+                    <img src="{{asset('/images/Jumpstart.png')}}" width="80px" length="80px"/>
+                    <figcaption>Jumpstart</figcaption>
+                </figure>
+                <figure style="width:15%">
+                    <img src="{{asset('/images/Engine.png')}}" width="80px" length="80px"/>
+                    <figcaption>Other engine problem fixes</figcaption>
+                </figure>
+                <figure style="width:20%">
+                    <img src=""/>
+                    <figcaption></figcaption>
+                </figure>
+                </p>
           </div>
         </div>
-        
+
+        <!-- Modal for Contact Us page -->
         <div id="myContact" class="overlay">
           <a href="javascript:void(0)" class="closebtn" onclick="closeContact()">&times;</a>
           <div class="overlay-content">
             <p>This is the contact page</p>
           </div>
         </div>
-        
+
+        <!-- Modal for About Us page -->
         <div id="myBePartner" class="overlay">
           <a href="javascript:void(0)" class="closebtn" onclick="closeBePartner()">&times;</a>
           <div class="overlay-content">
             <p>
               <a href="{{url('/partner/login')}}">Login as a Partner</a>
-              
+
             </p>
           </div>
         </div>
-     
+
 
         <script>
               function openAbout() {
                 document.getElementById("myAbout").style.display = "block";
               }
-              
+
               function closeAbout() {
                 document.getElementById("myAbout").style.display = "none";
               }
-              
+
               function openServices() {
                 document.getElementById("myServices").style.display = "block";
               }
-              
+
               function closeServices() {
                 document.getElementById("myServices").style.display = "none";
               }
-              
+
               function openContact() {
                 document.getElementById("myContact").style.display = "block";
               }
-              
+
               function closeContact() {
                 document.getElementById("myContact").style.display = "none";
               }
-              
+
               function openBePartner() {
                 document.getElementById("myBePartner").style.display = "block";
               }
-              
+
               function closeBePartner() {
                 document.getElementById("myBePartner").style.display = "none";
               }
