@@ -25,6 +25,10 @@
                                 <a href="{{action('Web\PartnerCompany\TransactionLogsController@singleTransactionPDF', $reports->ID)}}">
                                         <button class="btn btn-outline-secondary btn-sm pull-right"><i class="fa fa-print"></i> Print</button>
                                     </a>
+                                    &nbsp;&nbsp;
+                                    <a href="{{action('Web\PartnerCompany\TransactionLogsController@ExamplePDF', $reports->ID)}}">
+                                        <button class="btn btn-outline-secondary btn-sm pull-right"><i class="fa fa-print"></i> PDF Design</button>
+                                    </a>
                             </div>
                           
                             <ul class="list-group list-group-flush">

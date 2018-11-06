@@ -83,6 +83,7 @@ Route::prefix('partner')->group(function() {
 
     Route::get('/transactionlogs', 'Web\PartnerCompany\TransactionLogsController@index');
     Route::get('/transactionlogs/{id}', 'Web\PartnerCompany\TransactionLogsController@showTransaction');
+    Route::get('/transactionlogs/pdfexample/{id}', 'Web\PartnerCompany\TransactionLogsController@ExamplePDF');
     Route::get('/transactionlogs/downloadSingleTransaction/{id}', 'Web\PartnerCompany\TransactionLogsController@singleTransactionPDF');
 
     Route::get('/feedbacks', 'Web\PartnerCompany\FeedbacksController@index');
