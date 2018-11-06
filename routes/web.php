@@ -48,6 +48,7 @@ Route::prefix('admin')->group(function() {
     
     Route::get('/transactionlogs', 'Web\Admin\TransactionLogsController@index');
     Route::get('/transactionlogs/{id}', 'Web\Admin\TransactionLogsController@showTransaction');
+    Route::get('/transactionlogs/pdfexample/{id}', 'Web\Admin\TransactionLogsController@ExamplePDF');
     Route::get('/transactionlogs/downloadSingleTransaction/{id}', 'Web\Admin\TransactionLogsController@singleTransactionPDF');
     
     Route::get('/useractivity', 'Web\Admin\UserActivityController@index')->name('admin.useractivity');

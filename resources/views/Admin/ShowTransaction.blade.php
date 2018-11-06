@@ -25,11 +25,15 @@
                                 <a href="{{action('Web\Admin\TransactionLogsController@singleTransactionPDF', $reports->ID)}}">
                                         <button class="btn btn-outline-secondary btn-sm pull-right"><i class="fa fa-print"></i> Print</button>
                                     </a>
+                                    &nbsp;&nbsp;
+                                    <a href="{{action('Web\Admin\TransactionLogsController@ExamplePDF', $reports->ID)}}">
+                                        <button class="btn btn-outline-secondary btn-sm pull-right"><i class="fa fa-print"></i> PDF Design</button>
+                                    </a>
                             </div>
                           
                             <ul class="list-group list-group-flush">
                                         <li class="list-group-item"><b>Partner: </b> {{$reports->partner}}</li>
-                                        <li class="list-group-item"><b>Motorist: </b>{{$reports->motorist}}</li>
+                                        <li class="list-group-item"><b>Motorist: </b>{{$reports->userID}}</li>
                                         <li class="list-group-item"><b>Assitant: </b>{{$reports->assistant}}</li>
                                         <li class="list-group-item"><b>Special Instruction: </b>{{$reports->instruction}}</li>
                                         <li class="list-group-item"><b>Service Type: </b>{{$reports->servicetype}}</li>

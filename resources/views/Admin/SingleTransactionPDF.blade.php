@@ -1,181 +1,331 @@
-<!DOCTYPE html>
-    <html>
-    <head>
-        <link rel="stylesheet" href="{{ asset('assets/scss/print.css') }}"/>
-    </head>
-    <body>
-<div class="container invoice">
-  <div class="invoice-header">
-    <div class="row">
-      <div class="col-xs-8">
-        <h1>Transaction Log</h1>
-        <h4 class="text-muted">
-            <?php
-            echo "<strong>Date: </strong>";
-            $mydate=getdate(date("U"));
-            echo "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year]";
-            date_default_timezone_set("Asia/Singapore");
-            echo " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong>Time: </strong>" .date("h:i:sa");
-            ?>
-        </h4>
-      </div>
-      <div class="col-xs-4">
-        <div class="media">
-          <div class="media-left">
-            <img class="media-object logo" src="{{asset('/images/REIN01.png')}}" height="45px" width="45px" />
-          </div>
-          <ul class="media-body list-unstyled">
-            <li><strong>REIN</strong></li>
-            <li>Roadside Emergency Assistancec</li>
-            <li>rein.inquiry@gmail.com</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="invoice-body">
-    <div class="row">
-      <div class="col-xs-5">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Company Details</h3>
-          </div>
-          <div class="panel-body">
-            <dl class="dl-horizontal">
-              <dt>Name</dt>
-              <dd><strong>{{$getpartnerdetails->BusinessName}}</strong></dd>
-              <dt>Address</dt>
-              <dd>{{$getpartnerdetails->Address}}</dd>
-              <dt>Phone</dt>
-              <dd>{{$getpartnerdetails->MobileNo}}</dd>
-              <dt>Email</dt>
-              <dd>{{$getpartnerdetails->Email}}</dd>
-              <dt>Business Registration No</dt>
-              <dd>{{$getpartnerdetails->BusinessRegistrationNo}}</dd>
-              <dt>LTFRB Accreditation No</dt>
-              <dd>{{$getpartnerdetails->LTFRBRegistrationNo}}</dd>              
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-7">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Motorist Details</h3>
-          </div>
-          <div class="panel-body">
-            <dl class="dl-horizontal">
-              <dt>Name</dt>
-              <dd>{{$getmotoristdetails->LastName}}, {{$getmotoristdetails->FirstName}} </dd>
-              <dt>Address</dt>
-              <dd>{{$getmotoristdetails->Address}} </dd>
-              <dt>Contact No</dt>
-              <dd>{{$getmotoristdetails->MobileNo}} </dd>
-              <dt>Email</dt>
-              <dd>{{$getmotoristdetails->Email}}  </dd>
-              <dt>&nbsp;</dt>
-              <dd>&nbsp;</dd>
-              <dt>&nbsp;</dt>
-              <dd>&nbsp;</dd>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Services / Products</h3>
-      </div>
-      <table class="table table-bordered table-condensed">
-        <thead>
-          <tr>
-            <th>Service / Instruction</th>
-            <th class="text-center colfix">Fee</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              {{$report->servicetype}}
-              <br>
-              <small class="text-muted">
-                {{$report->instruction}}
-              </small>
-            </td>
-            <td class="text-right">
-              <span class="mono">PHP 1,500.00</span>
-              <br>
-              <small class="text-muted">*subject to change</small>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="row">
-        <div class="col-xs-7">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <i>Comments / Notes</i>
-              <hr style="margin:3px 0 5px" /> 
-              {{$report->comment}}
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-5">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Assistant</h3>
-            </div>
-            <div class="panel-body">
-                <dl class="dl-horizontal">
-                    <dt>Name</dt>
-                    <dd>{{$getassistantdetails->LastName}}, {{$getassistantdetails->FirstName}} </dd>
-                    <dt>Address</dt>
-                    <dd>{{$getassistantdetails->Address}} </dd>
-                    <dt>Contact No</dt>
-                    <dd>{{$getassistantdetails->MobileNo}} </dd>
-                    <dt>Email</dt>
-                    <dd>{{$getassistantdetails->Email}}  </dd>
-            </div>
-          </div>
-        </div>
-      </div>
-    <div class="panel panel-default">
-      <table class="table table-bordered table-condensed">
-        <thead>
-          <tr>
-            <td class="text-center col-xs-1">Sub Total</td>
-            <td class="text-center col-xs-1">Additional Charge</td>
-            <td class="text-center col-xs-1">Total</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th class="text-center rowtotal mono">PHP 1,500.00</th>
-            <th class="text-center rowtotal mono">PHP {{$report->addcharge}}</th>
-            <th class="text-center rowtotal mono">PHP {{$report->totalservice}}</th>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="row">
-      <div class="col-xs-7">
-      </div>
-      <div class="col-xs-5">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Payment</h3>
-          </div>
-          <div class="panel-body">
-            <ul class="list-unstyled">
-              <li>Payment Type - <span class="mono">Insert payment type here</span></li>
-              <li>Status - <span class="mono">Insert payment status here</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> Transaction Report Information </title>
+<meta name="robots" content="noindex,nofollow" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0;" />
 
-  </div>
-</div>
-</body>
-</html>
+<style type="text/css">
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+  body { margin: 0; padding: 0; background: #e1e1e1; }
+  div, p, a, li, td { -webkit-text-size-adjust: none; }
+  .ReadMsgBody { width: 100%; background-color: #ffffff; }
+  .ExternalClass { width: 100%; background-color: #ffffff; }
+  body { width: 100%; height: 100%; background-color: #e1e1e1; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  html { width: 100%; }
+  p { padding: 0 !important; margin-top: 0 !important; margin-right: 0 !important; margin-bottom: 0 !important; margin-left: 0 !important; }
+  .visibleMobile { display: none; }
+  .hiddenMobile { display: block; }
+
+  @media only screen and (max-width: 600px) {
+  body { width: auto !important; }
+  table[class=fullTable] { width: 96% !important; clear: both; }
+  table[class=fullPadding] { width: 85% !important; clear: both; }
+  table[class=col] { width: 45% !important; }
+  .erase { display: none; }
+  }
+
+  @media only screen and (max-width: 420px) {
+  table[class=fullTable] { width: 100% !important; clear: both; }
+  table[class=fullPadding] { width: 85% !important; clear: both; }
+  table[class=col] { width: 100% !important; clear: both; }
+  table[class=col] td { text-align: left !important; }
+  .erase { display: none; font-size: 0; max-height: 0; line-height: 0; padding: 0; }
+  .visibleMobile { display: block !important; }
+  .hiddenMobile { display: none !important; }
+  }
+</style>
+
+
+<!-- Header -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
+  <tr>
+    <td height="10"></td>
+  </tr>
+  <tr>
+    <td>
+      <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#ffffff">
+        <tr class="hiddenMobile">
+          <td height="20"></td>
+        </tr>
+        <tr class="visibleMobile">
+          <td height="10"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <table width="480" border="0" cellpadding="0" cellspacing="0" align="center" class="fullPadding">
+              <tbody>
+                <tr>
+                  <td>
+                    <table width="220" border="0" cellpadding="0" cellspacing="0" align="left" class="col">
+                      <tbody>
+                        <tr>
+                          <td align="left"> 
+                          	<img src="https://isproj2b.benilde.edu.ph/REIN/images/REIN01.png" width="100" height="40" alt="logo" border="0" /></td>
+                        </tr>
+                        <tr class="hiddenMobile">
+                          <td height="40"></td>
+                        </tr>
+                        <tr class="visibleMobile">
+                          <td height="20"></td>
+                        </tr>
+                        <tr>
+                          <td style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: left;">
+                            {{$getpartnerdetails->BusinessName}}<br />
+                            {{$getpartnerdetails->Address}} {{$getpartnerdetails->City}} {{$getpartnerdetails->ZipCode}}<br/>
+                            {{$getpartnerdetails->MobileNo}} <br/>
+                            {{$getpartnerdetails->Email}} <br/>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table width="220" border="0" cellpadding="0" cellspacing="0" align="right" class="col">
+                      <tbody>
+                        <tr class="visibleMobile">
+                          <td height="20"></td>
+                        </tr>
+                        <tr>
+                          <td height="5"></td>
+                        </tr>
+                        <tr>
+                          <td style="font-size: 20px; color: #DABC20; letter-spacing: -1px; font-family: 'Open Sans', sans-serif; line-height: 1; vertical-align: top; text-align: right;">
+                            Transaction#{{$report->ID}}<br/>
+                            <small style="font-size:18px">{{$report->DateUpdated}}</small>
+                          </td>
+                        </tr>
+                        <tr>
+                        <tr class="hiddenMobile">
+                          <td height="40"></td>
+                        </tr>
+                        <tr class="visibleMobile">
+                          <td height="20"></td>
+                        </tr>
+                        <tr>
+                          <td style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: right;">
+                           {{$getmotoristdetails->FirstName}} {{$getmotoristdetails->LastName}}<br/>
+                           {{$getmotoristdetails->Address}} {{$getmotoristdetails->City}} {{$getmotoristdetails->ZipCode}}<br/>
+                           {{$getmotoristdetails->MobileNo}}<br/>
+                           {{$getmotoristdetails->Email}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- /Header -->
+<!-- Order Details -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
+  <tbody>
+    <tr>
+      <td>
+        <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#ffffff">
+          <tbody>
+            <tr>
+            <tr class="hiddenMobile">
+              <td height="60"></td>
+            </tr>
+            <tr class="visibleMobile">
+              <td height="40"></td>
+            </tr>
+            <tr>
+              <td>
+                <table width="480" border="0" cellpadding="0" cellspacing="0" align="center" class="fullPadding">
+                  <tbody>
+                    <tr>
+                      <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #222; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 10px 7px 0;" width="52%" align="left">
+                        Service
+                      </th>
+                      <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #222; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 10px 7px 0;" width="52%" align="left">
+                        Instruction
+                      </th>
+                      <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #222; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;" align="right">
+                        Subtotal
+                      </th>
+                      
+                    </tr>
+                    <tr>
+                      <td height="1" style="background: #bebebe;" colspan="4"></td>
+                    </tr>
+                    <tr>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" class="article">
+                        {{$report->servicetype}}
+                      </td>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" class="article">
+                        {{$report->instruction}}
+                      </td>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="right">
+                        <span>&#8369;</span> 1500
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="1" style="background: #bebebe;" colspan="4"></td>
+                    </tr>
+                    <tr>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" class="article">
+                        Car Information: <br/>
+                        {{$getcardetails->PlateNo}}/{{$getcardetails->CarType}}/{{$getcardetails->Brand}}/{{$getcardetails->YearModel}} {{$getcardetails->Model}}/{{$getcardetails->Color}}
+                      </td>
+					</tr>
+                   
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td height="10"></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- /Order Details -->
+<!-- Total -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
+  <tbody>
+    <tr>
+      <td>
+        <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#ffffff">
+          <tbody>
+            <tr>
+              <td>
+                <!-- Table Total -->
+                <table width="480" border="0" cellpadding="0" cellspacing="0" align="center" class="fullPadding">
+                  <tbody>
+                    <tr>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
+                        Subtotal
+                      </td>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; white-space:nowrap;" width="80">
+                        <span>&#8369;</span> 1500
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
+                        Additional Charge 
+                      </td>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
+                        <span>&#8369;</span> {{$report->addcharge}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
+                        <strong>Total Service Price</strong>
+                      </td>
+                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
+                        <strong> <span>&#8369;</span> {{$report->totalservice}}</strong>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- /Total -->
+<!-- Information -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
+  <tbody>
+    <tr>
+      <td>
+        <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#ffffff">
+          <tbody>
+            <tr>
+            <tr class="hiddenMobile">
+              <td height="20"></td>
+            </tr>
+            <tr class="visibleMobile">
+              <td height="20"></td>
+            </tr>
+            <tr>
+              <td>
+                <table width="480" border="0" cellpadding="0" cellspacing="0" align="center" class="fullPadding">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <table width="240" border="0" cellpadding="0" cellspacing="0" align="left" class="col">
+
+                          <tbody>
+                            <tr>
+                              <td style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
+                                <strong>ASSISTANT INFORMATION</strong>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
+                              	{{$getassistantdetails->FirstName}} {{$getassistantdetails->LastName}}<br/>
+                                {{$getassistantdetails->Address}} {{$getassistantdetails->City}} {{$getassistantdetails->ZipCode}}<br/>
+                                {{$getassistantdetails->MobileNo}}<br/>
+                                {{$getassistantdetails->Email}}
+                                <br/>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+
+                        <table width="240" border="0" cellpadding="0" cellspacing="0" align="right" class="col">
+                          <tbody>
+                            <tr class="visibleMobile">
+                              <td height="5"></td>
+                            </tr>
+                            <tr>
+                              <td style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
+                                <strong>SERVICE COMMENT</strong>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
+                                {{$report->comment}}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="100%" height="5"></td>
+                            </tr>
+                            <tr>
+                              <td style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
+                                <strong>PAYMENT INFORMATION</strong>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
+                                Type: {{$getpaymentdetails->PaymentType}} <br/>
+                                Status: {{$getpaymentdetails->Status}} <br/>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr class="hiddenMobile">
+              <td height="20"></td>
+            </tr>
+            <tr class="visibleMobile">
+              <td height="10"></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- /Information -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable" bgcolor="#e1e1e1">
+
+</table>
