@@ -129,13 +129,34 @@
 
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link">{{Auth::user()->FirstName}} {{Auth::user()->LastName}}</a>
-                            <a class="nav-link" href="{{route ('admin.logout') }}"><i class="fa fa-power-off"></i>Logout</a>
+                            <a class="nav-link" href="{{url('/admin/adminfunction')}}">Admin Function</a>
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#Modal"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div> 
                 </div>  
             </div>
         </header><!-- /header -->
         <!-- Header-->
+         <!-- Modal-->
+         <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Confirm Logout</h5>
+                                                <button class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to Logout?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                                                <a href="{{route ('admin.logout') }}"  class="btn btn-secondary">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
         <div class="breadcrumbs">
                 <div class="breadcrumbs-inner">

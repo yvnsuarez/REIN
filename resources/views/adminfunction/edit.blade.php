@@ -1,4 +1,4 @@
-@extends('layouts.PartnerCompany')
+@extends('layouts.Admin')
 
 @section('content-header')
 <div class="breadcrumbs-inner">
@@ -6,7 +6,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Manage Assistant</h1>
+                        <h1>Manage Admin</h1>
                     </div>
                 </div>
             </div>
@@ -20,9 +20,9 @@
 <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                Update Assistant</div>
+                Update Admin</div>
             <div class="card-body card-block">
-            {!! Form::model($user,array('route'=>['assistants.update', $user->id], 'method'=>'PUT')) !!}
+            {!! Form::model($user,array('route'=>['adminfunction.update', $user->id], 'method'=>'PUT')) !!}
                     <!-- @csrf -->
             <div class="container">
             <div class="form-part">
@@ -38,35 +38,6 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="cub-input">
-                    <div class="text-input">
-                    <label for="MobileNo">Mobile Number</label>
-                            <input type="text" name="MobileNo" value="{{ $user->MobileNo}}" placeholder="XXXX XXX XXXX" class="form-control" required>
-                    </div>
-                    <div class="text-input">
-                    <label for="BirthDay">Birthday</label>
-                                <input type="date" name="BirthDay" value="{{ $user->BirthDay}}" class="form-control" required>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-             
-                <div class="text-input">
-                <label for="Address">Address</label>
-                                <input type="text" name="Address" value="{{ $user->Address}}" class="form-control" required>
-                </div>
-
-                <div class="cub-input">
-                    <div class="text-input">
-                    <label for="City">City</label>
-                                    <input type="text" name="City" value="{{ $user->City}}" class="form-control" required>
-                    </div>
-                    <div class="text-input">
-                    <label for="ZipCode">Zip Code</label>
-                            <input type="text" name="ZipCode" value="{{ $user->ZipCode}}" placeholder="XXXX" class="form-control" required>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-
                 <div class="text-input">
                 <label for="Email">E-mail</label>
                                     <input type="email" name="Email" placeholder="example@gmail.com" value="{{ $user->Email}}" class="form-control" required>
@@ -97,10 +68,10 @@
 
                 <div class="form-group">
                                     <div class="pull-left">
-                                            <a href="{{ route('assistants.index') }}" class="btn btn-warning btn-sm">Cancel</a>
+                                            <a href="{{ route('adminfunction.index') }}" class="btn btn-warning btn-sm">Cancel</a>
                                         </div>
                                         &nbsp;
-                                    <input type="button" value="Update Assisant" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#Modal2"/>
+                                    <input type="button" value="Update Admin" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#Modal2"/>
                             </div>
                              <!-- Modal -->
                              <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

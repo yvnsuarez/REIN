@@ -23,14 +23,6 @@ Route::get('/', function(){
 });
 
 
-/* PARTNER REGISTRATION */
-Route::get('/partner/register', function(){
-    return view('Partner.Register');
-});
-Route::post('/partner/welcome', 'Web\PartnerCompany\PartnerRegisterController@register');
-
-
-
 Auth::Routes(['verify' => true]);
 
 Route::prefix('admin')->group(function() {
@@ -53,6 +45,8 @@ Route::prefix('admin')->group(function() {
     
     Route::get('/useractivity', 'Web\Admin\UserActivityController@index')->name('admin.useractivity');
     Route::get('/useractivity/{ID}', 'Web\Admin\UserActivityController@showUserActivity');
+
+    Route::resource('/adminfunction', 'Web\Admin\AdminFunctionController');
 });
 
 

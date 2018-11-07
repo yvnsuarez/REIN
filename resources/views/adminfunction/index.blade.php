@@ -1,4 +1,4 @@
-@extends('layouts.PartnerCompany')
+@extends('layouts.Admin')
 
 @section('content-header')
 <div class="breadcrumbs-inner">
@@ -6,7 +6,7 @@
         <div class="col-sm-4">
             <div class="page-header float-left">
                 <div class="page-title">
-                    <h1>Manage Assistants</h1>
+                    <h1>Manage Admin</h1>
                 </div>
             </div>
         </div>
@@ -21,8 +21,8 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Assistants</strong>
-                                {{ link_to_route('assistants.create', 'Register Assistant', null, ['class'=>'fa fa-user-plus btn btn-outline-secondary btn-sm pull-right'])}}
+                                <strong class="card-title">Admin</strong>
+                                {{ link_to_route('adminfunction.create', 'Register an Admin', null, ['class'=>'fa fa-user-plus btn btn-outline-secondary btn-sm pull-right'])}}
                             </div>
                             <div class="card-body">
                             <?php $i = 1; ?>
@@ -32,10 +32,8 @@
                                         <tr>
                                         <th class="serial">No.</th>
                                             <th>Name</th>
-                                            <th>Mobile No</th>
                                             <th>Email</th>
                                             <th>Status</th>
-                                            <th>Assign Status</th>
                                             <th>ACTION</th>
                                         </tr>
                                     </thead>
@@ -44,15 +42,13 @@
                                         <tr>
                                             <td>{{$i++ }}</td>
                                             <td>{{$user->FirstName}} {{$user->LastName}}</td>
-                                            <td>{{$user->MobileNo}}</td>
                                             <td>{{$user->Email}}</td>
                                             <td>{{$user->Status}}</td>
-                                            <td>{{$user->AssignStatus}}</td>
                                             <td>
                                                     <div class="links">
-                                                            <a href="/partner/assistants/{{$user->id}}"class="btn btn-outline-secondary btn-sm fa fa-info" data-toggle="tooltip" title="View Assistant">
+                                                            <a href="/admin/adminfunction/{{$user->id}}"class="btn btn-outline-secondary btn-sm fa fa-info" data-toggle="tooltip" title="View Assistant">
                                                             </a>
-                                                            <a href="/partner/assistants/{{$user->id}}/edit" class="btn btn-outline-secondary btn-sm fa fa-edit" data-toggle="tooltip" title="Edit Assistant">
+                                                            <a href="/admin/adminfunction/{{$user->id}}/edit" class="btn btn-outline-secondary btn-sm fa fa-edit" data-toggle="tooltip" title="Edit Assistant">
                                                             </a>
                                                     </div>
                                             </td>
@@ -66,10 +62,8 @@
                                         <tr>
                                         <th class="serial">No.</th>
                                             <th>Name</th>
-                                            <th>Mobile No</th>
                                             <th>Email</th>
                                             <th>Status</th>
-                                            <th>Assign Status</th>
                                             <th>ACTION</th>
                                         </tr>
                                     </thead>

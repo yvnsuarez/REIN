@@ -8,8 +8,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Hash;
 
-class PartnerController extends Controller
+class AdminFunctionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,17 +18,15 @@ class PartnerController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-     public function __construct()
+    public function __construct()
      {
          $this->middleware('auth:admin');
      }
-     
     public function index()
     {
-        $users = User::where('UserTypeID', '=', 4)
+        $users = User::where('UserTypeID', '=', 1)
                 ->get();
-        return view ('partners.index', compact('users'));
+        return view ('adminfunction.index', compact('users'));
     }
 
     /**
@@ -37,7 +36,7 @@ class PartnerController extends Controller
      */
     public function create()
     {
-        return view('partners.create');
+        return view('adminfunction.create');
     }
 
     /**
@@ -48,25 +47,15 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
-        // User::create($request->all());
-        // return redirect()->route('partners.index')->with('message','partner has been added successfully');
-
-    
         $validator = Validator::make($request->all(), [ 
             
-            'BusinessName' => 'required' ,
-            'Address' => 'required', 
-            'City' => 'required',
-            'ZipCode' => 'required',
-            'BusinessRegistrationNo' => 'required' ,
-            'LTFRBRegistrationNo' => 'required',
-            'MobileNo' => 'required',
-            'Email' => 'required|unique',
+            'FirstName' => 'required' ,
+            'LastName' => 'required' ,
+            'Email' => 'required',
             'password' => 'required|min:6',
             'CPassword' => 'same:password',
             'g-recaptcha-response' => 'required|captcha',
             'remember_token',
-            'Status',
             // 'DateCreated'
             
         
@@ -78,25 +67,24 @@ class PartnerController extends Controller
         // }
         
         $input = $request->all();   
-        $partnercompany = new User($input);
-        $partnercompany->Password = bcrypt($input['Password']);
+        $admin = new User($input);
+        $admin->Password = bcrypt($input['Password']);
         //$user = users::create($input); 
-        $partnercompany->UserTypeID = 4;
-        $partnercompany->Status = 'Activated';
+        $admin->UserTypeID = 1;
+        $admin->Status = 'Activated';
 
 
-        if($partnercompany->save()){
+        if($admin->save()){
             
             //user logs insert
             $getadminid = Auth::user();
             $getid = $getadminid->id;
 
             DB::table('user_logs')
-            ->insert(['UserID' => $getid, 'Type' => "Partner Registration", 'Description' => "Registered Partner Company's Account Successfully"]);
+            ->insert(['UserID' => $getid, 'Type' => "Admin Registration", 'Description' => "Registered an Admin Account Successfully"]);
 
-            return redirect()->route('partners.index')->with('message','partner has been added successfully'); 
+            return redirect()->route('adminfunction.index'); 
         } 
-
     }
 
     /**
@@ -105,16 +93,10 @@ class PartnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function search(Request $request){
-
-    }
-    
-
     public function show($id)
     {
         $user = User::find($id);
-        return view('partners.show', compact('user'));
+        return view('adminfunction.show', compact('user'));
     }
 
     /**
@@ -126,7 +108,7 @@ class PartnerController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('partners.edit', compact('user'));
+        return view('adminfunction.edit', compact('user'));
     }
 
     /**
@@ -140,19 +122,13 @@ class PartnerController extends Controller
     {
         $validator = Validator::make($request->all(), [ 
             
-            'BusinessName' => 'required' ,
-            'Address' => 'required', 
-            'City' => 'required',
-            'ZipCode' => 'required',
-            'BusinessRegistrationNo' => 'required' ,
-            'LTFRBRegistrationNo' => 'required',
-            'MobileNo' => 'required',
+            'FirstName' => 'required' ,
+            'LastName' => 'required' ,
             'Email' => 'required',
             'password' => 'required|min:6',
             'CPassword' => 'same:password',
             'g-recaptcha-response' => 'required|captcha',
-            'remember_token' ,
-            'Status',
+            'remember_token',
             // 'DateCreated'
         
         ]);
@@ -163,9 +139,9 @@ class PartnerController extends Controller
         $getid = $getadminid->id;
 
         DB::table('user_logs')
-            ->insert(['UserID' => $getid, 'Type' => "Update Partner", 'TargetUser' => $id, 'Description' => "Updated Partner Company's Account Successfully"]);
+            ->insert(['UserID' => $getid, 'Type' => "Update Admin", 'TargetUser' => $id, 'Description' => "Updated Admin's Account Successfully"]);
         // $user->update($request->all());
-        return redirect()->route('partners.index')->with('message','item has been updated successfully');
+        return redirect()->route('adminfunction.index');
     }
 
     /**
@@ -178,5 +154,4 @@ class PartnerController extends Controller
     {
         //
     }
-
 }

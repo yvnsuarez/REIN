@@ -35,7 +35,6 @@
                                             <th>Mobile No</th>
                                             <th>Email</th>
                                             <th>Status</th>
-                                            <th>Assign Status</th>
                                             <th>ACTION</th>
                                         </tr>
                                     </thead>
@@ -44,9 +43,8 @@
                                         <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>{{$user->BusinessName}}</td>
-                                        <td>{{$user->Address}} {{$user->City}} {{$user->ZipCode}}</td>
                                         <td>{{$user->MobileNo}}</td>
-                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->Email}}</td>
                                         <td>{{$user->Status}}</td>
                                         <td>
                                                 <div class="links">

@@ -260,6 +260,7 @@
 
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link">{{Auth::user()->FirstName}} {{Auth::user()->LastName}}</a>
+                            <a class="nav-link" href="{{url('/admin/adminfunction')}}">Admin Function</a>
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#Modal"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div> 

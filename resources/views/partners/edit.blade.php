@@ -66,8 +66,8 @@
 
                 <div class="cub-input">
                     <div class="text-input">
-                    <label for="email">E-mail</label>
-                                <input type="email" name="email" value="{{$user->email}}" placeholder="example@gmail.com"class="form-control" required>
+                    <label for="Email">E-mail</label>
+                                <input type="email" name="Email" value="{{$user->Email}}" placeholder="example@gmail.com"class="form-control" required>
                     </div>
                     <div class="text-input">
                     <label for="MobileNo">Contact Number</label>

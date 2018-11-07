@@ -34,7 +34,7 @@
                                             <b>Business Name: </b> {{$causer->BusinessName}}<br/>
                                         @endif
                                             <b>Address: </b> {{$causer->Address}} {{$causer->City}} {{$causer->ZipCode}}<br/>
-                                            <b>Email: </b> {{$causer->email}}<br/>
+                                            <b>Email: </b> {{$causer->Email}}<br/>
                                             <b>Contact No: </b> {{$causer->MobileNo}} <br/>
                                         </li>
                                 <b class="text-center">Activity Details</b>
@@ -52,7 +52,7 @@
                                             <b>Business Name: </b> {{$targetuser->BusinessName}}<br/>
                                         @endif
                                             <b>Address: </b> {{$targetuser->Address}} {{$targetuser->City}} {{$targetuser->ZipCode}}<br/>
-                                            <b>Email: </b> {{$targetuser->email}}<br/>
+                                            <b>Email: </b> {{$targetuser->Email}}<br/>
                                             <b>Contact No: </b> {{$targetuser->MobileNo}} <br/>
                                         </li>
                                 @endif

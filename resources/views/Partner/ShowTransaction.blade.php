@@ -40,7 +40,7 @@
                                             <b>Motorist: </b> {{$motorist->FirstName}} {{$motorist->LastName}}<br/>
                                             <b>Address: </b> {{$motorist->Address}} {{$motorist->City}} {{$motorist->ZipCode}}
                                             <b>Contact No: </b> {{$motorist->MobileNo}}
-                                            <b>Email: </b> {{$motorist->email}}
+                                            <b>Email: </b> {{$motorist->Email}}
                                                 <br/>
                                                 <br/>
                                             <b>Car Details: </b><br/>
@@ -61,7 +61,7 @@
                                             <b>Assistant Details: </b> {{$assistant->FirstName}} {{$assistant->LastName}}<br/>
                                             <b>Address: </b> {{$assistant->Address}} {{$assistant->City}} {{$assistant->ZipCode}}
                                             <b>Contact No: </b> {{$assistant->MobileNo}}
-                                            <b>Email: </b> {{$assistant->email}}
+                                            <b>Email: </b> {{$assistant->Email}}
                                             @endif
                                         </li>
                             

@@ -40,7 +40,7 @@
                                         <li class="list-group-item">
                                             <b>Business Name: </b> {{$partner->BusinessName}}<br/>
                                             <b>Address: </b> {{$partner->Address}} {{$partner->City}} {{$partner->ZipCode}}<br/>
-                                            <b>Email: </b> {{$partner->email}}<br/>
+                                            <b>Email: </b> {{$partner->Email}}<br/>
                                             <b>Contact No: </b> {{$partner->MobileNo}} <br/>
                                         </li>
                             @endif
@@ -48,6 +48,7 @@
                                         <li class="list-group-item">
                                             <b>Motorist: </b> {{$motorist->FirstName}} {{$motorist->LastName}}<br/>
                                             <b>Contact No: </b> {{$motorist->MobileNo}}
+                                            <b>Email: </b> {{$motorist->Email}}<br/>
                                                 <br/>
                                                 <br/>
                                             <b>Car Details: </b><br/>
@@ -67,6 +68,7 @@
                                                 <br/>
                                             <b>Assistant Details: </b> {{$assistant->FirstName}} {{$assistant->LastName}}<br/>
                                             <b>Contact No: </b> {{$assistant->MobileNo}}<br/>
+                                            <b>Email: </b> {{$assistant->Email}}<br/>
                                         </li>
                             @endif
                             @if ($reports->status === 'Done')

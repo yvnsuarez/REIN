@@ -64,7 +64,7 @@ class AssistantsController extends Controller
             'Address' => 'required', 
             'City' => 'required',
             'ZipCode' => 'required',
-            'email' => 'required|unique',
+            'Email' => 'required|unique',
             'password' => 'required|min:6',
             'CPassword' => 'same:password',
             'g-recaptcha-response' => 'required|captcha',

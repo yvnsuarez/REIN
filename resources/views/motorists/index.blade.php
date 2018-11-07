@@ -45,7 +45,7 @@
                                             <td>{{$user->FirstName}} {{$user->LastName}}</td>
                                             <td>{{$user->Address}} {{$user->City}} {{$user->ZipCode}}</td>
                                             <td>{{$user->MobileNo}}</td>
-                                            <td>{{$user->email}}</td>
+                                            <td>{{$user->Email}}</td>
                                             <td>{{$user->Status}}</td>
                                             <td>
                                                 <div class="links">
@@ -66,7 +66,7 @@
                                             <th>Name</th>
                                             <th>Address</th>
                                             <th>Mobile No</th>
-                                            <th>email</th>
+                                            <th>Email</th>
                                             <th>Status</th>
                                             <th>ACTION</th>
                                         </tr>

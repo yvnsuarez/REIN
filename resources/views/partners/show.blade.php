@@ -34,7 +34,7 @@
                                                 <br/>
                                             <b>Contact No: </b>{{$user->MobileNo}}
                                                 <br/>
-                                            <b>Email: </b>{{$user->email}}
+                                            <b>Email: </b>{{$user->Email}}
                                                 <br/>                                      
                                         </li>
                                     <b class="text-center">Business Requirements Details</b>

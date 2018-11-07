@@ -81,16 +81,16 @@
 
                 <div class="text-input">
                     <div class="form-group">
-                                    <label for="email">E-mail</label>
-                                    <input type="email" name="email" placeholder="example@gmail.com" class="form-control" required>
+                                    <label for="Email">E-mail</label>
+                                    <input type="email" name="Email" placeholder="example@gmail.com" class="form-control" required>
                                 </div>
                 </div>
 
                 <div class="cub-input">
                     <div class="text-input">
                         <div class="form-group">
-                                <label for="Password">Password</label>
-                                <input type="password" name="Password" value="" class="form-control" required>
+                                <label for="password">Password</label>
+                                <input type="password" name="password" value="" class="form-control" required>
                             </div>
                     </div>
                     <div class="text-input">
