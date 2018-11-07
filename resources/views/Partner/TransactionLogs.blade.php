@@ -15,36 +15,34 @@
 @endsection
 
 @section('content')
-<br/>
-        <div class="animated fadeIn">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Transactions</strong>
-                            {{-- <a href="{{action('Web\PartnerCompany\TransactionLogsController@fullTransactionPDF')}}">
-                                <button class="btn btn-outline-secondary btn-sm pull-right""><i class="fa fa-print"></i> Print</button>
-                            </a> --}}
-                        </div>
-                        <?php $i = 1; ?>
-                        @if(count($reports) > 0)
-                        <div class="table-stats order-table ov-h">
-                            <table class="table">
-                                <thead>
-                                    <tr class="text-center">
-                                            <th class="serial">#</th>
+
+                <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Transactions</strong>
+                            </div>
+                            <div class="card-body">
+                            <?php $i = 1; ?>
+                            @if(count($reports) > 0)
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                        <th class="serial">No.</th>
                                             <th>Motorist</th>
                                             <th>Service Type</th>
                                             <th>Service Comment</th>
                                             <th>Total Service Price</th>
                                             <th>Service Status</th>
                                             <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody> 
-                                @foreach($reports as $report)
-                                    <tr class="text-center">
-                                            <td>{{ $i++ }}</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($reports as $report)
+                                        <tr>
+                                        <td>{{ $i++ }}</td>
                                             <td>{{$report->userID}}</td>
                                             <td>{{$report->servicetype}}</td>
                                             <td>{{$report->comment}}</td>
@@ -59,30 +57,38 @@
                                                     </div>
                                                 </td>
                                             </td>
-                                    </tr>
+                                        </tr>
                                     @endforeach
-                                </tbody>
-                            </table>
-                            @else
-                            <div class="table-stats order-table ov-h">
-                                <table class="table ">
+                                    </tbody>
+                                </table>
+                                @else
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
-                                        <tr class="text-center">
-                                                <th class="serial">#</th>
-                                                <th>Motorist</th>
-                                                <th>Service Type</th>
-                                                <th>Service Comment</th>
-                                                <th>Total Service Price</th>
-                                                <th>Service Status</th>
-                                                <th>ACTION</th>
+                                        <tr>
+                                        <th class="serial">No.</th>
+                                            <th>Motorist</th>
+                                            <th>Service Type</th>
+                                            <th>Service Comment</th>
+                                            <th>Total Service Price</th>
+                                            <th>Service Status</th>
+                                            <th>ACTION</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
                                 </table>
-                                <div class="text-center">
-                                    <p>No records found.</p>
-                                </div>
-                        </div> <!-- /.table-stats -->
-                        @endif
+                              @endif
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('#bootstrap-data-table-export').DataTable();
+      } );
+  </script>
 @endsection

@@ -18,6 +18,7 @@ class AssistantsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    protected $table="datatables_data";
 
      public function __construct()
      {

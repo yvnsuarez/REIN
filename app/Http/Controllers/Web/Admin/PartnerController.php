@@ -26,8 +26,7 @@ class PartnerController extends Controller
     public function index()
     {
         $users = User::where('UserTypeID', '=', 4)
-                ->get();//where statement=UserId
-                //->paginate(10); 
+                ->get();
         return view ('partners.index', compact('users'));
     }
 

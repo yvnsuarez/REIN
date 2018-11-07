@@ -15,32 +15,32 @@
 @endsection
 
 @section('content')
-<br/>
-        <div class="animated fadeIn">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">User Activities</strong>
-                        </div>
-                        <?php $i = 1; ?>
-                        @if(count($userlogs) > 0)
-                        <div class="table-stats order-table ov-h">
-                            <table class="table">
-                                <thead>
-                                    <tr class="text-center">
+<div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Transactions</strong>
+                            </div>
+                            <div class="card-body">
+                            <?php $i = 1; ?>
+                            @if(count($userlogs) > 0)
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
                                             <th>No.</th>
                                             <th>Causer</th>
                                             <th>Type</th>
                                             <th>Description</th>
                                             <th>Date</th>
                                             <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody> 
-                                @foreach($userlogs as $userlog)
-                                    <tr class="text-center">
-                                            <td>{{$i++}}</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($userlogs as $userlog)
+                                        <tr>
+                                        <td>{{$i++}}</td>
                                             <td>{{$userlog->UserID}}</td>
                                             <td>{{$userlog->Type}}</td>
                                             <td>{{$userlog->Description}}</td>
@@ -54,16 +54,15 @@
                                                     </div>
                                                 </td>
                                             </td>
-                                    </tr>
+                                        </tr>
                                     @endforeach
-                                </tbody>
-                            </table>
-                            @else
-                            <div class="table-stats order-table ov-h">
-                                <table class="table ">
+                                    </tbody>
+                                </table>
+                                @else
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
-                                        <tr class="text-center">
-                                            <th>No.</th>
+                                        <tr>
+                                        <th>No.</th>
                                             <th>Causer</th>
                                             <th>Type</th>
                                             <th>Payment</th>
@@ -72,12 +71,22 @@
                                             <th>ACTION</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
                                 </table>
-                                <div class="text-center">
-                                    <p>No records found.</p>
-                                </div>
-                        </div> <!-- /.table-stats -->
-                        @endif
+                              @endif
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('#bootstrap-data-table-export').DataTable();
+      } );
+  </script>
+
 @endsection

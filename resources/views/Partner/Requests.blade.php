@@ -16,29 +16,30 @@
 
 @section('content')
 <div class="animated fadeIn">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Requests</strong>
-                        </div>
-                        <?php $i = 1; ?>
-                        @if(count($reports) > 0)
-                        <div class="table-stats order-table ov-h">
-                            <table class="table ">
-                                <thead>
-                                    <tr class="text-center">
-                                            <th class="serial">#</th>
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Feedbacks</strong>
+                            </div>
+                            <div class="card-body">
+                            <?php $i = 1; ?>
+                            @if(count($reports) > 0)
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                        <th class="serial">No.</th>
                                             <th>Motorist</th>
                                             <th>Instruction</th>
                                             <th>Service Type</th>
                                             <th>Service Status</th>
                                             <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody> 
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                     @foreach($reports as $report)
-                                    <tr class="text-center">
+                                        <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>{{$report->userID}}</td>
                                         <td>{{$report->instruction}}</td>
@@ -55,30 +56,38 @@
                                         <td><a href="requests/{{$report->ID}}/assign" class="btn btn-outline-success btn-sm fa fa-user-circle" data-toggle="tooltip" title="Assign Request"> Assign</a></td>
                                         @else
                                         @endif
-                                    </tr>
+                                        </tr>
                                     @endforeach
-                                </tbody>
-                            </table>
-                        </div> <!-- /.table-stats -->
-                        @else
-                        <div class="table-stats order-table ov-h">
-                            <table class="table ">
-                                <thead>
-                                    <tr class="text-center">
-                                            <th class="serial">#</th>
+                                    </tbody>
+                                </table>
+                                @else
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                        <th class="serial">No.</th>
                                             <th>Motorist</th>
                                             <th>Instruction</th>
                                             <th>Service Type</th>
                                             <th>Service Status</th>
                                             <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                            <div class="text-center">
-                                <p>No records found.</p>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                </table>
+                              @endif
                             </div>
-                    </div> <!-- /.table-stats -->
-                        @endif
+                        </div>
                     </div>
+
+
                 </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('#bootstrap-data-table-export').DataTable();
+      } );
+  </script>
+
 @endsection

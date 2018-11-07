@@ -15,35 +15,34 @@
 @endsection
 
 @section('content')
-<div class="content">
-        <div class="animated fadeIn">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Partners</strong>
+<div class="animated fadeIn">
+                <div class="row">
 
-                            {{ link_to_route('partners.create', 'Register Partner', null, ['class'=>'fa fa-user-plus btn btn-outline-secondary btn-sm pull-right'])}}
-                        </div>
-                        <?php $i = 1; ?>
-                        @if(count($users) > 0)
-                        <div class="table-stats order-table ov-h">
-                            <table class="table ">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th class="serial">#</th>
-                                        <th>Business Name</th>
-                                        <th>Address</th>
-                                        <th>Contact No</th>
-                                        <th>Email</th>
-                                        <th>Status</th>
-                                        <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody> 
-                                @foreach($users as $user)
-                                    <tr class="text-center">
-                                    <td>{{ $i++ }}</td>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Partners</strong>
+                                {{ link_to_route('partners.create', 'Register Partner', null, ['class'=>'fa fa-user-plus btn btn-outline-secondary btn-sm pull-right'])}}
+                            </div>
+                            <div class="card-body">
+                            <?php $i = 1; ?>
+                            @if(count($users) > 0)
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                        <th class="serial">No.</th>
+                                            <th>Name</th>
+                                            <th>Mobile No</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                            <th>Assign Status</th>
+                                            <th>ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($users as $user)
+                                        <tr>
+                                        <td>{{ $i++ }}</td>
                                         <td>{{$user->BusinessName}}</td>
                                         <td>{{$user->Address}} {{$user->City}} {{$user->ZipCode}}</td>
                                         <td>{{$user->MobileNo}}</td>
@@ -57,31 +56,38 @@
                                                         </a>
                                                 </div>
                                         </td>
-                                    </tr>
+                                        </tr>
                                     @endforeach
-                                </tbody>
-                            </table>
-                        </div> <!-- /.table-stats -->
-                        @else
-                        <div class="table-stats order-table ov-h">
-                            <table class="table ">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th class="serial">#</th>
+                                    </tbody>
+                                </table>
+                                @else
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                        <th class="serial">No.</th>
                                         <th>Business Name</th>
                                         <th>Address</th>
                                         <th>Contact No</th>
                                         <th>Email</th>
                                         <th>Status</th>
                                         <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                            <div class="text-center">
-                                <p>No records found.</p>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                </table>
+                              @endif
                             </div>
-                    </div> <!-- /.table-stats -->
-                        @endif
+                        </div>
                     </div>
+
+
                 </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('#bootstrap-data-table-export').DataTable();
+      } );
+  </script>
 @endsection

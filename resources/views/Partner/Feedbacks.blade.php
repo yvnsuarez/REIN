@@ -16,27 +16,28 @@
 
 @section('content')
 <div class="animated fadeIn">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Feedbacks</strong>
-                        </div>
-                        <?php $i = 1; ?>
-                        @if(count($feedbacks) > 0)
-                        <div class="table-stats order-table ov-h">
-                            <table class="table ">
-                                <thead>
-                                    <tr class="text-center">
-                                            <th>#</th>
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Feedbacks</strong>
+                            </div>
+                            <div class="card-body">
+                            <?php $i = 1; ?>
+                            @if(count($feedbacks) > 0)
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                        <th class="serial">No.</th>
                                             <th>Report No.</th>
                                             <th>Review</th>
                                             <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                                <tbody> 
-                                @foreach($feedbacks as $feedback)
-                                    <tr class="text-center">
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($feedbacks as $feedback)
+                                        <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{$feedback->reportID}}</td>
                                             <td>{{$feedback->review}}</td>
@@ -49,28 +50,36 @@
                                                     </div>
                                                 </td>
                                             </td>
-                                    </tr>
+                                        </tr>
                                     @endforeach
-                                </tbody>
-                            </table>
-                        </div> <!-- /.table-stats -->
-                        @else
-                        <div class="table-stats order-table ov-h">
-                            <table class="table ">
-                                <thead>
-                                    <tr class="text-center">
-                                            <th>#</th>
-                                            <th>Report</th>
+                                    </tbody>
+                                </table>
+                                @else
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                        <th class="serial">No.</th>
+                                            <th>Report No.</th>
                                             <th>Review</th>
                                             <th>ACTION</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                            <div class="text-center">
-                                <p>No records found.</p>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                </table>
+                              @endif
                             </div>
-                    </div> <!-- /.table-stats -->
-                        @endif
+                        </div>
                     </div>
+
+
                 </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('#bootstrap-data-table-export').DataTable();
+      } );
+  </script>
+
 @endsection

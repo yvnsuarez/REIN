@@ -19,13 +19,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/themify-icons.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/pe-icon-7-filled.css') }}"/>
 
-
-    <link href="{{ asset('assets/weather/css/weather-icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/calendar/fullcalendar.css') }} rel="stylesheet" />
-
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
     <link href="{{ asset('assets/css/charts/chartist.min.css') }}" rel="stylesheet"/> 
     <link href="{{ asset('assets/css/lib/vector-map/jqvmap.min.css') }}" rel="stylesheet"/> 
+
+      <link rel="stylesheet" href="{{ asset('assets/css/lib/datatable/dataTables.bootstrap.min.css') }}">
+
+    
 
     {{-- <script type="text/javascript">
         var visitor = 
@@ -338,5 +338,17 @@
     <script src="{{ asset('assets/calendar/fullcalendar-init.js') }}"></script>
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <script src="{{ asset('assets/js/lib/data-table/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/lib/data-table/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/lib/data-table/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/js/lib/data-table/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/lib/data-table/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/js/lib/data-table/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/js/lib/data-table/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/js/lib/data-table/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/js/lib/data-table/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/js/lib/data-table/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('assets/js/lib/data-table/datatables-init.js') }}"></script>
 </body>
 </html>
