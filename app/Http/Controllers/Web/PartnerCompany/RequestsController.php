@@ -163,17 +163,18 @@ class RequestsController extends Controller
     
     public function showdecline($ID)
     {
-        $getpartner = Auth::user();
-        $partner = $getpartner->id;
-
         $reports = Reports::find($ID);
 
-        DB::table('user_logs')
-        ->insert(['UserID' => $partner, 
-                  'Type' => "Declined", 
-                  'ReportsID' => $ID,
-                  'Description' => "Request Declined"]);
-        return view('Partner.DeclineRequest', compact('reports'));
+        $getmotoristdetails = ['id' => $reports->userID];
+        $motorist = User::where($getmotoristdetails)->get()->first();
+
+        $getcar = ['userID' => $reports->userID];
+        $car = DB::table('cars')
+                ->where($getcar)
+                ->get()
+                ->first();
+
+        return view('Partner.DeclineRequest', compact('reports', 'motorist', 'car'));
 
     }
 

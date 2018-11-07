@@ -77,8 +77,29 @@
                                 <a href="/partner/requests" class="btn btn-warning btn-sm">Back</a>
                             </div>
                             <div class="pull-right">
-                                    <button type="submit" class="btn btn-secondary btn-sm">Assign</button>
+                                    <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#Modal2">Assign Service</button>
                             </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Confirm Assign</h5>
+                                                <button class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to assign the service request?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                                                <button type="submit" class="btn btn-secondary">Assign</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             {!! Form::close() !!}
 
                         </div>
