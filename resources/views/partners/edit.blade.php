@@ -30,36 +30,36 @@
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="BusinessName">Business Name</label>
-                                <input type="text" name="BusinessName" value="" class="form-control" required>
+                                <input type="text" name="BusinessName" value="{{$user->BusinessName}}" class="form-control" required>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="BusinessRegistrationNo">Business Registration Number</label>
-                                <input type="text" name="BusinessRegistrationNo" value="" class="form-control" required> 
+                                <input type="text" name="BusinessRegistrationNo" value="{{$user->BusinessRegistrationNo}}" class="form-control" required> 
                                 <!-- ADD OLD VALUE -->
                     </div>
                     <div class="text-input">
                     <label for="LTFRBRegistrationNo">LTFRB Accreditation Number</label>
-                                <input type="text" name="LTFRBRegistrationNo" value="" class="form-control" required>
+                                <input type="text" name="LTFRBRegistrationNo" value="{{$user->LTFRBRegistrationNo}}" class="form-control" required>
                     </div>
                     <div class="clearfix"></div>
                 </div>
              
                 <div class="text-input">
                 <label for="Address">Address</label>
-                                <input type="text" name="Address" value="" class="form-control" required>
+                                <input type="text" name="Address" value="{{$user->Address}}" class="form-control" required>
                 </div>
 
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="City">City</label>
-                                    <input type="text" name="City" value="" class="form-control" required>
+                                    <input type="text" name="City" value="{{$user->City}}" class="form-control" required>
                     </div>
                     <div class="text-input">
                     <label for="ZipCode">Zip Code</label>
-                            <input type="text" name="ZipCode" value="" placeholder="XXXX" class="form-control" required>
+                            <input type="text" name="ZipCode" value="{{$user->ZipCode}}" placeholder="XXXX" class="form-control" required>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -67,11 +67,11 @@
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="email">E-mail</label>
-                                <input type="email" name="email" value="" placeholder="example@gmail.com"class="form-control" required>
+                                <input type="email" name="email" value="{{$user->email}}" placeholder="example@gmail.com"class="form-control" required>
                     </div>
                     <div class="text-input">
                     <label for="MobileNo">Contact Number</label>
-                                <input type="text" name="email" value="" placeholder="XXXX XXX XXXX" class="form-control" required>
+                                <input type="text" name="email" value="{{$user->MobileNo}}" placeholder="XXXX XXX XXXX" class="form-control" required>
                     </div>
                     <div class="clearfix"></div>
                 </div>

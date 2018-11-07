@@ -30,46 +30,46 @@
                 <div class="cub-input">
                     <div class="text-input">
                              <label for="FirstName">FirstName</label>
-                            <input type="text" name="FirstName" value="" class="form-control" required>
+                            <input type="text" name="FirstName" value="{{ $user->FirstName}}" class="form-control" required>
                     </div>
                     <div class="text-input">
                     <label for="LastName">Last Name</label>
-                            <input type="text" name="LastName" value="" class="form-control" required>
+                            <input type="text" name="LastName" value="{{ $user->LastName}}" class="form-control" required>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="MobileNo">Mobile Number</label>
-                            <input type="text" name="MobileNo" value="" placeholder="XXXX XXX XXXX" class="form-control" required>
+                            <input type="text" name="MobileNo" value="{{ $user->MobileNo}}" placeholder="XXXX XXX XXXX" class="form-control" required>
                     </div>
                     <div class="text-input">
                     <label for="BirthDay">Birthday</label>
-                                <input type="date" name="BirthDay" value="" class="form-control" required>
+                                <input type="date" name="BirthDay" value="{{ $user->BirthDay}}" class="form-control" required>
                     </div>
                     <div class="clearfix"></div>
                 </div>
              
                 <div class="text-input">
                 <label for="Address">Address</label>
-                                <input type="text" name="Address" value="" class="form-control" required>
+                                <input type="text" name="Address" value="{{ $user->Address}}" class="form-control" required>
                 </div>
 
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="City">City</label>
-                                    <input type="text" name="City" value="" class="form-control" required>
+                                    <input type="text" name="City" value="{{ $user->City}}" class="form-control" required>
                     </div>
                     <div class="text-input">
                     <label for="ZipCode">Zip Code</label>
-                            <input type="text" name="ZipCode" value="" placeholder="XXXX" class="form-control" required>
+                            <input type="text" name="ZipCode" value="{{ $user->ZipCode}}" placeholder="XXXX" class="form-control" required>
                     </div>
                     <div class="clearfix"></div>
                 </div>
 
                 <div class="text-input">
                 <label for="email">E-mail</label>
-                                    <input type="email" name="email" placeholder="example@gmail.com" value="{{ (old('email'))}}" class="form-control" required>
+                                    <input type="email" name="email" placeholder="example@gmail.com" value="{{ $user->email}}" class="form-control" required>
                 </div>
 
                 <div class="cub-input">
