@@ -42,7 +42,7 @@
                                     <tbody>
                                     @foreach($reports as $report)
                                         <tr>
-                                        <td>{{ $i++ }}</td>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{$report->userID}}</td>
                                             <td>{{$report->servicetype}}</td>
                                             <td>{{$report->comment}}</td>

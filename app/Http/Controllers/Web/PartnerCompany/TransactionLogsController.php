@@ -34,6 +34,7 @@ class TransactionLogsController extends Controller
         $reports = Reports::where($getreports)
                    ->orWhere($status)
                    ->get();
+                   
         return view ('Partner.TransactionLogs', compact('reports'));
     }
 
@@ -61,6 +62,7 @@ class TransactionLogsController extends Controller
                             ->where($getpayment)
                             ->get()
                             ->first();
+        
                             
         return view('Partner.ShowTransaction', compact('reports', 'motorist', 'assistant', 'car', 'payment'));
     }

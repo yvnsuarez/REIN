@@ -49,7 +49,7 @@
                                 </ul>
                                 <b class="text-center">Service Cancellation</b>
                                         <li class="list-group-item">
-                                            <b>Number of Cancellation: </b> {{$cancellation}}
+                                            <b>Number of Cancellation: {{$cancellation}}</b>  
                                         </li>
                                 </ul>
                                     <div class="card-footer">

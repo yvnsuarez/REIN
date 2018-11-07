@@ -42,7 +42,6 @@
                                             <td>{{$feedback->reportID}}</td>
                                             <td>{{$feedback->review}}</td>
                                             <td>
-                                                {{-- MODAL FOR VIEWING OF REPORT --}}
                                                 <div class="links">
                                                     <a href="/partner/feedbacks/{{$feedback->ID}}">
                                                             <button class="btn btn-outline-secondary btn-sm fa fa-info" data-toggle="tooltip" Title="View Feedback"></button>
