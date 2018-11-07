@@ -67,7 +67,7 @@
                             <div class="table-stats order-table ov-h">
                                 <table class="table ">
                                     <thead>
-                                        <tr>
+                                        <tr class="text-center">
                                                 <th class="serial">#</th>
                                                 <th>Motorist</th>
                                                 <th>Service Type</th>

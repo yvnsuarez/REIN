@@ -62,7 +62,7 @@
                             <div class="table-stats order-table ov-h">
                                 <table class="table ">
                                     <thead>
-                                        <tr>
+                                        <tr class="text-center">
                                             <th>No.</th>
                                             <th>Causer</th>
                                             <th>Type</th>

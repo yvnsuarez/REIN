@@ -58,7 +58,7 @@
                         <div class="table-stats order-table ov-h">
                             <table class="table ">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                             <th>#</th>
                                             <th>Report</th>
                                             <th>Review</th>
