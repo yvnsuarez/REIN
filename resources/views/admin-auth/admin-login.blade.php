@@ -74,7 +74,7 @@
                             </span>
                             @endif
                         </div>
-                        <!-- <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
                             <div class="col-md-6 pull-center">
                             {!! app('captcha')->display() !!}
                             @if ($errors->has('g-recaptcha-response'))
@@ -83,7 +83,7 @@
                             </span>
                             @endif
                           </div>
-                        </div> -->
+                        </div>
                         <div class="checkbox">
                             <label class="pull-right">
                                 <a href="#">Forgotten Password?</a>
