@@ -29,63 +29,87 @@
 
                 <div class="cub-input">
                     <div class="text-input">
-                    {!! Form::label('BusinessName', 'Business Name')!!}
-                                        {!! Form::text('BusinessName', null, ['class'=>'form-control']) !!}
+                    <div class="form-group">
+                                <label for="BusinessName">Business Name</label>
+                                <input type="text" name="BusinessName" value="" class="form-control" required>
+                            </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="cub-input">
                     <div class="text-input">
-                    {!! Form::label('BusinessRegistrationNo', 'Business Registration Number')!!}
-                                        {!! Form::text('BusinessRegistrationNo', null, ['class'=>'form-control']) !!}
+                    <div class="form-group">
+                                <label for="BusinessRegistrationNo">Business Registration Number</label>
+                                <input type="text" name="BusinessRegistrationNo" value="" class="form-control" required>
+                            </div>
                     </div>
                     <div class="text-input">
-                    {!! Form::label('LTFRBRegistrationNo', 'LTFRB Accreditation Number')!!}
-                                        {!! Form::text('LTFRBRegistrationNo', null, ['class'=>'form-control']) !!}
+                    <div class="form-group">
+                                <label for="LTFRBRegistrationNo">LTFRB Accreditation Number</label>
+                                <input type="text" name="LTFRBRegistrationNo" value="" class="form-control" required>
+                            </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="text-input">
-                {!! Form::label('Address', 'Address')!!}
-                                        {!! Form::text('Address', null, ['class'=>'form-control']) !!}
+                <div class="form-group">
+                                <label for="Address">Address</label>
+                                <input type="text" name="Address" value="" class="form-control" required>
+                            </div>
                 </div>
 
                 <div class="cub-input">
                     <div class="text-input">
-                    {!! Form::label('City', 'City')!!}
-                                        {!! Form::text('City', null, ['class'=>'form-control']) !!}
+                    <div class="form-group">
+                                <label for="City">City</label>
+                                <input type="text" name="City" value="" class="form-control" required>
+                            </div>
                     </div>
                     <div class="text-input">
-                    {!! Form::label('ZipCode', 'Zip Code')!!}
-                                        {!! Form::text('ZipCode', null, ['class'=>'form-control']) !!}
+                    <div class="form-group">
+                                <label for="ZipCode">Zip Code</label>
+                                <input type="text" name="ZipCode" value="" placeholder="XXXX" class="form-control" required>
+                            </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
 
-                <div class="text-input">
-                {!! Form::label('email', 'E-mail')!!}
-                {!! Form::email('email', 'example@gmail.com', ['class'=>'form-control']) !!}
+                <div class="cub-input">
+                        <div class="text-input">
+                        <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" name="email" value="" placeholder="example@gmail.com"class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="text-input">
+                        <div class="form-group">
+                                <label for="MobileNo">Contact Number</label>
+                                <input type="text" name="email" value="" placeholder="XXXX XXX XXXX"class="form-control" required>
+                            </div>
+                        </div>
+                    <div class="clearfix"></div>
                 </div>
 
                 <div class="cub-input">
                     <div class="text-input">
-                    {!! Form::label('Password', 'Password')!!}
-                    {!! Form::password('Password', null, ['class'=>'form-control']) !!}
+                    <div class="form-group">
+                                <label for="Password">Password</label>
+                                <input type="password" name="Password" class="form-control" required>
+                            </div>
                     </div>
                     <div class="text-input">
-                    {!! Form::label('CPassword', 'Confirm Password')!!}
-                    {!! Form::password('CPassword', null, ['class'=>'form-control']) !!}
+                    
+                    <div class="form-group">
+                                <label for="CPassword">Password</label>
+                                <input type="password" name="CPassword" class="form-control" required>
+                            </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
 
-                <div class="check-boxes">
-                    <ul>
-                    <li>
-                        <input type="checkbox" name="terms" /> &nbsp; I accept <a href="#">terms and conditions</a>
-                    </li>
-                    </ul>
-                </div>
+               <p>
+                        By clicking Register, you agree to our <a href="#">terms and conditions</a>
+                    </p>
                 <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
                                             <div class="col-md-6 pull-center">
                                             {!! app('captcha')->display() !!}
@@ -102,7 +126,8 @@
                                             <a href="{{ route('partners.index') }}" class="btn btn-warning btn-sm">Cancel</a>
                                         </div>
                                         &nbsp;
-                                        {!! Form::button('Register Partner', ['type'=>'submit','class'=>'btn btn-secondary btn-sm']) !!}
+
+                                         <input type="submit" value="Register Partner" class="btn btn-secondary btn-sm"/>
                                     </div>
                                 {!! Form::close() !!}
                 </div>

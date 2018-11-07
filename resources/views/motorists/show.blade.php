@@ -34,7 +34,6 @@
                                             <b>Contact No: </b> {{$user->MobileNo}}
                                             <b>Email: </b> {{$user->email}}
                                         </li>
-
                                  <b class="text-center">Car Information</b>
                                         <li class="list-group-item">
                                             <b>Plate No: </b>{{$car->PlateNo}}<br/>

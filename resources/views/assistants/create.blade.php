@@ -29,67 +29,81 @@
 
                 <div class="cub-input">
                     <div class="text-input">
-                    {!! Form::label('FirstName', 'First Name')!!}
-                                            {!! Form::text('FirstName', null, ['class'=>'form-control']) !!}
+                        <div class="form-group">
+                            <label for="FirstName">FirstName</label>
+                            <input type="text" name="FirstName" value="" class="form-control" required>
+                        </div>
                     </div>
                     <div class="text-input">
-                    {!! Form::label('LastName', 'Last Name')!!}
-                                            {!! Form::text('LastName', null, ['class'=>'form-control']) !!}
+                    <div class="form-group">
+                            <label for="LastName">Last Name</label>
+                            <input type="text" name="LastName" value="" class="form-control" required>
+                        </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="cub-input">
                     <div class="text-input">
-                    {!! Form::label('MobileNo', 'Mobile Number')!!}
-                                            {!! Form::text('MobileNo', null, ['class'=>'form-control']) !!}
+                        <div class="form-group">
+                            <label for="MobileNo">Mobile Number</label>
+                            <input type="text" name="MobileNo" placeholder="XXXX XXX XXXX" class="form-control" required>
+                        </div>
                     </div>
                     <div class="text-input">
-                    {!! Form::label('BirthDay', 'Birthday')!!}
-                                                {!! Form::text('BirthDay', null, ['class'=>'form-control']) !!}
+                                <label for="BirthDay">Birthday</label>
+                                <input type="date" name="BirthDay" value="" class="form-control" required>
                     </div>
                     <div class="clearfix"></div>
                 </div>
              
                 <div class="text-input">
-                {!! Form::label('Address', 'Address')!!}
-                                        {!! Form::text('Address', null, ['class'=>'form-control']) !!}
+                    <div class="form-group">
+                                <label for="Address">Address</label>
+                                <input type="text" name="Address" value="" class="form-control" required>
+                            </div>
                 </div>
 
                 <div class="cub-input">
                     <div class="text-input">
-                    {!! Form::label('City', 'City')!!}
-                                        {!! Form::text('City', null, ['class'=>'form-control']) !!}
+                        <div class="form-group">
+                                    <label for="City">City</label>
+                                    <input type="text" name="City" value="" class="form-control" required>
+                                </div>
                     </div>
                     <div class="text-input">
-                    {!! Form::label('ZipCode', 'Zip Code')!!}
-                                        {!! Form::text('ZipCode', null, ['class'=>'form-control']) !!}
+                        <div class="form-group">
+                            <label for="ZipCode">Zip Code</label>
+                            <input type="text" name="ZipCode" placeholder="XXXX" class="form-control" required>
+                        </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
 
                 <div class="text-input">
-                {!! Form::label('email', 'E-mail')!!}
-                {!! Form::email('email', 'example@gmail.com', ['class'=>'form-control']) !!}
+                    <div class="form-group">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" name="email" placeholder="example@gmail.com" class="form-control" required>
+                                </div>
                 </div>
 
                 <div class="cub-input">
                     <div class="text-input">
-                    {!! Form::label('Password', 'Password')!!}
-                    {!! Form::password('Password', null, ['class'=>'form-control']) !!}
+                        <div class="form-group">
+                                <label for="Password">Password</label>
+                                <input type="password" name="Password" value="" class="form-control" required>
+                            </div>
                     </div>
                     <div class="text-input">
-                    {!! Form::label('CPassword', 'Confirm Password')!!}
-                    {!! Form::password('CPassword', null, ['class'=>'form-control']) !!}
+                        <div class="form-group">
+                                <label for="CPassword">Confirm Password</label>
+                                <input type="password" name="CPassword" value="" class="form-control" required>
+                            </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-
-                <div class="check-boxes">
-                    <ul>
-                    <li>
-                        <input type="checkbox" name="terms" /> &nbsp; I accept <a href="#">terms and conditions</a>
-                    </li>
-                    </ul>
+                    <p>
+                    By clicking Register Profile, you agree to our <a href="#">terms and conditions</a>
+                    </p>
                 </div>
                 <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
                                             <div class="col-md-6 pull-center">
@@ -107,7 +121,7 @@
                                                         <a href="{{ route('assistants.index') }}" class="btn btn-warning btn-sm">Cancel</a>
                                                     </div>
                                                     &nbsp;
-                                            {!! Form::button('Register Assistant', ['type'=>'submit','class'=>'btn btn-secondary btn-sm']) !!}
+                                            <input type="submit" value="Register Assisant" class="btn btn-secondary btn-sm"/>
                                         </div>
                                     {!! Form::close() !!}
                 </div>
@@ -118,7 +132,5 @@
 
 </div>
 </div>
-
-
 
 @endsection

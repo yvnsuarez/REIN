@@ -41,7 +41,7 @@
                                         <li class="list-group-item">
                                             <b>Business Registration Number: </b>{{$user->BusinessRegistrationNo}}
                                                 <br/> 
-                                            <b>LTFRB Accreditation Number: </b>{{$user->LTFRBAccreditationNo}}
+                                            <b>LTFRB Accreditation Number: </b>{{$user->LTFRBRegistrationNo}}
                                                 <br/>                                        
                                         </li>
                                     <b class="text-center">Account Status</b>

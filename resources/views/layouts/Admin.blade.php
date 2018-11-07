@@ -53,6 +53,7 @@
         $(this).find(':checkbox').toggleCheckbox();
         $(this).toggleClass('checkedBox');
         });
+ 
     </script>
     
       
@@ -77,13 +78,13 @@
   font-size: 25px;
   font-weight: 400;
   font-family: 'Josefin Sans', sans-serif;
-  margin-bottom: 7px;
+  margin-bottom: 5px;
 }
 
 .text-input,
 .radio-button,
 .check-boxes {
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .text-input label,
@@ -96,11 +97,6 @@
   font-weight: 600;
 }
 
-.radio-button label,
-.check-boxes label {
-  margin-bottom: 7px;
-  font-weight: 900;
-}
 
 .text-input input,
 .text-input textarea,
@@ -116,12 +112,13 @@
 
 .text-input select {
   width: 80%;
-}
-
-.text-input textarea {
   height: 50px;
 }
 
+
+.text-input textarea {
+  height: 850px;
+}
 .sqr-input .text-input,
 .sqr-radio-input .radio-button,
 .sqr-check-input .check-boxes {
@@ -181,6 +178,8 @@
 .margin-bottom-zero {
   margin-bottom: 0px;
 }
+
+
 
 </style>
 
