@@ -96,7 +96,7 @@
             width: 100%;
             position: fixed;
             z-index: 1;
-            top: 0;
+            top: 0%;
             left: 0;
             background-color: #DABC20;
             background-color: #DABC20;
@@ -150,7 +150,32 @@
         }
 
         .overlay figure figcaption {
-            color: #fff;
+            color: #000000;
+        }
+
+        .overlay hr {
+            width: 5%;
+            border: 1.5px solid #000000;
+        }
+
+        .overlay .overflow {
+            background-color: #DABC20;
+            height: 300px;
+            width: 60%;
+            overflow-y: scroll;
+            padding-left: 20%;
+        }
+
+        .overlay ol li {
+            padding: 0% !important;
+            text-align: justify;
+            font-size: 12px;
+            margin: 30px;
+            text-align: justify;
+        }
+
+        .overlay .emailLogin:hover {
+            padding-bottom: 25px;
         }
 
         .overlay .closebtn {
@@ -201,9 +226,10 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeAbout()">×</a>
         <div class="overlay-content">
             <h1>WELCOME</h1>
+            <hr>
             <div>
                 <p>
-                    <img src="{{asset('/images/Mobile.png')}}" width="90px" length="90px" style="float:left; display:inline; padding-right: 50px; padding-top: 10px;"/>
+                    <img src="{{asset('/images/Mobile Black.png')}}" width="90px" length="90px" style="float:left; display:inline; padding-right: 50px; padding-top: 10px;"/>
                     What is REIN?<br>
                     <b>REIN</b> is a <u>roadside emergency booking application</u> in Android mobile. It caters to private vehicle motorists around Metro Manila.
                     REIN gives 24/7 access to convenient and immediate assistance which lessens the hassle of searching for the right service
@@ -218,8 +244,10 @@
 
             <div class="overlay-content">
                 <h1>OUR SERVICES</h1>
-                <p style="text-align:center">Our <b>REIN</b> booking application allow motorists to book emergency roadside services such as: </p>
+                <hr>
                 <br>
+                <!-- Place download link for REIN Motorists App here -->
+                <p style="text-align:center">Our <a href="{{url('#')}}" style=display:inline;text-decoration:underline;><b>REIN</b> booking application</a> allow motorists to book emergency roadside services such as: </p>
                 <p>
                     <figure style="width:20%">
                         <img src=""/>
@@ -227,22 +255,22 @@
                     </figure>
 
                     <figure style="width:15%">
-                        <img src="{{asset('/images/Towing.png')}}" width="80px" length="80px"/>
+                        <img src="{{asset('/images/Towing Black.png')}}" width="80px" length="80px"/>
                         <figcaption>Towing</figcaption>
                     </figure>
 
                     <figure style="width:15%">
-                        <img src="{{asset('/images/Tire.png')}}" width="80px" length="80px"/>
+                        <img src="{{asset('/images/Tire Black.png')}}" width="80px" length="80px"/>
                         <figcaption>Flat Tire Replacement</figcaption>
                     </figure>
 
                     <figure style="width:15%">
-                        <img src="{{asset('/images/Jumpstart.png')}}" width="80px" length="80px"/>
+                        <img src="{{asset('/images/Jumpstart Black.png')}}" width="80px" length="80px"/>
                         <figcaption>Jumpstart</figcaption>
                     </figure>
 
                     <figure style="width:15%">
-                        <img src="{{asset('/images/Engine.png')}}" width="80px" length="80px"/>
+                        <img src="{{asset('/images/Engine Black.png')}}" width="80px" length="80px"/>
                         <figcaption>Other engine problem fixes</figcaption>
                     </figure>
 
@@ -259,7 +287,7 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeContact()">×</a>
             <div class="overlay-content">
                 <h1>CONTACT US</h1>
-
+                <hr>
                 <br>
                 <br>
 
@@ -269,12 +297,14 @@
                 </figure>
 
                 <figure style="width:20%">
-                    <img src="{{asset('/images/Gmail.png')}}" width="100px" length="100px" style="padding-bottom: 20px"/>
+                    <a href="https://accounts.google.com/ServiceLogin" class="emailLogin"  onclick="window.open(this.href);
+                    return false;" onkeypress="window.open(this.href); return false;">
+                    <img src="{{asset('/images/Gmail Black.png')}}" width="100px" length="100px" style="padding-bottom: 20px"/></a>
                     <figcaption><b>GMAIL: </b><br>rein.inquiry@gmail.com</figcaption>
                 </figure>
 
                 <figure style="width:25%">
-                    <img src="{{asset('/images/Address.png')}}" width="80px" length="80px" style="padding-bottom: 20px"/>
+                    <img src="{{asset('/images/Address Black.png')}}" width="80px" length="80px" style="padding-bottom: 20px"/>
                     <figcaption>
                         <b>ADDRESS: </b><br>DE LA SALLE-COLLEGE OF SAINT BENILDE<br>2544 Taft Avenue, Malate Manila<br>
                         1004 Metro Manila<br> Philippines
@@ -282,7 +312,7 @@
                 </figure>
 
                 <figure style="width:30%">
-                    <img src="{{asset('/images/Mobile.png')}}" width="43px" length="43px" style="padding-bottom: 20px"/>
+                    <img src="{{asset('/images/Mobile Black.png')}}" width="43px" length="43px" style="padding-bottom: 20px"/>
                     <figcaption><b>MOBILE: </b><br>+639 26 062 6402</figcaption>
                 </figure>
 
@@ -299,10 +329,11 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeBePartner()">×</a>
             <div class="overlay-content">
                 <h1>BE A PARTNER</h1>
+                <hr>
                 <p>
                     How to be a <b>REIN PARTNER?</b><br>
                     Companies who offer <i>roadside assistance services</i> are welcome to be our partner, if you would like to
-                    be a part of <b>REIN</b> kidly visit us at our office for the on-site registration or if you have any
+                    be a part of <b>REIN</b> please visit us at our office for the on-site registration or if you have any
                     inquiry feel free to <a href="javascript:void(0)" onclick="closeBePartner();openContact();" style="display:inline; text-decoration:underline;">
                         contact us</a>.
                     </p>
@@ -316,55 +347,104 @@
             <div id="myTerms" class="overlay">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeTerms()">×</a>
                 <div class="overlay-content">
-                    <h3>TERMS AND CONDITIONS</h3>
-                    <p>
-                        Terms and Conditions
-                    </p>
-                    <p>
-                    </p>
-                </div>
-            </div>
+                    <h1>TERMS AND CONDITIONS</h1>
+                    <hr>
+                    <div class="overflow">
+                        <ol>
+                            <li><b>Introduction</b><br>
+                                These Terms and Conditions contained herein, shall administer the usage of REIN, including <u>the application and the mobile application</u>. These terms apply all out and affect all the <u>users of REIN: (a) Motorists, (b) Assistants, and (c) Partner Companies.</u><br><br>
+                                <b><u>By using REIN, you explicitly agree to all terms and conditions contained herein. The use of this application is not encouraged if you have any objection to any of these Terms and Conditions.</u></b></li>
 
-            <script>
-                function openAbout() {
-                    document.getElementById("myAbout").style.height = "100%";
-                }
+                                <li><b>Intellectual Property Rights</b><br>
+                                    The content and the data you own, which you may have been required to submit, under these Terms, REIN and/or its licensors own all rights to intellectual property and materials used in the application, excluding the content or data that you own. Thus, <u>REIN is not entitled to any content and data that you provided for the usage of the application.</u><br><br>
+                                    Hence, you are granted to limited license only, subject to restrictions provided in these Terms, for the sole purpose of using REIN and its services. </li>
 
-                function closeAbout() {
-                    document.getElementById("myAbout").style.height = "0%";
-                }
+                                    <li><b>Restrictions</b><br>
+                                        You are expected to clearly and fully understand that you are restricted from doing all the following:<br>
+                                        <ol type="a">
+                                            <li style="margin-top:1px">Publishing any material and data from this application to any forms of media;</li>
+                                            <li style="margin-top:1px">Selling, sublicensing and/or otherwise commercializing any application material and data;</li>
+                                            <li style="margin-top:1px">Publicly showing and claiming the application material;</li>
+                                            <li style="margin-top:1pxm">The usage of the application that may incur damages;</li>
+                                            <li style="margin-top:1px">The usage of the application that may affect user access;</li>
+                                            <li style="margin-top:1px">Negligence to perform user any user responsibility;</li>
+                                            <li style="margin-top:1px">The usage of the application contrary to laws and regulations, or in a way that causes, or may cause harm to the application, its users, or to any person or business entity.</li>
+                                        </ol>
+                                        Certain areas of this application are restricted by REIN and may further restrict to any area or module, at any time, in its independent and absolute discretion.<br><br>
+                                        Any user ID and password you may have for this application is confidential and encrypted and it is your sole responsibility to maintain its confidentiality.</li>
 
-                function openServices() {
-                    document.getElementById("myServices").style.height = "100%";
-                }
+                                        <li><b>Your Content</b><br>
+                                            The Terms and Conditions of REIN states that “Your Content” are the content and data that you willingly choose to submit and display on this application. By that and with respect, you grant REIN a non-exclusive, worldwide, irrevocable, royalty-free, sublicense license to use your content and data for any operations related to the application.
+                                            <br><br>
+                                            <u>Your content must be your own and must not be undermining on any third-party rights.</u> REIN reserves the right to remove or release any of your content to the authorities from this application, at any time, and for any reason, without notice.</li>
 
-                function closeServices() {
-                    document.getElementById("myServices").style.height = "0%";
-                }
+                                            <li><b>No warranties</b><br>
+                                                REIN is provided just as it is, with its future faults, and REIN makes no implied representation or warranties, of any kind related to this application or the content and data it stores. <u>Nothing in this website shall be specifically and expressly construed to any of its users.</u></li>
 
-                function openContact() {
-                    document.getElementById("myContact").style.height = "100%";
-                }
+                                                <li><b>Limitation of Liability</b><br>
+                                                    REIN, or anyone from its administration, shall not be liable for anything arising out of or in any way connected with, your usage of this application. Whether such liability is under any contract, tort, or otherwise. <u>REIN shall not be liable for any indirect, consequential, or special liability arising from the misuse of this application.</u></li>
 
-                function closeContact() {
-                    document.getElementById("myContact").style.height = "0%";
-                }
+                                                    <li><b>Indemnification</b><br>
+                                                        You, as a user of REIN, hereby indemnify REIN from and against any of the liabilities, costs, demands, consequences of actions, damages, expenses, etc. arising out of or in any way related to your breach of any of the provisions of these Terms.</li>
 
-                function openBePartner() {
-                    document.getElementById("myBePartner").style.height = "100%";
-                }
+                                                        <li><b>Severability</b><br>
+                                                            If any of these terms is found to be invalid under enforceable and applicable law, such invalidity shall not render these Terms as wholly or completely invalid, and such provision or report shall remove such term without affecting the remaining terms.</li>
 
-                function closeBePartner() {
-                    document.getElementById("myBePartner").style.height = "0%";
-                }
+                                                            <li><b>Variation of Terms</b><br>
+                                                                REIN is permitted to revise these Terms at any time as it sees fit, and by using this application, you are required to review such terms on a regular basis to ensure that you understand all Terms and Conditions governing the usage of this application.</li>
 
-                function openTerms() {
-                    document.getElementById("myTerms").style.height = "100%";
-                }
+                                                                <li><b>Assignment</b><br>
+                                                                    REIN shall be permitted to assign, transfer, and subcontract its rights and/or obligations under this Terms without any notifications or consent required. However, you shall not be permitted to assign, transfer, and subcontract its rights and/or obligations under these Terms.</li>
 
-                function closeTerms() {
-                    document.getElementById("myTerms").style.height = "0%";
-                }
-            </script>
-        </body>
-        </html>
+                                                                    <li><b>Entire Agreement</b><br>
+                                                                        These terms, including any legal notices and disclaimers contained in REIN, constitutes the Entire Agreement between you and REIN. In relation, you use of the application and supersede all prior agreements and understandings with respect to the same.</li>
+
+                                                                        <li><b>Governing Law and Jurisdiction</b><br>
+                                                                            These terms will be governed by and construed in accordance with the laws of the Republic of the Philippines, and you shall submit to the non-exclusive jurisdiction of the state and federal count in the Republic of the Philippines for the resolution of any disputes.</li>
+                                                                        </ol>
+                                                                    </div>
+                                                                </div>
+
+                                                                <script>
+                                                                    function openAbout() {
+                                                                        document.getElementById("myAbout").style.height = "100%";
+                                                                    }
+
+                                                                    function closeAbout() {
+                                                                        document.getElementById("myAbout").style.height = "0%";
+                                                                    }
+
+                                                                    function openServices() {
+                                                                        document.getElementById("myServices").style.height = "100%";
+                                                                    }
+
+                                                                    function closeServices() {
+                                                                        document.getElementById("myServices").style.height = "0%";
+                                                                    }
+
+                                                                    function openContact() {
+                                                                        document.getElementById("myContact").style.height = "100%";
+                                                                    }
+
+                                                                    function closeContact() {
+                                                                        document.getElementById("myContact").style.height = "0%";
+                                                                    }
+
+                                                                    function openBePartner() {
+                                                                        document.getElementById("myBePartner").style.height = "100%";
+                                                                    }
+
+                                                                    function closeBePartner() {
+                                                                        document.getElementById("myBePartner").style.height = "0%";
+                                                                    }
+
+                                                                    function openTerms() {
+                                                                        document.getElementById("myTerms").style.height = "100%";
+                                                                    }
+
+                                                                    function closeTerms() {
+                                                                        document.getElementById("myTerms").style.height = "0%";
+                                                                    }
+                                                                </script>
+                                                            </body>
+                                                            </html>
