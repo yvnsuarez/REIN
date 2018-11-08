@@ -38,13 +38,11 @@ Route::prefix('admin')->group(function() {
     Route::post('/home/filtered', 'Web\AdminController@daterange');
     Route::post('/dashboard/filtered', 'Web\AdminController@daterange');
 
-    
     Route::resource('/partners', 'Web\Admin\PartnerController');
     Route::resource('/motorists', 'Web\Admin\MotoristsController');
     
     Route::get('/transactionlogs', 'Web\Admin\TransactionLogsController@index');
     Route::get('/transactionlogs/{id}', 'Web\Admin\TransactionLogsController@showTransaction');
-    Route::get('/transactionlogs/pdfexample/{id}', 'Web\Admin\TransactionLogsController@ExamplePDF');
     Route::get('/transactionlogs/downloadSingleTransaction/{id}', 'Web\Admin\TransactionLogsController@singleTransactionPDF');
     
     Route::get('/useractivity', 'Web\Admin\UserActivityController@index')->name('admin.useractivity');
@@ -85,7 +83,6 @@ Route::prefix('partner')->group(function() {
 
     Route::get('/transactionlogs', 'Web\PartnerCompany\TransactionLogsController@index');
     Route::get('/transactionlogs/{id}', 'Web\PartnerCompany\TransactionLogsController@showTransaction');
-    Route::get('/transactionlogs/pdfexample/{id}', 'Web\PartnerCompany\TransactionLogsController@ExamplePDF');
     Route::get('/transactionlogs/downloadSingleTransaction/{id}', 'Web\PartnerCompany\TransactionLogsController@singleTransactionPDF');
 
     Route::get('/feedbacks', 'Web\PartnerCompany\FeedbacksController@index');

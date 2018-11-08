@@ -101,47 +101,12 @@ class TransactionLogsController extends Controller
                     compact('report', 'getpartnerdetails', 
                     'getmotoristdetails', 'getassistantdetails',
                     'getcardetails', 'getpaymentdetails'));
-       
-        return $pdf->download('SingleTransactionLog.pdf'); 
 
         DB::table('user_logs')
             ->insert(['UserID' => $getpartner->id, 
             'Type' => "Download Transaction", 'ReportsID' => $ID, 
             'Description' => "Downloaded Transaction Log Successfully"]);
-    }
 
-    function ExamplePDF($ID){
-        
-        $report = Reports::find($ID);
-
-        $getpartner = Auth::user();
-        $partner = ['id' => $getpartner->id ];
-        $getpartnerdetails = User::where($partner)
-                            ->get()
-                            ->first();
-        $motorist = ['id' => $report->userID];
-        $getmotoristdetails = User::where($motorist)
-                            ->get()
-                            ->first();
-        $assistant = ['id' => $report->assistant];
-        $getassistantdetails = User::where($assistant)
-                            ->get()
-                            ->first();
-        $getcar = ['UserID' => $report->userID];
-        $getcardetails = DB::table ('cars')
-                        ->where($getcar)
-                        ->get()
-                        ->first();
-        $getpayment = ['ReportID' => $ID];
-        $getpaymentdetails = DB::table ('payments')
-                            ->where($getpayment)
-                            ->get()
-                            ->first();
-
-        // dd($getpartnerdetails);
-        return view ('Partner.SingleTransactionPDF', 
-                    compact('report', 'getpartnerdetails', 
-                    'getmotoristdetails', 'getassistantdetails', 
-                    'getcardetails', 'getpaymentdetails'));
+        return $pdf->download('SingleTransactionLog.pdf'); 
     }
 }

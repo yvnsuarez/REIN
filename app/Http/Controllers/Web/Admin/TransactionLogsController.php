@@ -87,7 +87,6 @@ class TransactionLogsController extends Controller
                             ->get()
                             ->first();
 
-        
        //dd($getpaymentdetails);
        $pdf = PDF::loadView('Admin.SingleTransactionPDF', 
                 compact('report', 'getpartnerdetails', 
@@ -102,42 +101,4 @@ class TransactionLogsController extends Controller
        
        return $pdf->download('SingleTransactionLog.pdf');
      }
-
-     function ExamplePDF($ID){
-
-        $getadminid = Auth::user();
-        $getid = $getadminid->id;
-        
-        $report = Reports::find($ID);
-
-        $partner = ['id' => $report->partner ];
-        $getpartnerdetails = User::where($partner)
-                            ->get()
-                            ->first();
-        $motorist = ['id' => $report->userID];
-        $getmotoristdetails = User::where($motorist)
-                            ->get()
-                            ->first();
-        $assistant = ['id' => $report->assistant];
-        $getassistantdetails = User::where($assistant)
-                            ->get()
-                            ->first();
-        $getcar = ['UserID' => $report->userID];
-        $getcardetails = DB::table ('cars')
-                        ->where($getcar)
-                        ->get()
-                        ->first();
-
-        $getpayment = ['ReportID' =>$ID];
-        $getpaymentdetails = DB::table ('payments')
-                            ->where($getpayment)
-                            ->get()
-                            ->first();
-
-        //($getpaymentdetails);
-        return view ('Admin.SingleTransactionPDF', 
-                    compact('report', 'getpartnerdetails', 
-                    'getmotoristdetails', 'getassistantdetails', 
-                    'getcardetails', 'getpaymentdetails'));
-    }
 }
