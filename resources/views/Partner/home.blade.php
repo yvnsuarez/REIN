@@ -27,35 +27,8 @@
     <link href="{{ asset('assets/css/charts/chartist.min.css') }}" rel="stylesheet"/> 
     <link href="{{ asset('assets/css/lib/vector-map/jqvmap.min.css') }}" rel="stylesheet"/> 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
-
-    <script type="text/javascript">
-
-      var analytics = JSON.parse("{{ json_encode($data) }}");
-        // Load the Visualization API and the corechart package.
-        google.charts.load('current', {'packages':['corechart']});
-
-        // Set a callback to run when the Google Visualization API is loaded.
-        google.charts.setOnLoadCallback(drawChart);
-
-
-        function drawChart() {
-
-
-        // Create the data table.
-        var data = google.visualization.arrayToDataTable();
-
-        // Set chart options
-        var options = {'title':'Service Type Charts'};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-        }
-   </script>
-
-       
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
         
     </head>
 <body>
@@ -178,6 +151,7 @@
         </div>
         
         <div class="content pb-0">
+                <br/>
                 <div class="row">
                         <div class="col-sm-6 col-lg-4">
                                 <div class="card text-white bg-flat-color-3">
@@ -292,16 +266,36 @@
         </div> 
             <!-- Widgets End -->
             <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">  
-                            <div class="card-body">
-                                <h4 class="box-title">Charts</h4>
-                                <div id="chart_div" style="width:750px; height:450px;">
+                <div class="col-lg-12">
+                    <div class="card">  
+                        <div class="card-body">
+                            <div>
+                                <div class="pull-left">
+                                    <h4 class="box-title">Charts</h4>
+                                </div>
+                                <div class="form control pull-right">
+                                {!! Form::open(['action' => 'Web\PartnerController@daterange', 'method' =>'POST']) !!}
+                                    From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d',strtotime('-7 days'))}}"/> &nbsp;
+                                    To: <input type="text" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
+                                    <button type="submit" class="btn btn-warning btn-sm">Go</button>
+                                {!! Form::close() !!}  
+                                </div>
+                            </div>
+                                <br/>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-6">
+                                        <div id="pie_chart" style="width:750; height:450px;"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-6">
+                                        <div id="bar_chart" style="width:750; height:450px;"></div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
                     </div>
-            </div>  
-        </div>
+                </div>  
+            </div>
 
         <div class="clearfix"></div>
 
@@ -317,7 +311,87 @@
 
     </div><!-- /#right-panel -->
 
+    {{-- Google Chart --}}
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
 
+        //pie chart
+        var analytics = <?php echo $servicetype ?>;
+          // Load the Visualization API and the corechart package.
+          google.charts.load('current', {'packages':['corechart']});
+  
+          // Set a callback to run when the Google Visualization API is loaded.
+          google.charts.setOnLoadCallback(drawChart);
+
+          function drawChart() {
+                // Create the data table.
+                var data = google.visualization.arrayToDataTable(analytics);
+        
+                // Set chart options
+                var options = {'title':'Percentage of Service Types'};
+        
+                // Instantiate and draw our chart, passing in some options.
+                var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+                chart.draw(data, options);
+          }
+     </script>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <script type="text/javascript">
+        var analytics = <?php echo $status ?>;
+          // Load the Visualization API and the corechart package.
+          google.charts.load('current', {'packages':['corechart']});
+  
+          // Set a callback to run when the Google Visualization API is loaded.
+          google.charts.setOnLoadCallback(drawChart);
+  
+  
+          function drawChart() {
+  
+  
+          // Create the data table.
+          var data = google.visualization.arrayToDataTable(analytics);
+  
+          // Set chart options
+          var options = {'title':'Percentage of Service Status'};
+  
+          // Instantiate and draw our chart, passing in some options.
+          var chart = new google.visualization.BarChart(document.getElementById('bar_chart'));
+          chart.draw(data, options);
+          }
+     </script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $(function () {
+            $("#datepickerfrom").datepicker({ maxDate: new Date(), dateFormat: "yy-mm-dd"});
+        });
+        $(function () {
+            $("#datepickerpresent").datepicker({ maxDate: new Date(), dateFormat: "yy-mm-dd"});
+        });
+    </script>
+
+   
+
+     {{-- Date Range Picker --}}
+     <script>
+
+        $(function() {
+        $('input[name="daterange"]').daterangepicker({
+            opens: 'left'
+        }, function(start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });
+        });
+    </script>
     <script src="{{ asset('assets/js/vendor/jquery-2.1.4.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins.js') }}"></script>

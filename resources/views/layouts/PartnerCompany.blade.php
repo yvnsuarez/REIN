@@ -25,6 +25,10 @@
     <link href="{{ asset('assets/css/charts/chartist.min.css') }}" rel="stylesheet"/> 
     <link href="{{ asset('assets/css/lib/vector-map/jqvmap.min.css') }}" rel="stylesheet"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 
 
@@ -36,6 +40,16 @@
         $('.ns-check-box').on('click', function() {
         $(this).find(':checkbox').toggleCheckbox();
         $(this).toggleClass('checkedBox');
+        });
+
+        $('#daterange').daterangepicker({
+            "alwaysShowCalendars": true,
+            "startDate": "11/02/2018",
+            "endDate": "11/08/2018",
+            "applyButtonClasses": "btn-warning",
+            "cancelClass": "btn-secondary"
+        }, function(start, end, label) {
+        console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
         });
 
     </script>

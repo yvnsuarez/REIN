@@ -14,5 +14,5 @@ class Reports extends Model
         'comment', 'addcharge', 'totalservice', 'totalservice', 'status', 'paymentstatus', 'created_at',
         'updated_at',
      ];
-     public $timestamps = true;
+     public $timestamps = false;
 }

@@ -63,6 +63,9 @@ Route::prefix('partner')->group(function() {
     Route::get('/home', 'Web\PartnerController@index')->name('partner.home');
     Route::get('/dashboard', 'Web\PartnerController@index')->name('partner.dashboard');
 
+    Route::post('/home/filtered', 'Web\PartnerController@daterange');
+    Route::post('/dashboard/filtered', 'Web\PartnerController@daterange');
+
     // Route::resource('/requests', 'Web\PartnerCompany\RequestsController@index');
     Route::get('/requests', 'Web\PartnerCompany\RequestsController@index')->name('partner.requests');
     Route::get('/requests/{id}/accept', 'Web\PartnerCompany\RequestsController@showaccept');
