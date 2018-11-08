@@ -87,6 +87,7 @@ class TransactionLogsController extends Controller
                             ->get()
                             ->first();
 
+        
        //dd($getpaymentdetails);
        $pdf = PDF::loadView('Admin.SingleTransactionPDF', 
                 compact('report', 'getpartnerdetails', 
