@@ -262,7 +262,7 @@
                                         </div>
                                     </div>
                                 </div>
-                        
+                                
         </div> 
             <!-- Widgets End -->
             <div class="row">
@@ -288,7 +288,7 @@
                                         <div id="pie_chart" style="width:750; height:450px;"></div>
                                     </div>
                                     <div class="col-sm-6 col-lg-6">
-                                        <div id="bar_chart" style="width:750; height:450px;"></div>
+                                        <div id="bar_chart" style="width:750; height:450px;">
                                     </div>
                                 </div>
                             </div>
@@ -317,7 +317,7 @@
     <script type="text/javascript">
 
         //pie chart
-        var analytics = <?php echo $servicetype ?>;
+        var pie_data = <?php echo $servicetype ?>;
           // Load the Visualization API and the corechart package.
           google.charts.load('current', {'packages':['corechart']});
   
@@ -326,7 +326,7 @@
 
           function drawChart() {
                 // Create the data table.
-                var data = google.visualization.arrayToDataTable(analytics);
+                var data = google.visualization.arrayToDataTable(pie_data);
         
                 // Set chart options
                 var options = {'title':'Percentage of Service Types'};
@@ -338,7 +338,9 @@
      </script>
      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
      <script type="text/javascript">
-        var analytics = <?php echo $status ?>;
+
+        var bar_data = <?php echo $status ?>;
+
           // Load the Visualization API and the corechart package.
           google.charts.load('current', {'packages':['corechart']});
   
@@ -350,7 +352,7 @@
   
   
           // Create the data table.
-          var data = google.visualization.arrayToDataTable(analytics);
+          var data = google.visualization.arrayToDataTable(bar_data);
   
           // Set chart options
           var options = {'title':'Percentage of Service Status'};

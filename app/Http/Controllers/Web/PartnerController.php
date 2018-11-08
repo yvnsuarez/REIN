@@ -89,8 +89,8 @@ class PartnerController extends Controller
         return view('Partner.home', 
                     compact('assistant', 'availableassistant', 'notavailableassistant', 
                             'totalsales', 'totalservice', 'totalongoing', 'start', 'end')) //, 'start', 'end'
-                    ->with('servicetype', json_encode($piearray))
-                    ->with('status', json_encode($bararray));
+                            ->with('servicetype', json_encode($piearray))
+                            ->with('status', json_encode($bararray));
  
     }
 
@@ -153,7 +153,7 @@ class PartnerController extends Controller
         $bar = DB::table('reports')
             ->select(
                 DB::raw('status as status'),
-                DB::raw('count(*) as number'))
+                DB::raw('count(*) as total'))
             ->where('partner', $getpartner->id)
             ->whereBetween('DateSubmitted', array(new Carbon($start), new Carbon($end)))
             ->groupBy('status')
@@ -161,7 +161,7 @@ class PartnerController extends Controller
         $bararray[] = ['status', 'Total'];
         foreach($bar as $key => $value)
         {
-        $bararray[++$key] = [$value->status, $value->number];
+        $bararray[++$key] = [$value->status, $value->total];
         }
 
         return view('Partner.home', 
@@ -169,7 +169,5 @@ class PartnerController extends Controller
                             'totalsales', 'totalservice', 'totalongoing', 'start', 'end'))
                     ->with('servicetype', json_encode($piearray))
                     ->with('status', json_encode($bararray));
- 
     }
-    
 }

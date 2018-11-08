@@ -152,6 +152,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Scopdrag\LaravelGoogleChart\LaravelGoogleChartServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        LaravelFCM\FCMServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -223,6 +224,8 @@ return [
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
         'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+        'FCM'      => LaravelFCM\Facades\FCM::class,
+	    'FCMGroup' => LaravelFCM\Facades\FCMGroup::class,
 
     ],
 

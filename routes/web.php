@@ -34,6 +34,10 @@ Route::prefix('admin')->group(function() {
     
     Route::get('/home', 'Web\AdminController@index')->name('admin.home');
     Route::get('/dashboard', 'Web\AdminController@index')->name('admin.dashboard');
+
+    Route::post('/home/filtered', 'Web\AdminController@daterange');
+    Route::post('/dashboard/filtered', 'Web\AdminController@daterange');
+
     
     Route::resource('/partners', 'Web\Admin\PartnerController');
     Route::resource('/motorists', 'Web\Admin\MotoristsController');
