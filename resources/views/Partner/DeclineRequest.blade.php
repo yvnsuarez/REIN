@@ -23,7 +23,7 @@
             <div class="card-header">
                 <strong class="card-title">Request Details</strong>
             <div class="card-body">
-            {!! Form::open(['action' => ['Web\PartnerCompany\RequestsController@accept', $reports['ID']], 'method' =>'POST']) !!}
+            {!! Form::open(['action' => ['Web\PartnerCompany\RequestsController@decline', $reports['ID']], 'method' =>'POST']) !!}
                         {{ csrf_field() }}
                         {{-- <div class="form-group">
                             <label>Partner</label>

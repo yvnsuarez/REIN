@@ -247,7 +247,7 @@
                 <hr>
                 <br>
                 <!-- Place download link for REIN Motorists App here -->
-                <p style="text-align:center">Our <a href="{{url('#')}}" style=display:inline;text-decoration:underline;><b>REIN</b> booking application</a> allow motorists to book emergency roadside services such as: </p>
+                <p style="text-align:center">Our <a href="{{url('/APK/motorist.apk')}}" style=display:inline;text-decoration:underline;><b>REIN</b> booking application</a> allow motorists to book emergency roadside services such as: </p>
                 <p>
                     <figure style="width:20%">
                         <img src=""/>
@@ -339,6 +339,9 @@
                     </p>
                     <p>
                         Already a REIN PARTNER?<a href="{{url('/partner/login')}}" style=display:inline;text-decoration:underline;>Login as a Partner</a>
+                    </p>
+                    <p>
+                        Download the <a href="{{url('/APK/assistant.apk')}}" style=display:inline;text-decoration:underline;> Assistant App</a> now!
                     </p>
                 </div>
             </div>

@@ -43,7 +43,12 @@ class AdminLoginController extends Controller
             return redirect()->intended(route('admin.home'));
         }
         
-        return redirect()->back()->withInput($request->only('Email', 'password'));
+        else {
+            
+            $errmsg = "Email or Password is Invalid";
+            return redirect()->back()->with('failure', $errmsg);
+            //return view('login/loginAdmin', compact('errmsg'));
+        }
     }
 
     public function adminLogout()

@@ -31,7 +31,9 @@
                                     @endif
                                 </div>
                             <ul class="list-group list-group-flush">
-                            @if ($reports->status === 'Accepted')
+                                @if ($reports->status === 'Accepted' || $reports->status === 'Assigned'
+                                || $reports->status === 'Declined' || $reports->status === 'Done'
+                                || $reports->status === 'Ongoing' || $reports->status === 'Sent Report')
                                 <b class="text-center">Partner Company Details</b>
                                         <li class="list-group-item">
                                             <b>Business Name: </b> {{$partner->BusinessName}}<br/>
@@ -59,7 +61,7 @@
                                             <b>Service Instruction: </b>{{$reports->instruction}}<br/>
                                             <b>Service Place: </b>{{$reports->Lat}}, {{$reports->Lon}}<br/>
                                             <b>Total Service Charge: </b>{{$reports->totalservice}}
-                            @if ($reports->status === 'Assigned' OR $reports->status === 'Ongoing' OR $reports->status === 'Done')
+                            @if ($reports->status === 'Assigned' OR $reports->status === 'Ongoing' OR $reports->status === 'Done' $reports->status === 'Sent Report')
                                                 <br/>
                                                 <br/>
                                             <b>Assistant Details: </b> {{$assistant->FirstName}} {{$assistant->LastName}}<br/>
