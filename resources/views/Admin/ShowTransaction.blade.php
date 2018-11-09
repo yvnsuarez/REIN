@@ -61,7 +61,7 @@
                                             <b>Service Instruction: </b>{{$reports->instruction}}<br/>
                                             <b>Service Place: </b>{{$reports->Lat}}, {{$reports->Lon}}<br/>
                                             <b>Total Service Charge: </b>{{$reports->totalservice}}
-                            @if ($reports->status === 'Assigned' OR $reports->status === 'Ongoing' OR $reports->status === 'Done' $reports->status === 'Sent Report')
+                            @if ($reports->status === 'Assigned' OR $reports->status === 'Ongoing' OR $reports->status === 'Done' OR $reports->status === 'Sent Report')
                                                 <br/>
                                                 <br/>
                                             <b>Assistant Details: </b> {{$assistant->FirstName}} {{$assistant->LastName}}<br/>

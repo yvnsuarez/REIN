@@ -19,7 +19,7 @@
             <div class="row">
 <div class="col-lg-12">
         <div class="card">
-            <div class="card-header"><strong>Company</strong></div>
+            <div class="card-header">Assistants</div>
             <div class="card-body card-block">
             {!! Form::open(array('route'=>'assistants.store')) !!}
                     @csrf
