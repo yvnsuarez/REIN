@@ -10,7 +10,7 @@ class Reports extends Model
     protected $table = 'reports';
     protected $primaryKey = 'id';
     protected $fillable =[
-        'ID','partner','motorist','assistant','instruction','servicetype','image', 'Lat','Long',
+        'ID','partner','userID','assistant', 'CarID', 'instruction','servicetype','Lat','Lon',
         'comment', 'addcharge', 'totalservice', 'totalservice', 'status', 'paymentstatus', 'created_at',
         'updated_at',
      ];

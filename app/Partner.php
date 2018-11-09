@@ -14,7 +14,7 @@ class Partner extends Authenticatable
     protected $guard = 'partner';
     protected $table = 'users';
     protected $primaryKey = 'id';
-    public $timestamps = true;
+    public $timestamps = false;
 
 
     public function setAttribute($key, $value)
