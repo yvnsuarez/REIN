@@ -53,7 +53,7 @@
                                             <b>Total Service Charge: </b>{{$reports->totalservice}}
                                                 <br/>
                                                 <br/>
-                                            @if ($reports->status === 'Done' OR $reports->status === 'Assigned' OR $reports->status === 'Ongoing')
+                                            @if ($reports->status === 'Done' OR $reports->status === 'Assigned' OR $reports->status === 'Ongoing' OR $reports->status === 'Sent Report')
                                             <b>Assistant Details: </b> {{$assistant->FirstName}} {{$assistant->LastName}}<br/>
                                             <b>Address: </b> {{$assistant->Address}} {{$assistant->City}} {{$assistant->ZipCode}}
                                             <b>Contact No: </b> {{$assistant->MobileNo}}

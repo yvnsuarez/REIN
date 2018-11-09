@@ -13,10 +13,10 @@
         </div>
     </div>
 @endsection
-@section('content') 
+@section('content')
  <div class="content">
         <div class="animated fadeIn">
-            <div class="row"> 
+            <div class="row">
 <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
@@ -30,47 +30,87 @@
                 <div class="cub-input">
                     <div class="text-input">
                              <label for="FirstName">FirstName</label>
-                            <input type="text" name="FirstName" value="{{ $user->FirstName}}" class="form-control" required>
-                    </div>
+                            <input type="text" name="FirstName" value="{{ $user->FirstName}}" class="form-control {{ $errors->has('FirstName') ? ' is-invalid' : '' }}" disabled>
+                            @if ($errors->has('FirstName'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('FirstName') }}</strong>
+                            </span>
+                    @endif
+                        </div>
                     <div class="text-input">
                     <label for="LastName">Last Name</label>
-                            <input type="text" name="LastName" value="{{ $user->LastName}}" class="form-control" required>
-                    </div>
+                            <input type="text" name="LastName"  value="{{ $user->LastName}}" class="form-control {{ $errors->has('LastName') ? ' is-invalid' : '' }}" disabled>
+                            @if ($errors->has('LastName'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('LastName') }}</strong>
+                            </span>
+                    @endif
+                        </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="MobileNo">Mobile Number</label>
-                            <input type="text" name="MobileNo" value="{{ $user->MobileNo}}" placeholder="XXXX XXX XXXX" class="form-control" required>
-                    </div>
+                            <input type="text" name="MobileNo" value="{{ $user->MobileNo}}" placeholder="XXXX XXX XXXX" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" >
+                            @if ($errors->has('MobileNo'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('MobileNo') }}</strong>
+                            </span>
+                    @endif
+                        </div>
                     <div class="text-input">
                     <label for="BirthDay">Birthday</label>
-                                <input type="date" name="BirthDay" value="{{ $user->BirthDay}}" class="form-control" required>
-                    </div>
+                                <input type="date" name="BirthDay" value="{{$user->BirthDay}}" class="form-control {{ $errors->has('BirthDay') ? ' is-invalid' : '' }}" disabled >
+                                @if ($errors->has('BirthDay'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('BirthDay') }}</strong>
+                                </span>
+                        @endif
+                            </div>
                     <div class="clearfix"></div>
                 </div>
-             
+
                 <div class="text-input">
                 <label for="Address">Address</label>
-                                <input type="text" name="Address" value="{{ $user->Address}}" class="form-control" required>
-                </div>
+                                <input type="text" name="Address"  value="{{ $user->Address}}" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" >
+                                @if ($errors->has('Address'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('Address') }}</strong>
+                                </span>
+                        @endif
+                            </div>
 
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="City">City</label>
-                                    <input type="text" name="City" value="{{ $user->City}}" class="form-control" required>
-                    </div>
+                                    <input type="text" name="City" value="{{ $user->City}}" class="form-control {{ $errors->has('City') ? ' is-invalid' : '' }}" >
+                                    @if ($errors->has('City'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('City') }}</strong>
+                                    </span>
+                            @endif
+                                </div>
                     <div class="text-input">
                     <label for="ZipCode">Zip Code</label>
-                            <input type="text" name="ZipCode" value="{{ $user->ZipCode}}" placeholder="XXXX" class="form-control" required>
-                    </div>
+                            <input type="text" name="ZipCode" value="{{ $user->ZipCode}}" class="form-control {{ $errors->has('ZipCode') ? ' is-invalid' : '' }}" >
+                            @if ($errors->has('ZipCode'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('ZipCode') }}</strong>
+                            </span>
+                    @endif
+                        </div>
                     <div class="clearfix"></div>
                 </div>
 
                 <div class="text-input">
                 <label for="Email">E-mail</label>
-                                    <input type="email" name="Email" placeholder="example@gmail.com" value="{{ $user->Email}}" class="form-control" required>
-                </div>
+                                    <input type="email" name="Email" value="{{ $user->Email}}" class="form-control {{ $errors->has('Email') ? ' is-invalid' : '' }}" >
+                                    @if ($errors->has('Email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('Email') }}</strong>
+                                    </span>
+                            @endif
+                                </div>
 
                 <div class="cub-input">
                     <div class="text-input">

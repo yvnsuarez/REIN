@@ -13,10 +13,10 @@
         </div>
     </div>
 @endsection
-@section('content') 
+@section('content')
 <div class="content">
         <div class="animated fadeIn">
-            <div class="row"> 
+            <div class="row">
 <div class="col-lg-12">
         <div class="card">
             <div class="card-header"><strong>Company</strong></div>
@@ -31,7 +31,12 @@
                     <div class="text-input">
                     <div class="form-group">
                                 <label for="BusinessName">Business Name</label>
-                                <input type="text" name="BusinessName" value="" class="form-control" required>
+                                <input type="text" name="BusinessName" value="" class="form-control {{ $errors->has('BusinessName') ? ' is-invalid' : '' }}">
+                                @if ($errors->has('BusinessName'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('BusinessName') }}</strong>
+                                </span>
+                        @endif
                             </div>
                     </div>
                     <div class="clearfix"></div>
@@ -40,13 +45,23 @@
                     <div class="text-input">
                     <div class="form-group">
                                 <label for="BusinessRegistrationNo">Business Registration Number</label>
-                                <input type="text" name="BusinessRegistrationNo" value="" class="form-control" required>
+                                <input type="text" name="BusinessRegistrationNo" value="" class="form-control {{ $errors->has('BusinessRegistrationNo') ? ' is-invalid' : '' }}">
+                                @if ($errors->has('BusinessRegistrationNo'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('BusinessRegistrationNo') }}</strong>
+                                    </span>
+                            @endif
                             </div>
                     </div>
                     <div class="text-input">
                     <div class="form-group">
                                 <label for="LTFRBRegistrationNo">LTFRB Accreditation Number</label>
-                                <input type="text" name="LTFRBRegistrationNo" value="" class="form-control" required>
+                                <input type="text" name="LTFRBRegistrationNo" value="" class="form-control {{ $errors->has('LTFRBRegistrationNo') ? ' is-invalid' : '' }}">
+                                @if ($errors->has('LTFRBRegistrationNo'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('LTFRBRegistrationNo') }}</strong>
+                                </span>
+                        @endif
                             </div>
                     </div>
                     <div class="clearfix"></div>
@@ -54,7 +69,12 @@
                 <div class="text-input">
                 <div class="form-group">
                                 <label for="Address">Address</label>
-                                <input type="text" name="Address" value="" class="form-control" required>
+                                <input type="text" name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}">
+                                @if ($errors->has('Address'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('Address') }}</strong>
+                                </span>
+                        @endif
                             </div>
                 </div>
 
@@ -62,13 +82,23 @@
                     <div class="text-input">
                     <div class="form-group">
                                 <label for="City">City</label>
-                                <input type="text" name="City" value="" class="form-control" required>
+                                <input type="text" name="City" value="" class="form-control {{ $errors->has('City') ? ' is-invalid' : '' }}">
+                                @if ($errors->has('City'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('City') }}</strong>
+                                </span>
+                        @endif
                             </div>
                     </div>
                     <div class="text-input">
                     <div class="form-group">
                                 <label for="ZipCode">Zip Code</label>
-                                <input type="text" name="ZipCode" value="" placeholder="XXXX" class="form-control" required>
+                                <input type="text" name="ZipCode" value="" placeholder="XXXX" class="form-control {{ $errors->has('ZipCode') ? ' is-invalid' : '' }} maxLength="4"">
+                                @if ($errors->has('ZipCode'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('ZipCode') }}</strong>
+                                </span>
+                        @endif
                             </div>
                     </div>
                     <div class="clearfix"></div>
@@ -78,13 +108,23 @@
                         <div class="text-input">
                         <div class="form-group">
                                 <label for="Email">E-mail</label>
-                                <input type="email" name="Email" value="" placeholder="example@gmail.com"class="form-control" required>
+                                <input type="email" name="Email" value="" placeholder="example@gmail.com"class="form-control {{ $errors->has('Email') ? ' is-invalid' : '' }}">
+                                @if ($errors->has('Email'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('Email') }}</strong>
+                                </span>
+                        @endif
                             </div>
                         </div>
                         <div class="text-input">
                         <div class="form-group">
                                 <label for="MobileNo">Contact Number</label>
-                                <input type="text" name="email" value="" placeholder="XXXX XXX XXXX"class="form-control" required>
+                                <input type="text" name="MobileNo" value="" placeholder="XXXXXXXXXXX"class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" maxLength="11">
+                                @if ($errors->has('MobileNo'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('MobileNo') }}</strong>
+                                </span>
+                        @endif
                             </div>
                         </div>
                     <div class="clearfix"></div>
@@ -94,14 +134,24 @@
                     <div class="text-input">
                     <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" class="form-control" required>
+                                <input type="password" name="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}">
+                                @if ($errors->has('password'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                        @endif
                             </div>
                     </div>
                     <div class="text-input">
-                    
+
                     <div class="form-group">
-                                <label for="CPassword">Password</label>
-                                <input type="password" name="CPassword" class="form-control" required>
+                                <label for="CPassword">Confirm Password</label>
+                                <input type="password" name="CPassword" class="form-control {{ $errors->has('CPassword') ? ' is-invalid' : '' }}">
+                                @if ($errors->has('CPassword'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('CPassword') }}</strong>
+                                </span>
+                        @endif
                             </div>
                     </div>
                     <div class="clearfix"></div>
@@ -121,14 +171,15 @@
                                         </div>
                                         </div>
 
-                <div class="form-group">
+                                 <div class="form-group">
                                         <div class="pull-left">
                                             <a href="{{ route('partners.index') }}" class="btn btn-warning btn-sm">Cancel</a>
                                         </div>
                                         &nbsp;
 
                                          <input type="button" value="Register Partner" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#Modal2"/>
-                                    </div>
+
+                                        </div>
 
                                   <!-- Modal -->
                                   <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

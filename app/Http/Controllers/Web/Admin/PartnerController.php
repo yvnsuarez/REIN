@@ -52,37 +52,55 @@ class PartnerController extends Controller
         // return redirect()->route('partners.index')->with('message','partner has been added successfully');
 
     
-        $validator = Validator::make($request->all(), [ 
-            
-            'BusinessName' => 'required' ,
-            'Address' => 'required', 
-            'City' => 'required',
-            'ZipCode' => 'required',
-            'BusinessRegistrationNo' => 'required' ,
-            'LTFRBRegistrationNo' => 'required',
-            'MobileNo' => 'required',
-            'Email' => 'required|unique',
-            'password' => 'required|min:6',
-            'CPassword' => 'same:password',
-            'g-recaptcha-response' => 'required|captcha',
-            'remember_token',
-            'Status',
-            // 'DateCreated'
-            
-        
-        ]);
+        $this->validate($request, [
 
-        
-        // if ($validator->fails()) { 
-        //     return response()->to(['error'=>$validator->errors()], 401);            
-        // }
+            'BusinessName' => 'required|max:250|regex:/^[a-zA-Z-. ]*$/',
+            'Address' => 'required|regex:/^[a-zA-Z-. 0-9]*$/',
+            'City' => 'required|max:100|regex:/^[a-zA-Z-. ]*$/',
+            'ZipCode' => 'required|max:4|regex:/^[0-9]*$/',
+            'BusinessRegistrationNo' => 'required|max:250|regex:/^[0-9]*$/' ,
+            'LTFRBRegistrationNo' => 'required|max:250|regex:/^[0-9]*$/',
+            'MobileNo' => 'required|max:11|regex:/^[0-9]*$/',
+            'Email' => 'required|max:250|unique:users|',
+            'password' => 'required|min:6|max:250|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/',
+            'CPassword' => 'same:password|required',
+            'g-recaptcha-response' => 'required|captcha',
+        ],[
+            'BusinessName.required' => 'Please input your Business Name' ,
+            'BusinessName.max' => 'Your BusinessName input exceeds the maximum length.' ,
+            'BusinessName.regex' => 'Your BusinessName input is invalid.' ,
+            'Address.required' => 'Please input your Address',
+            'Address.regex' => 'Your Address input is invalid.' ,
+            'City.required' => 'Please input your City ',
+            'City.max' => 'Your city input exceeds the maximum length.',
+            'City.regex' => 'Please input a valid city',
+            'ZipCode.required' => 'Please input your Zip Code',
+            'ZipCode.max' => 'Your zip code input exceeds the maximum length.',
+            'ZipCode.regex' => 'Your zip code input is invalid.',
+            'BusinessRegistrationNo.required' => 'Please input your Business Registration Number' ,
+            'BusinessRegistrationNo.max' => 'Your Business Registration Number input exceeds the maximum length.' ,
+            'BusinessRegistrationNo.regex' => 'Your Business Registration Number input is invalid.' ,
+            'LTFRBRegistrationNo.required' => 'Please input your LTFRB Accreditation Number',
+            'LTFRBRegistrationNo.max' => 'Your LTFRB Accreditation Number input exceeds the maximum length.' ,
+            'LTFRBRegistrationNo.regex' => 'Your LTFRB Accreditation Number input is invalid.' ,
+            'MobileNo.required' => 'Please input your Mobile Number',
+            'MobileNo.max' => 'Please input a valid Mobile Number.',
+            'MobileNo.regex' => 'Please input a valid Mobile Number.',
+            'Email.required' => 'Please input your Email',
+            'Email.max' => 'Your email input exceeds the maximum length',
+            'Email.unique' => 'This email is already taken',
+            'password.required' => 'Please input a Password',
+            'password.max' => 'Your Password input exceeds the maximum length.',
+            'password.regex' => 'Your Password input must contain at least one uppercase, lowercase, numerical, and special character.',
+            'CPassword.required' => 'Please input a Password',
+            'CPassword.same' => 'Your password input should match.',
+        ]);
         
         $input = $request->all();   
         $partnercompany = new User($input);
-        $partnercompany->Password = bcrypt($input['Password']);
-        //$user = users::create($input); 
+        $partnercompany->password = bcrypt($input['password']);
         $partnercompany->UserTypeID = 4;
-        $partnercompany->Status = 'Activated';
+        $partnercompany->Status = 'Activated'; //verify email
 
 
         if($partnercompany->save()){
@@ -138,25 +156,41 @@ class PartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [ 
-            
-            'BusinessName' => 'required' ,
-            'Address' => 'required', 
-            'City' => 'required',
-            'ZipCode' => 'required',
-            'BusinessRegistrationNo' => 'required' ,
-            'LTFRBRegistrationNo' => 'required',
-            'MobileNo' => 'required',
-            'Email' => 'required',
-            'password' => 'required|min:6',
-            'CPassword' => 'same:password',
-            'g-recaptcha-response' => 'required|captcha',
-            'remember_token' ,
-            'Status',
-            // 'DateCreated'
-        
-        ]);
+        $this->validate($request, [
 
+            'BusinessName' => 'required|max:250|regex:/^[a-zA-Z-. ]*$/',
+            'Address' => 'required|regex:/^[a-zA-Z-. 0-9]*$/',
+            'City' => 'required|max:100|regex:/^[a-zA-Z-. ]*$/',
+            'ZipCode' => 'required|max:4|regex:/^[0-9]*$/',
+            'BusinessRegistrationNo' => 'required|max:250|regex:/^[0-9]*$/' ,
+            'LTFRBRegistrationNo' => 'required|max:250|regex:/^[0-9]*$/',
+            'MobileNo' => 'required|max:11|regex:/^[0-9]*$/',
+            'Email' => 'required|max:250|email',
+            'g-recaptcha-response' => 'required|captcha',
+        ],[
+            'BusinessName.required' => 'Please input your Business Name' ,
+            'BusinessName.max' => 'Your BusinessName input exceeds the maximum length.' ,
+            'BusinessName.regex' => 'Your BusinessName input is invalid.' ,
+            'Address.required' => 'Please input your Address',
+            'Address.regex' => 'Your Address input is invalid.' ,
+            'City.required' => 'Please input your City ',
+            'City.max' => 'Your city input exceeds the maximum length.',
+            'City.regex' => 'Please input a valid city',
+            'ZipCode.required' => 'Please input your Zip Code',
+            'ZipCode.max' => 'Your zip code input exceeds the maximum length.',
+            'ZipCode.regex' => 'Your zip code input is invalid.',
+            'BusinessRegistrationNo.required' => 'Please input your Business Registration Number' ,
+            'BusinessRegistrationNo.max' => 'Your Business Registration Number input exceeds the maximum length.' ,
+            'BusinessRegistrationNo.regex' => 'Your Business Registration Number input is invalid.' ,
+            'LTFRBRegistrationNo.required' => 'Please input your LTFRB Accreditation Number',
+            'LTFRBRegistrationNo.max' => 'Your LTFRB Accreditation Number input exceeds the maximum length.' ,
+            'LTFRBRegistrationNo.regex' => 'Your LTFRB Accreditation Number input is invalid.' ,
+            'MobileNo.required' => 'Please input your Mobile Number',
+            'MobileNo.max' => 'Please input a valid Mobile Number.',
+            'MobileNo.regex' => 'Please input a valid Mobile Number.',
+            'Email.required' => 'Please input your Email',
+            'Email' => 'Your email input is invalid',
+        ]);
         User::find($id)->update($request->all());
         
         $getadminid = Auth::user();

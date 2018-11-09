@@ -36,26 +36,25 @@
             <div class="login-content">
                 <div class="login-logo">
                     <br />
-                    <a href="index.html">
-                        <img class="align-content" src="{{ asset('/images/justREIN.png') }}" width="200px" height="100px">
-                    </a>
+                        <img class="align-content" src="{{  asset('/images/Partner-Login.png') }}" width="220px" height="160px">
+
                 </div>
                 <div class="login-form">
-                    @if(session()->has('alert'))
-                        <div class="content">
-                          <div class="alert alert-danger">
-                              <button type="button" class="close" data dismiss="alert" aria-hidden="true">&times;</button>
-                              <strong>{{session()->get('alert')}}</strong>
-                          </div>
-                      </div>
-                      @endif
                     <form method="POST" action="{{ route('partner.login.submit') }}" aria-label="{{ __('Login') }}">
                             @csrf
+
+                          {{-- INVALID LOGIN ERROR MESSAGE --}}
+                          @if (\Session::has('failure'))
+                          <div class="alert alert-danger " role="alert">
+                              {!! \Session::get('failure') !!}
+                          </div>
+                          @endif
+
                         <div class="form-group">
                             <label>Email address</label>
                             <input id="Email" type="Email" placeholder="Email" 
                             class="form-control{{ $errors->has('Email') ? ' is-invalid' : '' }}" 
-                            name="Email" value="{{ old('Email') }}" required autofocus>
+                            name="Email" value="{{ old('Email') }}">
                     
                             @if ($errors->has('Email'))
                                     <span class="invalid-feedback" role="alert">
@@ -66,7 +65,7 @@
                         <div class="form-group">
                             <label>Password</label>
                             <input id="password" type="password" placeholder="Password"
-                            class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                            class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
 
                             @if ($errors->has('password'))
                             <span class="invalid-feedback" role="alert">
@@ -78,7 +77,7 @@
                             <div class="col-md-6 pull-center">
                             {!! app('captcha')->display() !!}
                             @if ($errors->has('g-recaptcha-response'))
-                            <span class="help-block">
+                            <span class="help-block" role="alert">
                             <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
                             </span>
                             @endif

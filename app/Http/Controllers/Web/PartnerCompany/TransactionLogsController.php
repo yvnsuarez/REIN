@@ -29,7 +29,10 @@ class TransactionLogsController extends Controller
         $done = ['status', 'Done'];
         $ongoing = ['status', 'Ongoing'];
         $assigned = ['status', 'Assigned'];
-        $status = [$done, $ongoing, $assigned];
+        $declined = ['status', 'Declined'];
+        $sentreport = ['status', 'Sent Report'];
+
+        $status = [$done, $ongoing, $assigned, $declined, $sentreport];
 
         $reports = Reports::where($getreports)
                    ->orWhere($status)

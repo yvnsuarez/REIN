@@ -35,8 +35,9 @@ class RequestsController extends Controller
         $assigned = ['status' => 'Assigned'];
         $ongoing = [ 'status' => 'Ongoing'];
         $done = ['status' => 'Done'];
+        $declined = ['status' => 'Declined'];
 
-        $notstatus =[$assigned, $ongoing, $done];
+        $notstatus =[$assigned, $ongoing, $done, $declined];
 
         $reports = DB::table('reports')
                         ->where($pending)
@@ -180,9 +181,15 @@ class RequestsController extends Controller
 
     public function decline($ID)
     {
-        // DB::table('reports')
-        //   ->where('id', $ID)
-        //   ->update(['status' => "Declined"]);
+        $getpartner = Auth::user();
+
+        DB::table('reports')
+          ->where('id', $ID)
+          ->update(['status' => "Declined", 'partner' => $getpartner->id]);
+
+        $report = Reports::find($ID);
+        DB::table('user_logs')
+          ->insert(['UserID' => $getpartner->id, 'Type' => "Declined",'ReportsID' => $ID, 'TargetUser' => $report->userID,'Description' => "Request Declined"]);
 
         return redirect('partner/requests');  
     }

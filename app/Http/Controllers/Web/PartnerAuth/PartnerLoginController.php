@@ -29,12 +29,16 @@ class PartnerLoginController extends Controller
         ]);
 
         if (Auth::guard('partner')->attempt(['Email' => $request->Email,
-        'password' => $request->password], $request->remember))//, 'UserTypeID' => '4'
+        'password' => $request->password,  'UserTypeID' => '4']))//, 'UserTypeID' => '4'
         {
             return redirect()->intended(route('partner.dashboard'));
+        } 
+        else {
+
+            $errmsg = "Email or Password is Invalid";
+            return redirect()->back()->with('failure', $errmsg);
+            //return view('login/loginAdmin', compact('errmsg'));
         }
-        
-        return redirect()->back()->withInput($request->only('Email', 'password'));
     }
 
     public function partnerLogout()

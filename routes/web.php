@@ -26,6 +26,7 @@ Route::get('/', function(){
 Auth::Routes(['verify' => true]);
 
 Route::prefix('admin')->group(function() {
+    
     Route::get('/login','Web\AdminAuth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login','Web\AdminAuth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/logout', 'Web\AdminAuth\AdminLoginController@adminLogout')->name('admin.logout');
@@ -53,6 +54,8 @@ Route::prefix('admin')->group(function() {
 
 
 Route::prefix('partner')->group(function() {
+    
+    Route::get('/verify/{id}', 'API\MailController@verify');
     Route::get('/login','Web\PartnerAuth\PartnerLoginController@showLoginForm')->name('partner.login');
     Route::post('/login','Web\PartnerAuth\PartnerLoginController@login')->name('partner.login.submit');
     Route::get('/logout', 'Web\PartnerAuth\PartnerLoginController@partnerLogout')->name('partner.logout');
