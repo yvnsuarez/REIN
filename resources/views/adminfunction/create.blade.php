@@ -25,18 +25,27 @@
                     @csrf
             <div class="container">
             <div class="form-part">
-
                 <div class="cub-input">
                     <div class="text-input">
                         <div class="form-group">
                             <label for="FirstName">FirstName</label>
-                            <input type="text" name="FirstName" value="" class="form-control" required/>
+                            <input type="text" name="FirstName" value="" class="form-control {{ $errors->has('FirstName') ? ' is-invalid' : '' }}" maxlength="250">
+                            @if ($errors->has('FirstName'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('FirstName') }}</strong>
+                                    </span>
+                            @endif
                         </div>
                     </div>
                     <div class="text-input">
                     <div class="form-group">
                             <label for="LastName">Last Name</label>
-                            <input type="text" name="LastName" value="" class="form-control" required>
+                            <input type="text" name="LastName" value="" class="form-control  {{ $errors->has('LastName') ? ' is-invalid' : '' }}" maxlength="250">
+                            @if ($errors->has('LastName'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('LastName') }}</strong>
+                                    </span>
+                            @endif
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -45,7 +54,12 @@
                 <div class="text-input">
                     <div class="form-group">
                                     <label for="Email">E-mail</label>
-                                    <input type="email" name="Email" placeholder="example@gmail.com" class="form-control" required>
+                                    <input type="email" name="Email" placeholder="example@gmail.com" class="form-control {{ $errors->has('Email') ? ' is-invalid' : '' }}" >
+                                    @if ($errors->has('Email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('Email') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                 </div>
 
@@ -53,13 +67,23 @@
                     <div class="text-input">
                         <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" value="" class="form-control" required>
+                                <input type="password" name="password" value="" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" >
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                            @endif
                             </div>
                     </div>
                     <div class="text-input">
                         <div class="form-group">
                                 <label for="CPassword">Confirm Password</label>
-                                <input type="password" name="CPassword" value="" class="form-control" required>
+                                <input type="password" name="CPassword" value="" class="form-control {{ $errors->has('CPassword') ? ' is-invalid' : '' }}">
+                                @if ($errors->has('CPassword'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('CPassword') }}</strong>
+                                    </span>
+                            @endif
                             </div>
                     </div>
                     <div class="clearfix"></div>
