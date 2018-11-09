@@ -37,7 +37,7 @@ class TransactionLogsController extends Controller
                         ->first();
 
         $getassistant = ['id' => $reports->assistant];
-        $assistant = User::where($getmotorist)
+        $assistant = User::where($getassistant)
                         ->get()
                         ->first();
 
