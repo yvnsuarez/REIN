@@ -30,18 +30,23 @@
                 <div class="cub-input">
                     <div class="text-input">
                              <label for="FirstName">FirstName</label>
-                            <input type="text" name="FirstName" value="{{ $user->FirstName}}" class="form-control" required>
+                            <input type="text" name="FirstName" value="{{ $user->FirstName}}" class="form-control" disabled>
                     </div>
                     <div class="text-input">
                     <label for="LastName">Last Name</label>
-                            <input type="text" name="LastName" value="{{ $user->LastName}}" class="form-control" required>
+                            <input type="text" name="LastName" value="{{ $user->LastName}}" class="form-control" disabled>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="text-input">
-                <label for="Email">E-mail</label>
-                                    <input type="email" name="Email" placeholder="example@gmail.com" value="{{ $user->Email}}" class="form-control" required>
-                </div>
+                    <label for="Email">E-mail</label>
+                                        <input type="email" name="Email" value="{{ $user->Email}}" class="form-control {{ $errors->has('Email') ? ' is-invalid' : '' }}" >
+                                        @if ($errors->has('Email'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('Email') }}</strong>
+                                        </span>
+                                @endif
+                                    </div>
 
                 <div class="cub-input">
                     <div class="text-input">

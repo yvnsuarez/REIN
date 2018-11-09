@@ -135,17 +135,25 @@ class AdminFunctionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [ 
-            
-            'FirstName' => 'required' ,
-            'LastName' => 'required' ,
-            'Email' => 'required',
-            'password' => 'required|min:6',
-            'CPassword' => 'same:password',
+        $this->validate($request, [
+
+            'FirstName' => 'required|max:250|regex:/^[a-zA-Z-. ]*$/' ,
+            'LastName' => 'required|max:250|regex:/^[a-zA-Z-. ]*$/' ,
+            'Email' => 'required|max:250|unique:users|email',
             'g-recaptcha-response' => 'required|captcha',
-            'remember_token',
-            // 'DateCreated'
-        
+        ],
+        [
+            'FirstName.required' => 'Please input your Firstname.' ,
+            'FirstName.max' => 'Your firstname input exceeds the maximum length.' ,
+            'FirstName.regex' => 'Your firstname input is invalid.' ,
+            'LastName.required' =>  'Please input your Lastname.' ,
+            'LastName.max' => 'Your lastname input exceeds the maximum length.' ,
+            'LastName.regex' => 'Your lastname input is invalid.' ,
+            'Email.required' => 'Please input your email address',
+            'Email.max' => 'Your email address input exceeds the maximum length.',
+            'Email.unique' => 'This email is already taken',
+            'Email.regex' => 'Your email address input is invalid.',
+            'Email' => 'Your email input is invalid.',
         ]);
 
         User::find($id)->update($request->all());
