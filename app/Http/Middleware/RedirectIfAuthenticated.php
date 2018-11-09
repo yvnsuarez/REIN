@@ -33,7 +33,8 @@ class RedirectIfAuthenticated
             default:
                 if (Auth::guard($guard)->check())
                 {
-                   return redirect()->route('/'); 
+                    return view('landingPage');
+                   //return redirect()->route('/home'); 
                 }
         }
 
