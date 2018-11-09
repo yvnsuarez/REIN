@@ -139,7 +139,7 @@ class AdminFunctionController extends Controller
 
             'FirstName' => 'required|max:250|regex:/^[a-zA-Z-. ]*$/' ,
             'LastName' => 'required|max:250|regex:/^[a-zA-Z-. ]*$/' ,
-            'Email' => 'required|max:250|unique:users|email',
+            'Email' => 'required|max:250|email',
             'g-recaptcha-response' => 'required|captcha',
         ],
         [
@@ -151,7 +151,6 @@ class AdminFunctionController extends Controller
             'LastName.regex' => 'Your lastname input is invalid.' ,
             'Email.required' => 'Please input your email address',
             'Email.max' => 'Your email address input exceeds the maximum length.',
-            'Email.unique' => 'This email is already taken',
             'Email.regex' => 'Your email address input is invalid.',
             'Email' => 'Your email input is invalid.',
         ]);
