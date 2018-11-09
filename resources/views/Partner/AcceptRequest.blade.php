@@ -62,8 +62,6 @@
                                             <br/>
                                         <b>Service Instruction: </b>{{$reports->instruction}}}
                                             <br/>
-                                        <b>Service Image: </b>{{$reports->image}}}
-                                            <br/>
                                         <b>Service Place: </b>{{$reports->Lat}}, {{$reports->Lon}}
                                             <br/>
                                     </li>
