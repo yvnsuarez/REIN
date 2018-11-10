@@ -63,7 +63,7 @@ class AdminLoginController extends Controller
         // $getid = Auth::user();
 
         DB::table('user_logs')
-        ->insert(['UserID' => '', 'Type' => "Logout", 'Description' => "Logged out successfully"]);
+        ->insert(['UserID' => '1', 'Type' => "Logout", 'Description' => "Logged out successfully"]);
 
         Auth::guard('admin')->logout();
         return redirect('/admin/login')->with(Auth::logout());
