@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -49,14 +49,12 @@ class assistantscontroller extends Controller
             ]);
             if ($validator->fails()) {
                 return response()->json(['error' => $validator->errors()], 401);
-            }
-
-            return response()->json($allergies, 201);
-        } else {
+            } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
     }
+}
 
     /**
      * Display the specified resource.

@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
 
-class feedbackscontroller extends Controller
+use Illuminate\Http\Request; 
+use App\Http\Controllers\Controller; 
+use App\Feedbacks; 
+use Illuminate\Support\Facades\Auth; 
+use Validator;
+
+
+class FeedbacksController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +20,9 @@ class feedbackscontroller extends Controller
     public function index()
     {
         //
-          $records = feedbacks::all();
+          $records = Feedbacks::all();
         if(count($records)> 0){
-            return feedbacks::all();
+            return Feedbacks::all();
         }else{
 
 
@@ -29,24 +35,28 @@ class feedbackscontroller extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     *
      */
+
     public function store(Request $request)
     {
-        if (Auth::check()) {
+       
             $validator = Validator::make($request->all(), [
-                'Feedback' => 'required',
-                'DateSubmitted' => 'required',
+                'reportID',
+                 'review' => 'required',
+                 'DateSubmitted',
             ]);
-            if ($validator->fails()) {
-                return response()->json(['error' => $validator->errors()], 401);
+            if ($validator->fails()) { 
+                return response()->json(['error'=>$validator->errors()], 401);            
             }
-
-            return response()->json($allergies, 201);
-        } else {
-            return response()->json(['error' => 'Unauthorized'], 401);
+    $input = $request->all();
+            $feedbacks = Feedbacks::create($input); 
+            
+    return response()->json("Success",200); 
         }
 
-    }
+   
+    
   
 
     /**

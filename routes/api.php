@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -11,65 +9,42 @@ use Illuminate\Http\Request;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
+ */
 
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
+Route::post('sendhtmlemail', 'API\MailController@html_email');
+Route::post('token', 'API\UserController@send');
 
 
 Route::group(['middleware' => 'auth:api'], function () {
 
 //Motorist
-        Route::post('CreateComplaints', 'ComplaintsController@store');
-        Route::post('CreateRequests', 'RequestsController@store');
-        Route::post('CreateCars', 'CarsController@store');
-        Route::post('CreateComplaints', 'ComplaintsController@store');
-        Route::post('CreateImages', 'ComplaintsController@store');
-        Route::post('CreateLocation','LocationController@store');
-        Route::post('CreateService','ServicesController@store');
-
-//viewAll
-        Route::get('Transactions','TransactionController@index');
+    Route::group(['middleware' => 'scope:motorist'], function () {
+        Route::post('UpdateStatus', 'API\ReportsController@updateStatus');
+        Route::post('CreateFeedback', 'API\FeedbacksController@store');
+        Route::post('ViewCars', 'API\UserController@ViewCar');
+        
+        Route::post('CreateLocation', 'API\LocationController@store');
+        Route::post('UpdateReport', 'API\ReportsController@update');
+        Route::post('ViewReport', 'API\ReportsController@viewupdate');
+        Route::post('CreateCars', 'API\CarsController@store');
+        Route::post('ReportShow', 'API\ReportsController@show');
+        Route::post('notify', 'API\ReportsController@notification');
+        
+        Route::post('CreateService', 'API\ServicesController@store');
+        Route::post('CreateReports', 'API\ReportsController@store');
+    });
 
 // Assistant
- 
+    Route::group(['middleware' => 'scope:assistant'], function () {
         //CREATE
-        Route::post('CreateReport', 'ReportsController@store');
+        Route::post('Transactions', 'API\TransactionController@index');
+        Route::post('ViewDetails', 'API\ReportsController@index');
         Route::post('CreatePayments', 'PaymentsController@store');
-        Route::post('Create', 'Controller@store');
-        Route::post('Create', 'Controller@store');
 
-//PartnerCompanies
-   
-//VIEW All
-        Route::get('Request', 'Requests@index');
-        Route::get('Assistant', 'AssistantController@index');
-        Route::get('Transaction', 'TransactionController@index');
-        Route::get('Reports', 'API\reportsController@index');
-        
+        Route::post('notifyassistant', 'API\ReportsController@notificationAssistant');
 
-// VIEW 1
-        Route::post('CreateAssistant', 'AssistantController@show');
+    });
 
-//CREATE
-        Route::post('CreateAssistant', 'AssistantController@store');
-   
-  
-        //VIEW All
-                Route::get('partners', 'PartnerCompany@index');
-                Route::get('Assistant', 'AssistantController@index');
-                Route::get('Transaction', 'TransactionController@index');
-                
-        // VIEW 1
-                
-                
-        //CREATE
-                Route::post('CreatePartner', 'PartnerCompanyController@store');
-        
-                Route::get('detail', 'API\UserController@details');
-           
 });
-
-
-
-

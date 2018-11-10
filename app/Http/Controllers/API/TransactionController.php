@@ -2,27 +2,30 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
+use App\Http\Controllers\Controller; 
+use Illuminate\Support\Facades\Auth;
+use App\Report; 
+use Validator;
 
-class transaction_logscontroller extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-          $records = transaction_logs::all();
-        if(count($records)> 0){
-            return transaction_logs::all();
-        }else{
-
-
-        return response()->json("No Records Found");
+        $report = Report::where("userID", $request->ID)->first();
+        return response()->json(["servicetype" => $report->servicetype,
+                                 "addcharge" => $report->addcharge, 
+                                 "status" => $report->status,
+                                 "totalservice" => $report->totalservice,
+                                  "DateSubmitted" => $report->datesubmitted],200); 
     }
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -30,13 +33,7 @@ class transaction_logscontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        if (Auth::check()) {
-            $results = Transaction::find($request);
-            return $results;
-        }
-    }
+   
 
     /**
      * Display the specified resource.
@@ -44,25 +41,7 @@ class transaction_logscontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
-    {
-        if (Auth::check()) {
-            $validator = Validator::make($request->all(), [
-                'DateCreated',
-            'DateModified',
-    
-              
-            ]);
-            if ($validator->fails()) {
-                return response()->json(['error' => $validator->errors()], 401);
-            }
-
-            return response()->json($allergies, 201);
-        } else {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-    }
+  
 
     /**
      * Update the specified resource in storage.

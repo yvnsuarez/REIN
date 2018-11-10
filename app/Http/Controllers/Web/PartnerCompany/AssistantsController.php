@@ -109,7 +109,7 @@ class AssistantsController extends Controller
         $assistant = new User($input);
         $assistant->password = bcrypt($input['password']);
         $assistant->UserTypeID = 2;
-        $assistant->Status = 'Verified'; //Verify email first before login
+        $assistant->Status = 'Activated'; //Verify email first before login
         $assistant->PartnerCompany = $partner;
         $assistant->AssignStatus = 'Available';
         

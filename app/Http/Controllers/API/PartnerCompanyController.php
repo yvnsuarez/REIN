@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -57,14 +57,13 @@ class PartnerCompanyController extends Controller
             ]);
             if ($validator->fails()) {
                 return response()->json(['error' => $validator->errors()], 401);
-            }
-
-            return response()->json($allergies, 201);
+            
         } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
     }
+}
 
 
     /**

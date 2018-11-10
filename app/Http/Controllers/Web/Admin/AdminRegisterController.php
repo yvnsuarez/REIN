@@ -21,7 +21,7 @@ class AdminRegisterController extends Controller
                     ->get()
                     ->count();
         
-        if ($users == '1'){
+        if ($users < '1'){
             return view('Admin.Register');
         } else {
             return view('admin-auth.admin-login');
@@ -72,11 +72,10 @@ class AdminRegisterController extends Controller
         if($admin->save()){
             
             //user logs insert
-            $getadminid = Auth::user();
-            $getid = $getadminid->id;
+          
 
             DB::table('user_logs')
-            ->insert(['UserID' => $getid, 'Type' => "Admin Registration", 'Description' => "Registered an Admin Account Successfully"]);
+            ->insert(['UserID' => '1', 'Type' => "Admin Registration", 'Description' => "Registered an Admin Account Successfully"]);
 
             return view('landingPage'); 
         } 

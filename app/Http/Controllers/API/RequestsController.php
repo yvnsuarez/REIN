@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -59,7 +59,7 @@ class requestcontroller extends Controller
                 return response()->json(['error' => $validator->errors()], 401);
             }
 
-            return response()->json($allergies, 201);
+            return response()->json(200); 
         } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }

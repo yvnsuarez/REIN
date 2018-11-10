@@ -170,4 +170,46 @@ class PartnerController extends Controller
                     ->with('servicetype', json_encode($piearray))
                     ->with('status', json_encode($bararray));
     }
+
+    public function yay1()
+    {
+        dd($this->yay());
+        return view("MAMA MO");
+    }
+    
+    public function yay($id){
+        $optionBuilder = new OptionsBuilder();
+    $optionBuilder->setTimeToLive(60*20);
+    
+    $notificationBuilder = new PayloadNotificationBuilder('my title');
+    $notificationBuilder->setBody('Hello world')
+                    ->setSound('default');
+    
+    $dataBuilder = new PayloadDataBuilder();
+    $dataBuilder->addData(['a_data' => 'my_data']);
+    
+    $option = $optionBuilder->build();
+    $notification = $notificationBuilder->build();
+    $data = $dataBuilder->build();
+    $id = user::find($id)->first();
+    // dd($id);
+    $token = $id->token;
+    
+    $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+    
+    $downstreamResponse->numberSuccess();
+    $downstreamResponse->numberFailure();
+    $downstreamResponse->numberModification();
+    
+    //return Array - you must remove all this tokens in your database
+    $downstreamResponse->tokensToDelete();
+    
+    //return Array (key : oldToken, value : new token - you must change the token in your database )
+    $downstreamResponse->tokensToModify();
+    
+    //return Array - you should try to resend the message to the tokens in the array
+    $downstreamResponse->tokensToRetry();
+    
+    // return Array (key:token, value:errror) - in production you should remove from your databas
+    }
 }

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
+use App\Http\Controllers\Controller; 
+use Illuminate\Support\Facades\Auth;
+use App\Location; 
+use Validator;
 
-class locationscontroller extends Controller
+class LocationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,20 +36,19 @@ class locationscontroller extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::check()) {
-            $validator = Validator::make($request->all(), [
-              'Lat',
-              'Long',
-            ]);
-            if ($validator->fails()) {
-                return response()->json(['error' => $validator->errors()], 401);
-            }
-
-            return response()->json($allergies, 201);
-        } else {
-            return response()->json(['error' => 'Unauthorized'], 401);
+           
+        $validator = Validator::make($request->all(), [
+                'userID',
+                'Lat',
+                'Lon',
+        ]);
+        if ($validator->fails()) { 
+            return response()->json(['error'=>$validator->errors()], 401);            
         }
-
+$input = $request->all();
+        $locations = Location::create($input); 
+        
+return response()->json($locations,200); 
     }
 
     /**

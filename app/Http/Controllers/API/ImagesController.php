@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -35,14 +35,14 @@ class imagescontroller extends Controller
         if (Auth::check()) {
             $validator = Validator::make($request->all(), [
                 'imageRef' => 'required',
-                'image' => 'required',
+                'ID' => 'required',
                 'DateSubmitted' => 'required',
             ]);
             if ($validator->fails()) {
                 return response()->json(['error' => $validator->errors()], 401);
             }
 
-            return response()->json($allergies, 201);
+            return response()->json("Success", 201);
         } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }

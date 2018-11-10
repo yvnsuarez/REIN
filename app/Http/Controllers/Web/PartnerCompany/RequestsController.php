@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Web\PartnerCompany;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Reports;
 use App\User;
 use Auth;
-use App\Partner;
 use DB;
-use REIN\Http\Controllers\PartnerCompanyController;
+use FCM;
+use Illuminate\Http\Request;
+use LaravelFCM\Message\OptionsBuilder;
+use LaravelFCM\Message\PayloadDataBuilder;
+use LaravelFCM\Message\PayloadNotificationBuilder;
 
 class RequestsController extends Controller
 {
@@ -33,7 +35,7 @@ class RequestsController extends Controller
         $pending = ['status' => 'Pending'];
         $accepted = ['status' => 'Pending', 'partner' => $partner];
         $assigned = ['status' => 'Assigned'];
-        $ongoing = [ 'status' => 'Ongoing'];
+        $ongoing = ['status' => 'Ongoing'];
         $done = ['status' => 'Done'];
         $declined = ['status' => 'Declined'];
 
@@ -88,11 +90,11 @@ class RequestsController extends Controller
         $getmotoristdetails = ['id' => $reports->userID];
         $motorist = User::where($getmotoristdetails)->get()->first();
 
-        $getcar = ['userID' => $reports->userID];
-        $car = DB::table('cars')
-                ->where($getcar)
-                ->get()
-                ->first();
+        $getcar = ['ID' => $reports->CarID];
+        $car = DB::table ('cars')
+                        ->where($getcar)
+                        ->get()
+                        ->first();
 
         return view('Partner.AcceptRequest', compact('reports', 'motorist', 'car'));
     }
@@ -130,11 +132,11 @@ class RequestsController extends Controller
         $getmotoristdetails = ['id' => $reports->userID];
         $motorist = User::where($getmotoristdetails)->get()->first();
 
-        $getcar = ['userID' => $reports->userID];
-        $car = DB::table('cars')
-                ->where($getcar)
-                ->get()
-                ->first();
+        $getcar = ['ID' => $reports->CarID];
+        $car = DB::table ('cars')
+                        ->where($getcar)
+                        ->get()
+                        ->first();
         // dd($car);
         return view('Partner.AssignRequest', compact('reports', 'users', 'motorist', 'car'));
     }
@@ -146,18 +148,40 @@ class RequestsController extends Controller
         $partner = $getpartner->id;
         $assistant = $request->input('assistant');
         DB::table('reports')
-          ->where('id', $id)
-          ->update(['status' => "Assigned", 'assistant' => $assistant]);
-        
+            ->where('id', $id)
+            ->update(['status' => "Assigned", 'assistant' => $assistant]);
+
         DB::table('users')
-          ->where('id', $assistant)
-          ->update(['AssignStatus' => "Not Available"]);
+            ->where('id', $assistant)
+            ->update(['AssignStatus' => "Not Available"]);
 
         // DB::table('user_logs')
         //   ->save([])
-          
+
         DB::table('user_logs')
-        ->insert(['UserID' => $partner, 'Type' => "Assigned", 'TargetUser' => $assistant,'ReportsID' => $id,'Description' => "Request Assigned"]);
+            ->insert(['UserID' => $partner, 'Type' => "Assigned", 'TargetUser' => $assistant, 'ReportsID' => $id, 'Description' => "Request Assigned"]);
+
+        $optionBuilder = new OptionsBuilder();
+        $optionBuilder->setTimeToLive(60 * 20);
+
+        $notificationBuilder = new PayloadNotificationBuilder('my title');
+        $notificationBuilder->setBody('Hello world')
+            ->setSound('default');
+
+        $dataBuilder = new PayloadDataBuilder();
+        $dataBuilder->addData(['status' => 'Assigned', 'id' => $id]);
+
+        $option = $optionBuilder->build();
+        $notification = $notificationBuilder->build();
+        $data = $dataBuilder->build();
+
+        $report = Reports::find($id);
+        $UserFCMToken = User::find($report->userID);
+        $UserFCMToken2 = User::find($report->assistant);
+        //   dd($UserFCMToken);
+        $downstreamResponse = FCM::sendTo($UserFCMToken->token, $option, $notification, $data);
+        $downstreamResponse = FCM::sendTo($UserFCMToken2->token, $option, $notification, $data);
+
         return redirect('partner/requests');
         //return redirect()->intended(route('partner.requests'))->with('message','item has been updated successfully');
     }
@@ -169,11 +193,11 @@ class RequestsController extends Controller
         $getmotoristdetails = ['id' => $reports->userID];
         $motorist = User::where($getmotoristdetails)->get()->first();
 
-        $getcar = ['userID' => $reports->userID];
-        $car = DB::table('cars')
-                ->where($getcar)
-                ->get()
-                ->first();
+        $getcar = ['ID' => $reports->CarID];
+        $car = DB::table ('cars')
+                        ->where($getcar)
+                        ->get()
+                        ->first();
 
         return view('Partner.DeclineRequest', compact('reports', 'motorist', 'car'));
 

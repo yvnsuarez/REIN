@@ -13,16 +13,20 @@ class servicescontroller extends Controller
      */
     public function index()
     {
-        //
-          $records = services::all();
-        if(count($records)> 0){
-            return services::all();
-        }else{
+            $requests = Requests::all(); //->where('UserTypeID', '=', 2)
+            return view ('partnerCompany.Requests', compact('reports'));
+        
+    }
+    //     //
+    //       $records = services::all();
+    //     if(count($records)> 0){
+    //         return services::all();
+    //     }else{
 
 
-        return response()->json("No Records Found");
-    }
-    }
+    //     return response()->json("No Records Found");
+    // }
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -48,21 +52,21 @@ class servicescontroller extends Controller
     {
         if (Auth::check()) {
             $validator = Validator::make($request->all(), [
-                'ServiceType',
-                'ServiceRate',
-    
-              
+                'ServiceType' => 'required|max:25|string',
+                'ServiceRate' => 'required|max:25',
             ]);
             if ($validator->fails()) {
                 return response()->json(['error' => $validator->errors()], 401);
             }
+            $input = $request->all();
+            $Services = Services::create($input);   
 
-            return response()->json($allergies, 201);
+            return response()->json($Services, 201);
         } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
     }
+
 
     /**
      * Update the specified resource in storage.

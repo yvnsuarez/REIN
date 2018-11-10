@@ -54,7 +54,7 @@ class TransactionLogsController extends Controller
                         ->get()
                         ->first();
 
-        $getcar = ['UserID' => $reports->userID];
+        $getcar = ['ID' => $reports->CarID];
         $car = DB::table ('cars')
                         ->where($getcar)
                         ->get()
@@ -88,11 +88,12 @@ class TransactionLogsController extends Controller
         $getassistantdetails = User::where($assistant)
                                 ->get()
                                 ->first();
-        $getcar = ['UserID' => $report->userID];
-        $getcardetails = DB::table ('cars')
+        $getcar = ['ID' => $reports->CarID];
+        $car = DB::table ('cars')
                         ->where($getcar)
                         ->get()
                         ->first();
+
         $getpayment = ['ReportID' => $ID];
         $getpaymentdetails = DB::table ('payments')
                             ->where($getpayment)

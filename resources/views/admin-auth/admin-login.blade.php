@@ -82,12 +82,6 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="checkbox">
-                            <label class="pull-right">
-                                <a href="#">Forgotten Password?</a>
-                            </label>
-
-                        </div>
                         <button type="submit" class="btn btn-secondary btn-block m-b-30 m-t-30">
                             {{ __('Login') }}
                         </button>

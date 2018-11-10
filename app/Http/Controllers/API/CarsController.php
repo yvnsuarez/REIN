@@ -1,17 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace app\Http\Controllers\API;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
+use App\Http\Controllers\Controller; 
+use Illuminate\Support\Facades\Auth;
+use App\Car; 
+use Validator;
 
-class carscontroller extends Controller
+
+class CarsController extends Controller
 {
+    
     public function index()
     {
         //
-          $records = cars::all();
+          $records = Car::all();
         if(count($records)> 0){
-            return cars::all();
+            return Car::all();
         }else{
 
 
@@ -20,36 +26,35 @@ class carscontroller extends Controller
     }
     public function store(Request $request)
         {
-            if (Auth::check()) {
+           
                 $validator = Validator::make($request->all(), [
-                    'CarID' ,
-                    'PlateNo' => 'required',
-                    'CarType' => 'required',
-                    'Color' => 'required',
-                    'Model' => 'required|max:100',
-                    'YearModel' => 'required|max:100',
-                    'Brand' => 'required|max:100',
-                    'Battery' => 'required|max:100',
-                    'Tire' => 'required|max:100',
-                    'DateCreated' => 'required|max:100',
+                        'userID',
+                        'PlateNo' => 'required',
+                        'CarType' => 'required',
+                        'Color' => 'required',
+                        'Model' => 'required|max:100',
+                        'YearModel' => 'required|max:100',
+                        'Brand' => 'required|max:100',
+                        'Battery' => 'required|max:100',
+                        'Tire' => 'required|max:100',
+                        'DateCreated',
                 ]);
-                if ($validator->fails()) {
-                    return response()->json(['error' => $validator->errors()], 401);
+                if ($validator->fails()) { 
+                    return response()->json(['error'=>$validator->errors()], 401);            
                 }
-    
-                return response()->json($allergies, 201);
-            } else {
-                return response()->json(['error' => 'Unauthorized'], 401);
+        $input = $request->all();
+                $cars = Car::create($input); 
+                
+        return response()->json($cars,200); 
             }
-    
-        }
-
+        
 
     public function show(Request $request)
-    {
+    {   
         if (Auth::check()) {
-            $results = Cars::find($request);
+            $results = Car::find($request);
             return $results;
         }
     }
 }
+
