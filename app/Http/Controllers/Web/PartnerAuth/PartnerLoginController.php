@@ -54,11 +54,10 @@ class PartnerLoginController extends Controller
 
     public function partnerLogout()
     {
-        $getid = Auth::user();
+        // $getid = Auth::user();
 
-        dd($getid);
         DB::table('user_logs')
-        ->insert(['UserID' => $getid->id, 'Type' => "Logout", 'Description' => "Logged out successfully"]);
+        ->insert(['UserID' => '', 'Type' => "Logout", 'Description' => "Logged out successfully"]);
 
         Auth::guard('partner')->logout();
         return redirect('/partner/login')->with(Auth::logout());
