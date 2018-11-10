@@ -32,7 +32,7 @@ class PartnerLoginController extends Controller
         'password' => $request->password,  'UserTypeID' => '4']))//, 'UserTypeID' => '4'
         {
 
-            $getemail = ['Email' => 'Email'];
+            $getemail = ['Email' => $request->Email];
            // $gettype = ['UserTypeID' => '4'];
             dd($getemail);
             $getid = DB::table('users')
