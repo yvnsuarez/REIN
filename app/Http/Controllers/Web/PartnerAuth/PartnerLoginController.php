@@ -34,12 +34,10 @@ class PartnerLoginController extends Controller
 
             $getemail = ['Email' => $request->Email];
            // $gettype = ['UserTypeID' => '4'];
-            dd($getemail);
             $getid = DB::table('users')
                         ->where($getemail)
                         ->get()
                         ->first();
-
             DB::table('user_logs')
             ->insert(['UserID' => $getid->id, 'Type' => "Login", 'Description' => "Logged in successfully"]);
 
