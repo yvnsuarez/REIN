@@ -21,7 +21,7 @@ class AdminRegisterController extends Controller
                     ->get()
                     ->count();
         
-        if ($users == '3'){
+        if ($users == '1'){
             return view('Admin.Register');
         } else {
             return view('admin-auth.admin-login');
@@ -48,7 +48,6 @@ class AdminRegisterController extends Controller
             'Email.required' => 'Please input your email address',
             'Email.max' => 'Your email address input exceeds the maximum length.',
             'Email.unique' => 'This email is already taken',
-            'Email.regex' => 'Your email address input is invalid.',
             'Email' => 'Your email input is invalid.',
             'password.required' => 'Please input a password.',
             'password.min' => 'Your password input is too short.',
