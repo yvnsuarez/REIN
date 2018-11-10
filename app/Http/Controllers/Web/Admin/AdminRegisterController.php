@@ -20,7 +20,7 @@ class AdminRegisterController extends Controller
                     ->where($gettype)
                     ->get()
                     ->count();
-        if ($users == '1'){
+        if ($users == '10'){
         return view('Admin.Register');
         } else {
             return view('admin-auth.admin-login');
