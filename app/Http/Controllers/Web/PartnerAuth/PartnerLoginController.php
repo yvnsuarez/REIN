@@ -32,6 +32,11 @@ class PartnerLoginController extends Controller
         'password' => $request->password,  'UserTypeID' => '4']))//, 'UserTypeID' => '4'
         {
             return redirect()->intended(route('partner.dashboard'));
+
+            $getid = Auth::user();
+
+            DB::table('user_logs')
+            ->insert(['UserID' => $getid->id, 'Type' => "Login", 'Description' => "Logged in successfully"]);
         } 
         else {
 
