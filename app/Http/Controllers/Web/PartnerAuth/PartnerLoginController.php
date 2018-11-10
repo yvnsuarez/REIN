@@ -38,6 +38,7 @@ class PartnerLoginController extends Controller
                         ->where($getemail)
                         ->get()
                         ->first();
+                        
             DB::table('user_logs')
             ->insert(['UserID' => $getid->id, 'Type' => "Login", 'Description' => "Logged in successfully"]);
 
@@ -53,6 +54,11 @@ class PartnerLoginController extends Controller
 
     public function partnerLogout()
     {
+        $getid = Auth::user();
+
+        DB::table('user_logs')
+        ->insert(['UserID' => $getid->id, 'Type' => "Logout", 'Description' => "Logged out successfully"]);
+
         Auth::guard('partner')->logout();
         return redirect('/partner/login')->with(Auth::logout());
     }

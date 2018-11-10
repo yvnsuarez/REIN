@@ -59,6 +59,12 @@ class AdminLoginController extends Controller
 
     public function adminLogout()
     {
+
+        $getid = Auth::user();
+
+        DB::table('user_logs')
+        ->insert(['UserID' => $getid->id, 'Type' => "Logout", 'Description' => "Logged out successfully"]);
+
         Auth::guard('admin')->logout();
         return redirect('/admin/login')->with(Auth::logout());
         
