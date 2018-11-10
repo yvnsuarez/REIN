@@ -14,6 +14,19 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        return route('login');
+        switch ($request) 
+        {
+            case 'admin':
+            if (Auth::guard($guard)->check()) {
+                return route('admin.login');
+            } break;
+
+            case 'partner':
+            if (Auth::guard($guard)->check()) {
+                return route('partner.login');
+            } break;
+
+        }
+       // return route('/');
     }
 }
