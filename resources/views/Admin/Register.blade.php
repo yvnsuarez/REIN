@@ -1,160 +1,135 @@
 <!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>REIN Admin</title>
+    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{config('app.name', 'REIN')}}</title>
+    <link rel="apple-touch-icon" href="{{ asset('assets/images/justREIN.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/justREIN.png') }}"/>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/themify-icons.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/pe-icon-7-filled.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/cs-skin-elastic.css') }}">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
 
-        <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-            .full-height {
-                height: 100vh;
-            }
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+</head>
+<body class="rein">
 
-            .position-ref {
-                position: relative;
-            }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-       
-        
-            <div class="container">
-                    <div class="row justify-content-center">
-                            <div class="title m-b-md">
-                                    REIN - ADMIN 
-                            </div>
-                        <div class="col-md-8">
-                            <div class="card">
-                                <div class="card-header">{{ __('Register') }}</div>
-                
-                                <div class="card-body">
-                                    <form method="POST" action="/welcome">
-                                        @csrf
-                                        
-                
-                                        <div class="form-group row">
-                                            <label for="FirstName" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
-                
-                                            <div class="col-md-6">
-                                                <input id="FirstName" type="text" class="form-control{{ $errors->has('FirstName') ? ' is-invalid' : '' }}" name="FirstName" value="{{ old('FirstName') }}" required autofocus>
-                
-                                                @if ($errors->has('FirstName'))
-                                                    <span class="invalid-feedback">
-                                                        <strong>{{ $errors->first('FirstName') }}</strong>
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="LastName" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
-                
-                                            <div class="col-md-6">
-                                                <input id="LastName" type="text" class="form-control{{ $errors->has('LastName') ? ' is-invalid' : '' }}" name="LastName" value="{{ old('LastName') }}" required autofocus>
-                
-                                                @if ($errors->has('LastName'))
-                                                    <span class="invalid-feedback">
-                                                        <strong>{{ $errors->first('LastName') }}</strong>
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                
-                                        <div class="form-group row">
-                                            <label for="Email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-                
-                                            <div class="col-md-6">
-                                                <input id="Email" type="Email" class="form-control{{ $errors->has('Email') ? ' is-invalid' : '' }}" name="Email" value="{{ old('Email') }}" required>
-                
-                                                @if ($errors->has('Email'))
-                                                    <span class="invalid-feedback">
-                                                        <strong>{{ $errors->first('Email') }}</strong>
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                
-                                        <div class="form-group row">
-                                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-                
-                                            <div class="col-md-6">
-                                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-                
-                                                @if ($errors->has('password'))
-                                                    <span class="invalid-feedback">
-                                                        <strong>{{ $errors->first('password') }}</strong>
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                
-                                        <div class="form-group row">
-                                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-                
-                                            <div class="col-md-6">
-                                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                                            </div>
-                                        </div>
-                
-                                        <div class="form-group row mb-0">
-                                            <div class="col-md-6 offset-md-4">
-                                                <button type="submit" class="btn btn-primary">
-                                                    {{ __('Register') }}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+                    <br />
+                        <img class="align-content" src="{{ asset('/images/Admin-Login.png') }}" width="220px" height="160px">
                 </div>
-    </body>
+                <div class="login-form">
+                    <form method="POST" action="{{ url('/welcome') }}">
+                        @csrf
+
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input id="FirstName" type="text" placeholder="First Name"
+                            class="form-control{{ $errors->has('FirstName') ? ' is-invalid' : '' }}"
+                            name="FirstName" value="">
+
+                            @if ($errors->has('FirstName'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('FirstName') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input id="LastName" type="text" placeholder="LastName"
+                            class="form-control{{ $errors->has('LastName') ? ' is-invalid' : '' }}"
+                            name="LastName" value="">
+
+                            @if ($errors->has('LastName'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('LastName') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>Email address</label>
+                            <input id="Email" type="Email" placeholder="Email"
+                            class="form-control{{ $errors->has('Email') ? ' is-invalid' : '' }}"
+                            name="Email" value="{{ old('Email') }}">
+
+                            @if ($errors->has('Email'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('Email') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input id="password" type="password" placeholder="Password"
+                            class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
+
+                            @if ($errors->has('password'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input id="CPassword" type="password" placeholder="CPassword"
+                            class="form-control{{ $errors->has('CPassword') ? ' is-invalid' : '' }}" name="CPassword">
+
+                            @if ($errors->has('CPassword'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('CPassword') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                            <div class="col-md-6 pull-center">
+                                {!! app('captcha')->display() !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                <span class="help-block" role="alert">
+                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="checkbox">
+                            <label class="pull-right">
+                                <a href="#">Forgotten Password?</a>
+                            </label>
+
+                        </div>
+                        <button type="submit" class="btn btn-secondary btn-block m-b-30 m-t-30">
+                            {{ __('Login') }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('assets/js/vendor/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+</body>
 </html>

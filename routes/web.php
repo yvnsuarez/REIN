@@ -12,9 +12,12 @@
 */
 
 /* ADMIN REGISTRATION */
-Route::get('/admin/register', function(){
-    return view('Admin.Register');
-});
+// Route::get('/admin/register', function(){
+//     if
+//     return view('Admin.Register');
+// });
+
+Route::get('/admin/register', 'Web\Admin\AdminRegisterController@index');
 Route::post('/welcome', 'Web\Admin\AdminRegisterController@register');
 
 // GUEST
