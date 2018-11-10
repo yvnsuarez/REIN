@@ -35,13 +35,10 @@ class AdminLoginController extends Controller
         'password' => $request->password, 'UserTypeID' => '1']))
         {
 
-            $getemail = ['Email' => 'Email'];
-            $gettype = ['UserTypeID' => '1'];
-
-            $getdata = [$getemail, $gettype];
-
+            $getemail = ['Email' => $request->Email];
+           // $gettype = ['UserTypeID' => '4'];
             $getid = DB::table('users')
-                        ->where($getdata)
+                        ->where($getemail)
                         ->get()
                         ->first();
 
