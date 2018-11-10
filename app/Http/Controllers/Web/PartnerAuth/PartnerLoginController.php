@@ -56,6 +56,7 @@ class PartnerLoginController extends Controller
     {
         $getid = Auth::user();
 
+        dd($getid);
         DB::table('user_logs')
         ->insert(['UserID' => $getid->id, 'Type' => "Logout", 'Description' => "Logged out successfully"]);
 
