@@ -33,12 +33,10 @@ class PartnerLoginController extends Controller
         {
 
             $getemail = ['Email' => 'Email'];
-            $gettype = ['UserTypeID' => '1'];
-
-            $getdata = [$getemail, $gettype];
-
+           // $gettype = ['UserTypeID' => '4'];
+            dd($getemail);
             $getid = DB::table('users')
-                        ->where($getdata)
+                        ->where($getemail)
                         ->get()
                         ->first();
 
