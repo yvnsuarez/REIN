@@ -66,7 +66,6 @@ class UserController extends Controller
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
-        $input['Status'] = "Pending";
         $date = strtotime($input['BirthDay']);
         $input['BirthDay'] = date('Y-m-d', $date);
         $user = user::create($input);
