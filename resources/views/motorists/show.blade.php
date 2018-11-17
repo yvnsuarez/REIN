@@ -34,6 +34,7 @@
                                             <b>Contact No: </b> {{$user->MobileNo}}
                                             <b>Email: </b> {{$user->email}}
                                         </li>
+                                {{-- @if ($car < 0) --}}
                                  <b class="text-center">Car Information</b>
                                         <li class="list-group-item">
                                             <b>Plate No: </b>{{$car->PlateNo}}<br/>
@@ -42,6 +43,7 @@
                                             <b>Model: </b>{{$car->YearModel}} {{$car->Model}}<br/>
                                             <b>Color: </b>{{$car->Color}}
                                         </li>
+                                {{-- @endif --}}
                                 <b class="text-center">Status</b>
                                         <li class="list-group-item">
                                             {{$user->Status}}

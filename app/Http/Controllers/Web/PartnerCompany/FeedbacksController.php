@@ -37,7 +37,7 @@ class FeedbacksController extends Controller
 
         //Display feedbacks based on transactions made by the logged in partner company
         $feedbacks = DB::table('feedbacks')
-                    ->where('reportID', )
+                    ->where('reportID', $feedbackreport)
                     ->get();
 
         return view ('Partner.Feedbacks', compact('feedbacks'));

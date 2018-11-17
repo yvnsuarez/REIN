@@ -28,7 +28,7 @@ class UserController extends Controller
             $usertype = request('UserTypeID');
             if ($usertype == 2) {
                 $success['token'] = $user->createToken($accesstoken, ['assistant'])->accessToken;
-            } else {
+            } else {                                                                                                                                                                                                                                        
                 $success['token'] = $user->createToken($accesstoken, ['motorist'])->accessToken;
             }
             return response()->json(["id" => $user->id, "token" => $success['token']], 200);

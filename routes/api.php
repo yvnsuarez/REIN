@@ -42,7 +42,6 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::post('Transactions', 'API\TransactionController@index');
         Route::post('ViewDetails', 'API\ReportsController@index');
         Route::post('CreatePayments', 'PaymentsController@store');
-
         Route::post('notifyassistant', 'API\ReportsController@notificationAssistant');
 
     });

@@ -75,8 +75,8 @@ class TransactionLogsController extends Controller
                                 ->get()
                                 ->first();
 
-        $getcar = ['ID' => $reports->CarID];
-        $car = DB::table ('cars')
+        $getcar = ['ID' => $report->CarID];
+        $getcardetails = DB::table ('cars')
                         ->where($getcar)
                         ->get()
                         ->first();
