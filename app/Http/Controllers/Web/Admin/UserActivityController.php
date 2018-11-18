@@ -41,8 +41,7 @@ class UserActivityController extends Controller
         $start = Carbon::parse($request->start)->startOfDay();
         $end = Carbon::parse($request->end)->endOfDay();
 
-        $userlogs = DB::table('user_logs')
-                    ->whereBetween('Date', array(new Carbon($start), new Carbon($end)))
+        $userlogs = Reports::whereBetween('Date', array(new Carbon($start), new Carbon($end)))
                     ->with('user')
                     ->get();
         return view('Admin.UserActivity',compact('userlogs', 'start', 'end'));
