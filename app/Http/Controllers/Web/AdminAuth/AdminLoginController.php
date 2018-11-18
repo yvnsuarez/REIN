@@ -32,7 +32,7 @@ class AdminLoginController extends Controller
         ]);
 
         if (Auth::guard('admin')->attempt(['Email' => $request->Email,
-        'password' => $request->password, 'UserTypeID' => '1']))
+        'password' => $request->password, 'UserTypeID' => '1', 'Status' => 'Activated']))
         {
 
             $getemail = ['Email' => $request->Email];

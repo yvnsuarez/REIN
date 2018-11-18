@@ -255,7 +255,7 @@
                                                 <div class="stat-content">
                                                     <div class="text-left dib">
                                                         <div class="stat-heading">Total Sales</div>
-                                                        <div class="stat-text">Total: $ {{$totalsales}}</div>
+                                                        <div class="stat-text">Total: &#8369; {{$totalsales}}</div>
                                                     </div>
                                                 </div>
                                             </div>
