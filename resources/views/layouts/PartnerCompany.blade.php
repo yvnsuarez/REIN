@@ -299,13 +299,6 @@
                                 </div>
                                 <!-- Widgets End -->
 
-
-
-
-
-
-
-
                                 <div class="clearfix"></div>
 
                                 <footer class="site-footer" style="padding-left: 20%">

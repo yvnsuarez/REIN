@@ -55,7 +55,7 @@ class PartnerController extends Controller
                         ->count();
 
         date_default_timezone_set('Asia/Manila');
-        $start = Carbon::now()->subWeek();
+        $start = Carbon::now();
         $end = Carbon::now();
 
         //Pie Chart
