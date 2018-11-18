@@ -43,6 +43,7 @@ class UserActivityController extends Controller
 
         $userlogs = DB::table('user_logs')
                     ->whereBetween('Date', array(new Carbon($start), new Carbon($end)))
+                    ->with('user')
                     ->get();
         return view('Admin.UserActivity',compact('userlogs', 'start', 'end'));
     }
