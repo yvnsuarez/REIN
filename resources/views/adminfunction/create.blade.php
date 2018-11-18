@@ -13,10 +13,10 @@
         </div>
     </div>
 @endsection
-@section('content') 
+@section('content')
             <div class="content">
         <div class="animated fadeIn">
-            <div class="row"> 
+            <div class="row">
 <div class="col-lg-12">
         <div class="card">
             <div class="card-header"><strong>Admin Details</strong></div>
@@ -29,7 +29,7 @@
                     <div class="text-input">
                         <div class="form-group">
                             <label for="FirstName">FirstName</label>
-                            <input type="text" name="FirstName" value="" class="form-control {{ $errors->has('FirstName') ? ' is-invalid' : '' }}" maxlength="250">
+                            <input type="text" name="FirstName" value="" class="form-control {{ $errors->has('FirstName') ? ' is-invalid' : '' }}" maxlength="250" autocomplete="off">
                             @if ($errors->has('FirstName'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('FirstName') }}</strong>
@@ -40,7 +40,7 @@
                     <div class="text-input">
                     <div class="form-group">
                             <label for="LastName">Last Name</label>
-                            <input type="text" name="LastName" value="" class="form-control  {{ $errors->has('LastName') ? ' is-invalid' : '' }}" maxlength="250">
+                            <input type="text" name="LastName" value="" class="form-control  {{ $errors->has('LastName') ? ' is-invalid' : '' }}" maxlength="250" autocomplete="off">
                             @if ($errors->has('LastName'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('LastName') }}</strong>
@@ -50,11 +50,11 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-             
+
                 <div class="text-input">
                     <div class="form-group">
                                     <label for="Email">E-mail</label>
-                                    <input type="email" name="Email" placeholder="example@gmail.com" class="form-control {{ $errors->has('Email') ? ' is-invalid' : '' }}" >
+                                    <input type="email" name="Email" placeholder="example@gmail.com" class="form-control {{ $errors->has('Email') ? ' is-invalid' : '' }}" autocomplete="off">
                                     @if ($errors->has('Email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('Email') }}</strong>
@@ -67,7 +67,7 @@
                     <div class="text-input">
                         <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" value="" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" >
+                                <input type="password" name="password" value="" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" autocomplete="off">
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -78,7 +78,7 @@
                     <div class="text-input">
                         <div class="form-group">
                                 <label for="CPassword">Confirm Password</label>
-                                <input type="password" name="CPassword" value="" class="form-control {{ $errors->has('CPassword') ? ' is-invalid' : '' }}">
+                                <input type="password" name="CPassword" value="" class="form-control {{ $errors->has('CPassword') ? ' is-invalid' : '' }}" autocomplete="off">
                                 @if ($errors->has('CPassword'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('CPassword') }}</strong>
@@ -110,7 +110,7 @@
                                                     &nbsp;
                                             <input type="button" value="Register Admin" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#Modal2"/>
                                         </div>
-                                        
+
                                 <!-- Modal -->
                                 <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
