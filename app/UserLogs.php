@@ -1,6 +1,6 @@
 <?php
 
-namespace REIN;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,6 +8,11 @@ class UserLogs extends Model
 {
     //
     protected $fillable =[
-        'UserLogId','UserID', 'Type', 'ReportsID', 'Description','Date'
+        'ID','Type', 'UserID', 'Description', 'TargetUser', 'ReportsID', 'PaymentsID', 'Date'
      ];
+
+     public function user()
+     {
+       return $this->belongsTo('App\User', 'UserID');
+     }
 }

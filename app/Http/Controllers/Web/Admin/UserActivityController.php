@@ -23,8 +23,10 @@ class UserActivityController extends Controller
 
     public function index()
     {
-        $userlogs = DB::table('user_logs')->get();
+        $userlogs = UserLogs::with('user')
+                    ->get();
 
+        // dd($userlogs);
         date_default_timezone_set('Asia/Manila');
         $start = Carbon::now();
         $end = Carbon::now();

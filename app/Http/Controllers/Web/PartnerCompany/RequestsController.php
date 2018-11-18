@@ -41,10 +41,10 @@ class RequestsController extends Controller
 
         $notstatus =[$assigned, $ongoing, $done, $declined];
 
-        $reports = DB::table('reports')
-                        ->where($pending)
+        $reports = Reports::where($pending)
                         ->orWhere($accepted)
                         ->WhereNotIn('status', $notstatus)
+                        ->with('user')
                         ->get();    
 
         

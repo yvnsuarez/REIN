@@ -10,4 +10,6 @@ class Feedbacks extends Model
     protected $fillable =[
         'ID','reportID','review','DateSubmitted'
      ];
+
+    
 }

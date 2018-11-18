@@ -23,6 +23,12 @@
 @endsection
 
 @section('content')
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <div class="animated fadeIn">
                 <div class="row">
@@ -54,7 +60,10 @@
                                     @foreach($userlogs as $userlog)
                                         <tr>
                                         <td>{{$i++}}</td>
-                                            <td>{{$userlog->UserID}}</td>
+                                            <td>{{$userlog->user->FirstName}} 
+                                                {{$userlog->user->LastName}} 
+                                                {{$userlog->user->BusinessName}}
+                                            </td>
                                             <td>{{$userlog->Type}}</td>
                                             <td>{{$userlog->Description}}</td>
                                             <td>{{$userlog->Date}}</td>
@@ -96,7 +105,7 @@
             </div><!-- .animated -->
         </div><!-- .content -->
 
-    <script type="text/javascript">
+<script type="text/javascript">
         $(document).ready(function() {
           $('#bootstrap-data-table-export').DataTable();
       } );

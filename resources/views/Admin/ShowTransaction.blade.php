@@ -24,11 +24,9 @@
             <div class="card">
                                 <div class="card-header">
                                         <strong class="card-title">Transaction No. {{$reports->ID}}</strong>
-                                    @if ($reports->status === 'Done')
                                     <a href="{{action('Web\Admin\TransactionLogsController@singleTransactionPDF', $reports->ID)}}">
                                         <button class="btn btn-outline-secondary btn-sm pull-right"><i class="fa fa-print"></i> Print</button>
-                                    </a> 
-                                    @endif
+                                    </a>
                                 </div>
                             <ul class="list-group list-group-flush">
                                 @if ($reports->status === 'Accepted' || $reports->status === 'Assigned'

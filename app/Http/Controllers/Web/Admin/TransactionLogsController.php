@@ -20,7 +20,9 @@ class TransactionLogsController extends Controller
 
    public function index()
    {
-       $reports = Reports::all();
+       $reports = Reports::with('user')
+                        ->get();
+        // dd($reports);
        return view ('Admin.TransactionLogs', compact('reports'));
    }
 

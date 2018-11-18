@@ -36,6 +36,7 @@ class TransactionLogsController extends Controller
 
         $reports = Reports::where($getreports)
                    ->orWhere($status)
+                   ->with('user')
                    ->get();
                    
         return view ('Partner.TransactionLogs', compact('reports'));

@@ -41,7 +41,7 @@
                                     @foreach($reports as $report)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{$report->userID}}</td>
+                                            <td>{{$report->user->FirstName}} {{$report->user->LastName}}</td>
                                             <td>{{$report->servicetype}}</td>
                                             <td>{{$report->totalservice}}</td>
                                             <td>{{$report->status}}</td>
