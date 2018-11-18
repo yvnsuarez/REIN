@@ -4,6 +4,8 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="{{{ asset('images/favicon.ico') }}}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>REIN Admin</title>
@@ -36,7 +38,7 @@
             <div class="login-content">
                 <div class="login-logo">
                     <br />
-                        <img class="align-content" src="{{ asset('/images/Admin-Login.png') }}" width="220px" height="160px">
+                    <img class="align-content" src="{{ asset('/images/Admin-Login.png') }}" width="220px" height="160px">
                 </div>
                 <div class="login-form">
                     <form method="POST" action="{{ route('admin.login.submit') }}" aria-label="{{ __('Login') }}">

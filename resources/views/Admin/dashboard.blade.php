@@ -24,8 +24,8 @@
     <link href="{{ asset('assets/calendar/fullcalendar.css') }} rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
-    <link href="{{ asset('assets/css/charts/chartist.min.css') }}" rel="stylesheet"/> 
-    <link href="{{ asset('assets/css/lib/vector-map/jqvmap.min.css') }}" rel="stylesheet"/> 
+    <link href="{{ asset('assets/css/charts/chartist.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/lib/vector-map/jqvmap.min.css') }}" rel="stylesheet"/>
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
@@ -33,70 +33,70 @@
 <body>
 
 
-    <!-- Left Panel --> 
+    <!-- Left Panel -->
     <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default"> 
+        <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="menu-title">
-                        <hr/>    
+                        <hr/>
                     </li>
                     <li class="active">
                             <a href="{{ route('admin.dashboard') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                         </li>
                     <li class="menu-title">
-                        <hr/>    
+                        <hr/>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ url('/admin/partners') }}" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="{{ url('/admin/partners') }}" aria-haspopup="true" aria-expanded="false">
                             <i class="menu-icon fa fa-cogs"></i>Partners</a>
                     </li>
                     <li class="menu-title">
-                        <hr/>    
+                        <hr/>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ url('/admin/motorists') }}" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="{{ url('/admin/motorists') }}" aria-haspopup="true" aria-expanded="false">
                             <i class="menu-icon fa fa-table"></i>Motorists</a>
                     </li>
                     <li class="menu-title">
-                        <hr/>    
+                        <hr/>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ url('/admin/transactionlogs') }}" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="{{ url('/admin/transactionlogs') }}" aria-haspopup="true" aria-expanded="false">
                             <i class="menu-icon fa fa-th"></i>Transaction Logs</a>
                     </li>
                     <li class="menu-title">
-                        <hr/>    
+                        <hr/>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('admin.useractivity') }}" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="{{ route('admin.useractivity') }}" aria-haspopup="true" aria-expanded="false">
                             <i class="menu-icon fa fa-th"></i>User Activity</a>
                     </li>
                     <li class="menu-title">
-                        <hr/>    
+                        <hr/>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
-    </aside><!-- /#left-panel --> 
+    </aside><!-- /#left-panel -->
     <!-- Left Panel -->
 
 
 
-    <!-- Right Panel --> 
+    <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
 
         <!-- Header-->
-        <header id="header" class="header">  
+        <header id="header" class="header">
             <div class="top-left">
-                <div class="navbar-header"> 
+                <div class="navbar-header">
                     <a class="navbar-brand" href="{{ route('admin.home') }}"><img src="{{asset('/images/REIN01.png') }}" alt="Logo" width="100px" height="45px"></a>
-                    <a class="navbar-brand hidden" href="{{ route('admin.home') }}"><img src="{{asset('/images/REIN01.png') }}" alt="Logo" width="100px" height="45px"></a> 
-                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a> 
-                </div> 
+                    <a class="navbar-brand hidden" href="{{ route('admin.home') }}"><img src="{{asset('/images/REIN01.png') }}" alt="Logo" width="100px" height="45px"></a>
+                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+                </div>
             </div>
-            <div class="top-right"> 
-                <div class="header-menu"> 
+            <div class="top-right">
+                <div class="header-menu">
                     <div class="header-left">
 
                     <div class="user-area dropdown float-right">
@@ -109,8 +109,8 @@
                             <a class="nav-link" href="{{url('/admin/adminfunction')}}">Admin Function</a>
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#Modal"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
-                    </div> 
-                </div>  
+                    </div>
+                </div>
             </div>
         </header><!-- /header -->
         <!-- Header-->
@@ -146,9 +146,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>         
+                    </div>
         </div>
-        
+
         <div class="content pb-0">
                 <div class="row">
                         <div class="col-lg-4 col-md-6">
@@ -159,7 +159,7 @@
                                             <i class="fa fa-wrench"></i>
                                         </div>
                                         <div class="stat-content">
-                                            <div class="text-left dib"> 
+                                            <div class="text-left dib">
                                                 <div class="stat-text"><span class="count">{{$cancelled}}</span></div>
                                                 <div class="stat-heading">Cancelled Services</div>
                                             </div>
@@ -179,14 +179,14 @@
                                             <div class="stat-content">
                                                 <div class="text-left dib">
                                                     <div class="stat-text"><span class="count">{{$ongoing}}</span></div>
-                                                    <div class="stat-heading">Ongoing Services</div> 
+                                                    <div class="stat-heading">Ongoing Services</div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                    
+
                         <div class="col-lg-4 col-md-6">
                             <div class="card">
                                 <div class="card-body">
@@ -197,7 +197,7 @@
                                         <div class="stat-content">
                                             <div class="text-left dib">
                                                 <div class="stat-text"><span class="count">{{$done}}</span></div>
-                                                <div class="stat-heading">Services Done</div> 
+                                                <div class="stat-heading">Services Done</div>
                                             </div>
                                         </div>
                                     </div>
@@ -213,13 +213,13 @@
                                                     </h3>
                                                     <p class="text-light mt-1 m-0">Partners</p>
                                                 </div><!-- /.card-left -->
-                
+
                                                 <div class="card-right float-right text-right">
                                                         <i class="icon fade-5 icon-lg pe-7f-users"></i>
                                                     </div><!-- /.card-right -->
-                
+
                                             </div>
-                
+
                                         </div>
                                     </div>
                                     <!--/.col-->
@@ -232,19 +232,19 @@
                                                 </h3>
                                                 <p class="text-light mt-1 m-0">Assistants</p>
                                             </div><!-- /.card-left -->
-            
+
                                             <div class="card-right float-right text-right">
                                                     <i class="icon fade-5 icon-lg pe-7f-users"></i>
                                                 </div><!-- /.card-right -->
-            
+
                                         </div>
-            
+
                                     </div>
                                 </div>
                                 <!--/.col-->
-            
-                                
-            
+
+
+
                                 <div class="col-sm-6 col-lg-3">
                                     <div class="card text-white bg-flat-color-3">
                                         <div class="card-body">
@@ -254,17 +254,17 @@
                                                 </h3>
                                                 <p class="text-light mt-1 m-0">Motorists</p>
                                             </div><!-- /.card-left -->
-            
+
                                             <div class="card-right float-right text-right">
                                                 <i class="icon fade-5 icon-lg pe-7f-users"></i>
                                             </div><!-- /.card-right -->
-            
+
                                         </div>
-            
+
                                     </div>
                                 </div>
                                 <!--/.col-->
-            
+
                                 <div class="col-sm-6 col-lg-3">
                                     <div class="card text-white bg-flat-color-2">
                                         <div class="card-body">
@@ -274,22 +274,22 @@
                                                 </h3>
                                                 <p class="text-light mt-1 m-0">Total users</p>
                                             </div><!-- /.card-left -->
-            
+
                                             <div class="card-right float-right text-right">
                                                     <i class="icon fade-5 icon-lg pe-7f-users"></i>
                                                 </div><!-- /.card-right -->
-            
+
                                         </div>
-            
+
                                     </div>
                                 </div>
                                 <!--/.col-->
-        </div> 
+        </div>
             <!-- Widgets End -->
 
             <div class="row">
                     <div class="col-lg-12">
-                        <div class="card">  
+                        <div class="card">
                             <div class="card-body">
                                 <div>
                                     <div class="pull-left">
@@ -300,7 +300,7 @@
                                         From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d',strtotime('-7 days'))}}"/> &nbsp;
                                         To: <input type="text" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
                                         <button type="submit" class="btn btn-warning btn-sm">Go</button>
-                                    {!! Form::close() !!}  
+                                    {!! Form::close() !!}
                                     </div>
                                 </div>
                                     <br/>
@@ -316,20 +316,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>  
-                </div>
-            
-        <div class="clearfix"></div>
-
-        <footer class="site-footer">
-            <div class="footer-inner bg-white">
-                <div class="row">
-                    <div class="col-sm-6">
-                        Copyright &copy; 2018 REIN - Roadside Emergency Assistance Application
                     </div>
                 </div>
-            </div>
-        </footer>
+
+        <div class="clearfix"></div>
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
     </div><!-- /#right-panel -->
 
@@ -340,17 +334,17 @@
         var pie_data = <?php echo $servicetype ?>;
           // Load the Visualization API and the corechart package.
           google.charts.load('current', {'packages':['corechart']});
-  
+
           // Set a callback to run when the Google Visualization API is loaded.
           google.charts.setOnLoadCallback(drawChart);
 
           function drawChart() {
                 // Create the data table.
                 var data = google.visualization.arrayToDataTable(pie_data);
-        
+
                 // Set chart options
                 var options = {'title':'Percentage of Service Types'};
-        
+
                 // Instantiate and draw our chart, passing in some options.
                 var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
                 chart.draw(data, options);
@@ -363,20 +357,20 @@
 
           // Load the Visualization API and the corechart package.
           google.charts.load('current', {'packages':['corechart']});
-  
+
           // Set a callback to run when the Google Visualization API is loaded.
           google.charts.setOnLoadCallback(drawChart);
-  
-  
+
+
           function drawChart() {
-  
-  
+
+
           // Create the data table.
           var data = google.visualization.arrayToDataTable(bar_data);
-  
+
           // Set chart options
           var options = {'title':'Percentage of Service Status'};
-  
+
           // Instantiate and draw our chart, passing in some options.
           var chart = new google.visualization.BarChart(document.getElementById('bar_chart'));
           chart.draw(data, options);
@@ -401,7 +395,7 @@
         });
     </script>
 
-   
+
 
      {{-- Date Range Picker --}}
      <script>
@@ -424,9 +418,9 @@
 
     <!--Chartist Chart-->
     <script src="{{ asset('assets/js/lib/chartist/chartist.min.js') }}"></script>
-    <script src="{{ asset('assets/js/lib/chartist/chartist-plugin-legend.js') }}"></script> 
+    <script src="{{ asset('assets/js/lib/chartist/chartist-plugin-legend.js') }}"></script>
 
-    
+
     <script src="{{ asset('assets/js/lib/flot-chart/jquery.flot.js') }}"></script>
     <script src="{{ asset('assets/js/lib/flot-chart/jquery.flot.pie.js') }}"></script>
     <script src="{{ asset('assets/js/lib/flot-chart/jquery.flot.spline.js') }}"></script>
@@ -443,6 +437,6 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
 
 <div id="container">
-  
-  
+
+
 </div>
