@@ -56,7 +56,7 @@
                             <label>Email address</label>
                             <input id="Email" type="Email" placeholder="Email"
                             class="form-control{{ $errors->has('Email') ? ' is-invalid' : '' }}"
-                            name="Email" value="{{ old('Email') }}">
+                            name="Email" value="{{ old('Email') }}" autocomplete="off">
 
                             @if ($errors->has('Email'))
                                     <span class="invalid-feedback" role="alert">
@@ -67,7 +67,7 @@
                         <div class="form-group">
                             <label>Password</label>
                             <input id="password" type="password" placeholder="Password"
-                            class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" autocomplete="false">
+                            class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" autocomplete="false" autocomplete="off">
 
                             @if ($errors->has('password'))
                             <span class="invalid-feedback" role="alert">
