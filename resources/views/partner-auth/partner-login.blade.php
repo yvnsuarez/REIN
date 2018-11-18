@@ -4,6 +4,8 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="{{{ asset('images/favicon.ico') }}}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>REIN Partner</title>
@@ -52,10 +54,10 @@
 
                         <div class="form-group">
                             <label>Email address</label>
-                            <input id="Email" type="Email" placeholder="Email" 
-                            class="form-control{{ $errors->has('Email') ? ' is-invalid' : '' }}" 
+                            <input id="Email" type="Email" placeholder="Email"
+                            class="form-control{{ $errors->has('Email') ? ' is-invalid' : '' }}"
                             name="Email" value="{{ old('Email') }}">
-                    
+
                             @if ($errors->has('Email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('Email') }}</strong>
