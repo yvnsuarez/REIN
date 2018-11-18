@@ -249,22 +249,22 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-2">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div class="stat-widget-four">
-                                                        <div class="stat-icon dib">
-                                                            <i class="ti-stats-up text-muted"></i>
-                                                        </div>
-                                                        <div class="stat-content">
-                                                            <div class="text-left dib">
-                                                                <div class="stat-heading">Total Sales</div>
-                                                                <div class="stat-text">Total: $ {{$totalsales}}</div>
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="stat-widget-four">
+                                                            <div class="stat-icon dib">
+                                                                <i class="ti-stats-up text-muted"></i>
+                                                            </div>
+                                                            <div class="stat-content">
+                                                                <div class="text-left dib">
+                                                                    <div class="stat-heading">Total Sales</div>
+                                                                    <div class="stat-text">Total: &#8369; {{$totalsales}}</div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
                                     </div>
                                     <!-- Widgets End -->

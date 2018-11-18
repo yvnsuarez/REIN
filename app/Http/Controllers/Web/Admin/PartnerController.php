@@ -193,11 +193,18 @@ class PartnerController extends Controller
         ]);
         User::find($id)->update($request->all());
         
+
+        $getassistant = ['PartnerCompany' => $id];
+        $assistant = DB::table('users')
+                        ->where($getassistant)
+                        ->update(['Status' => 'Deactivated']);
+        
         $getadminid = Auth::user();
         $getid = $getadminid->id;
 
         DB::table('user_logs')
             ->insert(['UserID' => $getid, 'Type' => "Update Partner", 'TargetUser' => $id, 'Description' => "Updated Partner Company's Account Successfully"]);
+
         // $user->update($request->all());
         return redirect()->route('partners.index')->with('message','item has been updated successfully');
     }

@@ -29,7 +29,7 @@ class PartnerLoginController extends Controller
         ]);
 
         if (Auth::guard('partner')->attempt(['Email' => $request->Email,
-        'password' => $request->password,  'UserTypeID' => '4']))//, 'UserTypeID' => '4'
+        'password' => $request->password,  'UserTypeID' => '4', 'Status' => 'Activated']))//, 'UserTypeID' => '4'
         {
 
             $getemail = ['Email' => $request->Email];

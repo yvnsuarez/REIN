@@ -164,8 +164,8 @@ class RequestsController extends Controller
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60 * 20);
 
-        $notificationBuilder = new PayloadNotificationBuilder('my title');
-        $notificationBuilder->setBody('Hello world')
+        $notificationBuilder = new PayloadNotificationBuilder('Assigned Task');
+        $notificationBuilder->setBody('Please go to the service site immediately')
             ->setSound('default');
 
         $dataBuilder = new PayloadDataBuilder();
