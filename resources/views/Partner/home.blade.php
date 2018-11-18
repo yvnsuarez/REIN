@@ -267,6 +267,35 @@
                                             </div>
 
                                     </div>
+                                </div>
+                                
+        </div> 
+            <!-- Widgets End -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">  
+                        <div class="card-body">
+                            <div>
+                                <div class="pull-left">
+                                    <h4 class="box-title">Charts</h4>
+                                </div>
+                                <div class="form control pull-right">
+                                {!! Form::open(['action' => 'Web\PartnerController@daterange', 'method' =>'POST']) !!}
+                                    From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d')}}"/> &nbsp;
+                                    To: <input type="text" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
+                                    <button type="submit" class="btn btn-warning btn-sm">Go</button>
+                                {!! Form::close() !!}  
+                                </div>
+                            </div>
+                                <br/>
+                                <br/>
+                                <p> Filtered data from {{$start}} to {{$end}} </p>
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-6">
+                                        <div id="pie_chart" style="width:750; height:450px;"></div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-6">
+                                        <div id="bar_chart" style="width:750; height:450px;">
                                     <!-- Widgets End -->
                                     <div class="row">
                                         <div class="col-lg-12">

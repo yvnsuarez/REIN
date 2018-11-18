@@ -12,17 +12,30 @@
         </div>
     </div>
 </div>
+<br/>
+<div class="form control pull-right">
+        {!! Form::open(['action' => 'Web\Admin\UserActivityController@daterange', 'method' =>'POST']) !!}
+            From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d')}}"/> &nbsp;
+            To: <input type="text" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
+            <button type="submit" class="btn btn-warning btn-sm">Go</button>
+        {!! Form::close() !!}  
+        </div>
 @endsection
 
 @section('content')
+
 <div class="animated fadeIn">
                 <div class="row">
 
+
                     <div class="col-lg-12">
+                        
                         <div class="card">
                             <div class="card-header">
                                 <strong class="card-title">Transactions</strong>
+                                <text class="pull-right"> Filtered from {{$start}} to {{$end}} </text>
                             </div>
+                            
                             <div class="card-body">
                             <?php $i = 1; ?>
                             @if(count($userlogs) > 0)
@@ -88,5 +101,17 @@
           $('#bootstrap-data-table-export').DataTable();
       } );
   </script>
+
+
+
+<script>
+    $(function () {
+        $("#datepickerfrom").datepicker({ maxDate: new Date(), dateFormat: "yy-mm-dd"});
+    });
+    $(function () {
+        $("#datepickerpresent").datepicker({ maxDate: new Date(), dateFormat: "yy-mm-dd"});
+    });
+</script>
+
 
 @endsection

@@ -58,6 +58,7 @@ Route::prefix('admin')->group(function() {
     
     Route::get('/useractivity', 'Web\Admin\UserActivityController@index')->name('admin.useractivity');
     Route::get('/useractivity/{ID}', 'Web\Admin\UserActivityController@showUserActivity');
+    Route::post('/useractivity/filtered', 'Web\Admin\UserActivityController@daterange');
 
     Route::resource('/adminfunction', 'Web\Admin\AdminFunctionController');
 });

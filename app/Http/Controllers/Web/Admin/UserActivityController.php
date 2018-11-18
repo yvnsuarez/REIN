@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\UserLogs;
+use Illuminate\Support\Carbon;
 
 class UserActivityController extends Controller
 {
@@ -23,7 +24,25 @@ class UserActivityController extends Controller
     public function index()
     {
         $userlogs = DB::table('user_logs')->get();
-        return view('Admin.UserActivity',compact('userlogs'));
+
+        date_default_timezone_set('Asia/Manila');
+        $start = Carbon::now();
+        $end = Carbon::now();
+
+        return view('Admin.UserActivity',compact('userlogs', 'start', 'end'));
+    }
+
+    public function daterange(Request $request)
+    {
+
+        date_default_timezone_set('Asia/Manila');
+        $start = Carbon::parse($request->start)->startOfDay();
+        $end = Carbon::parse($request->end)->endOfDay();
+
+        $userlogs = DB::table('user_logs')
+                    ->whereBetween('Date', array(new Carbon($start), new Carbon($end)))
+                    ->get();
+        return view('Admin.UserActivity',compact('userlogs', 'start', 'end'));
     }
 
     function showUserActivity($ID) {
@@ -63,6 +82,7 @@ class UserActivityController extends Controller
                 compact('userlogs', 'causer', 'targetuser',
                         'report',  'payment')); //'feedback',
       }
+      
 
 
 
