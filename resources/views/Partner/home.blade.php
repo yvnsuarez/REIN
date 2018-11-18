@@ -275,7 +275,7 @@
                                 </div>
                                 <div class="form control pull-right">
                                 {!! Form::open(['action' => 'Web\PartnerController@daterange', 'method' =>'POST']) !!}
-                                    From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d',strtotime('-7 days'))}}"/> &nbsp;
+                                    From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d')}}"/> &nbsp;
                                     To: <input type="text" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
                                     <button type="submit" class="btn btn-warning btn-sm">Go</button>
                                 {!! Form::close() !!}  
@@ -283,6 +283,7 @@
                             </div>
                                 <br/>
                                 <br/>
+                                <p> Filtered data from {{$start}} to {{$end}} </p>
                                 <div class="row">
                                     <div class="col-sm-6 col-lg-6">
                                         <div id="pie_chart" style="width:750; height:450px;"></div>

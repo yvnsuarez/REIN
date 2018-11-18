@@ -27,6 +27,7 @@
     <link href="{{ asset('assets/css/charts/chartist.min.css') }}" rel="stylesheet"/> 
     <link href="{{ asset('assets/css/lib/vector-map/jqvmap.min.css') }}" rel="stylesheet"/> 
 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
 </head>
@@ -297,7 +298,7 @@
                                     </div>
                                     <div class="form control pull-right">
                                     {!! Form::open(['action' => 'Web\AdminController@daterange', 'method' =>'POST']) !!}
-                                        From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d',strtotime('-7 days'))}}"/> &nbsp;
+                                        From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d')}}"/> &nbsp;
                                         To: <input type="text" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
                                         <button type="submit" class="btn btn-warning btn-sm">Go</button>
                                     {!! Form::close() !!}  
@@ -305,6 +306,7 @@
                                 </div>
                                     <br/>
                                     <br/>
+                                    <p> Filtered data from {{$start}} to {{$end}} </p>
                                     <div class="row">
                                         <div class="col-sm-6 col-lg-6">
                                             <div id="pie_chart" style="width:750; height:450px;"></div>
