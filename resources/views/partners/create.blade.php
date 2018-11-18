@@ -31,7 +31,7 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="BusinessName">Business Name</label>
-                                            <input type="text" name="BusinessName" value="" class="form-control {{ $errors->has('BusinessName') ? ' is-invalid' : '' }}">
+                                            <input type="text" name="BusinessName" value="" class="form-control {{ $errors->has('BusinessName') ? ' is-invalid' : '' }}" autocomplete="off">
                                             @if ($errors->has('BusinessName'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('BusinessName') }}</strong>
@@ -45,7 +45,7 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="BusinessRegistrationNo">Business Registration Number</label>
-                                            <input type="text" name="BusinessRegistrationNo" value="" class="form-control {{ $errors->has('BusinessRegistrationNo') ? ' is-invalid' : '' }}">
+                                            <input type="text" name="BusinessRegistrationNo" value="" class="form-control {{ $errors->has('BusinessRegistrationNo') ? ' is-invalid' : '' }}" autocomplete="off">
                                             @if ($errors->has('BusinessRegistrationNo'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('BusinessRegistrationNo') }}</strong>
@@ -56,7 +56,7 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="LTFRBRegistrationNo">LTFRB Accreditation Number</label>
-                                            <input type="text" name="LTFRBRegistrationNo" value="" class="form-control {{ $errors->has('LTFRBRegistrationNo') ? ' is-invalid' : '' }}">
+                                            <input type="text" name="LTFRBRegistrationNo" value="" class="form-control {{ $errors->has('LTFRBRegistrationNo') ? ' is-invalid' : '' }}" autocomplete="off">
                                             @if ($errors->has('LTFRBRegistrationNo'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('LTFRBRegistrationNo') }}</strong>
@@ -69,7 +69,7 @@
                                 <div class="text-input">
                                     <div class="form-group">
                                         <label for="Address">Address</label>
-                                        <input type="text" name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}">
+                                        <input type="text" name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
                                         @if ($errors->has('Address'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('Address') }}</strong>
@@ -82,18 +82,38 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="City">City</label>
-                                            <input type="text" name="City" value="" class="form-control {{ $errors->has('City') ? ' is-invalid' : '' }}">
-                                            @if ($errors->has('City'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('City') }}</strong>
-                                            </span>
-                                            @endif
+                                            <select name="City" value="" class="form-control {{ $errors->has('City') ? ' is-invalid' : '' }}">
+                                                <option disabled selected value> Select a city </option>
+                                                <option value="Caloocan">Caloocan</option>
+                                                <option value="Las Piñas">Las Piñas</option>
+                                                <option value="Makati">Makati</option>
+                                                <option value="Malabon">Malabon</option>
+                                                <option value="Mandaluyong">Mandaluyong</option>
+                                                <option value="Manila">City of Manila</option>
+                                                <option value="Marikina">Marikina</option>
+                                                <option value="Muntinlupa">Muntinlupa</option>
+                                                <option value="Navotas">Navotas</option>
+                                                <option value="Parañaque">Parañaque</option>
+                                                <option value="Pasay">Pasay</option>
+                                                <option value="Pasig">Pasig</option>
+                                                <option value="Pateros">Pateros</option>
+                                                <option value="Quezon City">Quezon</option>
+                                                <option value="San Juan">San Juan</option>
+                                                <option value="Taguig">Taguig</option>
+                                                <option value="Valenzuela">Valenzuela</option>
+                                                @if ($errors->has('City'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('City') }}</strong>
+                                                </span>
+                                                @endif
+                                            </select>
                                         </div>
                                     </div>
+
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="ZipCode">Zip Code</label>
-                                            <input type="text" name="ZipCode" value="" placeholder="XXXX" class="form-control {{ $errors->has('ZipCode') ? ' is-invalid' : '' }} maxLength="4"">
+                                            <input type="text" name="ZipCode" value="" placeholder="XXXX" class="form-control {{ $errors->has('ZipCode') ? ' is-invalid' : '' }} maxLength="4"" autocomplete="off">
                                             @if ($errors->has('ZipCode'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('ZipCode') }}</strong>
@@ -108,7 +128,7 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="Email">E-mail</label>
-                                            <input type="email" name="Email" value="" placeholder="example@gmail.com"class="form-control {{ $errors->has('Email') ? ' is-invalid' : '' }}">
+                                            <input type="email" name="Email" value="" placeholder="example@gmail.com"class="form-control {{ $errors->has('Email') ? ' is-invalid' : '' }}" autocomplete="off">
                                             @if ($errors->has('Email'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('Email') }}</strong>
@@ -119,7 +139,7 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="MobileNo">Contact Number</label>
-                                            <input type="text" name="MobileNo" value="" placeholder="XXXXXXXXXXX"class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" maxLength="11">
+                                            <input type="text" name="MobileNo" value="" placeholder="XXXXXXXXXXX"class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" maxLength="11" autocomplete="off">
                                             @if ($errors->has('MobileNo'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('MobileNo') }}</strong>
@@ -134,7 +154,7 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="password">Password</label>
-                                            <input type="password" name="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}">
+                                            <input type="password" name="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" autocomplete="off">
                                             @if ($errors->has('password'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('password') }}</strong>
@@ -146,7 +166,7 @@
 
                                         <div class="form-group">
                                             <label for="CPassword">Confirm Password</label>
-                                            <input type="password" name="CPassword" class="form-control {{ $errors->has('CPassword') ? ' is-invalid' : '' }}">
+                                            <input type="password" name="CPassword" class="form-control {{ $errors->has('CPassword') ? ' is-invalid' : '' }}" autocomplete="off">
                                             @if ($errors->has('CPassword'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('CPassword') }}</strong>
