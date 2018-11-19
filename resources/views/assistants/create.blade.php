@@ -150,9 +150,10 @@
 
                                 <div class="cub-input">
                                     <div class="text-input">
-                                        <div class="form-group">
+                                        <div id="register" class="form-group">
                                             <label for="password">Password</label>
-                                            <input type="password" name="password" value="" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" autocomplete="off">
+                                            <input type="password" id="password" name="password" value="" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" autocomplete="off">
+                                            <span id="result"></span>
                                             @if ($errors->has('password'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('password') }}</strong>
@@ -163,7 +164,8 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="CPassword">Confirm Password</label>
-                                            <input type="password" name="CPassword" value="" class="form-control {{ $errors->has('CPassword') ? ' is-invalid' : '' }}" autocomplete="off">
+                                            <input type="password" id="CPassword" name="CPassword" value="" class="form-control {{ $errors->has('CPassword') ? ' is-invalid' : '' }}" autocomplete="off">
+                                            <span id="passMatch"></span>
                                             @if ($errors->has('CPassword'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('CPassword') }}</strong>
@@ -363,4 +365,90 @@
                                                                 </div>
                                                             </div>
 
+
+                                                            <script>
+                                                                /** PASSWORD METER **/
+                                                                $(document).ready(function()
+                                                                {
+                                                                    $('#password').keyup(function()
+                                                                    {
+                                                                        $('#result').html(checkStrength($('#password').val()))
+                                                                    })
+
+                                                                    function checkStrength(password)
+                                                                    {
+                                                                        var strength = 0
+
+                                                                        if (password.length < 6) {
+                                                                            $('#result').removeClass()
+                                                                            $('#result').addClass('short')
+                                                                            return 'Too short. Password input must contain at least one uppercase, lowercase, numerical, and special character'
+                                                                        }
+
+                                                                        if (password.length > 7) strength += 1
+
+                                                                        //If password contains both lower and uppercase characters, increase strength value.
+                                                                        if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))  strength += 1
+
+                                                                        //If it has numbers and characters, increase strength value.
+                                                                        if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/))  strength += 1
+
+                                                                        //If it has one special character, increase strength value.
+                                                                        if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/))  strength += 1
+
+                                                                        //if it has two special characters, increase strength value.
+                                                                        if (password.match(/(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1
+
+
+                                                                        //Calculated strength value, we can return messages
+
+
+
+                                                                        //If value is less than 2
+
+                                                                        if (strength < 2 )
+                                                                        {
+                                                                            $('#result').removeClass()
+                                                                            $('#result').addClass('weak')
+                                                                            return 'Weak! password input must contain at least one uppercase, lowercase, numerical, and special character!'
+                                                                        }
+                                                                        else if (strength == 2 )
+                                                                        {
+                                                                            $('#result').removeClass()
+                                                                            $('#result').addClass('good')
+                                                                            return 'Good but password input must contain at least one uppercase, lowercase, numerical, and special character'
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            $('#result').removeClass()
+                                                                            $('#result').addClass('strong')
+                                                                            return 'Strong Password!'
+                                                                        }
+                                                                    }
+                                                                });
+                                                                /** MATCH PASSWORD **/
+                                                                $(document).ready(function()
+                                                                {
+                                                                    $('#CPassword').keyup(function()
+                                                                    {
+                                                                        $('#passMatch').html(matchPassword($('#CPassword').val()))
+                                                                    })
+
+                                                                    function matchPassword() {
+                                                                        var password = $("#password").val();
+                                                                        var cPassword = $("#CPassword").val();
+                                                                        if (password != cPassword) {
+                                                                            $('#passMatch').removeClass()
+                                                                            $('#passMatch').addClass('nomatch')
+                                                                            return 'Password do not match!'
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            $('#passMatch').removeClass()
+                                                                            $('#passMatch').addClass('match')
+                                                                            return 'Passwords match!'
+                                                                        }
+                                                                    }
+                                                                });
+                                                            </script>
                                                             @endsection

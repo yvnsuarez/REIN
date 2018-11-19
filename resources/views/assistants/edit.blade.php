@@ -51,7 +51,7 @@
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="MobileNo">Mobile Number</label>
-                            <input type="text" name="MobileNo" value="{{ $user->MobileNo}}" placeholder="XXXX XXX XXXX" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" >
+                            <input type="text" name="MobileNo" value="{{ $user->MobileNo}}" placeholder="XXXX XXX XXXX" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" autocomplete="off">
                             @if ($errors->has('MobileNo'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('MobileNo') }}</strong>
@@ -60,7 +60,7 @@
                         </div>
                     <div class="text-input">
                     <label for="BirthDay">Birthday</label>
-                                <input type="date" name="BirthDay" value="{{$user->BirthDay}}" class="form-control {{ $errors->has('BirthDay') ? ' is-invalid' : '' }}" disabled >
+                                <input type="date" name="BirthDay" value="{{$user->BirthDay}}" class="form-control {{ $errors->has('BirthDay') ? ' is-invalid' : '' }}" disabled>
                                 @if ($errors->has('BirthDay'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('BirthDay') }}</strong>
@@ -72,7 +72,7 @@
 
                 <div class="text-input">
                 <label for="Address">Address</label>
-                                <input type="text" name="Address"  value="{{ $user->Address}}" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" >
+                                <input type="text" name="Address"  value="{{ $user->Address}}" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
                                 @if ($errors->has('Address'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('Address') }}</strong>
@@ -83,7 +83,7 @@
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="City">City</label>
-                                    <input type="text" name="City" value="{{ $user->City}}" class="form-control {{ $errors->has('City') ? ' is-invalid' : '' }}" >
+                                    <input type="text" name="City" value="{{ $user->City}}" class="form-control {{ $errors->has('City') ? ' is-invalid' : '' }}" autocomplete="off">
                                     @if ($errors->has('City'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('City') }}</strong>
@@ -92,7 +92,7 @@
                                 </div>
                     <div class="text-input">
                     <label for="ZipCode">Zip Code</label>
-                            <input type="text" name="ZipCode" value="{{ $user->ZipCode}}" class="form-control {{ $errors->has('ZipCode') ? ' is-invalid' : '' }}" >
+                            <input type="text" name="ZipCode" value="{{ $user->ZipCode}}" class="form-control {{ $errors->has('ZipCode') ? ' is-invalid' : '' }}" autocomplete="off">
                             @if ($errors->has('ZipCode'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('ZipCode') }}</strong>
@@ -104,7 +104,7 @@
 
                 <div class="text-input">
                 <label for="Email">E-mail</label>
-                                    <input type="email" name="Email" value="{{ $user->Email}}" class="form-control {{ $errors->has('Email') ? ' is-invalid' : '' }}" >
+                                    <input type="email" name="Email" value="{{ $user->Email}}" class="form-control {{ $errors->has('Email') ? ' is-invalid' : '' }}" autocomplete="off">
                                     @if ($errors->has('Email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('Email') }}</strong>

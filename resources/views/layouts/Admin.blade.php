@@ -24,8 +24,8 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link href="{{ asset('assets/css/charts/chartist.min.css') }}" rel="stylesheet"/> 
-    <link href="{{ asset('assets/css/lib/vector-map/jqvmap.min.css') }}" rel="stylesheet"/> 
+    <link href="{{ asset('assets/css/charts/chartist.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/lib/vector-map/jqvmap.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/css/charts/chartist.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/css/lib/vector-map/jqvmap.min.css') }}" rel="stylesheet"/>
 
@@ -45,7 +45,7 @@
 
 
 
-    
+
 
     {{-- <script type="text/javascript">
         var visitor =
@@ -197,6 +197,39 @@
 
         .margin-bottom-zero {
             margin-bottom: 0px;
+        }
+
+         /* PASSWORD METER */
+         /* PASSWORD METER */
+        .short{
+            font-weight:bold;
+            color:#FF0000;
+            font-size:small;
+        }
+        .weak{
+            font-weight:bold;
+            color:orange;
+            font-size:small;
+        }
+        .good{
+            font-weight:bold;
+            color:#2D98F3;
+            font-size:small;
+        }
+        .strong{
+            font-weight:bold;
+            color: limegreen;
+            font-size:small;
+        }
+        .match{
+            font-weight:bold;
+            color: limegreen;
+            font-size:small;
+        }
+        .nomatch{
+            font-weight:bold;
+            color:#FF0000;
+            font-size:small;
         }
 
 
