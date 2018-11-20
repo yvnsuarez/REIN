@@ -57,7 +57,8 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="MobileNo">Mobile Number</label>
-                                            <input type="text" name="MobileNo" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" placeholder="XXXXXXXXXXX" maxlength="11" autocomplete="off">
+                                            <input type="text" id="mobileNo" name="MobileNo" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" placeholder="09XXXXXXXXX" maxlength="11" autocomplete="off">
+                                            <span class="mobilePfMatch"></span>
                                             @if ($errors->has('MobileNo'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('MobileNo') }}</strong>
@@ -81,7 +82,8 @@
                                 <div class="text-input">
                                     <div class="form-group">
                                         <label for="Address">Address</label>
-                                        <input type="text" name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
+                                        <label for="Address" style="font-size:11px; color:dimgrey">Unit Number House/Building/Street Number, Street Name, Barangay/District Name</label>
+                                        <input type="text" name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" minlength="20" autocomplete="off">
                                         @if ($errors->has('Address'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('Address') }}</strong>
@@ -365,7 +367,9 @@
                                                                 </div>
                                                             </div>
 
-
+                                                            <!-- PHONE # MASK -->
+                                                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                                                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
                                                             <script>
                                                                 /** PASSWORD METER **/
                                                                 $(document).ready(function()
@@ -450,5 +454,35 @@
                                                                         }
                                                                     }
                                                                 });
+                                                                /** MOBILE # **/
+                                                                $('#mobileNo').mask('00000000000');
+
+                                                                /* $(document).ready(fun                    ction()
+                                                                {
+                                                                    $('#mobileNo').keyup(function()
+                                                                    {
+                                                                        $('#mobilePfMatch').html(matchMobilePf($('#mobileNo').val()))
+                                                                    })
+
+                                                                    function matchMobilePf() {
+                                                                        var mobilePf = "09";
+                                                                        var mobileNo = $("#mobileNo").val();
+                                                                        var mobileStr = mobileNo.toString();
+                                                                        var mobileinputPF = mobileStr.slice(0, 9);
+                                                                        if (mobileNo != ) {
+                                                                            $('#mobilePfMatch').removeClass()
+                                                                            $('#mobilePfMatch').addClass('pfnomatch')
+                                                                            return 'Please input the valid phone number prefix, 09!'
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            $('#mobilePfMatch').removeClass()
+                                                                            $('#mobilePfMatch').addClass('pfmatch')
+                                                                            return ''
+                                                                        }
+                                                                    }
+                                                                }); */
+
+
                                                             </script>
                                                             @endsection

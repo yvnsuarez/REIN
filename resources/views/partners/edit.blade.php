@@ -63,6 +63,7 @@
 
                 <div class="text-input">
                 <label for="Address">Address</label>
+                <label for="Address" style="font-size:11px; color:dimgrey">Unit Number House/Building/Street Number, Street Name, Barangay/District Name</label>
                                 <input type="text" name="Address" value="{{$user->Address}}" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
                                 @if ($errors->has('Address'))
                                         <span class="invalid-feedback" role="alert">
@@ -105,7 +106,7 @@
                             </div>
                     <div class="text-input">
                     <label for="MobileNo">Contact Number</label>
-                                <input type="text" name="MobileNo" value="{{$user->MobileNo}}" placeholder="XXXXXXXXXXX" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" autocomplete="off">
+                                <input type="text" id="mobileNo" name="MobileNo" value="{{$user->MobileNo}}" placeholder="09XXXXXXXXX" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" autocomplete="off">
                                 @if ($errors->has('MobileNo'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('MobileNo') }}</strong>
@@ -170,6 +171,12 @@
             </div>
             </div>
             </div>
-
+             <!-- PHONE # MASK -->
+             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+             <script>
+                 /** MOBILE # MASK**/
+                 $('#mobileNo').mask('00000000000');
+             </script>
 
 @endsection
