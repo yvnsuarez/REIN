@@ -58,7 +58,6 @@
                                         <div class="form-group">
                                             <label for="MobileNo">Mobile Number</label>
                                             <input type="text" id="mobileNo" name="MobileNo" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" placeholder="09XXXXXXXXX" maxlength="11" autocomplete="off">
-                                            <span class="mobilePfMatch"></span>
                                             @if ($errors->has('MobileNo'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('MobileNo') }}</strong>

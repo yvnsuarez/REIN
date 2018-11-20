@@ -456,6 +456,7 @@
                                                                             }
                                                                         }
                                                                     });
+                                                                    /** MOBILE # MASK**/
                                                                     $('#mobileNo').mask('00000000000');
                                                                 </script>
 
