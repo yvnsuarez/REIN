@@ -140,7 +140,7 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="MobileNo">Contact Number</label>
-                                            <input type="text" id="mobileNo" name="MobileNo" value="" placeholder="09XXXXXXXXX" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" maxLength="11" autocomplete="off">
+                                            <input type="text" value="09" class="form-control" width="10" maxlength="2"></input><input type="text" id="mobileNo" name="MobileNo" value="" placeholder="XXXXXXXXX" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" maxLength="9" autocomplete="off">
                                             @if ($errors->has('MobileNo'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('MobileNo') }}</strong>
@@ -457,7 +457,7 @@
                                                                         }
                                                                     });
                                                                     /** MOBILE # MASK**/
-                                                                    $('#mobileNo').mask('00000000000');
+                                                                    $('#mobileNo').mask('000000000');
                                                                 </script>
 
 
