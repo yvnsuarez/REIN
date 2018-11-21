@@ -23,8 +23,8 @@
 </script>
 <div class="form control pull-right">
         {!! Form::open(['action' => 'Web\Admin\UserActivityController@daterange', 'method' =>'POST']) !!}
-            From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d')}}"/> &nbsp;
-            To: <input type="text" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
+            From: <input type="date" id="datepickerfrom" name="start" value="{{date('Y-m-d')}}"/> &nbsp;
+            To: <input type="date" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
             <button type="submit" class="btn btn-warning btn-sm">Go</button>
         {!! Form::close() !!}  
         </div>
@@ -40,7 +40,7 @@
                         
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Transactions</strong>
+                                <strong class="card-title">User Activities</strong>
                                 <text class="pull-right"> Filtered from {{$start}} to {{$end}} </text>
                             </div>
                             

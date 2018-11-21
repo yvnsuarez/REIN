@@ -12,6 +12,7 @@
         </div>
     </div>
 </div>
+<br/>
 <script type="text/javascript">
     $(function () {
         $("#datepickerfrom").datepicker({ maxDate: new Date(), dateFormat: "yy-mm-dd"});
@@ -22,8 +23,8 @@
 </script>
 <div class="form control pull-right">
         {!! Form::open(['action' => 'Web\PartnerCompany\TransactionLogsController@fulltransactionPDF', 'method' =>'POST']) !!}
-            From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d')}}"/> &nbsp;
-            To: <input type="text" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
+            From: <input type="date" id="datepickerfrom" name="start" value="{{date('Y-m-d')}}"/> &nbsp;
+            To: <input type="date" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
             <button type="submit" class="btn btn-warning btn-sm">Go</button>
         {!! Form::close() !!}  
         </div>
