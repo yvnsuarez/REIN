@@ -130,6 +130,10 @@ class TransactionLogsController extends Controller
         $start = Carbon::parse($request->start)->startOfDay();
         $end = Carbon::parse($request->end)->endOfDay();
 
+        date_default_timezone_set('Asia/Manila');
+        $start = Carbon::parse($request->start)->startOfDay();
+        $end = Carbon::parse($request->end)->endOfDay();
+
         $reports = Reports::with('user')
                           ->whereBetween('DateSubmitted', array(new Carbon($start), new Carbon($end)))
                           ->get();
@@ -137,11 +141,14 @@ class TransactionLogsController extends Controller
                             ->whereBetween('DateSubmitted', array(new Carbon($start), new Carbon($end)))
                             ->count();
 
+        $total = Reports::with('user')
+                    ->whereBetween('DateSubmitted', array(new Carbon($start), new Carbon($end)))
+                    ->sum('totalservice');
         if ($reportcount == 0){
             return redirect()->action('Web\Admin\TransactionLogsController@index');
         } else {
           $pdf = PDF::loadView('Admin.FullTransactionPDF', 
-          compact('reports'));
+          compact('reports', 'start', 'end', 'total'));
         }
             
         return $pdf->download('FullTransactionPDF.pdf');

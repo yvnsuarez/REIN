@@ -181,6 +181,7 @@
                     <div class="col">
 						<img src="https://isproj2b.benilde.edu.ph/REIN/images/REIN01.png" height="100px" width="250px"/>
                     </div>
+                    <br/>
                     <div class="col company-details">
                         Date: 
                         <?php
@@ -192,7 +193,7 @@
                                     <strong>Time: </strong>" .date("h:i:sa");
                         ?>
                         <br/>
-                        Sorted by:: 
+                        Sorted by: {{$start}} to {{$end}}
                     </div>
                 </div>
             </header>
@@ -228,7 +229,7 @@
                                     {{$report->servicetype}}</td>
                                 <td class="qty">
                                     {{$report->status}}</td>
-                            <td class="total"><span>&#8369;</span>1500</td>
+                            <td class="total"><span>&#8369;</span>{{$report->totalservice}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -236,7 +237,7 @@
                         <tr>
                             <td colspan="2"></td>
                             <td colspan="2">TOTAL TRANSACTIONS: </td>
-                            <td><span>&#8369;</span>{{$report->totalservice}}</td>
+                            <td><span>&#8369;</span>{{$total}}</td>
                         </tr>
                     </tfoot>
                 </table>
