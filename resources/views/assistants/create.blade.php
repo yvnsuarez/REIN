@@ -57,7 +57,7 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="MobileNo">Mobile Number</label>
-                                            <input type="text" name="MobileNo" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" placeholder="XXXXXXXXXXX" maxlength="11" autocomplete="off">
+                                            <input type="text" id="mobileNo" name="MobileNo" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" placeholder="09XXXXXXXXX" maxlength="11" autocomplete="off">
                                             @if ($errors->has('MobileNo'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('MobileNo') }}</strong>
@@ -81,7 +81,8 @@
                                 <div class="text-input">
                                     <div class="form-group">
                                         <label for="Address">Address</label>
-                                        <input type="text" name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
+                                        <label for="Address" style="font-size:11px; color:dimgrey">Unit Number House/Building/Street Number, Street Name, Barangay/District Name</label>
+                                        <input type="text" name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" minlength="20" autocomplete="off">
                                         @if ($errors->has('Address'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('Address') }}</strong>
@@ -150,9 +151,10 @@
 
                                 <div class="cub-input">
                                     <div class="text-input">
-                                        <div class="form-group">
+                                        <div id="register" class="form-group">
                                             <label for="password">Password</label>
-                                            <input type="password" name="password" value="" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" autocomplete="off">
+                                            <input type="password" id="password" name="password" value="" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" autocomplete="off">
+                                            <span id="result"></span>
                                             @if ($errors->has('password'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('password') }}</strong>
@@ -163,7 +165,8 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="CPassword">Confirm Password</label>
-                                            <input type="password" name="CPassword" value="" class="form-control {{ $errors->has('CPassword') ? ' is-invalid' : '' }}" autocomplete="off">
+                                            <input type="password" id="CPassword" name="CPassword" value="" class="form-control {{ $errors->has('CPassword') ? ' is-invalid' : '' }}" autocomplete="off">
+                                            <span id="passMatch"></span>
                                             @if ($errors->has('CPassword'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('CPassword') }}</strong>
@@ -363,4 +366,122 @@
                                                                 </div>
                                                             </div>
 
+                                                            <!-- PHONE # MASK -->
+                                                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                                                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+                                                            <script>
+                                                                /** PASSWORD METER **/
+                                                                $(document).ready(function()
+                                                                {
+                                                                    $('#password').keyup(function()
+                                                                    {
+                                                                        $('#result').html(checkStrength($('#password').val()))
+                                                                    })
+
+                                                                    function checkStrength(password)
+                                                                    {
+                                                                        var strength = 0
+
+                                                                        if (password.length < 6) {
+                                                                            $('#result').removeClass()
+                                                                            $('#result').addClass('short')
+                                                                            return 'Too short. Password input must contain at least one uppercase, lowercase, numerical, and special character'
+                                                                        }
+
+                                                                        if (password.length > 7) strength += 1
+
+                                                                        //If password contains both lower and uppercase characters, increase strength value.
+                                                                        if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))  strength += 1
+
+                                                                        //If it has numbers and characters, increase strength value.
+                                                                        if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/))  strength += 1
+
+                                                                        //If it has one special character, increase strength value.
+                                                                        if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/))  strength += 1
+
+                                                                        //if it has two special characters, increase strength value.
+                                                                        if (password.match(/(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1
+
+
+                                                                        //Calculated strength value, we can return messages
+
+
+
+                                                                        //If value is less than 2
+
+                                                                        if (strength < 2 )
+                                                                        {
+                                                                            $('#result').removeClass()
+                                                                            $('#result').addClass('weak')
+                                                                            return 'Weak! password input must contain at least one uppercase, lowercase, numerical, and special character!'
+                                                                        }
+                                                                        else if (strength == 2 )
+                                                                        {
+                                                                            $('#result').removeClass()
+                                                                            $('#result').addClass('good')
+                                                                            return 'Good but password input must contain at least one uppercase, lowercase, numerical, and special character'
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            $('#result').removeClass()
+                                                                            $('#result').addClass('strong')
+                                                                            return 'Strong Password!'
+                                                                        }
+                                                                    }
+                                                                });
+                                                                /** MATCH PASSWORD **/
+                                                                $(document).ready(function()
+                                                                {
+                                                                    $('#CPassword').keyup(function()
+                                                                    {
+                                                                        $('#passMatch').html(matchPassword($('#CPassword').val()))
+                                                                    })
+
+                                                                    function matchPassword() {
+                                                                        var password = $("#password").val();
+                                                                        var cPassword = $("#CPassword").val();
+                                                                        if (password != cPassword) {
+                                                                            $('#passMatch').removeClass()
+                                                                            $('#passMatch').addClass('nomatch')
+                                                                            return 'Password do not match!'
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            $('#passMatch').removeClass()
+                                                                            $('#passMatch').addClass('match')
+                                                                            return 'Passwords match!'
+                                                                        }
+                                                                    }
+                                                                });
+                                                                /** MOBILE # **/
+                                                                $('#mobileNo').mask('00000000000');
+
+                                                                /* $(document).ready(fun                    ction()
+                                                                {
+                                                                    $('#mobileNo').keyup(function()
+                                                                    {
+                                                                        $('#mobilePfMatch').html(matchMobilePf($('#mobileNo').val()))
+                                                                    })
+
+                                                                    function matchMobilePf() {
+                                                                        var mobilePf = "09";
+                                                                        var mobileNo = $("#mobileNo").val();
+                                                                        var mobileStr = mobileNo.toString();
+                                                                        var mobileinputPF = mobileStr.slice(0, 9);
+                                                                        if (mobileNo != ) {
+                                                                            $('#mobilePfMatch').removeClass()
+                                                                            $('#mobilePfMatch').addClass('pfnomatch')
+                                                                            return 'Please input the valid phone number prefix, 09!'
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            $('#mobilePfMatch').removeClass()
+                                                                            $('#mobilePfMatch').addClass('pfmatch')
+                                                                            return ''
+                                                                        }
+                                                                    }
+                                                                }); */
+
+
+                                                            </script>
                                                             @endsection

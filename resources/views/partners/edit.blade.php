@@ -30,7 +30,7 @@
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="BusinessName">Business Name</label>
-                                <input type="text" name="BusinessName" value="{{$user->BusinessName}}" class="form-control{{ $errors->has('BusinessName') ? ' is-invalid' : '' }} ">
+                                <input type="text" name="BusinessName" value="{{$user->BusinessName}}" class="form-control{{ $errors->has('BusinessName') ? ' is-invalid' : '' }} " autocomplete="off">
                                 @if ($errors->has('BusinessName'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('BusinessName') }}</strong>
@@ -42,7 +42,7 @@
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="BusinessRegistrationNo">Business Registration Number</label>
-                                <input type="text" name="BusinessRegistrationNo" value="{{$user->BusinessRegistrationNo}}" class="form-control {{ $errors->has('BusinessRegistrationNo') ? ' is-invalid' : '' }}" >
+                                <input type="text" name="BusinessRegistrationNo" value="{{$user->BusinessRegistrationNo}}" class="form-control {{ $errors->has('BusinessRegistrationNo') ? ' is-invalid' : '' }}" autocomplete="off">
                                 @if ($errors->has('BusinessRegistrationNo'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('BusinessRegistrationNo') }}</strong>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="text-input">
                     <label for="LTFRBRegistrationNo">LTFRB Accreditation Number</label>
-                                <input type="text" name="LTFRBRegistrationNo" value="{{$user->LTFRBRegistrationNo}}" class="form-control {{ $errors->has('LTFRBRegistrationNo') ? ' is-invalid' : '' }}" >
+                                <input type="text" name="LTFRBRegistrationNo" value="{{$user->LTFRBRegistrationNo}}" class="form-control {{ $errors->has('LTFRBRegistrationNo') ? ' is-invalid' : '' }}" autocomplete="off">
                                 @if ($errors->has('LTFRBRegistrationNo'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('LTFRBRegistrationNo') }}</strong>
@@ -63,7 +63,8 @@
 
                 <div class="text-input">
                 <label for="Address">Address</label>
-                                <input type="text" name="Address" value="{{$user->Address}}" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" >
+                <label for="Address" style="font-size:11px; color:dimgrey">Unit Number House/Building/Street Number, Street Name, Barangay/District Name</label>
+                                <input type="text" name="Address" value="{{$user->Address}}" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
                                 @if ($errors->has('Address'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('Address') }}</strong>
@@ -74,7 +75,7 @@
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="City">City</label>
-                                    <input type="text" name="City" value="{{$user->City}}" class="form-control {{ $errors->has('City') ? ' is-invalid' : '' }}" >
+                                    <input type="text" name="City" value="{{$user->City}}" class="form-control {{ $errors->has('City') ? ' is-invalid' : '' }}" autocomplete="off">
                                     @if ($errors->has('City'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('City') }}</strong>
@@ -83,7 +84,7 @@
                     </div>
                     <div class="text-input">
                     <label for="ZipCode">Zip Code</label>
-                            <input type="text" name="ZipCode" value="{{$user->ZipCode}}" placeholder="XXXX" class="form-control {{ $errors->has('ZipCode') ? ' is-invalid' : '' }}" >
+                            <input type="text" name="ZipCode" value="{{$user->ZipCode}}" placeholder="XXXX" class="form-control {{ $errors->has('ZipCode') ? ' is-invalid' : '' }}" autocomplete="off">
                             @if ($errors->has('ZipCode'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('ZipCode') }}</strong>
@@ -96,7 +97,7 @@
                 <div class="cub-input">
                     <div class="text-input">
                     <label for="Email">E-mail</label>
-                                <input type="email" name="Email" value="{{$user->Email}}" placeholder="example@gmail.com"class="form-control {{ $errors->has('Email') ? ' is-invalid' : '' }}" >
+                                <input type="email" name="Email" value="{{$user->Email}}" placeholder="example@gmail.com"class="form-control {{ $errors->has('Email') ? ' is-invalid' : '' }}" autocomplete="off">
                                 @if ($errors->has('Email'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('Email') }}</strong>
@@ -105,7 +106,7 @@
                             </div>
                     <div class="text-input">
                     <label for="MobileNo">Contact Number</label>
-                                <input type="text" name="MobileNo" value="{{$user->MobileNo}}" placeholder="XXXXXXXXXXX" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" >
+                                <input type="text" id="mobileNo" name="MobileNo" value="{{$user->MobileNo}}" placeholder="09XXXXXXXXX" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" autocomplete="off">
                                 @if ($errors->has('MobileNo'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('MobileNo') }}</strong>
@@ -170,6 +171,12 @@
             </div>
             </div>
             </div>
-
+             <!-- PHONE # MASK -->
+             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+             <script>
+                 /** MOBILE # MASK**/
+                 $('#mobileNo').mask('00000000000');
+             </script>
 
 @endsection

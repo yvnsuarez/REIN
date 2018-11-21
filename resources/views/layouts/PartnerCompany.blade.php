@@ -184,6 +184,39 @@
             margin-bottom: 0px;
         }
 
+        /* PASSWORD METER */
+        .short{
+            font-weight:bold;
+            color:#FF0000;
+            font-size:small;
+        }
+        .weak{
+            font-weight:bold;
+            color:orange;
+            font-size:small;
+        }
+        .good{
+            font-weight:bold;
+            color:#2D98F3;
+            font-size:small;
+        }
+        .strong{
+            font-weight:bold;
+            color: limegreen;
+            font-size:small;
+        }
+        .match{
+            font-weight:bold;
+            color: limegreen;
+            font-size:small;
+        }
+        .nomatch{
+            font-weight:bold;
+            color:#FF0000;
+            font-size:small;
+        }
+
+
     </style>
 </head>
 <body>
