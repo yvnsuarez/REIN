@@ -96,7 +96,16 @@ class RequestsController extends Controller
                         ->get()
                         ->first();
 
-        return view('Partner.AcceptRequest', compact('reports', 'motorist', 'car'));
+        $cartype = DB::table('cartype')
+                        ->where('id', '=', $car->carTypeID )
+                        ->get()
+                        ->first();
+        $carbrand = DB::table('brand')
+                        ->where('id' , '=',  $car->brandID)
+                        ->get()
+                        ->first();
+
+        return view('Partner.AcceptRequest', compact('reports', 'motorist', 'car', 'cartype', 'carbrand'));
     }
 
     public function accept($ID)
@@ -137,8 +146,17 @@ class RequestsController extends Controller
                         ->where($getcar)
                         ->get()
                         ->first();
+
+                        $cartype = DB::table('cartype')
+                        ->where('id', '=', $car->carTypeID )
+                        ->get()
+                        ->first();
+        $carbrand = DB::table('brand')
+                        ->where('id' , '=',  $car->brandID)
+                        ->get()
+                        ->first();
         // dd($car);
-        return view('Partner.AssignRequest', compact('reports', 'users', 'motorist', 'car'));
+        return view('Partner.AssignRequest', compact('reports', 'users', 'motorist', 'car', 'cartype', 'carbrand'));
     }
 
     public function assign(Request $request, $id)
@@ -198,8 +216,16 @@ class RequestsController extends Controller
                         ->where($getcar)
                         ->get()
                         ->first();
+         $cartype = DB::table('cartype')
+                        ->where('id', '=', $car->carTypeID )
+                        ->get()
+                        ->first();
+        $carbrand = DB::table('brand')
+                        ->where('id' , '=',  $car->brandID)
+                        ->get()
+                        ->first();
 
-        return view('Partner.DeclineRequest', compact('reports', 'motorist', 'car'));
+        return view('Partner.DeclineRequest', compact('reports', 'motorist', 'car', 'cartype', 'carbrand'));
 
     }
 
