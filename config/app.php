@@ -154,6 +154,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         LaravelFCM\FCMServiceProvider::class,
         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
+        Cornford\Googlmapper\MapperServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -218,7 +219,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        
+        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
         // 'PDF' => Barryvdh\DomPDF\Facade::class,
@@ -228,7 +229,6 @@ return [
         'FCM'      => LaravelFCM\Facades\FCM::class,
         'FCMGroup' => LaravelFCM\Facades\FCMGroup::class,
         'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class
-
 
     ],
 

@@ -63,7 +63,7 @@ class TransactionLogsController extends Controller
                         ->get()
                         ->first();
 
-                        $cartype = DB::table('cartype')
+        $cartype = DB::table('types')
                         ->where('id', '=', $car->carTypeID )
                         ->get()
                         ->first();
@@ -76,8 +76,6 @@ class TransactionLogsController extends Controller
                             ->where($getpayment)
                             ->get()
                             ->first();
-        
-                            
         return view('Partner.ShowTransaction', compact('reports', 'motorist', 'assistant', 'car', 'cartype', 'carbrand', 'payment'));
     }
 
@@ -104,7 +102,7 @@ class TransactionLogsController extends Controller
                         ->where($getcar)
                         ->get()
                         ->first();
-        $cartype = DB::table('cartype')
+        $cartype = DB::table('types')
                         ->where('id', '=', $getcardetails->carTypeID )
                         ->get()
                         ->first();

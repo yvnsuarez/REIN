@@ -19,7 +19,8 @@
         "niklasravnsborg/laravel-pdf": "^3.0",
         "scopdrag/laravel-google-chart": "^1.0",
         "spatie/laravel-activitylog": "^3.1",
-        "yajra/laravel-datatables-oracle": "^8.9"
+        "yajra/laravel-datatables-oracle": "^8.9",
+        "cornford/googlmapper": "2.*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

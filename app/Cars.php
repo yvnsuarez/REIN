@@ -8,7 +8,10 @@ class Cars extends Model
 {
     //
     protected $fillable =[
-    	'CarId','PlateNo','CarType','Color','Model','YearModel','Brand','Battery','Tire',
+    	'CarId','PlateNo','TypeID','Color','Model','YearModel','BrandID','Battery','Tire',
         'DateCreated'
      ];
+
+
+     
 }

@@ -33,6 +33,5 @@ class ForgetController extends Controller
         ->update(["password" => bcrypt($request->password),"code"=>null]);
 
         return view('home');
-        //return view('landingPage');
     }
 }

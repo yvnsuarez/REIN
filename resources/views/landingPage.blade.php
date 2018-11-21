@@ -338,7 +338,7 @@
                 <hr>
                 <p>
                     How to be a <b>REIN PARTNER?</b><br>
-                    Companies who offer <i>roadside assistance services</i> are welcome to be our partner, if you would like to
+                    Companies who offer <i>roadside assistance services</i> and has atleast 15 assistants are welcome to be our partner, if you would like to
                     be a part of <b>REIN</b> please visit us at our office for the on-site registration or if you have any
                     inquiry feel free to <a href="javascript:void(0)" onclick="closeBePartner();openContact();" style="display:inline; text-decoration:underline;">
                         contact us</a>.

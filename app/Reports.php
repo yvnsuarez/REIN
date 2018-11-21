@@ -25,4 +25,25 @@ class Reports extends Model
      {
        return $this->belongsTo('App\User', 'partner');
      }
+
+     public function car(Request $request)
+     {
+         //
+         $brand = Brand::all();
+         if ($brand){
+             return response()->json($brand, 200);
+         } else {
+             return response()->json(["SAD" => "No records found"], 500);
+         }
+     }
+     public function type(Request $request)
+     {
+         //
+         $brand = Type::all();
+         if ($brand){
+             return response()->json($brand, 200);
+         } else {
+             return response()->json(["SAD" => "No records found"], 500);
+         }
+     }
 } 

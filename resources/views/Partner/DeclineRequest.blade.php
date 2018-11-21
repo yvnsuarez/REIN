@@ -29,6 +29,21 @@
                             <label>Partner</label>
                             <input type="disabled" class="form-control" name="partner" value="{{$reports->partner}}" readonly="true">
                         </div> --}}
+                        <ul>
+                                <b class="text-center">Service Details</b>
+                                <li class="list-group-item">
+                                    <b>Service Type: </b>{{$reports->servicetype}}
+                                        <br/>
+                                    <b>Service Instruction: </b>{{$reports->instruction}}}
+                                        <br/>
+                                    <b>Service Place: </b>
+                                        <br/>
+                                    <div style="width:500; height:300px">
+                                        {!! Mapper::render() !!}
+                                    </div>
+                                        <br/>
+                                </li>
+                            </ul>
                         <ul class="list-group list-group-flush">
                                 <b class="text-center">Motorist Details</b>
                                     <li class="list-group-item">
@@ -53,17 +68,6 @@
                                         <b>Battery: </b> {{$car->Battery}}
                                             <br/>
                                         <b>Tire: </b> {{$car->Tire}}
-                                            <br/>
-                                    </li>
-                                <b class="text-center">Service Details</b>
-                                    <li class="list-group-item">
-                                        <b>Service Type: </b>{{$reports->servicetype}}
-                                            <br/>
-                                        <b>Service Instruction: </b>{{$reports->instruction}}}
-                                            <br/>
-                                        <b>Service Image: </b>{{$reports->image}}}
-                                            <br/>
-                                        <b>Service Place: </b>{{$reports->Lat}}, {{$reports->Lon}}
                                             <br/>
                                     </li>
                             

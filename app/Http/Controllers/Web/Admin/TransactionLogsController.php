@@ -50,7 +50,7 @@ class TransactionLogsController extends Controller
                         ->where($getcar)
                         ->get()
                         ->first();
-        $cartype = DB::table('cartype')
+        $cartype = DB::table('types')
                         ->where('id', '=', $car->carTypeID )
                         ->get()
                         ->first();
@@ -92,7 +92,7 @@ class TransactionLogsController extends Controller
                         ->get()
                         ->first();
 
-        $cartype = DB::table('cartype')
+        $cartype = DB::table('types')
                             ->where('id', '=', $getcardetails->carTypeID )
                             ->get()
                             ->first();

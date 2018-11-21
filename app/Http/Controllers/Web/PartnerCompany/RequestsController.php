@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
+use Mapper;
 
 class RequestsController extends Controller
 {
@@ -90,13 +91,21 @@ class RequestsController extends Controller
         $getmotoristdetails = ['id' => $reports->userID];
         $motorist = User::where($getmotoristdetails)->get()->first();
 
+        $recordMap = reports::all();
+       
+        
+        $getLat = Reports::select('Lat')->where('ID', $ID)->pluck('Lat');
+        $getLon = Reports::select('Lon')->where('ID', $ID)->pluck('Lon');
+
+        $map = Mapper::map($getLat, $getLon, ['scrollWheelZoom' => true, 'marker' => true, 'zoom' => 16]);
+
         $getcar = ['ID' => $reports->CarID];
         $car = DB::table ('cars')
                         ->where($getcar)
                         ->get()
                         ->first();
 
-        $cartype = DB::table('cartype')
+        $cartype = DB::table('types')
                         ->where('id', '=', $car->carTypeID )
                         ->get()
                         ->first();
@@ -105,7 +114,7 @@ class RequestsController extends Controller
                         ->get()
                         ->first();
 
-        return view('Partner.AcceptRequest', compact('reports', 'motorist', 'car', 'cartype', 'carbrand'));
+        return view('Partner.AcceptRequest', compact('reports', 'motorist', 'car', 'cartype', 'carbrand', 'map'));
     }
 
     public function accept($ID)
@@ -128,8 +137,6 @@ class RequestsController extends Controller
     public function showassign($ID)
     {
 
-
-        
         $getpartner = Auth::user();
         $partner = $getpartner->id;
         $getassistant = ['PartnerCompany' => $partner, 'UserTypeID' => '2', 'AssignStatus' => 'Available', 'Status' => 'Activated'];
@@ -147,7 +154,12 @@ class RequestsController extends Controller
                         ->get()
                         ->first();
 
-                        $cartype = DB::table('cartype')
+        $getLat = Reports::select('Lat')->where('ID', $ID)->pluck('Lat');
+        $getLon = Reports::select('Lon')->where('ID', $ID)->pluck('Lon');
+
+        $map = Mapper::map($getLat, $getLon, ['scrollWheelZoom' => true, 'marker' => true, 'zoom' => 16]);
+
+        $cartype = DB::table('types')
                         ->where('id', '=', $car->carTypeID )
                         ->get()
                         ->first();
@@ -197,9 +209,13 @@ class RequestsController extends Controller
         $UserFCMToken = User::find($report->userID);
         $UserFCMToken2 = User::find($report->assistant);
         //   dd($UserFCMToken);
-        $downstreamResponse = FCM::sendTo($UserFCMToken->token, $option, $notification, $data);
-        $downstreamResponse = FCM::sendTo($UserFCMToken2->token, $option, $notification, $data);
+        if ($UserFCMToken->token == null) {
 
+        } else {
+            $downstreamResponse = FCM::sendTo($UserFCMToken->token, $option, $notification, $data);
+            $downstreamResponse = FCM::sendTo($UserFCMToken2->token, $option, $notification, $data);
+        }
+        
         return redirect('partner/requests');
         //return redirect()->intended(route('partner.requests'))->with('message','item has been updated successfully');
     }
@@ -216,16 +232,23 @@ class RequestsController extends Controller
                         ->where($getcar)
                         ->get()
                         ->first();
-         $cartype = DB::table('cartype')
+
+        $getLat = Reports::select('Lat')->where('ID', $ID)->pluck('Lat');
+        $getLon = Reports::select('Lon')->where('ID', $ID)->pluck('Lon');
+
+        $map = Mapper::map($getLat, $getLon, ['scrollWheelZoom' => true, 'marker' => true, 'zoom' => 16]);
+
+        $cartype = DB::table('types')
                         ->where('id', '=', $car->carTypeID )
                         ->get()
                         ->first();
+                        
         $carbrand = DB::table('brand')
                         ->where('id' , '=',  $car->brandID)
                         ->get()
                         ->first();
 
-        return view('Partner.DeclineRequest', compact('reports', 'motorist', 'car', 'cartype', 'carbrand'));
+        return view('Partner.DeclineRequest', compact('reports', 'motorist', 'car', 'cartype', 'carbrand', 'map'));
 
     }
 
