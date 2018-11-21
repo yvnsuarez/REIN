@@ -40,7 +40,7 @@
                                     <li class="list-group-item">
                                         <b>Plate Number: </b> {{$car->PlateNo}}
                                             <br/>
-                                        <b>Car Type: </b> {{$car->CarType}}
+                                        <b>Car Type: </b> {{$cartype->carType}}
                                             <br/>
                                         <b>Color: </b> {{$car->Color}}
                                             <br/>
@@ -48,7 +48,7 @@
                                             <br/>
                                         <b>Year Model: </b> {{$car->YearModel}}
                                             <br/>
-                                        <b>Brand: </b> {{$car->Brand}}
+                                        <b>Brand: </b> {{$carbrand->brandName}}
                                             <br/>
                                         <b>Battery: </b> {{$car->Battery}}
                                             <br/>

@@ -98,8 +98,12 @@
                 </div> 
             </div>
             <div class="top-right"> 
+                    
                 <div class="header-menu"> 
+                        <br/>
+                        {{Auth::user()->BusinessName}}
                     <div class="header-left">
+                            
 
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -280,13 +284,6 @@
                             <div>
                                 <div class="pull-left">
                                     <h4 class="box-title">Charts</h4>
-                                </div>
-                                <div class="form control pull-right">
-                                {!! Form::open(['action' => 'Web\PartnerController@daterange', 'method' =>'POST']) !!}
-                                    From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d')}}"/> &nbsp;
-                                    To: <input type="text" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
-                                    <button type="submit" class="btn btn-warning btn-sm">Go</button>
-                                {!! Form::close() !!}  
                                 </div>
                             </div>
                                 <br/>

@@ -99,9 +99,12 @@
             </div>
             <div class="top-right">
                 <div class="header-menu">
+                    <br/>
+                        {{Auth::user()->FirstName}} {{Auth::user()->LastName}}
                     <div class="header-left">
-
+                            
                     <div class="user-area dropdown float-right">
+                        
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="{{ asset('/images/user.png') }}" alt="User Avatar">
                         </a>

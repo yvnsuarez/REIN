@@ -278,6 +278,7 @@
 
                             <!-- Header-->
                             <header id="header" class="header">
+                                
                                 <div class="top-left">
                                     <div class="navbar-header">
                                         <a class="navbar-brand" href="{{ route('partner.home') }}"><img src="{{asset('/images/REIN01.png')}}" alt="Logo" width="100px" height="45px"></a>
@@ -286,8 +287,12 @@
                                     </div>
                                 </div>
                                 <div class="top-right">
+                                    
                                     <div class="header-menu">
+                                            <br/>
+                                            {{Auth::user()->BusinessName}}
                                         <div class="header-left">
+                                               
 
                                             <div class="user-area dropdown float-right">
                                                 <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
