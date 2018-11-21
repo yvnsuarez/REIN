@@ -20,4 +20,9 @@ class Reports extends Model
      {
        return $this->belongsTo('App\User', 'userID');
      }
+
+     public function partner()
+     {
+       return $this->belongsTo('App\User', 'partner');
+     }
 } 

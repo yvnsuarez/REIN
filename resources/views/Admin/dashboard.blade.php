@@ -150,7 +150,17 @@
                         </div>
                     </div>
         </div>
-
+        
+        <div class="pull-right">
+            <br/>
+            <div class="form control pull-right">
+                    {!! Form::open(['action' => 'Web\AdminController@daterange', 'method' =>'POST']) !!}
+                        From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d')}}"/> &nbsp;
+                        To: <input type="text" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
+                        <button type="submit" class="btn btn-warning btn-sm">Go</button>
+                    {!! Form::close() !!}
+                    </div>
+        </div>
         <div class="content pb-0">
                 <div class="row">
                         <div class="col-lg-4 col-md-6">
@@ -296,13 +306,6 @@
                                 <div>
                                     <div class="pull-left">
                                         <h4 class="box-title">Charts</h4>
-                                    </div>
-                                    <div class="form control pull-right">
-                                    {!! Form::open(['action' => 'Web\AdminController@daterange', 'method' =>'POST']) !!}
-                                        From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d')}}"/> &nbsp;
-                                        To: <input type="text" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
-                                        <button type="submit" class="btn btn-warning btn-sm">Go</button>
-                                    {!! Form::close() !!}
                                     </div>
                                 </div>
                                     <br/>

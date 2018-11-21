@@ -31,7 +31,7 @@ class UserActivityController extends Controller
         $start = Carbon::now();
         $end = Carbon::now();
 
-        return view('Admin.UserActivity',compact('userlogs', 'start', 'end'));
+        return view('Admin.UserActivity',compact('userlogs', 'user', 'start', 'end'));
     }
 
     public function daterange(Request $request)

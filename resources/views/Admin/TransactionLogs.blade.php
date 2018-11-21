@@ -12,6 +12,22 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#datepickerfrom").datepicker({ maxDate: new Date(), dateFormat: "yy-mm-dd"});
+    });
+    $(function () {
+        $("#datepickerpresent").datepicker({ maxDate: new Date(), dateFormat: "yy-mm-dd"});
+    });
+</script>
+<div class="form control pull-right">
+        {!! Form::open(['action' => 'Web\Admin\TransactionLogsController@fulltransactionPDF', 'method' =>'POST']) !!}
+            From: <input type="text" id="datepickerfrom" name="start" value="{{date('Y-m-d')}}"/> &nbsp;
+            To: <input type="text" id="datepickerpresent" name="end" value="{{date('Y-m-d')}}"/> &nbsp;
+            <button type="submit" class="btn btn-warning btn-sm">Go</button>
+        {!! Form::close() !!}  
+        </div>
 @endsection
 
 @section('content')
@@ -25,7 +41,7 @@
                             </div>
                             <div class="card-body">
                             <?php $i = 1; ?>
-                            @if(count($reports) > 0)
+                            {{-- @if(count($reports) > 0) --}}
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
@@ -58,21 +74,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                                @else
-                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th class="serial">No.</th>
-                                                <th>Motorist</th>
-                                                <th>Service Type</th>
-                                                <th>Total Service Price</th>
-                                                <th>Service Status</th>
-                                                <th>ACTION</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                </table>
-                              @endif
+                                {{-- @else
+                                <p> No data in table </p>
+                               @endif --}}
                             </div>
                         </div>
                     </div>

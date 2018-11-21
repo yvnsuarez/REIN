@@ -83,34 +83,38 @@ class AdminController extends Controller
     public function daterange(Request $request) 
     {
 
+        date_default_timezone_set('Asia/Manila');
+        $start = Carbon::parse($request->start)->startOfDay();
+        $end = Carbon::parse($request->end)->endOfDay();
         //Widgets
         $partners = DB::table('users')
                     ->where('UserTypeID', '4')
+                    ->whereBetween('DateCreated', array(new Carbon($start), new Carbon($end)))
                     ->count();
         $assistants = DB::table('users')
                     ->where('UserTypeID', '2')
+                    ->whereBetween('DateCreated', array(new Carbon($start), new Carbon($end)))
                     ->count();
         $motorists = DB::table('users')
                     ->where('UserTypeID', '3')
+                    ->whereBetween('DateCreated', array(new Carbon($start), new Carbon($end)))
                     ->count(); 
 
         $totalusers = $partners + $assistants + $motorists;
        
-       
         $cancelled = DB::table('reports')
                     ->where('Status',  'Cancelled')
+                    ->whereBetween('DateSubmitted', array(new Carbon($start), new Carbon($end)))
                     ->count();
         $done = DB::table('reports')
                     ->where('Status', 'Done')
+                    ->whereBetween('DateSubmitted', array(new Carbon($start), new Carbon($end)))
                     ->count();
         $ongoing = DB::table('reports')
                     ->where('Status', 'Ongoing')
+                    ->whereBetween('DateSubmitted', array(new Carbon($start), new Carbon($end)))
                     ->count();
         
-        date_default_timezone_set('Asia/Manila');
-        $start = Carbon::parse($request->start)->startOfDay();
-        $end = Carbon::parse($request->end)->endOfDay();
-
         //Pie Chart
         $pie = DB::table('reports')
                 ->select(

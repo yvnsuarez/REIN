@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use PDF;
+use Illuminate\Support\Carbon;
+
 
 class TransactionLogsController extends Controller
 {
@@ -113,5 +115,29 @@ class TransactionLogsController extends Controller
             'Description' => "Downloaded Transaction Log Successfully"]);
 
         return $pdf->download('SingleTransactionLog.pdf'); 
+    }
+
+    public function fullTransactionPDF(Request $request)
+    {
+
+       date_default_timezone_set('Asia/Manila');
+       $start = Carbon::parse($request->start)->startOfDay();
+       $end = Carbon::parse($request->end)->endOfDay();
+
+       $reports = Reports::with('user')
+                         ->whereBetween('DateSubmitted', array(new Carbon($start), new Carbon($end)))
+                         ->get();
+       $reportcount = Reports::with('user')
+                           ->whereBetween('DateSubmitted', array(new Carbon($start), new Carbon($end)))
+                           ->count();
+
+       if ($reportcount == 0){
+           return redirect()->action('Web\PartnerCompany\TransactionLogsController@index');
+       } else {
+         $pdf = PDF::loadView('Partner.FullTransactionPDF', 
+         compact('reports'));
+       }
+           
+       return $pdf->download('FullTransactionPDF.pdf');
     }
 }

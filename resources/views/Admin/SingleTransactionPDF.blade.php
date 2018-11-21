@@ -1,5 +1,5 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title> Transaction Report Information </title>
+<title>Transaction No. {{$report->ID}}</title>
 <meta name="robots" content="noindex,nofollow" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0;" />
 
@@ -170,7 +170,7 @@
                     <tr>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" class="article">
                         Car Information: <br/>
-                        {{$getcardetails->PlateNo}}/{{$getcardetails->CarType}}/{{$getcardetails->Brand}}/{{$getcardetails->YearModel}} {{$getcardetails->Model}}/{{$getcardetails->Color}}
+                        {{$getcardetails->PlateNo}}/{{$cartype->carType}}/{{$carbrand->brandName}}/{{$getcardetails->YearModel}} {{$getcardetails->Model}}/{{$getcardetails->Color}}
                       </td>
 					</tr>
                    

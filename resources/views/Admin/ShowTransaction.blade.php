@@ -43,14 +43,14 @@
                                 <b class="text-center">Transaction Details</b>
                                         <li class="list-group-item">
                                             <b>Motorist: </b> {{$motorist->FirstName}} {{$motorist->LastName}}<br/>
-                                            <b>Contact No: </b> {{$motorist->MobileNo}}
+                                            <b>Contact No: </b> {{$motorist->MobileNo}} <br/>
                                             <b>Email: </b> {{$motorist->Email}}<br/>
                                                 <br/>
                                                 <br/>
-                                            <b>Car Details: </b><br/>
+                                            <b>CAR DETAILS </b><br/>
                                             <b>Plate No: </b>{{$car->PlateNo}}<br/>
-                                            <b>Type: </b>{{$car->CarType}}<br/>
-                                            <b>Brand: </b>{{$car->Brand}}<br/>
+                                            <b>Type: </b>{{$cartype->carType}}<br/>
+                                            <b>Brand: </b>{{$carbrand->brandName}}<br/>
                                             <b>Model: </b>{{$car->YearModel}} {{$car->Model}}<br/>
                                             <b>Color: </b>{{$car->Color}}
                                                 <br/>
@@ -62,7 +62,7 @@
                             @if ($reports->status === 'Assigned' OR $reports->status === 'Ongoing' OR $reports->status === 'Done' OR $reports->status === 'Sent Report')
                                                 <br/>
                                                 <br/>
-                                            <b>Assistant Details: </b> {{$assistant->FirstName}} {{$assistant->LastName}}<br/>
+                                            <b>Assistant: </b> {{$assistant->FirstName}} {{$assistant->LastName}}<br/>
                                             <b>Contact No: </b> {{$assistant->MobileNo}}<br/>
                                             <b>Email: </b> {{$assistant->Email}}<br/>
                                         </li>

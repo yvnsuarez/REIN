@@ -97,6 +97,10 @@ class PartnerController extends Controller
     public function daterange(Request $request) 
     {
 
+        date_default_timezone_set('Asia/Manila');
+        $start = Carbon::parse($request->start)->startOfDay();
+        $end = Carbon::parse($request->end)->endOfDay();
+        
         //Widgets
         $getpartner = Auth::user();
         $partner = $getpartner->id;
@@ -104,37 +108,39 @@ class PartnerController extends Controller
         $getassistant = ['PartnerCompany' => $partner, 'UserTypeID' => '2'];
         $assistant = DB::table('users')
                         ->where($getassistant)
+                        ->whereBetween('DateCreated', array(new Carbon($start), new Carbon($end)))
                         ->count();
 
         $getavailable = ['AssignStatus' => 'Available', 'Status' => 'Activated', 'PartnerCompany' => $partner, 'UserTypeID' => '2'];  
         $availableassistant = DB::table('users')
                                 ->where($getavailable)
+                                ->whereBetween('DateCreated', array(new Carbon($start), new Carbon($end)))
                                 ->count();
 
         $getnotavailable = ['AssignStatus' => 'Not Available', 'Status' => 'Activated', 'PartnerCompany' => $partner, 'UserTypeID' => '2'];
         $notavailableassistant = DB::table('users')
                                     ->where($getnotavailable)
+                                    ->whereBetween('DateCreated', array(new Carbon($start), new Carbon($end)))
                                     ->count();
 
         $getsales = ['partner' => $partner, 'status' => 'Done'];
         $totalsales = DB::table('reports')
                         ->where($getsales)
+                        ->whereBetween('DateSubmitted', array(new Carbon($start), new Carbon($end)))
                         ->sum('totalservice');
 
         $getservices = ['partner' => $partner, 'status' => 'Done'];
         $totalservice = DB::table('reports')
                         ->where($getservices)
+                        ->whereBetween('DateSubmitted', array(new Carbon($start), new Carbon($end)))
                         ->count();
                         
 
         $getongoing = ['partner' => $partner, 'status' => 'Ongoing'];
         $totalongoing = DB::table('reports')
                         ->where($getongoing)
+                        ->whereBetween('DateSubmitted', array(new Carbon($start), new Carbon($end)))
                         ->count();
-
-        date_default_timezone_set('Asia/Manila');
-        $start = Carbon::parse($request->start)->startOfDay();
-        $end = Carbon::parse($request->end)->endOfDay();
 
         $pie = DB::table('reports')
             ->select(

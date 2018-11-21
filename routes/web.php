@@ -55,6 +55,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/transactionlogs', 'Web\Admin\TransactionLogsController@index');
     Route::get('/transactionlogs/{id}', 'Web\Admin\TransactionLogsController@showTransaction');
     Route::get('/transactionlogs/downloadSingleTransaction/{id}', 'Web\Admin\TransactionLogsController@singleTransactionPDF');
+    Route::post('/transactionlogs/downloadFullTransaction', 'Web\Admin\TransactionLogsController@fulltransactionPDF');
     
     Route::get('/useractivity', 'Web\Admin\UserActivityController@index')->name('admin.useractivity');
     Route::get('/useractivity/{ID}', 'Web\Admin\UserActivityController@showUserActivity');
@@ -97,7 +98,8 @@ Route::prefix('partner')->group(function() {
 
     Route::get('/transactionlogs', 'Web\PartnerCompany\TransactionLogsController@index');
     Route::get('/transactionlogs/{id}', 'Web\PartnerCompany\TransactionLogsController@showTransaction');
-    Route::get('/transactionlogs/downloadSingleTransaction/{id}', 'Web\PartnerCompany\TransactionLogsController@singleTransactionPDF');
+    Route::get('/transactionlogs/downloadSingleTransaction/{id}', 'Web\PartnerCompany\TransactionLogsController@singleTransactionPDF');   
+    Route::post('/transactionlogs/downloadFullTransaction', 'Web\PartnerCompany\TransactionLogsController@fulltransactionPDF');
 
     Route::get('/feedbacks', 'Web\PartnerCompany\FeedbacksController@index');
     Route::get('/feedbacks/{ID}', 'Web\PartnerCompany\FeedbacksController@showFeedback');
