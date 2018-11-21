@@ -63,6 +63,14 @@ class TransactionLogsController extends Controller
                         ->get()
                         ->first();
 
+                        $cartype = DB::table('cartype')
+                        ->where('id', '=', $car->carTypeID )
+                        ->get()
+                        ->first();
+        $carbrand = DB::table('brand')
+                        ->where('id' , '=',  $car->brandID)
+                        ->get()
+                        ->first();
         $getpayment = ['ReportID' => $ID];
         $payment = DB::table ('payments')
                             ->where($getpayment)
@@ -70,7 +78,7 @@ class TransactionLogsController extends Controller
                             ->first();
         
                             
-        return view('Partner.ShowTransaction', compact('reports', 'motorist', 'assistant', 'car', 'payment'));
+        return view('Partner.ShowTransaction', compact('reports', 'motorist', 'assistant', 'car', 'cartype', 'carbrand', 'payment'));
     }
 
 
@@ -96,6 +104,14 @@ class TransactionLogsController extends Controller
                         ->where($getcar)
                         ->get()
                         ->first();
+        $cartype = DB::table('cartype')
+                        ->where('id', '=', $getcardetails->carTypeID )
+                        ->get()
+                        ->first();
+        $carbrand = DB::table('brand')
+                        ->where('id' , '=',  $getcardetails->brandID)
+                        ->get()
+                        ->first();
 
         $getpayment = ['ReportID' => $ID];
         $getpaymentdetails = DB::table ('payments')
@@ -107,7 +123,7 @@ class TransactionLogsController extends Controller
         $pdf = PDF::loadView('Partner.SingleTransactionPDF', 
                     compact('report', 'getpartnerdetails', 
                     'getmotoristdetails', 'getassistantdetails',
-                    'getcardetails', 'getpaymentdetails'));
+                    'getcardetails', 'cartype', 'carbrand', 'getpaymentdetails'));
 
         DB::table('user_logs')
             ->insert(['UserID' => $getpartner->id, 

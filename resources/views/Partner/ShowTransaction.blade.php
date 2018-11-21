@@ -41,8 +41,8 @@
                                                 <br/>
                                             <b>Car Details: </b><br/>
                                             <b>Plate No: </b>{{$car->PlateNo}}<br/>
-                                            <b>Type: </b>{{$car->CarType}}<br/>
-                                            <b>Brand: </b>{{$car->Brand}}<br/>
+                                            <b>Type: </b>{{$cartype->carType}}<br/>
+                                            <b>Brand: </b>{{$carbrand->brandName}}<br/>
                                             <b>Model: </b>{{$car->YearModel}} {{$car->Model}}<br/>
                                             <b>Color: </b>{{$car->Color}}
                                                 <br/>
