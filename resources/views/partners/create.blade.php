@@ -69,8 +69,7 @@
                                 <div class="text-input">
                                         <div class="form-group">
                                             <label for="Address">Address</label>
-                                            <label for="Address" style="font-size:11px; color:dimgrey">Unit/Street Number, Building Name/Block, Street Name, Barangay/District Name:</label>
-                                            <input id="Address" disabled name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
+                                            <input id="Address" name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" style="border-color:white">
                                             @if ($errors->has('Address'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('Address') }}</strong>
@@ -173,7 +172,7 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="MobileNo">Contact Number</label>
-                                            <input type="text" id="mobileNo" name="MobileNo" value="" pattern="^09(73|74|05|06|15|16|17|26|27|35|36|37|79|38|07|08|09|10|12|18|19|20|21|28|29|30|38|39|89|99|22|23|32|33)\d{3}\s?\d{4}" placeholder="XXXXXXXXX" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" maxLength="9" autocomplete="off">
+                                            <input type="text" id="mobileNo" name="MobileNo" value="" pattern="^09(73|74|05|06|15|16|17|26|27|35|36|37|79|38|07|08|09|10|12|18|19|20|21|28|29|30|38|39|89|99|22|23|32|33)\d{3}\s?\d{4}" placeholder="09xxxxxxxxx" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" maxLength="9" autocomplete="off">
                                             @if ($errors->has('MobileNo'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('MobileNo') }}</strong>
@@ -490,7 +489,7 @@
                                                                         }
                                                                     });
                                                                     /** MOBILE # MASK**/
-                                                                    $('#mobileNo').mask('000000000');
+                                                                    $('#mobileNo').mask('00000000000');
                                                                 </script>
 
                                                                 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

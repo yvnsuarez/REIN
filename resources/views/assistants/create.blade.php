@@ -81,7 +81,7 @@
                                     <div class="form-group">
                                         <label for="Address">Address</label>
                                         <label for="Address" style="font-size:11px; color:dimgrey">Unit/Street Number, Building Name/Block, Street Name, Barangay/District Name:</label>
-                                        <input id="Address" disabled name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
+                                        <input id="Address" name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" style="border-color:white">
                                         @if ($errors->has('Address'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('Address') }}</strong>
