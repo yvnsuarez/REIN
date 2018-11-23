@@ -117,7 +117,7 @@ class UserController extends Controller
 
             $message->to($email, $email)->subject
                 ('Forget Password');
-            $message->from('giandennison.bello@benilde.edu.ph', 'REIN APP');
+            $message->from('rein.inquiry@gmail.com', 'REIN APP');
         });
         return response()->json(["Email" => $email], 201);
 

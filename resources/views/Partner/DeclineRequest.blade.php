@@ -90,6 +90,11 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
+                                            @if ($declinerequests == '3') 
+                                                <div class="modal-body">
+                                                You already have decline 3 requests.
+                                                </div>
+                                            @else
                                             <div class="modal-body">
                                                 Are you sure you want to decline the service request?
                                             </div>
@@ -97,6 +102,7 @@
                                                 <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
                                                 <button type="submit" class="btn btn-secondary">Decline</button>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

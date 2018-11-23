@@ -185,9 +185,6 @@ class RequestsController extends Controller
             ->where('id', $assistant)
             ->update(['AssignStatus' => "Not Available"]);
 
-        // DB::table('user_logs')
-        //   ->save([])
-
         DB::table('user_logs')
             ->insert(['UserID' => $partner, 'Type' => "Assigned", 'TargetUser' => $assistant, 'ReportsID' => $id, 'Description' => "Request Assigned"]);
 
@@ -223,7 +220,8 @@ class RequestsController extends Controller
     public function showdecline($ID)
     {
         $reports = Reports::find($ID);
-
+        $getpartner = Auth::user();
+        
         $getmotoristdetails = ['id' => $reports->userID];
         $motorist = User::where($getmotoristdetails)->get()->first();
 
@@ -248,7 +246,12 @@ class RequestsController extends Controller
                         ->get()
                         ->first();
 
-        return view('Partner.DeclineRequest', compact('reports', 'motorist', 'car', 'cartype', 'carbrand', 'map'));
+        $getdeclinedrequests = ['partner' => $getpartner->id, 'status' => 'Declined'];
+        $declinerequests = DB::table('reports')
+                      ->where($getdeclinedrequests)
+                      ->count();
+
+        return view('Partner.DeclineRequest', compact('reports', 'motorist', 'car', 'cartype', 'carbrand', 'map', 'declinerequests'));
 
     }
 
@@ -259,12 +262,17 @@ class RequestsController extends Controller
         DB::table('reports')
           ->where('id', $ID)
           ->update(['status' => "Declined", 'partner' => $getpartner->id]);
+        
+        $getdeclinedrequests = ['partner' => $getpartner->id, 'status' => 'Declined'];
+        $declinerequests = DB::table('reports')
+                      ->where($getdeclinedrequests)
+                      ->count();
 
         $report = Reports::find($ID);
         DB::table('user_logs')
           ->insert(['UserID' => $getpartner->id, 'Type' => "Declined",'ReportsID' => $ID, 'TargetUser' => $report->userID,'Description' => "Request Declined"]);
 
-        return redirect('partner/requests');  
+        return view('partner/requests');  
     }
 
     public function destroy($id)

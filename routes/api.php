@@ -14,6 +14,7 @@
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 Route::post('sendhtmlemail', 'API\MailController@html_email');
+Route::post('sendreceiptemail', 'API\MailController@receipt_email');
 Route::post('token', 'API\UserController@send');
 
 
