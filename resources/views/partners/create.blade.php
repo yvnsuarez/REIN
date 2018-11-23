@@ -67,17 +67,49 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="text-input">
-                                    <div class="form-group">
-                                        <label for="Address">Address</label>
-                                        <label for="Address" style="font-size:11px; color:dimgrey">Unit Number House/Building/Street Number, Street Name, Barangay/District Name</label>
-                                        <input type="text" name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
-                                        @if ($errors->has('Address'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('Address') }}</strong>
-                                        </span>
-                                        @endif
+                                        <div class="form-group">
+                                            <label for="Address">Address</label>
+                                            <input id="Address" name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" style="border-color:white">
+                                            @if ($errors->has('Address'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('Address') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
+
+                                    <div class="text-input">
+                                        <div class="form-group">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="row">
+                                                        <label for="Address"></label>
+                                                        <div class="col-sm-2" style="margin-right: -20px">
+                                                            <label for="Address" style="font-size:11px; color:dimgrey">Unit/Street Number</label>
+                                                            <input type="text" id="unitNo" name="unitNo" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" required="required">
+                                                        </div>
+                                                        <div class="col-sm-4" style="margin-right: -40px">
+                                                            <label for="Address" style="font-size:11px; color:dimgrey">Building Name/Block</label>
+                                                            <input type="text" id="homeNo" name="homeNo" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" required="required">
+                                                        </div>
+                                                        <div class="col-sm-4" style="margin-right: -40px">
+                                                            <label for="Address" style="font-size:11px; color:dimgrey">Street Name</label>
+                                                            <input type="text" id="streetName" name="streetName" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" required="required">
+                                                        </div>
+                                                        <div class="col-sm-4" style="margin-right: -40px">
+                                                            <label for="Address" style="font-size:11px; color:dimgrey">Barangay/District Name</label>
+                                                            <input type="text" id="district" name="district" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" required="required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @if ($errors->has('Address'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('Address') }}</strong>
+                                                </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 <div class="cub-input">
                                     <div class="text-input">
@@ -140,7 +172,7 @@
                                     <div class="text-input">
                                         <div class="form-group">
                                             <label for="MobileNo">Contact Number</label>
-                                            <input type="text" value="09" class="form-control" width="10" maxlength="2"></input><input type="text" id="mobileNo" name="MobileNo" value="" placeholder="XXXXXXXXX" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" maxLength="9" autocomplete="off">
+                                            <input type="text" id="mobileNo" name="MobileNo" value="" pattern="^09(73|74|05|06|15|16|17|26|27|35|36|37|79|38|07|08|09|10|12|18|19|20|21|28|29|30|38|39|89|99|22|23|32|33)\d{3}\s?\d{4}" placeholder="09xxxxxxxxx" class="form-control {{ $errors->has('MobileNo') ? ' is-invalid' : '' }}" maxLength="9" autocomplete="off">
                                             @if ($errors->has('MobileNo'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('MobileNo') }}</strong>
@@ -370,8 +402,8 @@
                                                                     </div>
                                                                 </div>
                                                                 <!-- PHONE # MASK -->
-                                                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-                                                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+                                                                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                                                                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
                                                                 <script>
                                                                     /** PASSWORD METER **/
                                                                     $(document).ready(function()
@@ -457,8 +489,35 @@
                                                                         }
                                                                     });
                                                                     /** MOBILE # MASK**/
-                                                                    $('#mobileNo').mask('000000000');
+                                                                    $('#mobileNo').mask('00000000000');
                                                                 </script>
 
+                                                                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+                                                                <script>
+                                                                    /** ADDRESS **/
+                                                                    /* function join_address()
+                                                                    {
+                                                                        var unitNo = document.getElementById('unitNo').value;
+                                                                        var homeNo = document.getElementById('homeNo').value;
+                                                                        var streetName = document.getElementById('streetName').value;
+                                                                        var district = document.getElementById('district').value;
+                                                                        document.getElementById('Address').value = unitNo+homeNo+streetName+district;
+                                                                    }
 
-                                                                @endsection
+                                                                } */
+                                                                /** ADDRESS **/
+                                                                $(function() {
+                                                                    $('#unitNo, #homeNo, #streetName, #district').on('input', function() {
+                                                                        $('#Address').val(
+                                                                        $('#unitNo, #homeNo, #streetName, #district').map(function() {
+                                                                            return $(this).val();
+                                                                        }).get().join(' ') /* added space */
+                                                                        );
+                                                                    });
+                                                                });
+
+
+                                                            </script>
+
+
+                                                            @endsection
