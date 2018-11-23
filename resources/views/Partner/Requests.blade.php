@@ -110,6 +110,7 @@
                         <thead>
                             <tr>
                                 <th class="serial">No.</th>
+                                <th>Report No.</th>
                                 <th>Motorist</th>
                                 <th>Instruction</th>
                                 <th>Service Type</th>
@@ -121,6 +122,7 @@
                             @foreach($reports as $report)
                             <tr>
                                 <td>{{ $i++ }}</td>
+                                <td>{{$report->UniqueID}}</td>
                                 <td>{{$report->user->FirstName}} {{$report->user->LastName}}</td>
                                 <td>{{$report->instruction}}</td>
                                 <td>{{$report->servicetype}}</td>

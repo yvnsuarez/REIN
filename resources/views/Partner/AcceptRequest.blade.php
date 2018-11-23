@@ -31,11 +31,11 @@
                             <input type="disabled" class="form-control" name="partner" value="{{$reports->partner}}" readonly="true">
                         </div> --}}
                         <ul>
-                        <b class="text-center">Service Details</b>
+                        <b class="text-center">Service No. {{$reports->UniqueID}} Details</b>
                         <li class="list-group-item">
                             <b>Service Type: </b>{{$reports->servicetype}}
                                 <br/>
-                            <b>Service Instruction: </b>{{$reports->instruction}}}
+                            <b>Service Instruction: </b>{{$reports->instruction}}
                                 <br/>
                             <b>Service Place: </b>
                                 <br/>
