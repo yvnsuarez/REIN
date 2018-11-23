@@ -74,7 +74,7 @@
                                             <div class="form-group">
                                                 <label for="Address">Address</label>
                                                 <label for="Address" style="font-size:11px; color:dimgrey">Unit/Street Number, Building Name/Block, Street Name, Barangay/District Name:</label>
-                                                <input id="Address" name="Address" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" style="border-color:white">
+                                                <input id="Address" name="Address" value="{{ $user->Address}}" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" style="border-color:white">
                                                 @if ($errors->has('Address'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('Address') }}</strong>
@@ -91,19 +91,19 @@
                                                             <label for="Address"></label>
                                                             <div class="col-sm-2" style="margin-right: -20px">
                                                                 <label for="Address" style="font-size:11px; color:dimgrey">Unit/Street Number</label>
-                                                                <input type="text" id="unitNo" name="unitNo" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" required="required">
+                                                                <input type="text" id="unitNo" name="unitNo" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
                                                             </div>
                                                             <div class="col-sm-4" style="margin-right: -40px">
                                                                 <label for="Address" style="font-size:11px; color:dimgrey">Building Name/Block</label>
-                                                                <input type="text" id="homeNo" name="homeNo" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" required="required">
+                                                                <input type="text" id="homeNo" name="homeNo" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
                                                             </div>
                                                             <div class="col-sm-4" style="margin-right: -40px">
                                                                 <label for="Address" style="font-size:11px; color:dimgrey">Street Name</label>
-                                                                <input type="text" id="streetName" name="streetName" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" required="required">
+                                                                <input type="text" id="streetName" name="streetName" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
                                                             </div>
                                                             <div class="col-sm-4" style="margin-right: -40px">
                                                                 <label for="Address" style="font-size:11px; color:dimgrey">Barangay/District Name</label>
-                                                                <input type="text" id="district" name="district" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off" required="required">
+                                                                <input type="text" id="district" name="district" value="" class="form-control {{ $errors->has('Address') ? ' is-invalid' : '' }}" autocomplete="off">
                                                             </div>
                                                         </div>
                                                     </div>
