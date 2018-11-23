@@ -12,7 +12,7 @@ class Reports extends Model
     protected $fillable =[
         'ID','partner', 'userID','assistant','instruction','servicetype','image', 'Lat','Lon',
         'comment', 'addcharge', 'totalservice', 'totalservice', 'status', 'paymentstatus', 'created_at',
-        'updated_at', 'CarID'
+        'updated_at', 'CarID', 'UniqueID'
      ];
      public $timestamps = false;
 
