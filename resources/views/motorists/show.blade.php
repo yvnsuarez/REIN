@@ -38,8 +38,8 @@
                                  <b class="text-center">Car Information</b>
                                         <li class="list-group-item">
                                             <b>Plate No: </b>{{$car->PlateNo}}<br/>
-                                            <b>Type: </b>{{$car->CarType}}<br/>
-                                            <b>Brand: </b>{{$car->Brand}}<br/>
+                                            {{-- <b>Type: </b>{{$car->carType}}<br/>
+                                            <b>Brand: </b>{{$car->brandName}}<br/> --}}
                                             <b>Model: </b>{{$car->YearModel}} {{$car->Model}}<br/>
                                             <b>Color: </b>{{$car->Color}}
                                         </li>

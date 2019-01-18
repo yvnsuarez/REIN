@@ -64,24 +64,24 @@ class MotoristsController extends Controller
                     ->get()
                     ->first();
 
-        $getbrand = ['brandID' =>$id];
-        $brand = DB::table('brand')
-                        ->where($getbrand)
-                        ->get()
-                        ->first();
+        // $getbrand = ['brandID' => $id];
+        // $brand = DB::table('brand')
+        //                 ->where($getbrand)
+        //                 ->get()
+        //                 ->first();
 
-        $getcartype = ['carTypeID' =>$id];
-        $cartype = DB::table('types')
-                        ->where($getcartype)
-                        ->get()
-                        ->first();                
+        // $getcartype = ['carTypeID' => $id];
+        // $cartype = DB::table('types')
+        //                 ->where($getcartype)
+        //                 ->get()
+        //                 ->first();                
 
         $getcancelledrequests = ['userID' => $id, 'status' => 'Cancelled'];
         $cancellation = DB::table('reports')
                     ->where($getcancelledrequests)
                     ->count();
                     
-        return view('motorists.show', compact('user', 'car', 'brand', 'cartype', 'cancellation'));
+        return view('motorists.show', compact('user', 'car', 'cancellation')); // 'brand', 'cartype', 
     }
 
     /**
