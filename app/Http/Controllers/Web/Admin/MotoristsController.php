@@ -68,7 +68,6 @@ class MotoristsController extends Controller
         $cancellation = DB::table('reports')
                     ->where($getcancelledrequests)
                     ->count();
-        dd($car);    
                     
         return view('motorists.show', compact('user', 'car', 'cancellation'));
     }
